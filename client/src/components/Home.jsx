@@ -59,7 +59,7 @@ const Product = ({ product, index, darkMode, chooseProductFunc, setChooseProduct
                 setChooseProductPopup(false);
             }}
         >
-            <img src={`http://localhost:4000/uploads/${product.thumbnailImageId}`} className='h-[60%] mt-10 object-cover' />
+            <img src={`https://website-sql-rewrite.onrender.com/uploads/${product.thumbnailImageId}`} className='h-[60%] mt-10 object-cover' />
             <p className="mt-auto mb-4 font-semibold text-xl text-center px-10">{product.name}</p>
         </button>
     )
