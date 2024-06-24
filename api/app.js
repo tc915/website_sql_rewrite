@@ -38,7 +38,7 @@ app.use(cors({
 }));
 
 app.get('/', (req, res) => {
-    app.send('home')
+    res.send('home')
 })
 
 app.post('/register', async (req, res) => {
