@@ -10,6 +10,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "start": "concurrently \"npm run dev --prefix ../api\" \"npm run dev --prefix ../client\"",
+    "install:client": "cd client && npm install",
+    "install:api": "cd api && npm install",
     "install:both": "concurrently \"npm run install:client\" \"npm run install:api\""
   },
   "dependencies": {
