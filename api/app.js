@@ -679,8 +679,10 @@ app.get('/showcase-products', async (req, res) => {
     }
 });
 
+const PORT = process.env.PORT || 4000;
 
-app.listen(4000, '0.0.0.0', () => {
+
+app.listen(PORT, '0.0.0.0', () => {
     console.log('Server is running and listening to all network interfaces')
 });
 
