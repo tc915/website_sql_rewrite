@@ -35,10 +35,10 @@ import ICandyDemo from './components/demos/ICandyDemo';
 
 let baseURL;
 
-if (window.location.hostname === "localhost") {
+if (process.env.NODE_ENV === "development") {
     baseURL = "http://localhost:4000";
 } else {
-    baseURL = `http://${window.location.hostname}:4000`;
+    baseURL = process.env.REACT_APP_BACKEND_URL;
 }
 
 axios.defaults.baseURL = baseURL;
