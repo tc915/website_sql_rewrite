@@ -12,7 +12,7 @@ const db_config = {
 let pool;
 
 const establishConnection = () => {
-    pool = mysql.createPool({ host: '192.185.148.190', user: 'floatid', password: 'i(*)tech1', database: 'floatid_test_database' })
+    pool = mysql.createPool(db_config)
 }
 
 establishConnection();
