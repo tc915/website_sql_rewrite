@@ -720,7 +720,7 @@ const Home = ({ scrollY }) => {
                         </div>
                         <div className="w-1/2 flex justify-center items-center">
                             <div className="w-full h-[45%] bg-black mr-24">
-                                <img src={`http://localhost:4000/uploads/${thinkTankImageId}`} className="object-cover h-full w-full"></img>
+                                <img src={`https://website-sql-rewrite.onrender.com/uploads/${thinkTankImageId}`} className="object-cover h-full w-full"></img>
                             </div>
                         </div>
                     </div>

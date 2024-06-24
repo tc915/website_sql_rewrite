@@ -162,7 +162,7 @@ const ProductDetails = () => {
                     >Edit</button>
                 )}
                 <div className="h-full w-1/2 flex justify-center">
-                    <img src={`http://localhost:4000/uploads/${detailsImageId ? detailsImageId : thumbnailImageId}`} className="h-full object-cover" />
+                    <img src={`https://website-sql-rewrite.onrender.com/uploads/${detailsImageId ? detailsImageId : thumbnailImageId}`} className="h-full object-cover" />
                 </div>
                 <div className="h-full w-1/2 ml-10 p-10">
                     <h1 className="text-4xl font-bold pb-4">{product.name}</h1>

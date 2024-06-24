@@ -58,7 +58,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
             )}
             <Link to={`/products/${product.id}`}>
                 <button className="w-full h-full flex flex-col items-center mb-24">
-                    <img src={`http://localhost:4000/uploads/${product.thumbnailImageId}`} className='h-full pt-16 object-cover' />
+                    <img src={`https://website-sql-rewrite.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 object-cover' />
                     <h2 className='mt-4'>{product.name}</h2>
                 </button>
             </Link>
