@@ -93,8 +93,9 @@ export const updateTable = async (tableName, doc) => {
 
 
 export async function getProducts() {
-    const [rows] = await pool.query(`SELECT * FROM products`)
-    return rows
+    // const [rows] = await pool.query(`SELECT * FROM products`)
+    // return rows
+    return 'products'
 }
 
 export async function getProduct(id) {
