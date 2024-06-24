@@ -38,7 +38,7 @@ let baseURL;
 if (process.env.NODE_ENV === "development") {
     baseURL = "http://localhost:4000";
 } else {
-    baseURL = process.env.REACT_APP_BACKEND_URL;
+    baseURL = 'https://website-sql-rewrite.onrender.com';
 }
 
 axios.defaults.baseURL = baseURL;
