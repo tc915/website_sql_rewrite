@@ -37,9 +37,11 @@ app.use(cors({
     }
 }));
 
-app.get('/', (req, res) => {
-    res.send('Hello World')
-})
+app.use(express.static(path.join(__dirname, 'client')))
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
 
 app.post('/register', async (req, res) => {
     const { name, username, email, password } = req.body;
