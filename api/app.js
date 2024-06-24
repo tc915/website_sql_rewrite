@@ -193,7 +193,7 @@ app.get('/get-products', async (req, res) => {
         const products = await getProducts();
         res.json(products);
     } catch (err) {
-        res.status(500).json({ error: 'An error occurred' })
+        res.status(500).json(err.stack)
     }
 });
 
