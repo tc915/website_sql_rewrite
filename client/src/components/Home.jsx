@@ -1,0 +1,751 @@
+import { AnimatePresence, motion, transform, useMotionValue } from "framer-motion"
+import { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom"
+import Footer from "../partials/Footer";
+import { UserContext } from "../UserContext";
+import TextAreaAutosize from 'react-textarea-autosize';
+import axios from "axios";
+const fadeInVariants = {
+    initial: {
+        opacity: 0,
+        transform: 'translateY(-5rem)'
+    },
+    animate: {
+        opacity: 1,
+        transform: 'translateY(0rem)',
+        transition: {
+            duration: 0.5
+        }
+    }
+}
+
+const buttonVariants = {
+    hover: {
+        transform: 'translateY(2px)',
+        transition: {
+            duration: 0.15
+        }
+    },
+    click: {
+        opacity: 0.5,
+        transition: {
+            duration: 0.1
+        }
+    }
+}
+
+
+const Product = ({ product, index, darkMode, chooseProductFunc, setChooseProductPopup, productsPageIndex, productsPageImages, setProductsPageImages }) => {
+
+
+    useEffect(() => {
+        if (product.thumbnailImageId) {
+            const imageDetails = {
+                imgSrc: product.thumbnailImageId,
+                imgId: product.thumbnailImageId
+            }
+            setProductsPageImages(prevImages => {
+                const newImages = [...prevImages];
+                newImages[index] = imageDetails;
+                return newImages;
+            })
+        }
+    }, [product])
+
+    return (
+        <button className="border-4 border-[#FF7F11] rounded-xl h-full w-[20rem] min-w-[20rem] mr-6 flex flex-col items-center"
+            onClick={() => {
+                chooseProductFunc(product, productsPageIndex);
+                setChooseProductPopup(false);
+            }}
+        >
+            <img src={`http://localhost:4000/uploads/${product.thumbnailImageId}`} className='h-[60%] mt-10 object-cover' />
+            <p className="mt-auto mb-4 font-semibold text-xl text-center px-10">{product.name}</p>
+        </button>
+    )
+}
+
+const Home = ({ scrollY }) => {
+
+    const { user, darkMode, setDarkMode } = useContext(UserContext);
+
+    const [productNum, setProductNum] = useState(1);
+    const [userChangeProductNum, setUserChangeProcuctNum] = useState(false);
+    const [inProducts, setInProducts] = useState(false);
+    const [adminPrivileges, setAdminPrivilegs] = useState(false);
+    const [thinkTankText, setThinkTankText] = useState('');
+    const [thinkTankImage, setThinkTankImage] = useState({});
+    const [editThinkTank, setEditThinkTank] = useState(false);
+    const [thinkTankImageFilename, setThinkTankImageFilename] = useState('');
+    const [thinkTankImageId, setThinkTankImageId] = useState('');
+    const [thinkTankContent, setThinkTankContent] = useState({});
+    const [refresh, setRefresh] = useState(false);
+    const [thinkTankImgSrc, setThinkTankImgSrc] = useState({});
+
+
+    const [editProducts, setEditProducts] = useState(false);
+    const [productsPage, setProductsPage] = useState('product1');
+    const [productsPageIndex, setProductsPageIndex] = useState(0);
+
+    const [productsPageNames, setProductsPageNames] = useState(['', '', '', '', ''])
+    const [productsPageDescriptions, setProductsPageDescriptions] = useState(['', '', '', '', ''])
+
+    const [productsSectionProducts, setProductsSectionProducts] = useState([null, null, null, null, null]);
+
+    const [productsPageImages, setProductsPageImages] = useState([]);
+
+
+    const [chooseProductPopup, setChooseProductPopup] = useState(false);
+    const chooseProductPopupRef = useRef(null);
+    const [products, setProducts] = useState([]);
+    const [showcaseProducts, setShowcaseProducts] = useState([]);
+
+    const [savedProductPopup, setSavedProductPopup] = useState(false);
+
+    const [widths, setWidths] = useState(["2em", "2em", "2em", "2em", "2em"]);
+    const [colors, setColors] = useState(["#404040", "#404040", "#404040", "#404040", "#404040"]);
+
+    useEffect(() => {
+        setWidths(widths.map((width, index) => (productNum === index + 1 ? "6em" : "2em")));
+        setColors(colors.map((color, index) => (productNum === index + 1 ? "#FF7F11" : "#404040")));
+    }, [productNum]);
+
+    useEffect(() => {
+        if (!userChangeProductNum && inProducts) {
+            const timer = setTimeout(() => {
+                if (productNum >= 1 && productNum < 5) {
+                    setProductNum(productNum + 1)
+                } else if (productNum === 5) {
+                    setProductNum(1)
+                }
+            }, 5000);
+            return () => clearTimeout(timer)
+        } else {
+            return
+        }
+    }, [productNum, inProducts])
+
+    useEffect(() => {
+        if (scrollY >= 5000 && scrollY < 5900 && !inProducts) {
+            setInProducts(true);
+        } else if (inProducts && scrollY < 5000 || inProducts && scrollY >= 5900) {
+            setInProducts(false);
+            setUserChangeProcuctNum(false)
+        }
+    }, [scrollY]);
+
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // }, []);
+
+    useEffect(() => {
+        if (user) {
+            const checkAdmin = async (user) => {
+                const { data } = await axios.post('/check-admin', user);
+                if (data === 'admin') {
+                    setAdminPrivilegs(true);
+                } else {
+                    setAdminPrivilegs(false);
+                }
+            }
+            checkAdmin(user);
+        }
+        setAdminPrivilegs(false);
+    }, [user]);
+
+    useEffect(() => {
+        if (editThinkTank || editProducts) {
+            document.body.style.overflowY = 'hidden';
+        } else {
+            document.body.style.overflowY = 'auto';
+        }
+    }, [editThinkTank, editProducts]);
+
+    const saveThinkTankEdits = async () => {
+        const formData = new FormData();
+        formData.append('thinkTankText', thinkTankText);
+        formData.append('thinkTankImage', thinkTankImage);
+
+        try {
+            const { data } = await axios.post('/save-think-tank-edit', formData);
+            setThinkTankContent(data);
+            setRefresh(!refresh);
+            setEditThinkTank(false);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        const getThinkTankContent = async () => {
+            try {
+                const { data } = await axios.get('/get-think-tank-content');
+                setThinkTankContent(data);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        getThinkTankContent();
+    }, [refresh]);
+
+    useEffect(() => {
+        if (thinkTankContent) {
+            setThinkTankText(thinkTankContent.message);
+            setThinkTankImageFilename(thinkTankContent.imageFileName);
+            setThinkTankImageId(thinkTankContent.imageId);
+        }
+    }, [thinkTankContent]);
+
+    useEffect(() => {
+        const chooseProductPopupDiv = chooseProductPopupRef.current;
+
+        const handleWheel = (e) => {
+            e.preventDefault();
+            chooseProductPopupDiv.scrollLeft += e.deltaY;
+        };
+
+        chooseProductPopupDiv.addEventListener('wheel', handleWheel);
+
+        return () => {
+            chooseProductPopupDiv.removeEventListener('wheel', handleWheel);
+        }
+    }, []);
+
+    useEffect(() => {
+        const getProducts = async () => {
+            const { data } = await axios.get('/get-products');
+            setProducts(data);
+        }
+        getProducts();
+    }, []);
+
+    const chooseProductFunc = (productDoc, index) => {
+        setProductsSectionProducts(prevProducts => {
+            const newProducts = [...prevProducts];
+            newProducts[index] = productDoc;
+            return newProducts;
+        })
+    }
+
+    const saveProductsSection = async () => {
+        const productData = { productsPageNames, productsPageDescriptions, productsSectionProducts };
+        try {
+            const { data } = await axios.post('/save-products-section', productData);
+            setShowcaseProducts(data);
+            setSavedProductPopup(true);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        if (showcaseProducts && showcaseProducts.length === 0) {
+            try {
+                const getShowcaseProducts = async () => {
+                    const { data } = await axios.get('/showcase-products');
+                    setShowcaseProducts(data);
+                }
+                getShowcaseProducts();
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    }, []);
+
+    useEffect(() => {
+        if (showcaseProducts && showcaseProducts.length > 0) {
+            const updateProducts = async () => {
+                for (let i = 0; i < showcaseProducts.length; i++) {
+                    setProductsPageNames(prevNames => {
+                        const newNames = [...prevNames];
+                        newNames[i] = showcaseProducts[i].name;
+                        return newNames;
+                    });
+                    setProductsPageDescriptions(prevDescriptions => {
+                        const newDescriptions = [...prevDescriptions];
+                        newDescriptions[i] = showcaseProducts[i].description;
+                        return newDescriptions;
+                    });
+                    const getProduct = async () => {
+                        try {
+                            const { data } = await axios.get(`/product/${showcaseProducts[i].productId}`);
+                            return data.productDoc;
+                        } catch (err) {
+                            console.log(err)
+                        }
+                    }
+                    const product = await getProduct(i);
+                    setProductsSectionProducts(prevProducts => {
+                        const newProducts = [...prevProducts];
+                        newProducts[i] = product;
+                        return newProducts;
+                    })
+                }
+            };
+            updateProducts();
+        }
+    }, [showcaseProducts]);
+
+
+    return (
+        <>
+            <div className={`fixed top-0 left-0 w-full h-screen z-[99] bg-black/50 ${savedProductPopup ? 'flex justify-center items-center' : 'hidden'}`}>
+                <div className="bg-[#131313] flex flex-col items-center justify-center w-[20rem] h-[10rem] rounded-xl border-4 border-[#FF7F11]">
+                    <p className="text-white font-semibold text-2xl">Saved Products</p>
+                    <button className="text-black font-semibold px-6 text-xl mt-6 py-1 rounded-xl bg-white"
+                        onClick={() => setSavedProductPopup(false)}
+                    >Ok</button>
+                </div>
+            </div>
+            <div className={`fixed top-0 left-0 w-full h-screen z-[99] bg-black/50 justify-center items-center ${editThinkTank ? 'flex' : 'hidden'}`}>
+                <div className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[50rem] h-[33rem] relative flex flex-col items-center rounded-xl overflow-y-auto`}>
+                    <button className="absolute top-4 right-4"
+                        onClick={() => setEditThinkTank(false)}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
+                    </button>
+                    <h2 className="text-3xl font-semibold mt-6">Edit In The Lab</h2>
+                    <p className="w-2/3 mt-10 text-xl font-semibold">Message:</p>
+                    <TextAreaAutosize className={`bg-transparent resize-none w-2/3 border-2 rounded-xl mt-4 p-4 text-xl ${darkMode ? 'outline-white' : ''}`} required placeholder="Message"
+                        value={thinkTankText}
+                        onChange={(ev) => setThinkTankText(ev.target.value)}
+                    />
+                    <p className="w-2/3 mt-10 text-xl font-semibold">Image:</p>
+                    <input type="file" name="imageInput" id="imageInput" className="hidden"
+                        onChange={(ev) => {
+                            setThinkTankImage(ev.target.files[0]);
+                            setThinkTankImageFilename(ev.target.files[0].name)
+                        }}
+                    />
+                    <div className="w-full flex items-center mt-4">
+                        <label htmlFor="imageInput" className="py-6 px-10 self-start ml-[8.3rem] rounded-xl font-semibold text-xl border-4 border-[#FF7F11]">Choose Image</label>
+                        <p className="text-lg ml-4">{thinkTankImageFilename}</p>
+                    </div>
+                    <button className="w-2/3 bg-[#FF7F11] text-white mt-10 py-2 rounded-full text-xl font-semibold"
+                        onClick={() => saveThinkTankEdits()}
+                    >Save Edits</button>
+                </div>
+            </div>
+            <div className={`fixed top-0 left-0 z-[99] bg-black/50 w-full h-screen ${chooseProductPopup ? 'flex justify-center items-center' : 'hidden'}`}>
+                <div ref={chooseProductPopupRef} className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[70rem] h-[30rem] overflow-x-auto overflow-y-hidden flex p-6 py-14 relative`}>
+                    <h2 className="fixed top-[11.4rem] left-[49.2rem] font-semibold text-xl">Choose a Product</h2>
+                    {products && products.length > 0 && products.map((product, index) => (
+                        <div key={index}>
+                            <button className="fixed top-[11.4rem] right-[18.5rem]"
+                                onClick={() => setChooseProductPopup(false)}
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" height="45px" viewBox="0 -960 960 960" width="45px" fill={darkMode ? '#fff' : '#131313'}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
+                            </button>
+                            <Product product={product} index={index} darkMode={darkMode} chooseProductFunc={chooseProductFunc} setChooseProductPopup={setChooseProductPopup} productsPageIndex={productsPageIndex} productsPageImages={productsPageImages} setProductsPageImages={setProductsPageImages} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div className={`${editProducts ? 'flex justify-center items-center' : 'hidden'} fixed top-0 left-0 w-full h-screen bg-black/50 z-[98]`}>
+                <div className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} h-[35rem] w-[50rem] rounded-2xl flex flex-col items-center relative overflow-auto`}>
+                    <button className="absolute top-4 right-4"
+                        onClick={() => setEditProducts(false)}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
+                    </button>
+                    <h2 className="font-bold text-3xl mt-6">Edit Products</h2>
+                    <div className="h-full w-full flex">
+                        <div className="h-full w-[10rem] py-10">
+                            <button className={`${productsPage === 'product1' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] font-semibold text-lg mb-2`}
+                                onClick={() => {
+                                    setProductsPage('product1');
+                                    setProductsPageIndex(0);
+                                }}
+                            >Product 1</button>
+                            <button className={`${productsPage === 'product2' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] font-semibold text-lg mb-2`}
+                                onClick={() => {
+                                    setProductsPage('product2');
+                                    setProductsPageIndex(1);
+                                }}
+                            >Product 2</button>
+                            <button className={`${productsPage === 'product3' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] font-semibold text-lg mb-2`}
+                                onClick={() => {
+                                    setProductsPage('product3');
+                                    setProductsPageIndex(2);
+                                }}
+                            >Product 3</button>
+                            <button className={`${productsPage === 'product4' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] font-semibold text-lg mb-2`}
+                                onClick={() => {
+                                    setProductsPage('product4');
+                                    setProductsPageIndex(3);
+                                }}
+                            >Product 4</button>
+                            <button className={`${productsPage === 'product5' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] font-semibold text-lg mb-2`}
+                                onClick={() => {
+                                    setProductsPage('product5');
+                                    setProductsPageIndex(4);
+                                }}
+                            >Product 5</button>
+                        </div>
+                        <div className="h-full w-[30rem] flex flex-col items-center">
+                            {productsPage === 'product1' && (
+                                <>
+                                    <p className="self-start mt-16 ml-10 text-xl">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none" placeholder="Name" required
+                                        value={productsPageNames[0]}
+                                        onChange={(ev) => {
+                                            setProductsPageNames(prevNames => {
+                                                const newNames = [...prevNames];
+                                                newNames[0] = ev.target.value;
+                                                return newNames;
+                                            })
+                                        }}
+                                    />
+                                    <p className="self-start ml-10 text-xl mt-10">Product Description</p>
+                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none resize-none" placeholder="Description"
+                                        value={productsPageDescriptions[0]}
+                                        onChange={(ev) => {
+                                            setProductsPageDescriptions(prevDescriptions => {
+                                                const newDescriptions = [...prevDescriptions];
+                                                newDescriptions[0] = ev.target.value;
+                                                return newDescriptions;
+                                            })
+                                        }}
+                                    />
+                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 rounded-full p-2 text-lg font-semibold"
+                                        onClick={() => {
+                                            setChooseProductPopup(true);
+                                        }}
+                                    >Choose product</button>
+                                    <p>{productsSectionProducts[0] !== null ? productsSectionProducts[0].name : ''}</p>
+                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 text-xl font-semibold mb-10"
+                                        onClick={(ev) => {
+                                            ev.preventDefault();
+                                            saveProductsSection();
+                                        }}
+                                    >Save</button>
+                                </>
+
+                            )}
+                            {productsPage === 'product2' && (
+                                <>
+                                    <p className="self-start ml-10 mt-16 text-xl">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none" placeholder="Name" required
+                                        value={productsPageNames[1]}
+                                        onChange={(ev) => {
+                                            setProductsPageNames(prevNames => {
+                                                const newNames = [...prevNames];
+                                                newNames[1] = ev.target.value;
+                                                return newNames;
+                                            })
+                                        }}
+                                    />
+                                    <p className="self-start ml-10 text-xl mt-10">Product Description</p>
+                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none resize-none" placeholder="Description"
+                                        value={productsPageDescriptions[1]}
+                                        onChange={(ev) => {
+                                            setProductsPageDescriptions(prevDescriptions => {
+                                                const newDescriptions = [...prevDescriptions];
+                                                newDescriptions[1] = ev.target.value;
+                                                return newDescriptions;
+                                            })
+                                        }}
+                                    />
+                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 rounded-full p-2 text-lg font-semibold"
+                                        onClick={() => {
+                                            setChooseProductPopup(true);
+                                        }}
+                                    >Choose product</button>
+                                    <p>{productsSectionProducts[1] !== null ? productsSectionProducts[1].name : ''}</p>
+                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 text-xl font-semibold mb-10"
+                                        onClick={(ev) => {
+                                            ev.preventDefault();
+                                            saveProductsSection();
+                                        }}
+                                    >Save</button>
+                                </>
+
+                            )}
+                            {productsPage === 'product3' && (
+                                <>
+                                    <p className="self-start ml-10 mt-16 text-xl">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none" placeholder="Name" required
+                                        value={productsPageNames[2]}
+                                        onChange={(ev) => {
+                                            setProductsPageNames(prevNames => {
+                                                const newNames = [...prevNames];
+                                                newNames[2] = ev.target.value;
+                                                return newNames;
+                                            })
+                                        }}
+                                    />
+                                    <p className="self-start ml-10 text-xl mt-10">Product Description</p>
+                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none resize-none" placeholder="Description"
+                                        value={productsPageDescriptions[2]}
+                                        onChange={(ev) => {
+                                            setProductsPageDescriptions(prevDescriptions => {
+                                                const newDescriptions = [...prevDescriptions];
+                                                newDescriptions[2] = ev.target.value;
+                                                return newDescriptions;
+                                            })
+                                        }}
+                                    />
+                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 rounded-full p-2 text-lg font-semibold"
+                                        onClick={() => {
+                                            setChooseProductPopup(true);
+                                        }}
+                                    >Choose product</button>
+                                    <p>{productsSectionProducts[2] !== null ? productsSectionProducts[2].name : ''}</p>
+                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 text-xl font-semibold mb-10"
+                                        onClick={(ev) => {
+                                            ev.preventDefault();
+                                            saveProductsSection();
+                                        }}
+                                    >Save</button>
+                                </>
+
+                            )}
+                            {productsPage === 'product4' && (
+                                <>
+                                    <p className="self-start ml-10 mt-16 text-xl">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none" placeholder="Name" required
+                                        value={productsPageNames[3]}
+                                        onChange={(ev) => {
+                                            setProductsPageNames(prevNames => {
+                                                const newNames = [...prevNames];
+                                                newNames[3] = ev.target.value;
+                                                return newNames;
+                                            })
+                                        }}
+                                    />
+                                    <p className="self-start ml-10 text-xl mt-10">Product Description</p>
+                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none resize-none" placeholder="Description"
+                                        value={productsPageDescriptions[3]}
+                                        onChange={(ev) => {
+                                            setProductsPageDescriptions(prevDescriptions => {
+                                                const newDescriptions = [...prevDescriptions];
+                                                newDescriptions[3] = ev.target.value;
+                                                return newDescriptions;
+                                            })
+                                        }}
+                                    />
+                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 rounded-full p-2 text-lg font-semibold"
+                                        onClick={() => {
+                                            setChooseProductPopup(true);
+                                        }}
+                                    >Choose product</button>
+                                    <p>{productsSectionProducts[3] !== null ? productsSectionProducts[3].name : ''}</p>
+                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 text-xl font-semibold mb-10"
+                                        onClick={(ev) => {
+                                            ev.preventDefault();
+                                            saveProductsSection();
+                                        }}
+                                    >Save</button>
+                                </>
+
+                            )}
+                            {productsPage === 'product5' && (
+                                <>
+                                    <p className="self-start ml-10 mt-16 text-xl">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none" placeholder="Name" required
+                                        value={productsPageNames[4]}
+                                        onChange={(ev) => {
+                                            setProductsPageNames(prevNames => {
+                                                const newNames = [...prevNames];
+                                                newNames[4] = ev.target.value;
+                                                return newNames;
+                                            })
+                                        }}
+                                    />
+                                    <p className="self-start ml-10 text-xl mt-10">Product Description</p>
+                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none resize-none" placeholder="Description"
+                                        value={productsPageDescriptions[4]}
+                                        onChange={(ev) => {
+                                            setProductsPageDescriptions(prevDescriptions => {
+                                                const newDescriptions = [...prevDescriptions];
+                                                newDescriptions[4] = ev.target.value;
+                                                return newDescriptions;
+                                            })
+                                        }}
+                                    />
+                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 rounded-full p-2 text-lg font-semibold"
+                                        onClick={() => {
+                                            setChooseProductPopup(true);
+                                        }}
+                                    >Choose product</button>
+                                    <p>{productsSectionProducts[4] !== null ? productsSectionProducts[4].name : ''}</p>
+                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 text-xl font-semibold mb-10"
+                                        onClick={(ev) => {
+                                            ev.preventDefault();
+                                            saveProductsSection();
+                                        }}
+                                    >Save</button>
+                                </>
+
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <motion.div className={`relative ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+                variants={fadeInVariants}
+                initial="initial"
+                animate="animate"
+            >
+                <motion.div className={`w-full`}>
+                    <img className="-z-[5] w-full" src="motherboard_bg_unsplash.jpg" />
+                    <div className="w-[70%] h-[20rem] absolute -mt-[52rem] text-white pl-[9.5rem]">
+                        <h1 className="font-bold text-6xl">Pushing The Boundaries<br />of Technology, One Idea at a Time</h1>
+                        <div className="flex mt-16">
+                            <Link to={'/contact'}><motion.button className="py-2 px-10 text-xl font-semibold rounded-3xl bg-[#FF7F11]"
+                                variants={buttonVariants}
+                                whileHover="hover"
+                                whileTap="click"
+                            >Start a Project</motion.button></Link>
+                            <Link to={'/products'}><motion.button className="py-2 px-6 ml-8 text-xl font-semibold rounded-3xl border-2 border-white"
+                                variants={buttonVariants}
+                                whileHover="hover"
+                                whileTap="click"
+                            >Our Products</motion.button></Link>
+                        </div>
+                    </div>
+                    <div className="w-full flex">
+                        <div className="w-[40%] px-32 py-56">
+                            <div className="sticky h-[60vh] top-[24vh]">
+                                <h2 className={`font-bold text-6xl ${darkMode ? 'text-white' : 'text-black'}`}>What We Do</h2>
+                                <ul className="text-5xl font-semibold mt-14 text-[#767676]">
+                                    <li className={`mb-5 p-2 ${scrollY >= 0 && scrollY < 1800 ? 'bg-gradient-to-r from-[#FF7F11] to-[#ffdd8b] text-transparent inline-block bg-clip-text' : ''}`}>Ideation</li>
+                                    <li className={`mb-5 p-2 ${scrollY >= 1800 && scrollY < 2600 ? 'bg-gradient-to-r from-[#FF7F11] to-[#ffdd8b] text-transparent inline-block bg-clip-text' : ''}`}>Mechanical</li>
+                                    <li className={`mb-5 p-2 ${scrollY >= 2600 && scrollY < 3400 ? 'bg-gradient-to-r from-[#FF7F11] to-[#ffdd8b] text-transparent inline-block bg-clip-text' : ''}`}>Electrical</li>
+                                    <li className={`mb-5 p-2 ${scrollY >= 3400 && scrollY < 4200 ? 'bg-gradient-to-r from-[#FF7F11] to-[#ffdd8b] text-transparent inline-block bg-clip-text' : ''}`}>Software</li>
+                                    <li className={`p-2 ${scrollY >= 4200 ? 'bg-gradient-to-r from-[#FF7F11] to-[#ffdd8b] text-transparent inline-block bg-clip-text' : ''}`}>Manufacturing</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="w-[60%]">
+                            <div className={`w-full h-screen px-24 py-24 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                                <img src="design_unsplash.jpg" className="w-3/4 mt-24" />
+                                <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">IDEATION</h3>
+                                <p className="w-3/4 mt-2 text-lg">A product always starts with an idea, whether that be a napkin sketch or a full mockup. Ideation is the core foundation to a product and determines what service it aims to bring and how it innnovates. We swiftly create working models to validate concepts, iron out flaws, and refine functionality. By emphasizing quick iterations, we ensure that prototypes aligns with your vision while addressing user needs effectively.</p>
+                            </div>
+                            <div className={`w-full h-screen px-24 py-24 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                                <img src="prototyping_unsplash.jpg" className="w-3/4 mt-24" />
+                                <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">MECHANICAL</h3>
+                                <p className="w-3/4 mt-2 text-lg">Mechanical needs in production are essential, ensuring products are convenient and meet user demands. Elegant designs enhance accessibility and user experience, while durability in different environments guarantee product longevity across various conditions. These elements are fundamental to a product’s success, reflecting the original vision and adapting to market expectations sustainably.</p>
+                            </div>
+                            <div className={`w-full h-screen px-24 py-24 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                                <img src="electrical_unsplash.jpg" className="w-3/4 mt-24" />
+                                <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">ELECTRICAL</h3>
+                                <p className="w-3/4 mt-2 text-lg">Innovative circuitry is crucial, providing longer battery life and ensuring device functionality aligns with consumer needs. Robust  protections are implemented to extend the device’s lifespan against power surges or voltage harsh situations.</p>
+                            </div>
+                            <div className={`w-full h-screen px-24 py-24 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                                <img src="software_unsplash.jpg" className="w-3/4 mt-24" />
+                                <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">SOFTWARE</h3>
+                                <p className="w-3/4 mt-2 text-lg">At our core, we are committed to innovation, consistently integrating cutting-edge technology into our software development process. We embrace experimentation and continuously explore new methodologies to enhance performance, ensure scalability, and maintain the utmost reliability in our products.</p>
+                            </div>
+                            <div className={`w-full h-screen px-24 py-24 mb-32 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                                <img src="manufacturing_unsplash.jpg" className="w-3/4 mt-24" />
+                                <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">MANUFACTURING</h3>
+                                <p className="w-3/4 mt-2 text-lg">Manufacturing is a critical process in the product lifecycle, powering the transformation of concepts into market-ready goods. It encompasses design, prototyping, and production, ensuring that ideas are not only realized but optimized for consumer use. The goal is to deliver quality and innovation, seamlessly integrating functionality with user expectations. We manufacture locally in the United States in our own facility as well as overseas depending on costs and demand.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full h-screen flex relative">
+                        {adminPrivileges && (
+                            <button className={`absolute top-[10rem] right-[10rem] px-6 py-2 rounded-full border-2 font-semibold ${darkMode ? 'text-white' : 'text-black'}`}
+                                onClick={() => setEditProducts(true)}
+                            >Edit Products</button>
+                        )}
+                        <div className="w-1/2 flex items-center justify-center">
+                            {productsSectionProducts.every(product => product !== null) && productsSectionProducts.map((product, index) => {
+                                const matchingImage = productsPageImages.find(image => image && image.imgId === product.thumbnailImageId);
+                                return (
+                                    <div key={index} className={`h-2/3 w-2/3 flex justify-center items-center ${productNum === index + 1 ? '' : 'hidden'}`}>
+                                        {matchingImage && <img src={`http://localhost:4000/uploads/${matchingImage.imgSrc}`} className="h-[75%] object-cover"></img>}
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div className="w-1/2 flex items-center justify-center py-16 pr-32">
+                            <div className={`h-2/3 w-2/3 relative ${darkMode ? 'text-white' : 'text-black'}`}>
+                                <h2 className="text-5xl font-thin">Our Products</h2>
+                                <h3 className="text-3xl text-[#FF7F11] mt-4">{`${productsPageNames[productNum - 1]}`}</h3>
+                                <p className="mt-4">{`${productsPageDescriptions[productNum - 1]}`}</p>
+                                <div className="flex items-center mt-10">
+                                    <div className="flex">
+                                        {widths.map((width, index) => (
+                                            <motion.div
+                                                key={index}
+                                                className={`h-[0.7em] rounded-full mr-2`}
+                                                animate={{ width, backgroundColor: colors[index] }}
+                                                transition={{ duration: 0.3 }}
+                                            />
+                                        ))}
+                                    </div>
+                                    <Link to={`/products/${productsSectionProducts.length > 0 && productsSectionProducts[productNum - 1] ? productsSectionProducts[productNum - 1].id : '/products'}`}><motion.button className="border-2 border-[#FF7F11] px-6 rounded-full ml-14"
+                                        variants={buttonVariants}
+                                        whileHover="hover"
+                                        whileTap="click"
+                                    >View Product</motion.button></Link>
+                                </div>
+                                <button className="absolute top-48 -left-20"
+                                    onClick={() => {
+                                        setUserChangeProcuctNum(true)
+                                        if (productNum > 1 && productNum <= 5) {
+                                            setProductNum(productNum - 1);
+                                        } else if (productNum === 1) {
+                                            setProductNum(5);
+                                        }
+                                    }}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="#FF7F11"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" /></svg>
+                                </button>
+                                <button className="absolute top-48 -right-20"
+                                    onClick={() => {
+                                        setUserChangeProcuctNum(true)
+                                        if (productNum >= 1 && productNum < 5) {
+                                            setProductNum(productNum + 1);
+                                        } else if (productNum === 5) {
+                                            setProductNum(1);
+                                        }
+                                    }}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="#FF7F11"><path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" /></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full h-screen flex">
+                        <div className={`w-1/2 flex flex-col justify-center pl-32 ${darkMode ? 'text-white' : 'text-black'} relative`}>
+                            <button className={`absolute top-[13rem] left-[5rem] ${adminPrivileges ? '' : 'hidden'} ${darkMode ? 'text-white' : 'text-black'} border-2 px-8 rounded-full`}
+                                onClick={() => setEditThinkTank(true)}
+                            >Edit</button>
+                            <h2 className="text-5xl font-thin">Think Tank</h2>
+                            <p className="pr-[6em] mt-6 text-lg whitespace-pre-wrap">{thinkTankText}</p>
+                        </div>
+                        <div className="w-1/2 flex justify-center items-center">
+                            <div className="w-full h-[45%] bg-black mr-24">
+                                <img src={`http://localhost:4000/uploads/${thinkTankImageId}`} className="object-cover h-full w-full"></img>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full h-screen flex">
+                        <div className="w-1/2 flex justify-center items-center">
+                            <div className="w-full h-[45%] bg-black ml-24">Building Image</div>
+                        </div>
+                        <div className={`w-1/2 flex flex-col justify-center pl-32 ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <h2 className="text-5xl font-thin">About Us</h2>
+                            <p className="pr-[6em] mt-6 text-lg">Interactive Technologies, Inc. is always
+                                willing to push the boundaries and
+                                experiment with cutting edge
+                                technology. We make simple ideas
+                                into full-fledged products that bring
+                                forth a customer's vision to
+                                completeion.</p>
+                            <Link to={'/about'} className="text-[#FF7F11] text-xl mt-6">More About Us</Link>
+                        </div>
+
+                    </div>
+                    <Footer />
+                </motion.div>
+            </motion.div >
+        </>
+    )
+}
+
+export default Home
