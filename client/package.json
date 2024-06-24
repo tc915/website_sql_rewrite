@@ -9,7 +9,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "concurrently \"npm run dev --prefix ../api\" \"npm run dev --prefix ../client\""
+    "start": "concurrently \"npm run dev --prefix ../api\" \"npm run dev --prefix ../client\"",
+    "install:both": "concurrently \"npm run install:client\" \"npm run install:api\""
   },
   "dependencies": {
     "axios": "^1.7.2",
