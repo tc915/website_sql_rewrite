@@ -443,6 +443,8 @@ app.post('/send-email', async (req, res) => {
         }
     });
 
+    let mailOptions;
+
     if (phoneNum === '') {
         mailOptions = {
             from: 'tc915004@outlook.com',
