@@ -656,7 +656,7 @@ const Home = ({ scrollY }) => {
                                 const matchingImage = productsPageImages.find(image => image && image.imgId === product.thumbnailImageId);
                                 return (
                                     <div key={index} className={`h-2/3 w-2/3 flex justify-center items-center ${productNum === index + 1 ? '' : 'hidden'}`}>
-                                        {matchingImage && <img src={`http://localhost:4000/uploads/${matchingImage.imgSrc}`} className="h-[75%] object-cover"></img>}
+                                        {matchingImage && <img src={`https://website-sql-rewrite.onrender.com/uploads/${matchingImage.imgSrc}`} className="h-[75%] object-cover"></img>}
                                     </div>
                                 );
                             })}
