@@ -111,7 +111,6 @@ app.post('/login', async (req, res) => {
                     id: userDoc.id
                 }, jwtSecret, {}, async (err, token) => {
                     if (err) throw err;
-                    console.log(hostname)
                     res.cookie('userToken', token, { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' });
 
                     // If there is a cart token, save it to the user
@@ -288,8 +287,7 @@ app.post('/sign-guest-token', async (req, res) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
             }
-            const hostname = url.parse(req.headers.origin).hostname;
-            res.cookie('cartToken', token, { domain: hostname, secure: true, sameSite: 'lax' })
+            res.cookie('cartToken', token, { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' })
 
             // Check if a cart already exists for this token
             let cartDoc = await findCartByToken(token);
@@ -314,8 +312,7 @@ app.post('/sign-theme-token', async (req, res) => {
             if (err) {
                 return res.status(500).json({ messge: err.message });
             }
-            const hostname = url.parse(req.headers.origin).hostname;
-            res.cookie('themeToken', token, { domain: hostname, secure: true, sameSite: 'lax' })
+            res.cookie('themeToken', token, { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' })
             res.status(200).json(token)
         })
     } catch (err) { res.status(500).json({ message: err.message }) }
@@ -344,8 +341,7 @@ app.post('/update-theme-token', async (req, res) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
             }
-            const hostname = url.parse(req.headers.origin).hostname;
-            res.cookie('themeToken', token, { domain: hostname, secure: true, sameSite: 'lax' })
+            res.cookie('themeToken', token, { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' })
             res.status(200).json(token);
         })
     } catch (err) {
