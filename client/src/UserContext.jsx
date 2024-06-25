@@ -11,14 +11,9 @@ export const UserContextProvider = ({ children }) => {
 
     useEffect(() => {
         const signGuestToken = async () => {
-            console.log('guest cookie attempt')
             let token = Cookies.get('cartToken');
-            console.log(token)
             if (!token) {
-                const res = await axios.post('/sign-guest-token', {}, { withCredentials: true });
-                console.log(res.data)
-                token = res.data;
-                Cookies.set('cartToken', token);
+                await axios.post('/sign-guest-token', {}, { withCredentials: true });
             }
             setGuestCookie(token);
         }
@@ -35,9 +30,7 @@ export const UserContextProvider = ({ children }) => {
         const signThemeToken = async () => {
             let token = Cookies.get('themeToken');
             if (!token) {
-                const res = await axios.post('/sign-theme-token', {}, { withCredentials: true });
-                token = res.data;
-                Cookies.set('themeToken', token, { expires: 7 });
+                await axios.post('/sign-theme-token', {}, { withCredentials: true });
             }
         }
         signThemeToken();
