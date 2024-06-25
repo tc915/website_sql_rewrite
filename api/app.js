@@ -150,7 +150,7 @@ app.get('/verify-token', async (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-    res.clearCookie('userToken');
+    res.clearCookie('userToken', { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' });
     res.status(200).send({ message: 'logged out successfully' })
 });
 
