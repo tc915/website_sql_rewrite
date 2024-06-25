@@ -23,6 +23,8 @@ const fadeInVariants = {
 
 const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate, darkMode }) => {
 
+    const [isHoverContainer, setIsHoverContainer] = useState(false)
+
     const addProductToCart = async (id) => {
         const reqData = { quantity: 1 }
         const { data } = await axios.post(`/add-product-to-cart/${id}`, reqData);
@@ -45,8 +47,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
 
     return (
         <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] w-[20rem] rounded-3xl p-4`}
-            initial={{ scale: 1 }}
-            whileHover={{ scale: 0.95 }}
+            whileHover={() => setIsHoverContainer(true)}
         >
             {adminPrivileges && (
                 <button className='absolute top-4 right-4'
@@ -61,7 +62,10 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
             )}
             <Link to={`/products/${product.id}`}>
                 <button className="w-full h-full flex flex-col items-center mb-24">
-                    <img src={`https://website-sql-rewrite.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 object-cover' />
+                    <motion.img src={`https://website-sql-rewrite.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 object-cover'
+                        initial={{ scale: 1 }}
+                        whileHover={isHoverContainer ? { scale: 0.95 } : {}}
+                    />
                     <h2 className='mt-4'>{product.name}</h2>
                 </button>
             </Link>
