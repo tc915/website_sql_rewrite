@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "homepage": "https://ideasthatfloat.test.ideasthatfloat.com/",
+  "homepage": "https://ideasthatfloat.test.ideasthatfloat.com",
   "private": true,
   "version": "0.0.0",
   "type": "module",
