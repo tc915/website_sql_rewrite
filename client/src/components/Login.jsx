@@ -20,6 +20,7 @@ const Login = () => {
         try {
             const { data } = await axios.post('/login', { username, email, password });
             setUser(data);
+            console.log(data);
             navigate('/');
         } catch (e) {
             console.log(e);
