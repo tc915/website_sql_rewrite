@@ -111,9 +111,8 @@ app.post('/login', async (req, res) => {
                     id: userDoc.id
                 }, jwtSecret, {}, async (err, token) => {
                     if (err) throw err;
-                    const hostname = url.parse(req.headers.origin).hostname;
                     console.log(hostname)
-                    res.cookie('userToken', token, { domain: hostname, secure: true, sameSite: 'none' });
+                    res.cookie('userToken', token, { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' });
 
                     // If there is a cart token, save it to the user
                     const cartToken = req.cookies.cartToken;
