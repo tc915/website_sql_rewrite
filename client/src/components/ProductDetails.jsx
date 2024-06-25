@@ -140,10 +140,6 @@ const ProductDetails = () => {
     }, [user]);
 
     useEffect(() => {
-        console.log(quantity)
-    }, [quantity])
-
-    useEffect(() => {
         if (!showEdit && product) {
             setProductName(product.name || '');
             setProductDescrition(product.description || '');

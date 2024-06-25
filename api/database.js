@@ -250,7 +250,7 @@ export const addProductToCart = async (product, count, token) => {
 
     if (existingProduct) {
         // If the product is already in the cart, increment the count
-        const newCount = existingProduct.count + 1
+        const newCount = existingProduct.count + count
         await pool.query(`
             UPDATE CartItem
             SET count = ?
