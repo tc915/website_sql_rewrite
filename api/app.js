@@ -112,6 +112,7 @@ app.post('/login', async (req, res) => {
                 }, jwtSecret, {}, async (err, token) => {
                     if (err) throw err;
                     const hostname = url.parse(req.headers.origin).hostname;
+                    console.log(hostname)
                     res.cookie('userToken', token, { domain: hostname, secure: true, sameSite: 'lax' });
 
                     // If there is a cart token, save it to the user
