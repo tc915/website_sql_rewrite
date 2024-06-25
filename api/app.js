@@ -112,7 +112,7 @@ app.post('/login', async (req, res) => {
                 }, jwtSecret, {}, async (err, token) => {
                     if (err) throw err;
                     const hostname = url.parse(req.headers.origin).hostname;
-                    res.cookie('userToken', token, { domain: hostname, secure: true });
+                    res.cookie('userToken', token, { domain: hostname, secure: true, sameSite: 'lax' });
 
                     // If there is a cart token, save it to the user
                     const cartToken = req.cookies.cartToken;
@@ -289,7 +289,7 @@ app.post('/sign-guest-token', async (req, res) => {
                 return res.status(500).json({ message: err.message });
             }
             const hostname = url.parse(req.headers.origin).hostname;
-            res.cookie('cartToken', token, { domain: hostname, secure: true })
+            res.cookie('cartToken', token, { domain: hostname, secure: true, sameSite: 'lax' })
 
             // Check if a cart already exists for this token
             let cartDoc = await findCartByToken(token);
@@ -315,7 +315,7 @@ app.post('/sign-theme-token', async (req, res) => {
                 return res.status(500).json({ messge: err.message });
             }
             const hostname = url.parse(req.headers.origin).hostname;
-            res.cookie('themeToken', token, { domain: hostname, secure: true })
+            res.cookie('themeToken', token, { domain: hostname, secure: true, sameSite: 'lax' })
             res.status(200).json(token)
         })
     } catch (err) { res.status(500).json({ message: err.message }) }
@@ -345,7 +345,7 @@ app.post('/update-theme-token', async (req, res) => {
                 return res.status(500).json({ message: err.message });
             }
             const hostname = url.parse(req.headers.origin).hostname;
-            res.cookie('themeToken', token, { domain: hostname, secure: true })
+            res.cookie('themeToken', token, { domain: hostname, secure: true, sameSite: 'lax' })
             res.status(200).json(token);
         })
     } catch (err) {
