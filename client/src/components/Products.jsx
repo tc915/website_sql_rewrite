@@ -44,7 +44,10 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
 
 
     return (
-        <div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] w-[20rem] rounded-3xl p-4`}>
+        <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] w-[20rem] rounded-3xl p-4`}
+            initial={{ scale: 1 }}
+            whileHover={{ scale: 0.95 }}
+        >
             {adminPrivileges && (
                 <button className='absolute top-4 right-4'
                     onClick={(ev) => {
@@ -69,7 +72,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
             >
                 <img src="add_to_cart_button.png" alt="" />
             </button>
-        </div>
+        </motion.div>
     );
 };
 
