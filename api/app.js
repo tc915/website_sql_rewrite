@@ -113,7 +113,7 @@ app.post('/login', async (req, res) => {
                     if (err) throw err;
                     const hostname = url.parse(req.headers.origin).hostname;
                     console.log(hostname)
-                    res.cookie('userToken', token, { domain: hostname, secure: true, sameSite: 'lax' });
+                    res.cookie('userToken', token, { domain: hostname, secure: true, sameSite: 'none' });
 
                     // If there is a cart token, save it to the user
                     const cartToken = req.cookies.cartToken;
