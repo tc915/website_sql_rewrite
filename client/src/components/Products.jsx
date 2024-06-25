@@ -64,7 +64,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
                 <button className="w-full h-full flex flex-col items-center mb-24">
                     <motion.img src={`https://website-sql-rewrite.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 object-cover'
                         initial={{ scale: 1 }}
-                        whileHover={isHoverContainer ? { scale: 0.95 } : {}}
+                        animate={isHoverContainer ? { scale: 0.95 } : {}}
                     />
                     <h2 className='mt-4'>{product.name}</h2>
                 </button>
