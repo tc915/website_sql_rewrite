@@ -13,7 +13,8 @@ export const UserContextProvider = ({ children }) => {
         const signGuestToken = async () => {
             let token = Cookies.get('cartToken');
             if (!token) {
-                await axios.post('/sign-guest-token', {}, { withCredentials: true });
+                const res = await axios.post('/sign-guest-token', {}, { withCredentials: true });
+                token = res.data;
             }
             setGuestCookie(token);
         }
