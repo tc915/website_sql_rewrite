@@ -37,7 +37,7 @@ export const UserContextProvider = ({ children }) => {
             if (!token) {
                 const res = await axios.post('/sign-theme-token', {}, { withCredentials: true });
                 token = res.data;
-                Cookies.set('themeToken', token);
+                Cookies.set('themeToken', token, { expires: 7 });
             }
         }
         signThemeToken();
