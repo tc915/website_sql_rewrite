@@ -68,7 +68,7 @@ function App() {
             <Header navBackgroundOpaque={navBackgroundOpaque} />
             <AnimatePresence mode='wait' key={location.pathname}>
                 <Routes location={location} key={location.key}>
-                    <Route index element={<Home scrollY={scrollY} />} />
+                    <Route path='/' element={<Home scrollY={scrollY} />} />
                     <Route path='/products' element={<Products />} />
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
