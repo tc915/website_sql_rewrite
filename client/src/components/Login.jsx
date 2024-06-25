@@ -18,9 +18,9 @@ const Login = () => {
         let username = email.split('@');
         username = username[0];
         try {
-            const { data } = await axios.post('/login', { username, email, password });
-            setUser(data);
-            console.log(data);
+            const res = await axios.post('/login', { username, email, password });
+            setUser(res.data);
+            console.log(res);
             navigate('/');
         } catch (e) {
             console.log(e);
