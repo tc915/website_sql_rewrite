@@ -1,6 +1,6 @@
 import { motion, animate, transform, stagger, useAnimation } from "framer-motion";
 import { useContext, useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import axios from "axios";
 
@@ -67,12 +67,12 @@ const Header = () => {
                     </button>
                 </div>
             </div>
-            <Link to={'/'} className="text-4xl font-bold ml-[2rem] text-white">
+            <Link as={NavLink} to={'/'} className="text-4xl font-bold ml-[2rem] text-white">
                 <img className="w-[28%]" src="/iTi_logo_color.png" />
             </Link>
             <nav className="mt-10">
                 <ul className={`text-xl xl:text-lg ${user ? 'mr-[14rem]' : 'mr-[15rem]'} rounded-3xl flex`}>
-                    <Link to={'/services'}>
+                    <Link as={NavLink} to={'/services'}>
                         <motion.li className={`mr-8 xl:mr-10`}
                             style={{ color: location.pathname === '/services' ? '#FF7F11' : '#fff' }}
                             variants={navVariants}
@@ -80,7 +80,7 @@ const Header = () => {
                             whileTap="click"
                         >Services</motion.li>
                     </Link>
-                    <Link to={'/industries'}>
+                    <Link as={NavLink} to={'/industries'}>
                         <motion.li className={`mr-8 xl:mr-10`}
                             style={{ color: location.pathname === '/industries' ? '#FF7F11' : '#fff' }}
                             variants={navVariants}
@@ -88,7 +88,7 @@ const Header = () => {
                             whileTap="click"
                         >Industries</motion.li>
                     </Link>
-                    <Link to={'/products'}>
+                    <Link as={NavLink} to={'/products'}>
                         <motion.li className={`mr-8 xl:mr-10`}
                             style={{ color: location.pathname === '/products' ? '#FF7F11' : '#fff' }}
                             variants={navVariants}
@@ -96,7 +96,7 @@ const Header = () => {
                             whileTap="click"
                         >Products</motion.li>
                     </Link>
-                    <Link to={'/demos'}>
+                    <Link as={NavLink} to={'/demos'}>
                         <motion.li className={`mr-8 xl:mr-10`}
                             style={{ color: location.pathname === '/demos' ? '#FF7F11' : '#fff' }}
                             variants={navVariants}
@@ -104,7 +104,7 @@ const Header = () => {
                             whileTap="click"
                         >Demos</motion.li>
                     </Link>
-                    <Link to={'/about'}>
+                    <Link as={NavLink} to={'/about'}>
                         <motion.li className={`mr-8 xl:mr-10 text-nowrap`}
                             style={{ color: location.pathname === '/about' ? '#FF7F11' : '#fff' }}
                             variants={navVariants}
@@ -124,7 +124,7 @@ const Header = () => {
                                 whileHover="hover"
                                 whileTap="click"
                             >Log out</motion.button>
-                            <Link to={`/${user.username}/info`}>
+                            <Link as={NavLink} to={`/${user.username}/info`}>
                                 <svg className="ml-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill="#FFFFFF"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z" /></svg>
                             </Link>
 
@@ -132,12 +132,12 @@ const Header = () => {
                     )}
                     {!user && (
                         <>
-                            <Link to='/login' className="">Login</Link>
+                            <Link as={NavLink} to='/login' className="">Login</Link>
                             <svg className="ml-2" xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF"><path d="M480-481q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160-160v-94q0-38 19-65t49-41q67-30 128.5-45T480-420q62 0 123 15.5t127.92 44.69q31.3 14.13 50.19 40.97Q800-292 800-254v94H160Zm60-60h520v-34q0-16-9.5-30.5T707-306q-64-31-117-42.5T480-360q-57 0-111 11.5T252-306q-14 7-23 21.5t-9 30.5v34Zm260-321q39 0 64.5-25.5T570-631q0-39-25.5-64.5T480-721q-39 0-64.5 25.5T390-631q0 39 25.5 64.5T480-541Zm0-90Zm0 411Z" /></svg>
                         </>
                     )}
                     <button className="ml-2">
-                        <Link to={`/cart`}>
+                        <Link as={NavLink} to={`/cart`}>
                             <motion.svg xmlns="http://www.w3.org/2000/svg" height="45px" viewBox="0 -960 960 960" width="45px" fill="#fff" className="outline-none"
                                 initial={{ opacity: 1 }}
                                 whileHover={{
