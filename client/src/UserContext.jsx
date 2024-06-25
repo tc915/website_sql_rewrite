@@ -48,9 +48,7 @@ export const UserContextProvider = ({ children }) => {
 
     useEffect(() => {
         const updateThemeToken = async () => {
-            const res = await axios.post('/update-theme-token', { darkMode }, { withCredentials: true });
-            const token = res.data;
-            Cookies.set('themeToken', token);
+            await axios.post('/update-theme-token', { darkMode }, { withCredentials: true });
         }
         updateThemeToken();
     }, [darkMode])
