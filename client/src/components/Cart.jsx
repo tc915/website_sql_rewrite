@@ -111,7 +111,7 @@ const Cart = () => {
 
     return (
         <div className={`pt-44 w-full ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
-            <div className="mx-[22rem] mb-44">
+            <div className="mx-[22rem] mb-56">
                 <div className="flex justify-between items-end h-[6rem] mb-16">
                     <h1 className="text-6xl font-bold">Your Cart</h1>
                     <p className="text-4xl font-semibold">{`Total items: ${cart.productCountTotal ? cart.productCountTotal : '0'}`}</p>
