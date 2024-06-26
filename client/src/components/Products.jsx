@@ -25,6 +25,15 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
 
     const [isHoverContainer, setIsHoverContainer] = useState(false)
 
+    const productWidgetImageVariants = isHoverContainer ? {
+        initial: {
+            scale: 1
+        },
+        hover: {
+            scale: 0.95
+        }
+    } : {}
+
     const addProductToCart = async (id) => {
         const reqData = { quantity: 1 }
         const { data } = await axios.post(`/add-product-to-cart/${id}`, reqData);
@@ -47,7 +56,8 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
 
     return (
         <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] w-[20rem] rounded-3xl p-4`}
-            whileHover={() => setIsHoverContainer(true)}
+            onMouseEnter={() => setIsHoverContainer(true)}
+            onMouseLeave={() => setIsHoverContainer(false)}
         >
             {adminPrivileges && (
                 <button className='absolute top-4 right-4'
@@ -63,8 +73,9 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
             <Link to={`/products/${product.id}`}>
                 <button className="w-full h-full flex flex-col items-center mb-24">
                     <motion.img src={`https://website-sql-rewrite.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 object-cover'
-                        initial={{ scale: 1 }}
-                        animate={isHoverContainer ? { scale: 0.95 } : {}}
+                        variants={productWidgetImageVariants}
+                        initial="initial"
+                        whileHover="hover"
                     />
                     <h2 className='mt-4'>{product.name}</h2>
                 </button>
