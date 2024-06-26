@@ -17,6 +17,7 @@ export default {
         customOrange1: '#fc9d21',
       },
       screens: {
+        'mdMobile': { 'min': '321px', 'max': '376px' },
         'lgMobile': { 'min': '376px', 'max': '426px' },
         'tablet': { 'min': '426px', 'max': '768px' },
         'smLaptop': { 'min': '769px', 'max': '950px' },
