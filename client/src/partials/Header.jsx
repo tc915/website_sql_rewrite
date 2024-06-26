@@ -165,7 +165,7 @@ const Header = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className={`tablet:w-[35px] lgMobile:w-[55px] ${hamburgerNavOpen ? 'hidden' : ''}`} viewBox="0 -960 960 960" fill="#FFFFFF"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z" /></svg>
                         <svg xmlns="http://www.w3.org/2000/svg" className={`tablet:w-[35px] lgMobile:w-[55px] ${hamburgerNavOpen ? '' : 'hidden'}`} viewBox="0 -960 960 960" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                     </button>
-                    <div className={`absolute bg-black w-[12rem] h-[14rem] lgMobile:w-[18rem] lgMobile:h-[20rem] -right-20 top-[3.8rem] flex flex-col items-end ${hamburgerNavOpen ? '' : 'hidden'}`}>
+                    <div className={`absolute bg-black w-[12rem] h-[14rem] lgMobile:w-[18rem] lgMobile:h-[20rem] -right-20 top-[8.7rem] flex flex-col items-end ${hamburgerNavOpen ? '' : 'hidden'}`}>
                         <ul className="text-right -mr-4 lgMobile:text-[2rem]">
                             <Link as={NavLink} to={'/services'}>
                                 <motion.li className={`mr-8 mb-2 xl:mr-10 lgMobile:mb-6`}
