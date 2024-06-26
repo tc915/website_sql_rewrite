@@ -582,15 +582,15 @@ const Home = ({ scrollY }) => {
                     </div>
                 </div>
             </div>
-            <motion.div className={`relative lgMobile:pt-[15rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+            <motion.div className={`relative lgMobile:pt-[15rem] w-[100vw] ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
             >
-                <motion.div className={`w-[100%]`}>
+                <motion.div className={`w-[100vw]`}>
                     <img className="-z-[5] max-w-full block" src="motherboard_bg_unsplash.jpg" />
-                    <div className="w-[70%] h-[20rem] absolute -mt-[52rem] lgMobile:-mt-[36rem] lgMobile:w-[85%] text-white pl-[9.5rem] lgMobile:pl-[6rem]">
-                        <h1 className="font-bold text-6xl">Pushing The Boundaries<br />of Technology, One Idea at a Time</h1>
+                    <div className="w-full h-[20rem] absolute -mt-[52rem] lgMobile:-mt-[36rem] lgMobile:w-[85%] text-white pl-[9.5rem] lgMobile:pl-[6rem]">
+                        <h1 className="font-bold text-6xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl">Pushing The Boundaries<br />of Technology, One Idea at a Time</h1>
                         <div className="flex mt-16">
                             <Link to={'/contact'}><motion.button className="py-2 px-10 lgMobile:py-4 lgMobile:px-16 text-xl lgMobile:text-4xl font-semibold rounded-full bg-[#FF7F11]"
                                 variants={buttonVariants}
@@ -617,8 +617,8 @@ const Home = ({ scrollY }) => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="w-[60%]">
-                            <div className={`w-full h-screen px-24 py-24 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                        <div className="">
+                            <div className={`w-full h-screen p-24 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="design_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">IDEATION</h3>
                                 <p className="w-3/4 mt-2 text-lg">A product always starts with an idea, whether that be a napkin sketch or a full mockup. Ideation is the core foundation to a product and determines what service it aims to bring and how it innnovates. We swiftly create working models to validate concepts, iron out flaws, and refine functionality. By emphasizing quick iterations, we ensure that prototypes aligns with your vision while addressing user needs effectively.</p>
@@ -666,7 +666,7 @@ const Home = ({ scrollY }) => {
                                 <h2 className="text-5xl font-thin">Our Products</h2>
                                 <h3 className="text-3xl text-[#FF7F11] mt-4">{`${productsPageNames[productNum - 1]}`}</h3>
                                 <p className="mt-4">{`${productsPageDescriptions[productNum - 1]}`}</p>
-                                <div className="flex items-center mt-10">
+                                <div className="flex flex-col justify-center mt-10">
                                     <div className="flex">
                                         {widths.map((width, index) => (
                                             <motion.div
@@ -677,7 +677,7 @@ const Home = ({ scrollY }) => {
                                             />
                                         ))}
                                     </div>
-                                    <Link to={`/products/${productsSectionProducts.length > 0 && productsSectionProducts[productNum - 1] ? productsSectionProducts[productNum - 1].id : '/products'}`}><motion.button className="border-2 border-[#FF7F11] px-6 rounded-full ml-14"
+                                    <Link to={`/products/${productsSectionProducts.length > 0 && productsSectionProducts[productNum - 1] ? productsSectionProducts[productNum - 1].id : '/products'}`}><motion.button className="border-2 border-[#FF7F11] px-6 rounded-full mt-10"
                                         variants={buttonVariants}
                                         whileHover="hover"
                                         whileTap="click"
