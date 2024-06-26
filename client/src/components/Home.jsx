@@ -134,9 +134,9 @@ const Home = ({ scrollY }) => {
         }
     }, [scrollY]);
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // }, []);
 
     useEffect(() => {
         if (user) {
@@ -582,33 +582,33 @@ const Home = ({ scrollY }) => {
                     </div>
                 </div>
             </div>
-            <motion.div className={`relative w-full overflow-x-hidden ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+            <motion.div className={`relative w-full lgMobile:pt-[12rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
             >
                 <motion.div className={`w-full`}>
-                    <img className="-z-[5] w-full h-full" src="motherboard_bg_unsplash.jpg" />
-                    <div className="w-full h-[20rem] absolute -mt-[52rem] lgMobile:-mt-[36rem] lgMobile:w-[85%] text-white pl-[9.5rem] lgMobile:pl-[6rem]">
-                        <h1 className="font-bold text-6xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl">Pushing The Boundaries<br />of Technology, One Idea at a Time</h1>
-                        <div className="flex mt-16">
-                            <Link to={'/contact'}><motion.button className="py-2 px-10 lgMobile:py-4 lgMobile:px-16 text-xl lgMobile:text-4xl font-semibold rounded-full bg-[#FF7F11]"
+                    <img className="-z-[5] w-full object-cover lgMobile:h-[38rem]" src="motherboard_bg_unsplash.jpg" />
+                    <div className="w-full h-[20rem] absolute -mt-[52rem] lgMobile:-mt-[36rem] lgMobile:w-[85%] text-white pl-[9.5rem] lgMobile:pl-[3rem]">
+                        <h1 className="font-bold text-6xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl lgMobile:mt-24">Pushing The Boundaries<br />of Technology, One Idea at a Time</h1>
+                        <div className="flex mt-16 lgMobile:mt-8 lgMobile:flex-col">
+                            <Link to={'/contact'}><motion.button className="py-2 px-10 lgMobile:py-2 lgMobile:px-8 text-xl lgMobile:text-xl font-semibold rounded-full bg-[#FF7F11]"
                                 variants={buttonVariants}
                                 whileHover="hover"
                                 whileTap="click"
                             >Start a Project</motion.button></Link>
-                            <Link to={'/products'}><motion.button className="py-2 px-6 lgMobile:py-4 lgMobile:px-16 ml-8 text-xl lgMobile:text-3xl font-semibold rounded-full border-2 border-white"
+                            <Link to={'/products'}><motion.button className="py-2 px-6 lgMobile:py-2 lgMobile:px-8 ml-8 lgMobile:ml-0 lgMobile:mt-6 text-xl lgMobile:text-lg font-semibold rounded-full border-2 border-white"
                                 variants={buttonVariants}
                                 whileHover="hover"
                                 whileTap="click"
                             >Our Products</motion.button></Link>
                         </div>
                     </div>
-                    <div className="w-full flex">
-                        <div className="w-[40%] px-32 py-56">
-                            <div className="sticky h-[60vh] top-[24vh]">
-                                <h2 className={`font-bold text-6xl ${darkMode ? 'text-white' : 'text-black'}`}>What We Do</h2>
-                                <ul className="text-5xl font-semibold mt-14 text-[#767676]">
+                    <div className="flex lgMobile:flex-col">
+                        <div className="w-[40%] lgMobile:w-[10%] px-32 py-56 lgMobile:px-10 lgMobile:py-24">
+                            <div className="sticky h-[65vh] top-[24vh]">
+                                <h2 className={`font-bold text-6xl lgMobile:text-2xl lgMobile:w-[20rem] ${darkMode ? 'text-white' : 'text-black'}`}>What We Do</h2>
+                                <ul className="text-5xl lgMobile:text-3xl font-semibold mt-14 text-[#767676]">
                                     <li className={`mb-5 p-2 ${scrollY >= 0 && scrollY < 1800 ? 'bg-gradient-to-r from-[#FF7F11] to-[#ffdd8b] text-transparent inline-block bg-clip-text' : ''}`}>Ideation</li>
                                     <li className={`mb-5 p-2 ${scrollY >= 1800 && scrollY < 2600 ? 'bg-gradient-to-r from-[#FF7F11] to-[#ffdd8b] text-transparent inline-block bg-clip-text' : ''}`}>Mechanical</li>
                                     <li className={`mb-5 p-2 ${scrollY >= 2600 && scrollY < 3400 ? 'bg-gradient-to-r from-[#FF7F11] to-[#ffdd8b] text-transparent inline-block bg-clip-text' : ''}`}>Electrical</li>
@@ -617,7 +617,7 @@ const Home = ({ scrollY }) => {
                                 </ul>
                             </div>
                         </div>
-                        <div className="">
+                        <div className="w-[60%]">
                             <div className={`w-full h-screen p-24 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="design_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">IDEATION</h3>
