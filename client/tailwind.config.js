@@ -6,15 +6,23 @@ export default {
   ],
   theme: {
     screens: {
-      'sm': { 'min': '640px', 'max': '767px' },
-      'md': { 'min': '768px', 'max': '1023px' },
-      'lg': { 'min': '1024px', 'max': '1279px' },
-      'xl': { 'min': '1280px', 'max': '1620px' },
+      'sm': { 'min': '1191px', 'max': '1250px' },
+      'md': { 'min': '1251px', 'max': '1360px' },
+      'lg': { 'min': '1361px', 'max': '1440px' },
+      'xl': { 'min': '1441px', 'max': '1620px' },
       '2xl': { 'min': '1621px' },
     },
     extend: {
       colors: {
         customOrange1: '#fc9d21',
+      },
+      screens: {
+        'lgMobile': { 'min': '376px', 'max': '426px' },
+        'tablet': { 'min': '426px', 'max': '768px' },
+        'smLaptop': { 'min': '769px', 'max': '950px' },
+        'laptop': { 'min': '951px', 'max': '1024px' },
+        'xxsm': { 'min': '1025px', 'max': '1110px' },
+        'xsm': { 'min': '1111px', 'max': '1190px' },
       },
     },
   },
