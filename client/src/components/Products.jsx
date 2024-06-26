@@ -25,14 +25,14 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
 
     const [isHoverContainer, setIsHoverContainer] = useState(false)
 
-    const productWidgetImageVariants = isHoverContainer ? {
+    const productWidgetImageVariants = {
         initial: {
             scale: 1
         },
         hover: {
             scale: 0.95
         }
-    } : {}
+    }
 
     const addProductToCart = async (id) => {
         const reqData = { quantity: 1 }
@@ -75,7 +75,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
                     <motion.img src={`https://website-sql-rewrite.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 object-cover'
                         variants={productWidgetImageVariants}
                         initial="initial"
-                        whileHover="hover"
+                        animate={isHoverContainer ? "hover" : "initial"}
                     />
                     <h2 className='mt-4'>{product.name}</h2>
                 </button>
