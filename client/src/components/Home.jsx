@@ -661,7 +661,7 @@ const Home = ({ scrollY }) => {
                                 );
                             })}
                         </div>
-                        <div className="w-1/2 flex items-center justify-center py-16 pr-32">
+                        <div className="w-1/2 flex lgMobile:flex-col items-center justify-center py-16 pr-32">
                             <div className={`h-2/3 w-2/3 relative ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <h2 className="text-5xl font-thin">Our Products</h2>
                                 <h3 className="text-3xl text-[#FF7F11] mt-4">{`${productsPageNames[productNum - 1]}`}</h3>
