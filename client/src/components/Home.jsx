@@ -582,12 +582,12 @@ const Home = ({ scrollY }) => {
                     </div>
                 </div>
             </div>
-            <motion.div className={`relative w-full lgMobile:pt-[12rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+            <motion.div className={`relative w-full overflow-x-hidden lgMobile:pt-[12rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
             >
-                <motion.div className={`w-full`}>
+                <motion.div className={`w-full overflow-hidden`}>
                     <img className="-z-[5] w-full object-cover lgMobile:h-[38rem]" src="motherboard_bg_unsplash.jpg" />
                     <div className="w-full h-[20rem] absolute -mt-[52rem] lgMobile:-mt-[36rem] lgMobile:w-[85%] text-white pl-[9.5rem] lgMobile:pl-[3rem]">
                         <h1 className="font-bold text-6xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl lgMobile:mt-24">Pushing The Boundaries<br />of Technology, One Idea at a Time</h1>
