@@ -582,22 +582,22 @@ const Home = ({ scrollY }) => {
                     </div>
                 </div>
             </div>
-            <motion.div className={`relative ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+            <motion.div className={`relative lgMobile:pt-[15rem] lgMobile:w-[65rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
             >
                 <motion.div className={`w-full`}>
                     <img className="-z-[5] w-full" src="motherboard_bg_unsplash.jpg" />
-                    <div className="w-[70%] h-[20rem] absolute -mt-[52rem] text-white pl-[9.5rem]">
+                    <div className="w-[70%] h-[20rem] absolute -mt-[52rem] lgMobile:-mt-[36rem] lgMobile:w-[85%] text-white pl-[9.5rem] lgMobile:pl-[6rem]">
                         <h1 className="font-bold text-6xl">Pushing The Boundaries<br />of Technology, One Idea at a Time</h1>
                         <div className="flex mt-16">
-                            <Link to={'/contact'}><motion.button className="py-2 px-10 text-xl font-semibold rounded-3xl bg-[#FF7F11]"
+                            <Link to={'/contact'}><motion.button className="py-2 px-10 lgMobile:py-4 lgMobile:px-16 text-xl lgMobile:text-4xl font-semibold rounded-full bg-[#FF7F11]"
                                 variants={buttonVariants}
                                 whileHover="hover"
                                 whileTap="click"
                             >Start a Project</motion.button></Link>
-                            <Link to={'/products'}><motion.button className="py-2 px-6 ml-8 text-xl font-semibold rounded-3xl border-2 border-white"
+                            <Link to={'/products'}><motion.button className="py-2 px-6 lgMobile:py-4 lgMobile:px-16 ml-8 text-xl lgMobile:text-3xl font-semibold rounded-full border-2 border-white"
                                 variants={buttonVariants}
                                 whileHover="hover"
                                 whileTap="click"
