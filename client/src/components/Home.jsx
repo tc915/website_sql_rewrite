@@ -582,13 +582,13 @@ const Home = ({ scrollY }) => {
                     </div>
                 </div>
             </div>
-            <motion.div className={`relative lgMobile:pt-[15rem] w-full ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+            <motion.div className={`relative w-full ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
             >
                 <motion.div className={`w-full`}>
-                    <img className="-z-[5] max-w-full block" src="motherboard_bg_unsplash.jpg" />
+                    <img className="-z-[5] w-full h-full" src="motherboard_bg_unsplash.jpg" />
                     <div className="w-full h-[20rem] absolute -mt-[52rem] lgMobile:-mt-[36rem] lgMobile:w-[85%] text-white pl-[9.5rem] lgMobile:pl-[6rem]">
                         <h1 className="font-bold text-6xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl">Pushing The Boundaries<br />of Technology, One Idea at a Time</h1>
                         <div className="flex mt-16">
