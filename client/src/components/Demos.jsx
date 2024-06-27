@@ -48,12 +48,12 @@ const Demos = () => {
         forward: false,
         aft: false,
         freshwater: false,
-        waterWater: false
+        wasteWater: false
     });
 
     const [boatControlStates, setBoatControlStates] = useState({
         windshieldWipers: false,
-        wiperSpray: false,
+        windshieldWiperSpray: false,
         anchor: false,
         tower: false,
         sunshade: false,
@@ -210,7 +210,7 @@ const Demos = () => {
     }
 
     const [switchOnCount, setSwitchOnCount] = useState(0);
-    const [boatLength, setBoatLength] = useState(0);
+    const [boatLength, setBoatLength] = useState('');
     const [totalCost, setTotalCost] = useState(0);
     const [cablingCost, setCablingCost] = useState(0);
     const [numDevices, setNumDevices] = useState(0);
@@ -234,6 +234,7 @@ const Demos = () => {
     const [costOfOutputBoxes, setCostOfOutputBoxes] = useState(0);
     const [costOfKeypads, setCostOfKeypads] = useState(0);
     const [costOfWirelessInterface, setCostOfWirelessInterface] = useState(0);
+    const [totalWeight, setTotalWeight] = useState(0);
 
     const lightTypes = Object.keys(lightStates)
     const pumpTypes = Object.keys(pumpStates)
@@ -247,6 +248,21 @@ const Demos = () => {
             }
         }
         return count;
+    }
+
+    const clearInputs = () => {
+        for (let i = 0; i < lightTypes.length; i++) {
+            lightStates[lightTypes[i]] = false
+        }
+        for (let i = 0; i < pumpTypes.length; i++) {
+            pumpStates[pumpTypes[i]] = false
+        }
+        for (let i = 0; i < boatControlTypes.length; i++) {
+            boatControlStates[boatControlTypes[i]] = false
+        }
+        setSwitchOnCount(0);
+        setWirelessInterfaceBool(false)
+        setBoatLength('')
     }
 
     useEffect(() => {
@@ -311,7 +327,7 @@ const Demos = () => {
             setNum5mBackboneCables(fiveMeterCables);
             setNum2mBackboneCables(twoMeterCables);
             setNumHalfMeterBackboneCables(halfMeterCables);
-        } else if (boatLength === 0) {
+        } else {
             setNum10mBackboneCables(0);
             setNum8mBackboneCables(0);
             setNum5mBackboneCables(0);
@@ -351,7 +367,7 @@ const Demos = () => {
             setNum4WayTeeConnectors(fourWayTeeConnectors);
             setNum2WayTeeConnectors(twoWayTeeConnectors);
             setNum1WayTeeConnectors(oneWayTeeConnectors);
-        } else if (numDevices === 0) {
+        } else {
             setNum4WayTeeConnectors(0);
             setNum2WayTeeConnectors(0);
             setNum1WayTeeConnectors(0);
@@ -373,12 +389,18 @@ const Demos = () => {
                 (num2WayTeeConnectors * productData.twoWayTeeConnector.cost) +
                 (num4WayTeeConnectors * productData.fourWayTeeConnector.cost)
             )
-            let newNmeaCablesCost = (productData.powerInjector.cost + (numDevices * (newTeeConnectorsCost + productData.dropCable.cost)) + newBackboneCablesCost)
+            let newNmeaCablesCost = (productData.powerInjector.cost + (newTeeConnectorsCost + (numDevices * productData.dropCable.cost)) + newBackboneCablesCost)
             setCablingCost(newPowerCablesCost + newNmeaCablesCost)
             setPowerCablesCost(newPowerCablesCost);
             setBackBoneCablesCost(newBackboneCablesCost);
             setTeeConnectorsCost(newTeeConnectorsCost);
             setNmeaCablesCost(newNmeaCablesCost);
+        } else {
+            setCablingCost(0)
+            setPowerCablesCost(0);
+            setBackBoneCablesCost(0);
+            setTeeConnectorsCost(0);
+            setNmeaCablesCost(0);
         }
 
     }, [wirelessInterfaceBool, num4WayTeeConnectors, num2WayTeeConnectors, num1WayTeeConnectors, num10mBackboneCables])
@@ -403,58 +425,108 @@ const Demos = () => {
         setCostOfKeypads(newCostOfKeypads);
         setCostOfOutputBoxes(newCostOfOutputBoxes);
         setCostOfWirelessInterface(newCostOfWirelessInterface);
-    }, [cablingCost])
+    }, [cablingCost, numContact6Plus, num6ButtonKeypads, wirelessInterfaceBool])
+
+    useEffect(() => {
+        if (totalCost > 0) {
+            let backboneCablesWeight = (
+                (num10mBackboneCables * productData.backboneCable10m.weight) +
+                (num8mBackboneCables * productData.backboneCable8m.weight) +
+                (num5mBackboneCables * productData.backboneCable5m.weight) +
+                (num2mBackboneCables * productData.backboneCable2m.weight) +
+                (numHalfMeterBackboneCables * productData.backboneCableHalfMeter.weight)
+            )
+            let teeConnectorsWeight = (
+                (num1WayTeeConnectors * productData.oneWayTeeConnector.weight) +
+                (num2WayTeeConnectors * productData.twoWayTeeConnector.weight) +
+                (num4WayTeeConnectors * productData.fourWayTeeConnector.weight)
+            )
+            let powerCablesWeight = (productData.awgGPTM.weight * (0.6 * boatLength) * switchOnCount)
+            let nmeaComponentsWeight = (productData.powerInjector.weight + (teeConnectorsWeight + (numDevices * productData.dropCable.weight)) + backboneCablesWeight)
+            let totalCablesWeight = powerCablesWeight + nmeaComponentsWeight;
+            let weightOfKeypads = (
+                (num6ButtonKeypads * productData.sixWayKeypad.weight) +
+                (num12ButtonKeypads * productData.twelveWayKeypad.weight)
+            )
+            let weightOfOutputBoxes = (
+                (numContact6Plus * productData.contact6Plus.weight) +
+                (numDDS * productData.cZoneDDS.weight)
+            )
+            let weightOfWirelessInterface = false;
+            if (wirelessInterfaceBool) {
+                weightOfWirelessInterface = true;
+            }
+            setTotalWeight(totalCablesWeight + weightOfKeypads + weightOfOutputBoxes + weightOfWirelessInterface)
+        } else {
+            setTotalWeight(0)
+        }
+    }, [totalCost])
+
+    const splitCamelCase = (str) => {
+        return str.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
+    }
+
 
     return (
-        <motion.div className={`pt-32 h-screen ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'}`}
+        <motion.div className={`pt-32 ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'}`}
             variants={fadeInVariants}
             initial="initial"
             animate="animate"
         >
-            <div className="w-fit h-[5rem] p-4 relative">
+            <div className="w-fit h-[5rem] p-4 px-12 relative">
                 <p>Boat Length</p>
-                <label className="absolute right-6 top-[57%]">ft</label>
+                <label className="absolute right-14 top-[57%]">ft</label>
                 <input type="number" placeholder="Boat length (ft.)" className={`outline-none border-2 px-2 py-1 pr-8 ${darkMode ? 'bg-transparent text-white border-white' : 'border-black'}`}
+                    value={boatLength}
                     onChange={(ev) => setBoatLength(Number(ev.target.value))}
                 />
             </div>
 
             <div className="w-full px-12 py-12 flex flex-wrap">
-                <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Lights</p>
-                {lightTypes.map((lightType) => (
-                    <div className="flex mb-4" key={lightType}>
-                        <p className="mr-4">{lightType.charAt(0).toUpperCase() + lightType.slice(1)} Lights</p>
-                        <button className={`border-2 px-2 rounded-xl mr-4 ${lightStates[lightType] ? 'bg-blue-300' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
-                            onClick={() => setLightStates(prev => ({ ...prev, [lightType]: !prev[lightType] }))}
-                        >{lightStates[lightType] ? 'On' : 'Off'}</button>
-                    </div>
-                ))}
-                <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Pumps</p>
-                {pumpTypes.map((pumpType) => (
-                    <div className="flex mb-4" key={pumpType}>
-                        <p className="mr-4">{pumpType.charAt(0).toUpperCase() + pumpType.slice(1)} Pump</p>
-                        <button className={`border-2 px-2 rounded-xl mr-4 ${pumpStates[pumpType] ? 'bg-blue-300' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
-                            onClick={() => setPumpStates(prev => ({ ...prev, [pumpType]: !prev[pumpType] }))}
-                        >{pumpStates[pumpType] ? 'On' : 'Off'}</button>
-                    </div>
-                ))}
-                <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Boat Controls</p>
-                {boatControlTypes.map((controlType) => (
-                    <div className="flex mb-4" key={controlType}>
-                        <p className="mr-4">{controlType.charAt(0).toUpperCase() + controlType.slice(1)} Control</p>
-                        <button className={`border-2 px-2 rounded-xl mr-4 ${boatControlStates[controlType] ? 'bg-blue-300' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
-                            onClick={() => setBoatControlStates(prev => ({ ...prev, [controlType]: !prev[controlType] }))}
-                        >{boatControlStates[controlType] ? 'On' : 'Off'}</button>
-                    </div>
-                ))}
-                <div className="w-full flex">
-                    <p className="text-xl font-semibold">Wireless Interface?</p>
-                    <input type="checkbox" name=""
-                        onChange={() => setWirelessInterfaceBool(!wirelessInterfaceBool)}
-                    />
+                <div className={`w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
+                    <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Lights</p>
+                    {lightTypes.map((lightType) => (
+                        <div className="flex mb-4" key={lightType}>
+                            <p className="mr-4">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
+                            <button className={`border-2 px-2 rounded-xl mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                                onClick={() => setLightStates(prev => ({ ...prev, [lightType]: !prev[lightType] }))}
+                            >{lightStates[lightType] ? 'On' : 'Off'}</button>
+                        </div>
+                    ))}
                 </div>
+                <div className={`w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
+                    <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Pumps</p>
+                    {pumpTypes.map((pumpType) => (
+                        <div className="flex mb-4" key={pumpType}>
+                            <p className="mr-4">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
+                            <button className={`border-2 px-2 rounded-xl mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                                onClick={() => setPumpStates(prev => ({ ...prev, [pumpType]: !prev[pumpType] }))}
+                            >{pumpStates[pumpType] ? 'On' : 'Off'}</button>
+                        </div>
+                    ))}
+                </div>
+                <div className={`w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
+                    <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Boat Controls</p>
+                    {boatControlTypes.map((controlType) => (
+                        <div className="flex mb-4" key={controlType}>
+                            <p className="mr-4">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
+                            <button className={`border-2 px-2 rounded-xl mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                                onClick={() => setBoatControlStates(prev => ({ ...prev, [controlType]: !prev[controlType] }))}
+                            >{boatControlStates[controlType] ? 'On' : 'Off'}</button>
+                        </div>
+                    ))}
+                </div>
+                <div className="w-full flex mt-6">
+                    <p className="text-xl font-semibold mr-2">Wireless Interface?</p>
+                    <button className={`border-2 px-2 rounded-xl mr-4 ${wirelessInterfaceBool ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                        onClick={() => setWirelessInterfaceBool(!wirelessInterfaceBool)}
+                    >{wirelessInterfaceBool ? 'On' : 'Off'}</button>
+                </div>
+                <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full font-semibold`}
+                    onClick={() => clearInputs()}
+                >Clear Inputs</button>
                 <div className="w-full h-full mt-8">
-                    <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2 mb-4">{`Boat Length: ${boatLength} ft`}</p>
+                    <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2 mb-4">{`Boat Length: ${boatLength === '' ? 0 : boatLength} ft`}</p>
                     <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2">{`Switch Count: ${switchOnCount} / ${lightTypes && lightTypes.length > 0 ? lightTypes.length + pumpTypes.length + boatControlTypes.length : 0}`}</p>
                 </div>
                 <div className="w-full mt-8 mb-24">
@@ -481,6 +553,7 @@ const Demos = () => {
                     {costOfWirelessInterface > 0 && <p className="font-semibold">{`Wireless Interface Cost: $${costOfWirelessInterface.toFixed(2)}`}</p>}
 
                     {totalCost > 0 && <p className="text-xl font-bold">{`Total Cost: $${totalCost.toFixed(2)}`}</p>}
+                    {totalWeight > 0 && <p className="text-xl font-bold">{`Total Weight: ${(totalWeight / 1000).toFixed(3)} kg`}</p>}
 
                 </div>
             </div>
