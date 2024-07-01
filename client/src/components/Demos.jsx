@@ -544,21 +544,24 @@ const Demos = () => {
             animate="animate"
         >
             <div className="w-fit h-[5rem] p-4 px-12 relative">
-                <p>Boat Length</p>
-                <label className="absolute right-14 top-[57%]">ft</label>
-                <input type="number" placeholder="Boat length (ft.)" className={`outline-none border-2 px-2 py-1 pr-8 ${darkMode ? 'bg-transparent text-white border-white' : 'border-black'}`}
+                <p className="text-xl">Boat Length</p>
+                <label className="absolute right-14 top-[57%] text-xl">ft</label>
+                <input type="number" placeholder="Boat length (ft.)" className={`outline-none border-2 px-2 py-1 pr-8 text-xl ${darkMode ? 'bg-transparent text-white border-white' : 'border-black'}`}
                     value={boatLength}
                     onChange={(ev) => setBoatLength(Number(ev.target.value))}
                 />
             </div>
 
+            <div className="w-full h-full mt-8 print:hidden">
+                <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2">{`Switch Count: ${switchOnCount} / ${lightTypes && lightTypes.length > 0 ? lightTypes.length + pumpTypes.length + boatControlTypes.length : 0}`}</p>
+            </div>
             <div className="w-full px-12 py-12 flex flex-wrap print:block">
                 <div className={`print:hidden w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
                     <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Lights</p>
                     {lightTypes.map((lightType) => (
                         <div className="flex mb-4 w-full" key={lightType}>
                             <p className="mr-auto">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
-                            <button className={`border-2 px-2 rounded-xl mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                            <button className={`border-2 px-2 rounded-xl mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                 onClick={() => setLightStates(prev => ({ ...prev, [lightType]: !prev[lightType] }))}
                             >{lightStates[lightType] ? 'On' : 'Off'}</button>
                         </div>
@@ -569,7 +572,7 @@ const Demos = () => {
                     {pumpTypes.map((pumpType) => (
                         <div className="flex mb-4" key={pumpType}>
                             <p className="mr-auto">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
-                            <button className={`border-2 px-2 rounded-xl mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                            <button className={`border-2 px-2 rounded-xl mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                 onClick={() => setPumpStates(prev => ({ ...prev, [pumpType]: !prev[pumpType] }))}
                             >{pumpStates[pumpType] ? 'On' : 'Off'}</button>
                         </div>
@@ -580,7 +583,7 @@ const Demos = () => {
                     {boatControlTypes.map((controlType) => (
                         <div className="flex mb-4" key={controlType}>
                             <p className="mr-auto">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
-                            <button className={`border-2 px-2 rounded-xl mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                            <button className={`border-2 px-2 rounded-xl mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                 onClick={() => setBoatControlStates(prev => ({ ...prev, [controlType]: !prev[controlType] }))}
                             >{boatControlStates[controlType] ? 'On' : 'Off'}</button>
                         </div>
@@ -600,16 +603,16 @@ const Demos = () => {
                     <ul className="my-4">
                         {num6ButtonKeypads > 0 && <li>{`Number of 6 Way Keypads: ${num6ButtonKeypads}`}</li>}
                         {num12ButtonKeypads > 0 && <li>{`Number of 12 Way Keypads: ${num12ButtonKeypads}`}</li>}
-                        {numContact6Plus > 0 && <li>{`Number of 6 Output Boxes : ${numContact6Plus}`}</li>}
-                        {numDDS > 0 && <li>{`Number of 27 Output Boxes : ${numDDS}`}</li>}
+                        {numContact6Plus > 0 && <li>{`Number of 6 Output Digital Switching Boxes : ${numContact6Plus}`}</li>}
+                        {numDDS > 0 && <li>{`Number of 27 Output Digital Switching Boxes : ${numDDS}`}</li>}
                         {num1WayTeeConnectors > 0 && <li>{`Number of 1 Way Tee Connectors : ${num1WayTeeConnectors}`}</li>}
                         {num2WayTeeConnectors > 0 && <li>{`Number of 2 Way Tee Connectors : ${num2WayTeeConnectors}`}</li>}
                         {num4WayTeeConnectors > 0 && <li>{`Number of 4 Way Tee Connectors : ${num4WayTeeConnectors}`}</li>}
                         <li>{`Wireless Interface?: ${wirelessInterfaceBool ? 'Yes' : 'No'}`}</li>
                     </ul>
                     {cablingCost > 0 && <p className="font-semibold">{`Total Cabling Cost: $${cablingCost.toFixed(2)}`}</p>}
-                    {costOfKeypads > 0 && <p className="font-semibold">{`CZone Keypads Cost: $${costOfKeypads.toFixed(2)}`}</p>}
-                    {costOfOutputBoxes > 0 && <p className="font-semibold">{`CZone Output Boxes Cost: $${costOfOutputBoxes.toFixed(2)}`}</p>}
+                    {costOfKeypads > 0 && <p className="font-semibold">{`Keypads Cost: $${costOfKeypads.toFixed(2)}`}</p>}
+                    {costOfOutputBoxes > 0 && <p className="font-semibold">{`Digital Switching Boxes Cost: $${costOfOutputBoxes.toFixed(2)}`}</p>}
                     {costOfWirelessInterface > 0 && <p className="font-semibold">{`Wireless Interface Cost: $${costOfWirelessInterface.toFixed(2)}`}</p>}
 
                     {totalCost > 0 && <p className="text-xl font-bold">{`Total Cost: $${manualTotalCost !== 0 ? Number(manualTotalCost).toFixed(2) : totalCost.toFixed(2)}`}</p>}
@@ -691,10 +694,6 @@ const Demos = () => {
                             </ul>
                         )
                     })}
-                </div>
-                <div className="w-full h-full mt-8 print:hidden">
-                    <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2 mb-4">{`Boat Length: ${boatLength === '' ? 0 : boatLength} ft`}</p>
-                    <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2">{`Switch Count: ${switchOnCount} / ${lightTypes && lightTypes.length > 0 ? lightTypes.length + pumpTypes.length + boatControlTypes.length : 0}`}</p>
                 </div>
             </div>
 
