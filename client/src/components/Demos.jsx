@@ -263,6 +263,7 @@ const Demos = () => {
         setSwitchOnCount(0);
         setWirelessInterfaceBool(false)
         setBoatLength('')
+        setNumDevices(0);
     }
 
     useEffect(() => {
@@ -396,7 +397,7 @@ const Demos = () => {
             setTeeConnectorsCost(newTeeConnectorsCost);
             setNmeaCablesCost(newNmeaCablesCost);
         } else {
-            setCablingCost(0)
+            setCablingCost(0);
             setPowerCablesCost(0);
             setBackBoneCablesCost(0);
             setTeeConnectorsCost(0);
