@@ -328,14 +328,15 @@ const Home = ({ scrollY }) => {
             </div>
             <div className={`fixed top-0 left-0 z-[99] bg-black/50 w-full h-screen ${chooseProductPopup ? 'flex justify-center items-center' : 'hidden'}`}>
                 <div ref={chooseProductPopupRef} className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[70rem] h-[30rem] overflow-x-auto overflow-y-hidden flex p-6 py-14 relative`}>
-                    <h2 className="fixed top-[11.4rem] left-[49.2rem] font-semibold text-xl">Choose a Product</h2>
+                    <button className="fixed top-[17rem] right-[26rem] z-[99]"
+                        onClick={() => setChooseProductPopup(false)}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" height="45px" viewBox="0 -960 960 960" width="45px" fill={darkMode ? '#fff' : '#131313'}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
+                    </button>
+                    <h2 className="fixed top-[17rem] left-[56rem] font-semibold text-xl">Choose a Product</h2>
                     {products && products.length > 0 && products.map((product, index) => (
                         <div key={index}>
-                            <button className="fixed top-[11.4rem] right-[18.5rem]"
-                                onClick={() => setChooseProductPopup(false)}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" height="45px" viewBox="0 -960 960 960" width="45px" fill={darkMode ? '#fff' : '#131313'}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
-                            </button>
+
                             <Product product={product} index={index} darkMode={darkMode} chooseProductFunc={chooseProductFunc} setChooseProductPopup={setChooseProductPopup} productsPageIndex={productsPageIndex} productsPageImages={productsPageImages} setProductsPageImages={setProductsPageImages} />
                         </div>
                     ))}
