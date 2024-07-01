@@ -271,26 +271,35 @@ const Demos = () => {
         setSwitchOnCount(newSwitchOnCount);
     }, [lightStates, pumpStates, boatControlStates]);
 
-
     useEffect(() => {
+        let newNum6ButtonKeypads = 0
+        let newNum12ButtonKeypads = 0
+        let newNumContact6Plus = 0
+        let newNumDDS = 0
         if (switchOnCount > 0 || boatLength > 0) {
             let keypadRemainder = switchOnCount % 12;
             if (keypadRemainder <= 6 && keypadRemainder > 0) {
-                setNum6ButtonKeypads(1)
+                newNum6ButtonKeypads = 1
             }
-            if (keypadRemainder > 6 || keypadRemainder === 0) {
-                setNum12ButtonKeypads(Math.round(switchOnCount / 12))
-                setNum6ButtonKeypads(0)
+            else if (keypadRemainder > 6 || keypadRemainder === 0) {
+                newNum12ButtonKeypads = Math.round(switchOnCount / 12)
+                newNum6ButtonKeypads = 0
             }
             let outputBoxRemainder = switchOnCount % 27;
             if (outputBoxRemainder <= 6 && outputBoxRemainder !== 0) {
-                setNumContact6Plus(1);
-            } else if (outputBoxRemainder === 7 || outputBoxRemainder === 0) {
-                setNumContact6Plus(0);
-                setNumDDS(Math.ceil(switchOnCount / 27))
-            } else if (Math.round(switchOnCount / 27) > 1) {
-                setNumContact6Plus(1)
+                newNumContact6Plus = 1
+                newNumDDS = Math.floor(switchOnCount / 27)
+            } else if (outputBoxRemainder > 6 || outputBoxRemainder === 0) {
+                newNumContact6Plus = 0
+                newNumDDS = Math.ceil(switchOnCount / 27)
+            } else {
+                newNumContact6Plus = 0
+                newNumDDS = Math.floor(switchOnCount / 27)
             }
+            setNum12ButtonKeypads(newNum12ButtonKeypads)
+            setNum6ButtonKeypads(newNum6ButtonKeypads)
+            setNumContact6Plus(newNumContact6Plus)
+            setNumDDS(newNumDDS)
         } else if (switchOnCount === 0) {
             setNum6ButtonKeypads(0);
             setNum12ButtonKeypads(0);
@@ -404,7 +413,7 @@ const Demos = () => {
             setNmeaCablesCost(0);
         }
 
-    }, [wirelessInterfaceBool, num4WayTeeConnectors, num2WayTeeConnectors, num1WayTeeConnectors, num10mBackboneCables])
+    }, [wirelessInterfaceBool, num4WayTeeConnectors, num2WayTeeConnectors, num1WayTeeConnectors, num10mBackboneCables, switchOnCount])
 
     useEffect(() => {
         let newCostOfOutputBoxes = (
@@ -421,7 +430,6 @@ const Demos = () => {
         } else {
             newCostOfWirelessInterface = 0;
         }
-
         setTotalCost(newCostOfKeypads + newCostOfOutputBoxes + newCostOfWirelessInterface + cablingCost);
         setCostOfKeypads(newCostOfKeypads);
         setCostOfOutputBoxes(newCostOfOutputBoxes);
@@ -462,6 +470,7 @@ const Demos = () => {
             setTotalWeight(0)
         }
     }, [totalCost])
+
 
     const splitCamelCase = (str) => {
         return str.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
