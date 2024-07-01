@@ -547,7 +547,7 @@ const Demos = () => {
                         {num2mBackboneCables > 0 && <li>{`Number of 2m backbone cables: ${num2mBackboneCables}`}</li>}
                         {numHalfMeterBackboneCables > 0 && <li>{`Number of 0.5m backbone cables: ${numHalfMeterBackboneCables}`}</li>}
                     </ul>
-                    <ul className="mt-4">
+                    <ul className="my-4">
                         {num6ButtonKeypads > 0 && <li>{`Number of 6 Way Keypads: ${num6ButtonKeypads}`}</li>}
                         {num12ButtonKeypads > 0 && <li>{`Number of 12 Way Keypads: ${num12ButtonKeypads}`}</li>}
                         {numContact6Plus > 0 && <li>{`Number of CZone Contact 6+ Output Boxes : ${numContact6Plus}`}</li>}
