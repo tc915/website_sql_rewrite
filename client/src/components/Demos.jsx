@@ -61,7 +61,7 @@ const Demos = () => {
         airConditioning: false
     })
 
-    const productData = {
+    const [productData, setProductData] = useState({
         momentarySwitch: {
             name: 'Momentary RGB Switch (22mm)',
             weight: 16.22,
@@ -78,7 +78,7 @@ const Demos = () => {
             name: '16 AWG GPTM Cable',
             weight: 7.25,
             cost: 0.144,
-            units: 'foot'
+            units: { unit: 'foot' }
         },
         powerInjector: {
             name: 'NMEA 2000 Power Injector',
@@ -93,40 +93,40 @@ const Demos = () => {
             units: 'each'
         },
         backboneCable10m: {
-            name: 'NMEA 2000 Backbone Cable',
+            name: 'NMEA 2000 32ft Backbone Cable',
             weight: 1575.36,
-            cost: 47,
-            units: { length: 32, unit: 'feet' }
+            cost: 47.00,
+            units: 'each'
         },
         backboneCable8m: {
-            name: 'NMEA 2000 Backbone Cable',
+            name: 'NMEA 2000 25.6ft Backbone Cable',
             weight: 1260.288,
             cost: 37.60,
-            units: { length: 25.6, unit: 'feet' }
+            units: 'each'
         },
         backboneCable5m: {
-            name: 'NMEA 2000 Backbone Cable',
+            name: 'NMEA 2000 16ft Backbone Cable',
             weight: 787.68,
             cost: 33.76,
-            units: { length: 16, unit: 'feet' }
+            units: 'each'
         },
         backboneCable2m: {
-            name: 'NMEA 2000 Backbone Cable',
+            name: 'NMEA 2000 6.4ft Backbone Cable',
             weight: 315.072,
             cost: 29.99,
-            units: { length: 6.4, unit: 'feet' }
+            units: 'each'
         },
         backboneCableHalfMeter: {
-            name: 'NMEA 2000 Backbone Cable',
+            name: 'NMEA 2000 1.6ft Backbone Cable',
             weight: 78.768,
             cost: 20.27,
-            units: { length: 1.6, unit: 'feet' }
+            units: 'each'
         },
         dropCable: {
             name: 'NMEA 2000 Drop Cable',
             weight: 239.98,
             cost: 23.98,
-            units: { length: 6.5, unit: 'feet' }
+            units: 'each'
         },
         terminatorFemale: {
             name: 'NMEA 2000 Terminator (Female)',
@@ -149,13 +149,13 @@ const Demos = () => {
         twoWayTeeConnector: {
             name: 'NMEA 2000 Two Way Tee Connector',
             weight: 90.7185,
-            cost: 38.01,
+            cost: 29.48,
             units: 'each'
         },
         fourWayTeeConnector: {
             name: 'NMEA 2000 Four Way Tee Connector',
             weight: 25,
-            cost: 29.48,
+            cost: 38.01,
             units: 'each'
         },
         contact6Plus: {
@@ -206,12 +206,12 @@ const Demos = () => {
             cost: 450.81,
             units: 'each'
         }
-
-    }
+    })
 
     const [switchOnCount, setSwitchOnCount] = useState(0);
     const [boatLength, setBoatLength] = useState('');
     const [totalCost, setTotalCost] = useState(0);
+    const [manualTotalCost, setManualTotalCost] = useState(0);
     const [cablingCost, setCablingCost] = useState(0);
     const [numDevices, setNumDevices] = useState(0);
     const [num12ButtonKeypads, setNum12ButtonKeypads] = useState(0);
@@ -235,10 +235,22 @@ const Demos = () => {
     const [costOfKeypads, setCostOfKeypads] = useState(0);
     const [costOfWirelessInterface, setCostOfWirelessInterface] = useState(0);
     const [totalWeight, setTotalWeight] = useState(0);
+    const [addToTotalCostAmount, setAddToTotalCostAmount] = useState('');
+    const [subtractToTotalCostAmount, setSubtractToTotalCostAmount] = useState('');
+    const [showChangeComponentPricing, setShowChangeComponentPricing] = useState(false);
+    const [showEditTotalCost, setShowEditTotalCost] = useState(false);
 
     const lightTypes = Object.keys(lightStates)
     const pumpTypes = Object.keys(pumpStates)
     const boatControlTypes = Object.keys(boatControlStates)
+
+    const productKeys = Object.keys(productData)
+
+    const [changingProductPriceList, setChangingProductPricingList] = useState(Array(productKeys.length).fill(false))
+
+    useEffect(() => {
+        console.log(manualTotalCost)
+    }, [manualTotalCost])
 
     const countSwitchesOn = (switchStates) => {
         let count = 0;
@@ -265,6 +277,29 @@ const Demos = () => {
         setBoatLength('')
         setNumDevices(0);
     }
+
+    const addAllInputs = () => {
+        const newLightStates = { ...lightStates };
+        const newPumpStates = { ...pumpStates };
+        const newBoatControlStates = { ...boatControlStates };
+
+        lightTypes.forEach(light => {
+            newLightStates[light] = true;
+        });
+
+        pumpTypes.forEach(pump => {
+            newPumpStates[pump] = true;
+        });
+
+        boatControlTypes.forEach(control => {
+            newBoatControlStates[control] = true;
+        });
+
+        setLightStates(newLightStates);
+        setPumpStates(newPumpStates);
+        setBoatControlStates(newBoatControlStates);
+    };
+
 
     useEffect(() => {
         const newSwitchOnCount = countSwitchesOn(lightStates) + countSwitchesOn(pumpStates) + countSwitchesOn(boatControlStates);
@@ -413,7 +448,7 @@ const Demos = () => {
             setNmeaCablesCost(0);
         }
 
-    }, [wirelessInterfaceBool, num4WayTeeConnectors, num2WayTeeConnectors, num1WayTeeConnectors, num10mBackboneCables, switchOnCount])
+    }, [wirelessInterfaceBool, num4WayTeeConnectors, num2WayTeeConnectors, num1WayTeeConnectors, num10mBackboneCables, switchOnCount, productData])
 
     useEffect(() => {
         let newCostOfOutputBoxes = (
@@ -437,6 +472,7 @@ const Demos = () => {
     }, [cablingCost, numContact6Plus, num6ButtonKeypads, wirelessInterfaceBool])
 
     useEffect(() => {
+        setManualTotalCost(0)
         if (totalCost > 0) {
             let backboneCablesWeight = (
                 (num10mBackboneCables * productData.backboneCable10m.weight) +
@@ -465,7 +501,7 @@ const Demos = () => {
             if (wirelessInterfaceBool) {
                 weightOfWirelessInterface = true;
             }
-            setTotalWeight(totalCablesWeight + weightOfKeypads + weightOfOutputBoxes + weightOfWirelessInterface)
+            setTotalWeight((totalCablesWeight + weightOfKeypads + weightOfOutputBoxes + weightOfWirelessInterface) * 2.205)
         } else {
             setTotalWeight(0)
         }
@@ -476,6 +512,30 @@ const Demos = () => {
         return str.replace(/([a-z0-9])([A-Z])/g, '$1 $2');
     }
 
+    const saveTotalCostChanges = () => {
+        const addAmount = addToTotalCostAmount;
+        const subtractAmount = subtractToTotalCostAmount;
+        if (!isNaN(addAmount && addAmount > 0)) {
+            setManualTotalCost(prevCost => (prevCost || totalCost) + addAmount);
+        }
+        if (!isNaN(subtractAmount) && subtractAmount > 0) {
+            setManualTotalCost(prevCost => (prevCost || totalCost) - subtractAmount);
+        }
+        setAddToTotalCostAmount('')
+        setSubtractToTotalCostAmount('')
+    }
+
+    const saveProductPriceChange = (productIndex, newPrice) => {
+        if (newPrice > 0) {
+            const updatedProductData = { ...productData }
+            const productKey = productKeys[productIndex]
+            updatedProductData[productKey] = {
+                ...updatedProductData[productKey],
+                cost: newPrice
+            }
+            setProductData(updatedProductData)
+        }
+    }
 
     return (
         <motion.div className={`pt-32 ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'}`}
@@ -492,66 +552,56 @@ const Demos = () => {
                 />
             </div>
 
-            <div className="w-full px-12 py-12 flex flex-wrap">
-                <div className={`w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
+            <div className="w-full px-12 py-12 flex flex-wrap print:block">
+                <div className={`print:hidden w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
                     <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Lights</p>
                     {lightTypes.map((lightType) => (
-                        <div className="flex mb-4" key={lightType}>
-                            <p className="mr-4">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
+                        <div className="flex mb-4 w-full" key={lightType}>
+                            <p className="mr-auto">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
                             <button className={`border-2 px-2 rounded-xl mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                 onClick={() => setLightStates(prev => ({ ...prev, [lightType]: !prev[lightType] }))}
                             >{lightStates[lightType] ? 'On' : 'Off'}</button>
                         </div>
                     ))}
                 </div>
-                <div className={`w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
+                <div className={`print:hidden w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
                     <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Pumps</p>
                     {pumpTypes.map((pumpType) => (
                         <div className="flex mb-4" key={pumpType}>
-                            <p className="mr-4">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
+                            <p className="mr-auto">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
                             <button className={`border-2 px-2 rounded-xl mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                 onClick={() => setPumpStates(prev => ({ ...prev, [pumpType]: !prev[pumpType] }))}
                             >{pumpStates[pumpType] ? 'On' : 'Off'}</button>
                         </div>
                     ))}
                 </div>
-                <div className={`w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
+                <div className={`print:hidden w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
                     <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Boat Controls</p>
                     {boatControlTypes.map((controlType) => (
                         <div className="flex mb-4" key={controlType}>
-                            <p className="mr-4">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
+                            <p className="mr-auto">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
                             <button className={`border-2 px-2 rounded-xl mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                 onClick={() => setBoatControlStates(prev => ({ ...prev, [controlType]: !prev[controlType] }))}
                             >{boatControlStates[controlType] ? 'On' : 'Off'}</button>
                         </div>
                     ))}
                 </div>
-                <div className="w-full flex mt-6">
-                    <p className="text-xl font-semibold mr-2">Wireless Interface?</p>
-                    <button className={`border-2 px-2 rounded-xl mr-4 ${wirelessInterfaceBool ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
-                        onClick={() => setWirelessInterfaceBool(!wirelessInterfaceBool)}
-                    >{wirelessInterfaceBool ? 'On' : 'Off'}</button>
-                </div>
-                <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full font-semibold`}
-                    onClick={() => clearInputs()}
-                >Clear Inputs</button>
-                <div className="w-full h-full mt-8">
-                    <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2 mb-4">{`Boat Length: ${boatLength === '' ? 0 : boatLength} ft`}</p>
-                    <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2">{`Switch Count: ${switchOnCount} / ${lightTypes && lightTypes.length > 0 ? lightTypes.length + pumpTypes.length + boatControlTypes.length : 0}`}</p>
-                </div>
-                <div className="w-full mt-8 mb-24">
+                <div className="w-1/4 mt-8 print:w-full">
                     <ul>
-                        {num10mBackboneCables > 0 && <li>{`Number of 10m backbone cables: ${num10mBackboneCables}`}</li>}
-                        {num8mBackboneCables > 0 && <li>{`Number of 8m backbone cables: ${num8mBackboneCables}`}</li>}
-                        {num5mBackboneCables > 0 && <li>{`Number of 5m backbone cables: ${num5mBackboneCables}`}</li>}
-                        {num2mBackboneCables > 0 && <li>{`Number of 2m backbone cables: ${num2mBackboneCables}`}</li>}
-                        {numHalfMeterBackboneCables > 0 && <li>{`Number of 0.5m backbone cables: ${numHalfMeterBackboneCables}`}</li>}
+                        {boatLength > 0 && <li>Number of NMEA 2000 Power Injectors: 1</li>}
+                        {boatLength > 0 && <li>Number of NMEA 2000 6.5ft drop cables: 1</li>}
+                        {boatLength > 0 && switchOnCount > 0 && <li>{`Total Length of 16AWG Power Cables: ${(switchOnCount * (boatLength * 0.6)).toFixed(2)} feet`}</li>}
+                        {num10mBackboneCables > 0 && <li>{`Number of NMEA 2000 32ft backbone cables: ${num10mBackboneCables}`}</li>}
+                        {num8mBackboneCables > 0 && <li>{`Number of NMEA 2000 25.6ft backbone cables: ${num8mBackboneCables}`}</li>}
+                        {num5mBackboneCables > 0 && <li>{`Number of NMEA 2000 16ft backbone cables: ${num5mBackboneCables}`}</li>}
+                        {num2mBackboneCables > 0 && <li>{`Number of NMEA 2000 6.4ft backbone cables: ${num2mBackboneCables}`}</li>}
+                        {numHalfMeterBackboneCables > 0 && <li>{`Number of NMEA 2000 1.6ft backbone cables: ${numHalfMeterBackboneCables}`}</li>}
                     </ul>
                     <ul className="my-4">
                         {num6ButtonKeypads > 0 && <li>{`Number of 6 Way Keypads: ${num6ButtonKeypads}`}</li>}
                         {num12ButtonKeypads > 0 && <li>{`Number of 12 Way Keypads: ${num12ButtonKeypads}`}</li>}
-                        {numContact6Plus > 0 && <li>{`Number of CZone Contact 6+ Output Boxes : ${numContact6Plus}`}</li>}
-                        {numDDS > 0 && <li>{`Number of CZone DDS Output Boxes : ${numDDS}`}</li>}
+                        {numContact6Plus > 0 && <li>{`Number of 6 Output Boxes : ${numContact6Plus}`}</li>}
+                        {numDDS > 0 && <li>{`Number of 27 Output Boxes : ${numDDS}`}</li>}
                         {num1WayTeeConnectors > 0 && <li>{`Number of 1 Way Tee Connectors : ${num1WayTeeConnectors}`}</li>}
                         {num2WayTeeConnectors > 0 && <li>{`Number of 2 Way Tee Connectors : ${num2WayTeeConnectors}`}</li>}
                         {num4WayTeeConnectors > 0 && <li>{`Number of 4 Way Tee Connectors : ${num4WayTeeConnectors}`}</li>}
@@ -562,9 +612,89 @@ const Demos = () => {
                     {costOfOutputBoxes > 0 && <p className="font-semibold">{`CZone Output Boxes Cost: $${costOfOutputBoxes.toFixed(2)}`}</p>}
                     {costOfWirelessInterface > 0 && <p className="font-semibold">{`Wireless Interface Cost: $${costOfWirelessInterface.toFixed(2)}`}</p>}
 
-                    {totalCost > 0 && <p className="text-xl font-bold">{`Total Cost: $${totalCost.toFixed(2)}`}</p>}
-                    {totalWeight > 0 && <p className="text-xl font-bold">{`Total Weight: ${(totalWeight / 1000).toFixed(3)} kg`}</p>}
-
+                    {totalCost > 0 && <p className="text-xl font-bold">{`Total Cost: $${manualTotalCost !== 0 ? Number(manualTotalCost).toFixed(2) : totalCost.toFixed(2)}`}</p>}
+                    {totalWeight > 0 && <p className="text-xl font-bold">{`Total Weight: ${(totalWeight / 1000).toFixed(3)} lbs.`}</p>}
+                    <button className={`${darkMode ? 'border-white' : 'border-black'} border-2 mt-4 w-full rounded-full py-1 font-semibold text-lg print:hidden ${showEditTotalCost ? 'hidden' : ''}`}
+                        onClick={() => setShowEditTotalCost(true)}
+                    >Edit Total Cost</button>
+                    <div className={`print:hidden mt-4 flex flex-col ${showEditTotalCost ? '' : 'hidden'}`}>
+                        <p className="font-semibold text-xl">Amount to add to total</p>
+                        <input type="number" className="border-2 outline-none border-black p-1 mb-2" placeholder="$00.00"
+                            value={addToTotalCostAmount}
+                            onChange={(ev) => setAddToTotalCostAmount(Number(ev.target.value))}
+                        />
+                        <p className="font-semibold text-xl">Amount to subtract from total</p>
+                        <input type="number" className="border-2 outline-none border-black p-1" placeholder="$00.00"
+                            value={subtractToTotalCostAmount}
+                            onChange={(ev) => setSubtractToTotalCostAmount(Number(ev.target.value))}
+                        />
+                        <button className="mt-4 border-2 border-black px-4 py-1 rounded-full font-semibold"
+                            onClick={() => {
+                                saveTotalCostChanges();
+                                setShowEditTotalCost(false)
+                            }}
+                        >Save Changes</button>
+                    </div>
+                </div>
+                <div className="w-full flex mt-6 print:hidden">
+                    <p className="text-xl font-semibold mr-2">Wireless Interface?</p>
+                    <button className={`border-2 px-2 rounded-xl mr-4 h-[2rem] ${wirelessInterfaceBool ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                        onClick={() => setWirelessInterfaceBool(!wirelessInterfaceBool)}
+                    >{wirelessInterfaceBool ? 'On' : 'Off'}</button>
+                </div>
+                <div>
+                    <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full font-semibold mr-2 print:hidden`}
+                        onClick={() => clearInputs()}
+                    >Clear Inputs</button>
+                    <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full font-semibold mr-2 print:hidden`}
+                        onClick={() => addAllInputs()}
+                    >Add All Options</button>
+                    <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full font-semibold print:hidden ${showChangeComponentPricing ? 'bg-[#FF7F11] text-white border-0' : ''}`}
+                        onClick={() => setShowChangeComponentPricing(!showChangeComponentPricing)}
+                    >{showChangeComponentPricing ? 'Close Component Pricing' : 'Change Component Pricing'}</button>
+                    <button className={`print:hidden ml-2 font-semibold border-2 px-4 py-1 rounded-full ${darkMode ? 'border-white' : 'border-black'}`}
+                        onClick={() => window.print()}
+                    >Print Build</button>
+                </div>
+                <div className={`w-full mt-6 text-lg print:hidden ${showChangeComponentPricing ? '' : 'hidden'}`}>
+                    <p className="font-semibold mb-4">Component Pricing:</p>
+                    {productKeys && productKeys.length > 0 && productKeys.map((product, index) => {
+                        const [newPrice, setNewPrice] = useState(0);
+                        return (
+                            <ul className="">
+                                <li className="mb-4 w-1/3">
+                                    <div className="flex">
+                                        <p className={`mr-auto ${changingProductPriceList[index] ? 'hidden' : ''}`}>{`- ${productData[product].name}: $${productData[product].units !== 'each' ? `${productData[product].cost} / ${productData[product].units.unit}` : (productData[product].cost).toFixed(2)}`}</p>
+                                        <input type="number" placeholder="New price" className={`${changingProductPriceList[index] ? `border-2 p-1 mr-auto ${darkMode ? 'border-white' : 'border-black'}` : 'hidden'}`}
+                                            onChange={(ev) => setNewPrice(Number(ev.target.value))}
+                                        />
+                                        <button className={`${darkMode ? 'border-white' : 'border-black'} border-2 ml-4 px-4 rounded-full ${changingProductPriceList[index] ? 'hidden' : ''}`}
+                                            onClick={() => {
+                                                const anyTrue = changingProductPriceList.some(value => value)
+                                                if (!anyTrue) {
+                                                    const updatedList = [...changingProductPriceList];
+                                                    updatedList[index] = true;
+                                                    setChangingProductPricingList(updatedList);
+                                                }
+                                            }}
+                                        >Change price</button>
+                                        <button className={`border-2 px-2 rounded-full py-1 ${changingProductPriceList[index] ? '' : 'hidden'} bg-[#FF7F11] text-white border-transparent`}
+                                            onClick={() => {
+                                                saveProductPriceChange(index, newPrice)
+                                                const updatedList = [...changingProductPriceList]
+                                                updatedList[index] = false;
+                                                setChangingProductPricingList(updatedList)
+                                            }}
+                                        >Save New Price</button>
+                                    </div>
+                                </li>
+                            </ul>
+                        )
+                    })}
+                </div>
+                <div className="w-full h-full mt-8 print:hidden">
+                    <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2 mb-4">{`Boat Length: ${boatLength === '' ? 0 : boatLength} ft`}</p>
+                    <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2">{`Switch Count: ${switchOnCount} / ${lightTypes && lightTypes.length > 0 ? lightTypes.length + pumpTypes.length + boatControlTypes.length : 0}`}</p>
                 </div>
             </div>
 

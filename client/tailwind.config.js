@@ -24,6 +24,7 @@ export default {
         'laptop': { 'min': '951px', 'max': '1024px' },
         'xxsm': { 'min': '1025px', 'max': '1110px' },
         'xsm': { 'min': '1111px', 'max': '1190px' },
+        print: { raw: 'print' },
       },
     },
   },

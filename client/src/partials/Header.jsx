@@ -52,7 +52,7 @@ const Header = () => {
 
     return (
         <motion.header
-            className={`flex w-full justify-between items-center h-[8em] lgMobile:h-[12rem] p-2 z-[10] fixed bg-black`}>
+            className={`flex print:hidden w-full justify-between items-center h-[8em] lgMobile:h-[12rem] p-2 z-[10] fixed bg-black`}>
             <div className={`absolute top-0 left-0 z-[99] bg-black/50 w-full h-screen ${isLogoutPopup ? '' : 'hidden'} flex justify-center items-center`}>
                 <div className="text-white rounded-lg bg-black border-4 border-[#FF7F11] w-1/4 h-1/6 px-24 py-4 flex flex-col items-center justify-center relative">
                     <p className="text-2xl font-semibold">Log out?</p>
