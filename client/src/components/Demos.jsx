@@ -722,7 +722,7 @@ const Demos = () => {
                         onClick={() => window.print()}
                     >Print Build</button>
                     <button className={`print:hidden ml-2 font-semibold border-2 px-4 py-1 rounded-full ${darkMode ? 'border-white' : 'border-black'}`}
-                        onClick={() => window.print()}
+                        onClick={() => saveBuildSetup()}
                     >Save Build</button>
                 </div>
                 <div className={`w-full mt-6 text-lg print:hidden ${showChangeComponentPricing ? '' : 'hidden'}`}>
