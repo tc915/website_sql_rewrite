@@ -680,7 +680,7 @@ app.get('/showcase-products', async (req, res) => {
     }
 });
 
-app.post('/save-boat-setup', async (req, res) => {
+app.post('/save-boat-setup', (req, res) => {
     try {
         const setupData = req.body;
         res.json(setupData)
