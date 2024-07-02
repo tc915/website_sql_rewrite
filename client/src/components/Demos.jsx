@@ -248,10 +248,6 @@ const Demos = () => {
 
     const [changingProductPriceList, setChangingProductPricingList] = useState(Array(productKeys.length).fill(false))
 
-    useEffect(() => {
-        console.log(manualTotalCost)
-    }, [manualTotalCost])
-
     const countSwitchesOn = (switchStates) => {
         let count = 0;
         for (let key in switchStates) {
