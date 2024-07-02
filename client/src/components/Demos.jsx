@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const fadeInVariants = {
     initial: {
@@ -19,7 +20,8 @@ const fadeInVariants = {
 
 const Demos = () => {
 
-    const { darkMode } = useContext(UserContext);
+    const { darkMode, user } = useContext(UserContext);
+    const navigate = useNavigate();
     const [lightStates, setLightStates] = useState({
         interior: false,
         underwater: false,
@@ -533,6 +535,71 @@ const Demos = () => {
         }
     }
 
+    const saveBuildSetup = async () => {
+        if (user) {
+            const setupData = {
+                user,
+                boatLength,
+                interiorLights: lightStates.interior,
+                underwaterLights: lightStates.underwater,
+                cockpitLights: lightStates.cockpit,
+                overheadLights: lightStates.overhead,
+                accentLights: lightStates.accent,
+                dockingLights: lightStates.docking,
+                navLights: lightStates.nav,
+                deckLights: lightStates.deck,
+                hardtopLights: lightStates.hardtop,
+                hardtopAccentLights: lightStates.hardtopAccent,
+                helmOverheadLights: lightStates.helmOverhead,
+                speakerLights: lightStates.speaker,
+                cupholderLights: lightStates.cupholder,
+                aftSpreaderLights: lightStates.aftSpreader,
+                forwardSpreaderLights: lightStates.forwardSpreader,
+                spotlightLights: lightStates.spotlight,
+                cabinLights: lightStates.cabin,
+                headLights: lightStates.head,
+                liveWellPump: pumpStates.liveWell,
+                baitWellPump: pumpStates.baitWell,
+                forwardPump: pumpStates.forward,
+                aftPump: pumpStates.aft,
+                freshwaterPump: pumpStates.freshwater,
+                wasteWaterPump: pumpStates.wasteWater,
+                windshieldWipersControl: boatControlStates.windshieldWipers,
+                windshieldWipersSprayControl: boatControlStates.windshieldWiperSpray,
+                anchorControl: boatControlStates.anchor,
+                towerControl: boatControlStates.tower,
+                sunshadeControl: boatControlStates.sunshade,
+                sunroofControl: boatControlStates.sunroof,
+                airConditioningControl: boatControlStates.airConditioning,
+                wirelessInterface: wirelessInterfaceBool,
+                momentaryRGBSwitchPrice: productData.momentarySwitch.cost,
+                momentaryRGBSwitchHarnessPrice: productData.momentarySwitchHarness.cost,
+                awgPowerCablePrice: productData.awgGPTM.cost,
+                powerInjectorPrice: productData.powerInjector.cost,
+                oneWayTeeConnectorPrice: productData.oneWayTeeConnector.cost,
+                twoWayTeeConnectorPrice: productData.twoWayTeeConnector.cost,
+                fourWayTeeConnectorPrice: productData.fourWayTeeConnector.cost,
+                backboneCable10mPrice: productData.backboneCable10m.cost,
+                backboneCable8mPrice: productData.backboneCable8m.cost,
+                backboneCable5mPrice: productData.backboneCable5m.cost,
+                backboneCable2mPrice: productData.backboneCable2m.cost,
+                backboneCableHalfMeterPrice: productData.backboneCableHalfMeter.cost,
+                dropCablePrice: productData.dropCable.cost,
+                terminatorFemalePrice: productData.terminatorFemale.cost,
+                terminatorMalePrice: productData.terminatorMale.cost,
+                sixOutputDigitalSwitchingBoxPrice: productData.contact6Plus.cost,
+                twentySevenOutputDigitalSwitchingBoxPrice: productData.cZoneDDS.cost,
+                wirelesInterfacePrice: productData.wirelessInterface.cost,
+                sixWayKeypadPrice: productData.sixWayKeypad.cost,
+                twelveWayKeypadPrice: productData.twelveWayKeypad.cost
+            }
+            const { data } = await axios.post('/save-boat-setup', setupData)
+            console.log(data)
+        } else {
+            navigate('/login')
+        }
+    }
+
     return (
         <motion.div className={`pt-32 ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'}`}
             variants={fadeInVariants}
@@ -654,6 +721,9 @@ const Demos = () => {
                     <button className={`print:hidden ml-2 font-semibold border-2 px-4 py-1 rounded-full ${darkMode ? 'border-white' : 'border-black'}`}
                         onClick={() => window.print()}
                     >Print Build</button>
+                    <button className={`print:hidden ml-2 font-semibold border-2 px-4 py-1 rounded-full ${darkMode ? 'border-white' : 'border-black'}`}
+                        onClick={() => window.print()}
+                    >Save Build</button>
                 </div>
                 <div className={`w-full mt-6 text-lg print:hidden ${showChangeComponentPricing ? '' : 'hidden'}`}>
                     <p className="font-semibold mb-4">Component Pricing:</p>

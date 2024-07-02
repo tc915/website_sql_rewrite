@@ -680,6 +680,16 @@ app.get('/showcase-products', async (req, res) => {
     }
 });
 
+app.post('/save-boat-setup', async (req, res) => {
+    try {
+        const { user, boatLength, interiorLights, underwaterLights, cockpitLights, overheadLights, accentLights, dockingLights, navLights, deckLights, hardtopLights, hardtopAccentLights, helmOverheadLights, speakerLights, cupholderLights, aftSpreaderLights, forwardSpreaderLights, spotlightLights, cabinLights, headLights, liveWellPump, baitWellPump, forwardPump, aftPump, freshwaterPumo, wasteWaterPump, windshieldWipersControl, windshieldWipersSprayControl, anchorControl, towerControl, sunshadeControl, sunroofControl, airConditioningControl, wirelessInterface, momentaryRGBSwitchPrice, momentaryRGBSwitchHarnessPrice, awgPowerCablePrice, powerInjectorPrice, oneWayTeeConnectorPrice, twoWayTeeConnectorPrice, fourWayTeeConnectorPrice, backboneCable10mPrice, backboneCable8mPrice, backboneCable5mPrice, backboneCable2mPrice, backboneCableHalfMeterPrice, dropCablePrice, terminatorFemalePrice, terminatorMalePrice, sixOutputDigitalSwitchingBoxPrice, twentySevenOutputDigitalSwitchingBoxPrice, wirelesInterfacePrice, sixWayKeypadPrice, twelveWayKeypadPrice } = req.body;
+        res.json(user.id)
+    } catch (err) {
+        console.log(err.stack)
+        res.status(500).json(err.stack)
+    }
+});
+
 const port = process.env.PORT || 4000;
 
 
