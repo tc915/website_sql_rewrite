@@ -683,7 +683,7 @@ app.get('/showcase-products', async (req, res) => {
 app.post('/save-boat-setup', async (req, res) => {
     try {
         const setupData = req.body;
-        const boatSetup = await createBoatSetupTable()
+        const boatSetup = await createBoatSetupTable(setupData)
         res.status(200).json(boatSetup)
     } catch (err) {
         console.log(err.stack)
