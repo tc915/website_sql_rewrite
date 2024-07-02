@@ -622,12 +622,12 @@ const Demos = () => {
                     >Edit Total Cost</button>
                     <div className={`print:hidden mt-4 flex flex-col ${showEditTotalCost ? '' : 'hidden'}`}>
                         <p className="font-semibold text-xl">Amount to add to total</p>
-                        <input type="number" className="border-2 outline-none border-black p-1 mb-2" placeholder="$00.00"
+                        <input type="number" className="border-2 outline-none border-black p-1 mb-2" placeholder="$0.00"
                             value={addToTotalCostAmount}
                             onChange={(ev) => setAddToTotalCostAmount(Number(ev.target.value))}
                         />
                         <p className="font-semibold text-xl">Amount to subtract from total</p>
-                        <input type="number" className="border-2 outline-none border-black p-1" placeholder="$00.00"
+                        <input type="number" className="border-2 outline-none border-black p-1" placeholder="$0.00"
                             value={subtractToTotalCostAmount}
                             onChange={(ev) => setSubtractToTotalCostAmount(Number(ev.target.value))}
                         />
