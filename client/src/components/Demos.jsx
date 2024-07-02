@@ -556,6 +556,7 @@ const Demos = () => {
                 aftSpreaderLights: lightStates.aftSpreader,
                 forwardSpreaderLights: lightStates.forwardSpreader,
                 spotlightLights: lightStates.spotlight,
+                storageLights: lightStates.storage,
                 cabinLights: lightStates.cabin,
                 headLights: lightStates.head,
                 liveWellPump: pumpStates.liveWell,
