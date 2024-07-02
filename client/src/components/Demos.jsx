@@ -161,49 +161,31 @@ const Demos = () => {
             units: 'each'
         },
         contact6Plus: {
-            name: 'CZone Contact 6+',
+            name: '6 Output Digital Switching Box',
             weight: 600,
             cost: 436.21,
             units: 'each'
         },
-        controlX: {
-            name: 'CZone Control X',
-            weight: 792,
-            cost: 1250.99,
-            units: 'each'
-        },
-        controlXPlus: {
-            name: 'CZone Control X+',
-            weight: 810,
-            cost: 1287.55,
-            units: "each"
-        },
-        cZoneSI: {
-            name: 'CZone SI',
-            weight: 281,
-            cost: 556.98,
-            units: 'each'
-        },
         cZoneDDS: {
-            name: 'CZone DDS',
+            name: '27 Output Digital Switching Box',
             weight: 1040,
             cost: 1572.39,
             units: 'each'
         },
         wirelessInterface: {
-            name: 'CZone Wireless Interface',
+            name: 'Wireless Interface',
             weight: 685,
             cost: 1468,
             units: 'each'
         },
         sixWayKeypad: {
-            name: 'CZone 6 Way Waterproof Keypad',
+            name: '6 Way Waterproof Keypad',
             weight: 115,
             cost: 323.55,
             units: 'each'
         },
         twelveWayKeypad: {
-            name: 'CZone 12 Way Waterproof Keypad',
+            name: '12 Way Waterproof Keypad',
             weight: 115,
             cost: 450.81,
             units: 'each'
@@ -655,32 +637,33 @@ const Demos = () => {
                 </div>
                 <div className="w-1/4 mt-8 print:w-full">
                     <ul>
-                        {boatLength > 0 && <li>Number of NMEA 2000 Power Injectors: 1</li>}
-                        {boatLength > 0 && <li>Number of NMEA 2000 6.5ft drop cables: 1</li>}
-                        {boatLength > 0 && switchOnCount > 0 && <li>{`Total Length of 16AWG Power Cables: ${(switchOnCount * (boatLength * 0.6)).toFixed(2)} feet`}</li>}
-                        {num10mBackboneCables > 0 && <li>{`Number of NMEA 2000 32ft backbone cables: ${num10mBackboneCables}`}</li>}
-                        {num8mBackboneCables > 0 && <li>{`Number of NMEA 2000 25.6ft backbone cables: ${num8mBackboneCables}`}</li>}
-                        {num5mBackboneCables > 0 && <li>{`Number of NMEA 2000 16ft backbone cables: ${num5mBackboneCables}`}</li>}
-                        {num2mBackboneCables > 0 && <li>{`Number of NMEA 2000 6.4ft backbone cables: ${num2mBackboneCables}`}</li>}
-                        {numHalfMeterBackboneCables > 0 && <li>{`Number of NMEA 2000 1.6ft backbone cables: ${numHalfMeterBackboneCables}`}</li>}
+                        {boatLength > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 Power Injectors:</span><div>1</div></li>}
+                        {boatLength > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 6.5ft drop cables:</span><div>1</div></li>}
+                        {boatLength > 0 && switchOnCount > 0 && <li className="w-full flex"><span className="mr-auto">Total Length of 16AWG Power Cables:</span><span>{`${(switchOnCount * (boatLength * 0.6)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}ft`}</span></li>}
+                        {num10mBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 32ft backbone cables:</span><span>{num10mBackboneCables}</span></li>}
+                        {num8mBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 25.6ft backbone cables:</span><span>{num8mBackboneCables}</span></li>}
+                        {num5mBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 16ft backbone cables:</span><span>{num5mBackboneCables}</span></li>}
+                        {num2mBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 6.4ft backbone cables:</span><span>{num2mBackboneCables}</span></li>}
+                        {numHalfMeterBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 1.6ft backbone cables:</span><span>{numHalfMeterBackboneCables}</span></li>}
                     </ul>
                     <ul className="my-4">
-                        {num6ButtonKeypads > 0 && <li>{`Number of 6 Way Keypads: ${num6ButtonKeypads}`}</li>}
-                        {num12ButtonKeypads > 0 && <li>{`Number of 12 Way Keypads: ${num12ButtonKeypads}`}</li>}
-                        {numContact6Plus > 0 && <li>{`Number of 6 Output Digital Switching Boxes : ${numContact6Plus}`}</li>}
-                        {numDDS > 0 && <li>{`Number of 27 Output Digital Switching Boxes : ${numDDS}`}</li>}
-                        {num1WayTeeConnectors > 0 && <li>{`Number of 1 Way Tee Connectors : ${num1WayTeeConnectors}`}</li>}
-                        {num2WayTeeConnectors > 0 && <li>{`Number of 2 Way Tee Connectors : ${num2WayTeeConnectors}`}</li>}
-                        {num4WayTeeConnectors > 0 && <li>{`Number of 4 Way Tee Connectors : ${num4WayTeeConnectors}`}</li>}
-                        <li>{`Wireless Interface?: ${wirelessInterfaceBool ? 'Yes' : 'No'}`}</li>
+                        {num6ButtonKeypads > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Way Keypads:</span><span>{num6ButtonKeypads}</span></li>}
+                        {num12ButtonKeypads > 0 && <li className="w-full flex"><span className="mr-auto">Number of 12 Way Keypads:</span><span>{num12ButtonKeypads}</span></li>}
+                        {numContact6Plus > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Output Digital Switching Boxes:</span><span>{numContact6Plus}</span></li>}
+                        {numDDS > 0 && <li className="w-full flex"><span className="mr-auto">Number of 27 Output Digital Switching Boxes:</span><span>{numDDS}</span></li>}
+                        {num1WayTeeConnectors > 0 && <li className="w-full flex"><span className="mr-auto">Number of 1 Way Tee Connectors:</span><span>{num1WayTeeConnectors}</span></li>}
+                        {num2WayTeeConnectors > 0 && <li className="w-full flex"><span className="mr-auto">Number of 2 Way Tee Connectors:</span><span>{num2WayTeeConnectors}</span></li>}
+                        {num4WayTeeConnectors > 0 && <li className="w-full flex"><span className="mr-auto">Number of 4 Way Tee Connectors:</span><span>{num4WayTeeConnectors}</span></li>}
+                        <li className="w-full flex"><span className="mr-auto">Wireless Interface?:</span><span>{wirelessInterfaceBool ? 'Yes' : 'No'}</span></li>
                     </ul>
-                    {cablingCost > 0 && <p className="font-semibold">{`Total Cabling Cost: $${cablingCost.toFixed(2)}`}</p>}
-                    {costOfKeypads > 0 && <p className="font-semibold">{`Keypads Cost: $${costOfKeypads.toFixed(2)}`}</p>}
-                    {costOfOutputBoxes > 0 && <p className="font-semibold">{`Digital Switching Boxes Cost: $${costOfOutputBoxes.toFixed(2)}`}</p>}
-                    {costOfWirelessInterface > 0 && <p className="font-semibold">{`Wireless Interface Cost: $${costOfWirelessInterface.toFixed(2)}`}</p>}
+                    {cablingCost > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Total Cabling Cost:</span><span>{`$${cablingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
+                    {costOfKeypads > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Keypads Cost:</span><span>{`$${costOfKeypads.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
+                    {costOfOutputBoxes > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Digital Switching Boxes Cost:</span><span>{`$${costOfOutputBoxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
+                    {costOfWirelessInterface > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Wireless Interface Cost:</span><span>{`$${costOfWirelessInterface.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
 
-                    {totalCost > 0 && <p className="text-xl font-bold">{`Total Cost: $${manualTotalCost !== 0 ? Number(manualTotalCost).toFixed(2) : totalCost.toFixed(2)}`}</p>}
-                    {totalWeight > 0 && <p className="text-xl font-bold">{`Total Weight: ${(totalWeight / 1000).toFixed(3)} lbs.`}</p>}
+                    {totalCost > 0 && <p className="text-xl font-bold w-full flex"><span className="mr-auto">Total Cost:</span><span>{`$${manualTotalCost !== 0 ? Number(manualTotalCost).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : totalCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
+
+                    {totalWeight > 0 && <p className="text-xl font-bold w-full flex"><span className="mr-auto">Total Weight:</span><span>{` ${(totalWeight / 1000).toFixed(3)} lbs.`}</span></p>}
                     <button className={`${darkMode ? 'border-white' : 'border-black'} border-2 mt-4 w-full rounded-full py-1 font-semibold text-lg print:hidden ${showEditTotalCost ? 'hidden' : ''}`}
                         onClick={() => setShowEditTotalCost(true)}
                     >Edit Total Cost</button>
