@@ -49,7 +49,7 @@ app.post('/register', async (req, res) => {
             from: 'tc915004@outlook.com',
             to: email,
             subject: 'Email Verification',
-            text: `Hello ${name}, \n\nPlease verify your account by clicking this link:\nhttp://10.0.0.180:5173/register/verify-email/${verificationToken}\n\nThank You!`
+            text: `Hello ${name}, \n\nPlease verify your account by clicking this link:\nhttps://test.ideasthatfloat.com/register/verify-email/${verificationToken}\n\nThank You!`
         }
 
         let transporter = nodemailer.createTransport({
@@ -107,7 +107,7 @@ app.post('/login', async (req, res) => {
                     id: userDoc.id
                 }, jwtSecret, {}, async (err, token) => {
                     if (err) throw err;
-                    res.cookie('userToken', token, { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' });
+                    res.cookie('userToken', token, { domain: 'ideasthatfloat-server-lnr7.onrender.com', secure: true, sameSite: 'none' });
 
                     // If there is a cart token, save it to the user
                     const cartToken = req.cookies.cartToken;
@@ -146,7 +146,7 @@ app.get('/verify-token', async (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-    res.clearCookie('userToken', { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' });
+    res.clearCookie('userToken', { domain: 'ideasthatfloat-server-lnr7.onrender.com', secure: true, sameSite: 'none' });
     res.status(200).send({ message: 'logged out successfully' })
 });
 
@@ -283,7 +283,7 @@ app.post('/sign-guest-token', async (req, res) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
             }
-            res.cookie('cartToken', token, { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' })
+            res.cookie('cartToken', token, { domain: 'ideasthatfloat-server-lnr7.onrender.com', secure: true, sameSite: 'none' })
 
             // Check if a cart already exists for this token
             let cartDoc = await findCartByToken(token);
@@ -308,7 +308,7 @@ app.post('/sign-theme-token', async (req, res) => {
             if (err) {
                 return res.status(500).json({ messge: err.message });
             }
-            res.cookie('themeToken', token, { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' })
+            res.cookie('themeToken', token, { domain: 'ideasthatfloat-server-lnr7.onrender.com', secure: true, sameSite: 'none' })
             res.status(200).json(token)
         })
     } catch (err) { res.status(500).json({ message: err.message }) }
@@ -337,7 +337,7 @@ app.post('/update-theme-token', async (req, res) => {
             if (err) {
                 return res.status(500).json({ message: err.message });
             }
-            res.cookie('themeToken', token, { domain: 'website-sql-rewrite.onrender.com', secure: true, sameSite: 'none' })
+            res.cookie('themeToken', token, { domain: 'ideasthatfloat-server-lnr7.onrender.com', secure: true, sameSite: 'none' })
             res.status(200).json(token);
         })
     } catch (err) {
@@ -499,7 +499,7 @@ app.post('/reset-password-email', async (req, res) => {
                 from: 'tc915004@outlook.com',
                 to: email,
                 subject: 'Password Reset',
-                text: `You can reset your password by clicking this link:\nhttp://10.0.0.180:5173/login/reset-password/${email.split('@')[0]}/${resetPasswordToken}\n\nThank You!`
+                text: `You can reset your password by clicking this link:\nhttps://test.ideasthatfloat.com/login/reset-password/${email.split('@')[0]}/${resetPasswordToken}\n\nThank You!`
             }
 
             let transporter = nodemailer.createTransport({
@@ -615,7 +615,7 @@ app.post('/save-user-changes/:username', async (req, res) => {
                         from: 'tc915004@outlook.com',
                         to: email,
                         subject: 'Email Verification',
-                        text: `Please verify your account by clicking this link:\nhttp://10.0.0.180:5173/register/verify-email/${verificationToken}\n\nThank You!`
+                        text: `Please verify your account by clicking this link:\nhttps://test.ideasthatfloat.com/register/verify-email/${verificationToken}\n\nThank You!`
                     }
 
                     let transporter = nodemailer.createTransport({
