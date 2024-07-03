@@ -572,7 +572,7 @@ const Demos = () => {
                 terminatorMalePrice: productData.terminatorMale.cost,
                 sixOutputDigitalSwitchingBoxPrice: productData.contact6Plus.cost,
                 twentySevenOutputDigitalSwitchingBoxPrice: productData.cZoneDDS.cost,
-                wirelesInterfacePrice: productData.wirelessInterface.cost,
+                wirelessInterfacePrice: productData.wirelessInterface.cost,
                 sixWayKeypadPrice: productData.sixWayKeypad.cost,
                 twelveWayKeypadPrice: productData.twelveWayKeypad.cost
             }
