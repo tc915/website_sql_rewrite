@@ -348,6 +348,13 @@ export const getBoatSetup = async (id) => {
     return rows[0]
 }
 
+export const getBoatSetupWithUserId = async (id) => {
+    const query = `SELECT * FROM boatCalculator WHERE userId = ?`
+    const values = id
+    const [rows] = await pool.query(query, values)
+    return rows[0]
+}
+
 export const createBoatSetupTable = async (setupData) => {
     const userId = setupData.user.id;
     const query = `INSERT INTO boatCalculator (userId, boatLength, interiorLights, underwaterLights, cockpitLights, overheadLights, accentLights, dockingLights, navLights, deckLights, hardtopLights, hardtopAccentLights, helmOverheadLights, speakerLights, cupholderLights, aftSpreaderLights, forwardSpreaderLights, spotlightLights, storageLights, cabinLights, headLights, liveWellPump, baitWellPump, forwardPump, aftPump, freshwaterPump, wasteWaterPump, windshieldWipersControl, windshieldWiperSprayControl, anchorControl, towerControl, sunshadeControl, sunroofControl, airConditioningControl, wirelessInterface, momentaryRGBSwitchPrice, momentaryRGBSwitchHarnessPrice, awgPowerCablePrice, powerInjectorPrice, oneWayTeeConnectorPrice, twoWayTeeConnectorPrice, fourWayTeeConnectorPrice, backboneCable10mPrice, backboneCable8mPrice, backboneCable5mPrice, backboneCable2mPrice, backboneCableHalfMeterPrice, dropCablePrice, terminatorFemalePrice, terminatorMalePrice, sixOutputDigitalSwitchingBoxPrice, twentySevenOutputDigitalSwitchingBoxPrice, wirelessInterfacePrice, sixWayKeypadPrice, twelveWayKeypadPrice) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`

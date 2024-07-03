@@ -10,7 +10,7 @@ import fs from 'fs'
 import dotenv from 'dotenv'
 import url from 'url'
 import crypto from 'crypto'
-import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getPricingsForProduct, getProduct, getProducts, getProdutsInCart, getThinkTankContent, updateTable } from './database.js';
+import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getPricingsForProduct, getProduct, getProducts, getProdutsInCart, getThinkTankContent, updateTable } from './database.js';
 dotenv.config();
 
 const admins = JSON.parse(fs.readFileSync(new URL('./permission-list.json', import.meta.url), 'utf8'));
@@ -685,6 +685,17 @@ app.post('/save-boat-setup', async (req, res) => {
         const setupData = req.body;
         const boatSetup = await createBoatSetupTable(setupData)
         res.status(200).json(boatSetup)
+    } catch (err) {
+        console.log(err.stack)
+        res.status(500).json(err.stack)
+    }
+});
+
+app.get('/boat-setup/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const boatSetupDoc = await getBoatSetupWithUserId(userId);
+        res.status(200).json(boatSetupDoc);
     } catch (err) {
         console.log(err.stack)
         res.status(500).json(err.stack)

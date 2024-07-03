@@ -223,6 +223,7 @@ const Demos = () => {
     const [subtractToTotalCostAmount, setSubtractToTotalCostAmount] = useState('');
     const [showChangeComponentPricing, setShowChangeComponentPricing] = useState(false);
     const [showEditTotalCost, setShowEditTotalCost] = useState(false);
+    const [boatSetupData, setBoatSetupData] = useState({});
 
     const lightTypes = Object.keys(lightStates)
     const pumpTypes = Object.keys(pumpStates)
@@ -577,11 +578,26 @@ const Demos = () => {
                 twelveWayKeypadPrice: productData.twelveWayKeypad.cost
             }
             const { data } = await axios.post('/save-boat-setup', setupData)
-            console.log(data)
+            setBoatSetupData(data);
         } else {
             navigate('/login')
         }
     }
+
+    useEffect(() => {
+        if (user) {
+            try {
+                const getBoatSetupData = async () => {
+                    const { data } = await axios.get(`/boat-setup/${user.id}`)
+                    setBoatSetupData(data)
+                    console.log(data)
+                }
+                getBoatSetupData()
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }, [user])
 
     return (
         <motion.div className={`pt-32 ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'}`}
