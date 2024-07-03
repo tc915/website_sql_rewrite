@@ -38,7 +38,7 @@ const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, c
     return (
         <div key={index} className={`text-3xl mt-10 flex border-b-2 border-[#FF7F11] pb-16 ${darkMode ? 'text-white' : 'text-black'}`}>
             <div className="w-[20rem] h-[20rem] flex justify-center">
-                <img src={`https://website-sql-rewrite.onrender.com/uploads/${product.details.thumbnailImageId}`} className="h-full object-cover" />
+                <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.details.thumbnailImageId}`} className="h-full object-cover" />
             </div>
             <div className="flex flex-col justify-center ml-6">
                 <p className="mb-8 font-semibold text-xl">{product.details.name}</p>

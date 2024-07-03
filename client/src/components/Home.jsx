@@ -59,7 +59,7 @@ const Product = ({ product, index, darkMode, chooseProductFunc, setChooseProduct
                 setChooseProductPopup(false);
             }}
         >
-            <img src={`https://website-sql-rewrite.onrender.com/uploads/${product.thumbnailImageId}`} className='h-[60%] mt-10 object-cover' />
+            <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.thumbnailImageId}`} className='h-[60%] mt-10 object-cover' />
             <p className="mt-auto mb-4 font-semibold text-xl text-center px-10">{product.name}</p>
         </button>
     )
@@ -142,9 +142,9 @@ const Home = ({ scrollY }) => {
         }
     }, [scrollY]);
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         if (user) {
@@ -665,7 +665,7 @@ const Home = ({ scrollY }) => {
                                 const matchingImage = productsPageImages.find(image => image && image.imgId === product.thumbnailImageId);
                                 return (
                                     <div key={index} className={`h-2/3 w-2/3 flex justify-center items-center ${productNum === index + 1 ? '' : 'hidden'}`}>
-                                        {matchingImage && <img src={`https://website-sql-rewrite.onrender.com/uploads/${matchingImage.imgSrc}`} className="h-[75%] object-cover"></img>}
+                                        {matchingImage && <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${matchingImage.imgSrc}`} className="h-[75%] object-cover"></img>}
                                     </div>
                                 );
                             })}
@@ -729,7 +729,7 @@ const Home = ({ scrollY }) => {
                         </div>
                         <div className="w-1/2 flex justify-center items-center">
                             <div className="w-full h-[45%] bg-black mr-24">
-                                <img src={`https://website-sql-rewrite.onrender.com/uploads/${thinkTankImageId}`} className="object-cover h-full w-full"></img>
+                                <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${thinkTankImageId}`} className="object-cover h-full w-full"></img>
                             </div>
                         </div>
                     </div>

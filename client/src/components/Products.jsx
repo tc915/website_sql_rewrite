@@ -72,7 +72,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
             )}
             <Link to={`/products/${product.id}`}>
                 <button className="w-full h-full flex flex-col items-center mb-24">
-                    <motion.img src={`https://website-sql-rewrite.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 object-cover'
+                    <motion.img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 object-cover'
                         variants={productWidgetImageVariants}
                         initial="initial"
                         animate={isHoverContainer ? "hover" : "initial"}
