@@ -28,7 +28,7 @@ app.use('/uploads', express.static('uploads'));
 app.use(cors({
     credentials: true,
     origin: (origin, callback) => {
-        let allowedOrigins = ['http://localhost:5173', 'http://10.0.0.180:5173', 'http://10.0.0.180:3000', 'https://ideasthatfloat.test.ideasthatfloat.com', 'https://website-sql-rewrite.onrender.com'];
+        let allowedOrigins = ['http://localhost:5173', 'http://10.0.0.180:5173', 'http://10.0.0.180:3000', 'https://test.ideasthatfloat.com', 'https://website-sql-rewrite.onrender.com'];
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {

@@ -64,19 +64,19 @@ const Demos = () => {
     })
 
     const [productData, setProductData] = useState({
-        momentarySwitch: {
+        momentaryRGBSwitch: {
             name: 'Momentary RGB Switch (22mm)',
             weight: 16.22,
             cost: 6,
             units: 'each'
         },
-        momentarySwitchHarness: {
+        momentaryRGBSwitchHarness: {
             name: 'Momentary RGB Switch Harness (22mm)',
             weight: 8.79,
             cost: 5,
             units: 'each'
         },
-        awgGPTM: {
+        awgPowerCable: {
             name: '16 AWG GPTM Cable',
             weight: 7.25,
             cost: 0.144,
@@ -86,12 +86,6 @@ const Demos = () => {
             name: 'NMEA 2000 Power Injector',
             weight: 120,
             cost: 22.97,
-            units: 'each'
-        },
-        tConnector: {
-            name: 'NMEA 2000 T-Connector',
-            weight: 29.15,
-            cost: 24.99,
             units: 'each'
         },
         backboneCable10m: {
@@ -160,13 +154,13 @@ const Demos = () => {
             cost: 38.01,
             units: 'each'
         },
-        contact6Plus: {
+        sixOutputDigitalSwitchingBox: {
             name: '6 Output Digital Switching Box',
             weight: 600,
             cost: 436.21,
             units: 'each'
         },
-        cZoneDDS: {
+        twentySevenOutputDigitalSwitchingBox: {
             name: '27 Output Digital Switching Box',
             weight: 1040,
             cost: 1572.39,
@@ -200,7 +194,7 @@ const Demos = () => {
     const [numDevices, setNumDevices] = useState(0);
     const [num12ButtonKeypads, setNum12ButtonKeypads] = useState(0);
     const [num6ButtonKeypads, setNum6ButtonKeypads] = useState(0);
-    const [numContact6Plus, setNumContact6Plus] = useState(0);
+    const [numsixOutputDigitalSwitchingBox, setNumsixOutputDigitalSwitchingBox] = useState(0);
     const [numDDS, setNumDDS] = useState(0);
     const [num10mBackboneCables, setNum10mBackboneCables] = useState(0);
     const [num8mBackboneCables, setNum8mBackboneCables] = useState(0);
@@ -290,7 +284,7 @@ const Demos = () => {
     useEffect(() => {
         let newNum6ButtonKeypads = 0
         let newNum12ButtonKeypads = 0
-        let newNumContact6Plus = 0
+        let newNumsixOutputDigitalSwitchingBox = 0
         let newNumDDS = 0
         if (switchOnCount > 0 || boatLength > 0) {
             let keypadRemainder = switchOnCount % 12;
@@ -303,23 +297,23 @@ const Demos = () => {
             }
             let outputBoxRemainder = switchOnCount % 27;
             if (outputBoxRemainder <= 6 && outputBoxRemainder !== 0) {
-                newNumContact6Plus = 1
+                newNumsixOutputDigitalSwitchingBox = 1
                 newNumDDS = Math.floor(switchOnCount / 27)
             } else if (outputBoxRemainder > 6 || outputBoxRemainder === 0) {
-                newNumContact6Plus = 0
+                newNumsixOutputDigitalSwitchingBox = 0
                 newNumDDS = Math.ceil(switchOnCount / 27)
             } else {
-                newNumContact6Plus = 0
+                newNumsixOutputDigitalSwitchingBox = 0
                 newNumDDS = Math.floor(switchOnCount / 27)
             }
             setNum12ButtonKeypads(newNum12ButtonKeypads)
             setNum6ButtonKeypads(newNum6ButtonKeypads)
-            setNumContact6Plus(newNumContact6Plus)
+            setNumsixOutputDigitalSwitchingBox(newNumsixOutputDigitalSwitchingBox)
             setNumDDS(newNumDDS)
         } else if (switchOnCount === 0) {
             setNum6ButtonKeypads(0);
             setNum12ButtonKeypads(0);
-            setNumContact6Plus(0);
+            setNumsixOutputDigitalSwitchingBox(0);
             setNumDDS(0)
         }
     }, [switchOnCount, boatLength])
@@ -369,8 +363,8 @@ const Demos = () => {
         } else {
             numWirelessInterface = 0;
         }
-        setNumDevices(numContact6Plus + numDDS + num12ButtonKeypads + num6ButtonKeypads + numWirelessInterface)
-    }, [numContact6Plus, num6ButtonKeypads, wirelessInterfaceBool])
+        setNumDevices(numsixOutputDigitalSwitchingBox + numDDS + num12ButtonKeypads + num6ButtonKeypads + numWirelessInterface)
+    }, [numsixOutputDigitalSwitchingBox, num6ButtonKeypads, wirelessInterfaceBool])
 
     useEffect(() => {
         if (numDevices > 0) {
@@ -402,7 +396,7 @@ const Demos = () => {
 
     useEffect(() => {
         if (switchOnCount > 0 && boatLength > 0) {
-            let newPowerCablesCost = (productData.awgGPTM.cost * (0.6 * boatLength) * switchOnCount);
+            let newPowerCablesCost = (productData.awgPowerCable.cost * (0.6 * boatLength) * switchOnCount);
             let newBackboneCablesCost = (
                 (num10mBackboneCables * productData.backboneCable10m.cost) +
                 (num8mBackboneCables * productData.backboneCable8m.cost) +
@@ -433,8 +427,8 @@ const Demos = () => {
 
     useEffect(() => {
         let newCostOfOutputBoxes = (
-            (numContact6Plus * productData.contact6Plus.cost) +
-            (numDDS * productData.cZoneDDS.cost)
+            (numsixOutputDigitalSwitchingBox * productData.sixOutputDigitalSwitchingBox.cost) +
+            (numDDS * productData.twentySevenOutputDigitalSwitchingBox.cost)
         );
         let newCostOfKeypads = (
             (num12ButtonKeypads * productData.twelveWayKeypad.cost) +
@@ -450,7 +444,7 @@ const Demos = () => {
         setCostOfKeypads(newCostOfKeypads);
         setCostOfOutputBoxes(newCostOfOutputBoxes);
         setCostOfWirelessInterface(newCostOfWirelessInterface);
-    }, [cablingCost, numContact6Plus, num6ButtonKeypads, wirelessInterfaceBool])
+    }, [cablingCost, numsixOutputDigitalSwitchingBox, num6ButtonKeypads, wirelessInterfaceBool])
 
     useEffect(() => {
         setManualTotalCost(0)
@@ -467,7 +461,7 @@ const Demos = () => {
                 (num2WayTeeConnectors * productData.twoWayTeeConnector.weight) +
                 (num4WayTeeConnectors * productData.fourWayTeeConnector.weight)
             )
-            let powerCablesWeight = (productData.awgGPTM.weight * (0.6 * boatLength) * switchOnCount)
+            let powerCablesWeight = (productData.awgPowerCable.weight * (0.6 * boatLength) * switchOnCount)
             let nmeaComponentsWeight = (productData.powerInjector.weight + (teeConnectorsWeight + (numDevices * productData.dropCable.weight)) + backboneCablesWeight)
             let totalCablesWeight = powerCablesWeight + nmeaComponentsWeight;
             let weightOfKeypads = (
@@ -475,8 +469,8 @@ const Demos = () => {
                 (num12ButtonKeypads * productData.twelveWayKeypad.weight)
             )
             let weightOfOutputBoxes = (
-                (numContact6Plus * productData.contact6Plus.weight) +
-                (numDDS * productData.cZoneDDS.weight)
+                (numsixOutputDigitalSwitchingBox * productData.sixOutputDigitalSwitchingBox.weight) +
+                (numDDS * productData.twentySevenOutputDigitalSwitchingBox.weight)
             )
             let weightOfWirelessInterface = false;
             if (wirelessInterfaceBool) {
@@ -556,9 +550,9 @@ const Demos = () => {
                 sunroofControl: boatControlStates.sunroof,
                 airConditioningControl: boatControlStates.airConditioning,
                 wirelessInterface: wirelessInterfaceBool,
-                momentaryRGBSwitchPrice: productData.momentarySwitch.cost,
-                momentaryRGBSwitchHarnessPrice: productData.momentarySwitchHarness.cost,
-                awgPowerCablePrice: productData.awgGPTM.cost,
+                momentaryRGBSwitchPrice: productData.momentaryRGBSwitch.cost,
+                momentaryRGBSwitchHarnessPrice: productData.momentaryRGBSwitchHarness.cost,
+                awgPowerCablePrice: productData.awgPowerCable.cost,
                 powerInjectorPrice: productData.powerInjector.cost,
                 oneWayTeeConnectorPrice: productData.oneWayTeeConnector.cost,
                 twoWayTeeConnectorPrice: productData.twoWayTeeConnector.cost,
@@ -571,8 +565,8 @@ const Demos = () => {
                 dropCablePrice: productData.dropCable.cost,
                 terminatorFemalePrice: productData.terminatorFemale.cost,
                 terminatorMalePrice: productData.terminatorMale.cost,
-                sixOutputDigitalSwitchingBoxPrice: productData.contact6Plus.cost,
-                twentySevenOutputDigitalSwitchingBoxPrice: productData.cZoneDDS.cost,
+                sixOutputDigitalSwitchingBoxPrice: productData.sixOutputDigitalSwitchingBox.cost,
+                twentySevenOutputDigitalSwitchingBoxPrice: productData.twentySevenOutputDigitalSwitchingBox.cost,
                 wirelessInterfacePrice: productData.wirelessInterface.cost,
                 sixWayKeypadPrice: productData.sixWayKeypad.cost,
                 twelveWayKeypadPrice: productData.twelveWayKeypad.cost
@@ -590,7 +584,6 @@ const Demos = () => {
                 const getBoatSetupData = async () => {
                     const { data } = await axios.get(`/boat-setup/${user.id}`)
                     setBoatSetupData(data)
-                    console.log(data)
                 }
                 getBoatSetupData()
             } catch (err) {
@@ -598,6 +591,55 @@ const Demos = () => {
             }
         }
     }, [user])
+
+    useEffect(() => {
+        const isEmpty = obj => Object.keys(obj).length === 0;
+        if (!isEmpty(boatSetupData)) {
+            setBoatLength(boatSetupData.boatLength)
+            if (boatSetupData.wirelessInterface) {
+                setWirelessInterfaceBool(true)
+            }
+
+            const newLightStates = { ...lightStates };
+            const newBoatControlStates = { ...boatControlStates };
+            const newPumpStates = { ...pumpStates };
+            const newProductData = { ...productData };
+
+            lightTypes.forEach(light => {
+                const parameterName = light + 'Lights'
+                if (boatSetupData[parameterName]) {
+                    newLightStates[light] = true;
+                }
+            });
+
+            pumpTypes.forEach(pump => {
+                const parameterName = pump + 'Pump'
+                if (boatSetupData[parameterName]) {
+                    newPumpStates[pump] = true;
+                }
+            })
+
+            boatControlTypes.forEach(control => {
+                const parameterName = control + 'Control'
+                if (boatSetupData[parameterName]) {
+                    newBoatControlStates[control] = true;
+                }
+            })
+
+            productKeys.forEach(product => {
+                const parameterName = product + 'Price'
+                if (boatSetupData[parameterName] !== productData[product].cost) {
+                    newProductData[product] = boatSetupData[parameterName]
+                }
+            })
+            console.log(newProductData)
+
+            setLightStates(newLightStates);
+            setPumpStates(newPumpStates);
+            setBoatControlStates(newBoatControlStates);
+            setProductData(newProductData);
+        }
+    }, [boatSetupData])
 
     return (
         <motion.div className={`pt-32 ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'}`}
@@ -665,7 +707,7 @@ const Demos = () => {
                     <ul className="my-4">
                         {num6ButtonKeypads > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Way Keypads:</span><span>{num6ButtonKeypads}</span></li>}
                         {num12ButtonKeypads > 0 && <li className="w-full flex"><span className="mr-auto">Number of 12 Way Keypads:</span><span>{num12ButtonKeypads}</span></li>}
-                        {numContact6Plus > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Output Digital Switching Boxes:</span><span>{numContact6Plus}</span></li>}
+                        {numsixOutputDigitalSwitchingBox > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Output Digital Switching Boxes:</span><span>{numsixOutputDigitalSwitchingBox}</span></li>}
                         {numDDS > 0 && <li className="w-full flex"><span className="mr-auto">Number of 27 Output Digital Switching Boxes:</span><span>{numDDS}</span></li>}
                         {num1WayTeeConnectors > 0 && <li className="w-full flex"><span className="mr-auto">Number of 1 Way Tee Connectors:</span><span>{num1WayTeeConnectors}</span></li>}
                         {num2WayTeeConnectors > 0 && <li className="w-full flex"><span className="mr-auto">Number of 2 Way Tee Connectors:</span><span>{num2WayTeeConnectors}</span></li>}
