@@ -37,10 +37,6 @@ app.use(cors({
     }
 }));
 
-app.get('/', (req, res) => {
-    res.send('home')
-})
-
 app.post('/register', async (req, res) => {
     const { name, username, email, password } = req.body;
     try {
