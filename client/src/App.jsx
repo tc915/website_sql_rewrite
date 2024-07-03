@@ -38,7 +38,7 @@ let baseURL;
 if (process.env.NODE_ENV === "development") {
     baseURL = "http://localhost:4000";
 } else {
-    baseURL = 'https://website-sql-rewrite.onrender.com';
+    baseURL = 'https://ideasthatfloat-server.onrender.com';
 }
 
 axios.defaults.baseURL = baseURL;
