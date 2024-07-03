@@ -548,7 +548,7 @@ const Demos = () => {
                 freshwaterPump: pumpStates.freshwater,
                 wasteWaterPump: pumpStates.wasteWater,
                 windshieldWipersControl: boatControlStates.windshieldWipers,
-                windshieldWipersSprayControl: boatControlStates.windshieldWiperSpray,
+                windshieldWiperSprayControl: boatControlStates.windshieldWiperSpray,
                 anchorControl: boatControlStates.anchor,
                 towerControl: boatControlStates.tower,
                 sunshadeControl: boatControlStates.sunshade,
