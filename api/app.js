@@ -682,7 +682,7 @@ app.post('/save-boat-setup', async (req, res) => {
         console.log(setupData.userId)
         const boatSetupAlreadySaved = await getBoatSetupWithUserId(setupData.userId)
         if (boatSetupAlreadySaved) {
-            await updateTable('boatCalculator', setupData)
+            await updateTable('boatCalculator', boatSetupAlreadySaved)
             res.status(200).json('Boat setup saved')
             console.log('boat setup saved to already existing setup')
         } else {
