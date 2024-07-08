@@ -38,37 +38,40 @@ app.use(cors({
 }));
 
 app.post('/register', async (req, res) => {
-    const { name, username, email, password } = req.body;
+    const { name, username, email, password, googleUser } = req.body;
     try {
+        if (googleUser) {
+            await createUser(name, email, password, null)
+        } else {
+            const verificationToken = crypto.randomBytes(20).toString('hex');
 
-        const verificationToken = crypto.randomBytes(20).toString('hex');
+            await createUser(name, email, bcrypt.hashSync(password, bcryptSalt), verificationToken)
 
-        const userDoc = await createUser(name, email, bcrypt.hashSync(password, bcryptSalt), verificationToken)
+            let mailOptions = {
+                from: 'tc915004@outlook.com',
+                to: email,
+                subject: 'Email Verification',
+                text: `Hello ${name}, \n\nPlease verify your account by clicking this link:\nhttps://test.ideasthatfloat.com/register/verify-email/${verificationToken}\n\nThank You!`
+            }
 
-        let mailOptions = {
-            from: 'tc915004@outlook.com',
-            to: email,
-            subject: 'Email Verification',
-            text: `Hello ${name}, \n\nPlease verify your account by clicking this link:\nhttps://test.ideasthatfloat.com/register/verify-email/${verificationToken}\n\nThank You!`
+            let transporter = nodemailer.createTransport({
+                service: 'Outlook365',
+                auth: {
+                    user: 'tc915004@outlook.com',
+                    pass: 'Tc1038668!278'
+                }
+            });
+
+            transporter.sendMail(mailOptions, (err, data) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ message: 'Error occurred' })
+                } else {
+                    console.log('Verification email sent');
+                    res.status(200).json({ message: 'Verification email sent' })
+                }
+            });
         }
-
-        let transporter = nodemailer.createTransport({
-            service: 'Outlook365',
-            auth: {
-                user: 'tc915004@outlook.com',
-                pass: 'Tc1038668!278'
-            }
-        });
-
-        transporter.sendMail(mailOptions, (err, data) => {
-            if (err) {
-                console.log(err);
-                res.status(500).json({ message: 'Error occurred' })
-            } else {
-                console.log('Verification email sent');
-                res.status(200).json({ message: 'Verification email sent' })
-            }
-        });
     } catch (err) {
         res.status(422).json(err);
     }

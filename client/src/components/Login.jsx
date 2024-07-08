@@ -62,13 +62,19 @@ const Login = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        if (googleUser !== null) {
+            loginUser();
+        }
+    }, [googleUser])
+
 
     return (
         <div>
             <div className={`flex flex-col justify-center items-center h-screen pt-32 ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}>
                 <div className={`flex flex-col justify-center items-center ${darkMode ? 'bg-white' : 'bg-[#131313] text-white'} px-10 py-6 rounded-xl shadow-md`}>
                     <h1 className="font-semibold text-3xl mb-8">Login</h1>
-                    <div className="w-full mb-6">
+                    <div className="w-full mb-6 flex justify-center items-center">
                         <GoogleLogin
                             onSuccess={(credentialRsponse) => {
                                 const credentialResponseDecoded = jwtDecode(credentialRsponse.credential);

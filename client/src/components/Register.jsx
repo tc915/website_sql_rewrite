@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import Footer from "../partials/Footer";
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 const Register = () => {
 
@@ -11,18 +13,25 @@ const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPasswordBool, setConfirmPasswordBool] = useState(false);
-    const [errorCode, setErrorCode] = useState()
+    const [errorCode, setErrorCode] = useState();
+    const [googleUser, setGoogleUser] = useState(null);
 
     const registerUser = () => {
-        let username = email.split('@');
-        username = username[0];
-        axios.post('/register', { name, username, email, password })
-            .then((res) => {
-                navigate('/register/verify-email')
-            })
-            .catch((err) => {
-                setErrorCode(err.response.data.code);
-            })
+        if (googleUser) {
+            let username = googleUser.email.split('@');
+            username = username[0];
+            axios.post('/register', { name: googleUser.name, username, email: googleUser.email, password: null, googleUser: true })
+        } else {
+            let username = email.split('@');
+            username = username[0];
+            axios.post('/register', { name, username, email, password, googleUser: false })
+                .then((res) => {
+                    navigate('/register/verify-email')
+                })
+                .catch((err) => {
+                    setErrorCode(err.response.data.code);
+                })
+        }
     }
 
     useEffect(() => {
@@ -41,6 +50,17 @@ const Register = () => {
             <div className="flex flex-col justify-center items-center h-screen pt-32">
                 <div className="flex flex-col justify-center items-center bg-[#131313] px-10 py-6 rounded-xl text-white shadow-md">
                     <h1 className="font-semibold text-3xl mb-8">Register</h1>
+                    <div className="w-full mb-6 flex justify-center items-center">
+                        <GoogleLogin
+                            onSuccess={(credentialRsponse) => {
+                                const credentialResponseDecoded = jwtDecode(credentialRsponse.credential);
+                                setGoogleUser(credentialResponseDecoded);
+                            }}
+                            onError={() => {
+                                console.log('Registration failed');
+                            }}
+                        />
+                    </div>
                     <form className="flex flex-col"
                         onSubmit={(ev) => {
                             ev.preventDefault();
