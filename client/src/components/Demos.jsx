@@ -632,7 +632,6 @@ const Demos = () => {
                     newProductData[product].cost = boatSetupData[parameterName]
                 }
             })
-            console.log(newProductData)
             setLightStates(newLightStates);
             setPumpStates(newPumpStates);
             setBoatControlStates(newBoatControlStates);
