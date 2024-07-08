@@ -43,6 +43,17 @@ export const createUser = async (name, email, password, verificationToken) => {
     return user
 }
 
+export const createUserWithGoogle = async (name, email, confirmed) => {
+    const username = email.split('@')[0]
+    const [result] = await pool.query(`
+        INSERT INTO users (name, username, email, confirmed)
+        VALUES (?, ?, ?, ?)
+        `, [name, username, email, confirmed])
+    const id = result.insertId
+    const user = await findUserById(id)
+    return user
+}
+
 export const findUserByEmail = async (email) => {
     const [rows] = await pool.query(`
         SELECT *

@@ -21,6 +21,10 @@ const Register = () => {
             let username = googleUser.email.split('@');
             username = username[0];
             axios.post('/register', { name: googleUser.name, username, email: googleUser.email, password: null, googleUser: true })
+                .then((res) => {
+                    navigate('/login')
+                })
+                .catch((err) => console.log(err))
         } else {
             let username = email.split('@');
             username = username[0];
@@ -44,6 +48,12 @@ const Register = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    useEffect(() => {
+        if (googleUser !== null) {
+            registerUser();
+        }
+    }, [googleUser])
 
     return (
         <div>
