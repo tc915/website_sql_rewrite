@@ -572,7 +572,7 @@ const Demos = () => {
                 twelveWayKeypadPrice: productData.twelveWayKeypad.cost
             }
             const { data } = await axios.post('/save-boat-setup', setupData)
-            setBoatSetupData(data);
+            // setBoatSetupData(data);
         } else {
             navigate('/login')
         }
