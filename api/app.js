@@ -679,8 +679,13 @@ app.get('/showcase-products', async (req, res) => {
 app.post('/save-boat-setup', async (req, res) => {
     try {
         const setupData = req.body;
-        const boatSetup = await createBoatSetupTable(setupData)
-        res.status(200).json(boatSetup)
+        const boatSetupAlreadySaved = getBoatSetupWithUserId(setupData.user)
+        if (boatSetupAlreadySaved) {
+            res.status(200).json(boatSetupAlreadySaved)
+        } else {
+            await updateTable('boatCalculator', setupData)
+            res.status(201).json('Boat setup saved')
+        }
     } catch (err) {
         console.log(err.stack)
         res.status(500).json(err.stack)
