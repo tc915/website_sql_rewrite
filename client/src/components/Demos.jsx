@@ -626,10 +626,12 @@ const Demos = () => {
                 }
             })
 
+            console.log(boatSetupData)
             productKeys.forEach(product => {
+
                 const parameterName = product + 'Price'
                 if (boatSetupData[parameterName].cost !== productData[product].cost) {
-                    newProductData[product].cost = boatSetupData[parameterName].cost
+                    // newProductData[product].cost = boatSetupData[parameterName].cost
                 }
             })
             console.log(newProductData)
