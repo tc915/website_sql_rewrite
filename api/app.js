@@ -679,7 +679,7 @@ app.get('/showcase-products', async (req, res) => {
 app.post('/save-boat-setup', async (req, res) => {
     try {
         const setupData = req.body;
-        const boatSetupAlreadySaved = getBoatSetupWithUserId(setupData.user)
+        const boatSetupAlreadySaved = getBoatSetupWithUserId(setupData.userId)
         if (boatSetupAlreadySaved) {
             await updateTable('boatCalculator', setupData)
             res.status(200).json('Boat setup saved')

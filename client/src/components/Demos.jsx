@@ -515,7 +515,7 @@ const Demos = () => {
     const saveBuildSetup = async () => {
         if (user) {
             const setupData = {
-                user,
+                userId: user.id,
                 boatLength,
                 interiorLights: lightStates.interior,
                 underwaterLights: lightStates.underwater,
