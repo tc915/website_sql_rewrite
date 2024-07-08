@@ -642,7 +642,7 @@ const Demos = () => {
 
     return (
         <>
-            <div className={`absolute z-[99] bg-black/50 w-full h-screen flex justify-center items-center ${showSaveSuccessfulPopup ? '' : 'hidden'}`}>
+            <div className={`fixed top-0 left-0 z-[99] bg-black/50 w-full h-screen flex justify-center items-center ${showSaveSuccessfulPopup ? '' : 'hidden'}`}>
                 <div className="w-[25rem] h-[15rem] bg-[#131313] border-4 border-[#FF7F11] flex flex-col justify-center items-center rounded-xl">
                     <p className="text-white font-semibold text-3xl">Setup Saved</p>
                     <button className="bg-white px-6 py-1 text-2xl font-semibold rounded-xl mt-6"
