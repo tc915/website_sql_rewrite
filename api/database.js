@@ -91,6 +91,8 @@ export const updateTable = async (tableName, doc) => {
         SET ${setClause}
         WHERE id = ?
     `, values);
+
+    console.log(result)
 }
 
 
