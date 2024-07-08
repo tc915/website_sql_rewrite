@@ -72,6 +72,7 @@ app.post('/register', async (req, res) => {
                 }
             });
         }
+        res.status(200).json('User Registered')
     } catch (err) {
         res.status(422).json(err);
     }
