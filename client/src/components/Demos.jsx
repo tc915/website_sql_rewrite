@@ -584,6 +584,7 @@ const Demos = () => {
                 const getBoatSetupData = async () => {
                     const { data } = await axios.get(`/boat-setup/${user.id}`)
                     setBoatSetupData(data)
+                    console.log('got setup data')
                 }
                 getBoatSetupData()
             } catch (err) {
