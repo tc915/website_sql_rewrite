@@ -679,7 +679,7 @@ app.get('/showcase-products', async (req, res) => {
 app.post('/save-boat-setup', async (req, res) => {
     try {
         const setupData = req.body;
-        console.log(setupData)
+        console.log(setupData.userId)
         const boatSetupAlreadySaved = await getBoatSetupWithUserId(setupData.userId)
         console.log(boatSetupAlreadySaved)
         if (boatSetupAlreadySaved) {
