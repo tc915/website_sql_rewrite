@@ -1,13 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "../partials/Footer";
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from "jwt-decode";
+import { UserContext } from "../UserContext";
 
 const Register = () => {
 
     const navigate = useNavigate();
+    const { setUser } = useContext(UserContext);
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -22,7 +24,8 @@ const Register = () => {
             username = username[0];
             axios.post('/register', { name: googleUser.name, username, email: googleUser.email, password: null, googleUser: true })
                 .then((res) => {
-                    navigate('/login')
+                    setUser(res.data);
+                    navigate('/');
                 })
                 .catch((err) => console.log(err))
         } else {

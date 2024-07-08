@@ -41,7 +41,8 @@ app.post('/register', async (req, res) => {
     const { name, username, email, password, googleUser } = req.body;
     try {
         if (googleUser) {
-            await createUserWithGoogle(name, email, true)
+            const userDoc = await createUserWithGoogle(name, email, true)
+            res.status(201).json(userDoc)
         } else {
             const verificationToken = crypto.randomBytes(20).toString('hex');
 
@@ -71,8 +72,8 @@ app.post('/register', async (req, res) => {
                     res.status(200).json({ message: 'Verification email sent' })
                 }
             });
+            res.status(201).json('User Registered')
         }
-        res.status(200).json('User Registered')
     } catch (err) {
         res.status(422).json(err);
     }
