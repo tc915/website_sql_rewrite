@@ -3,6 +3,8 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import Footer from "../partials/Footer";
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
 
@@ -11,23 +13,40 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [incorrectPopUpText, setIncorrectPopUpText] = useState('');
+    const [googleUser, setGoogleUser] = useState(null);
 
     const { setUser, darkMode } = useContext(UserContext);
 
     const loginUser = async () => {
-        let username = email.split('@');
-        username = username[0];
-        try {
-            const res = await axios.post('/login', { username, email, password });
-            setUser(res.data);
-            console.log(res);
-            navigate('/');
-        } catch (e) {
-            console.log(e);
-            if (e.message === 'Request failed with status code 420') {
-                setIncorrectPopUpText('Email not verified')
-            } else if (e.message === 'Request failed with status code 422') {
-                setIncorrectPopUpText('User not found');
+        if (googleUser) {
+            let username = googleUser.email.split('@');
+            username = username[0];
+            try {
+                const res = await axios.post('/login', { username, email: googleUser.email, password: null, googleUser: true });
+                setUser(res.data);
+                navigate('/')
+            } catch (e) {
+                console.log(e);
+                if (e.message === 'Request failed with status code 420') {
+                    setIncorrectPopUpText('Email not verified')
+                } else if (e.message === 'Request failed with status code 422') {
+                    setIncorrectPopUpText('User not found');
+                }
+            }
+        } else {
+            let username = email.split('@');
+            username = username[0];
+            try {
+                const res = await axios.post('/login', { username, email, password, googleUser: false });
+                setUser(res.data);
+                navigate('/');
+            } catch (e) {
+                console.log(e);
+                if (e.message === 'Request failed with status code 420') {
+                    setIncorrectPopUpText('Email not verified')
+                } else if (e.message === 'Request failed with status code 422') {
+                    setIncorrectPopUpText('User not found');
+                }
             }
         }
     }
@@ -49,6 +68,17 @@ const Login = () => {
             <div className={`flex flex-col justify-center items-center h-screen pt-32 ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}>
                 <div className={`flex flex-col justify-center items-center ${darkMode ? 'bg-white' : 'bg-[#131313] text-white'} px-10 py-6 rounded-xl shadow-md`}>
                     <h1 className="font-semibold text-3xl mb-8">Login</h1>
+                    <div className="w-full mb-6">
+                        <GoogleLogin
+                            onSuccess={(credentialRsponse) => {
+                                const credentialResponseDecoded = jwtDecode(credentialRsponse.credential);
+                                setGoogleUser(credentialResponseDecoded);
+                            }}
+                            onError={() => {
+                                console.log('Login failed');
+                            }}
+                        />
+                    </div>
                     <form className="flex flex-col"
                         onSubmit={(ev) => {
                             ev.preventDefault();

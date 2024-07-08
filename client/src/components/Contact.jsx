@@ -84,7 +84,7 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
                 animate="animate"
             >
                 <img className="absolute -z-10 -translate-y-[15rem]" src="contact_background_unsplash.jpg" />
-                <div className="h-[41rem] flex text-white">
+                <div className="h-[48rem] flex text-white">
                     <form className="w-1/2 p-44 -mt-16"
                         onSubmit={(ev) => {
                             ev.preventDefault();

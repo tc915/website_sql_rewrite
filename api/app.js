@@ -92,15 +92,15 @@ app.get('/verify-email/:token', async (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, googleUser } = req.body;
     try {
         const userDoc = await findUserByUsername(username);
         if (!userDoc) {
             res.status(422).json({ message: 'user not found' });
-        } else if (!userDoc.confirmed) {
+        } else if (!userDoc.confirmed && !googleUser) {
             res.status(420).json({ message: 'Email not verified' })
         } else {
-            const passOk = bcrypt.compareSync(password, userDoc.password);
+            const passOk = googleUser || bcrypt.compareSync(password, userDoc.password);
             if (passOk) {
                 jwt.sign({
                     username: userDoc.username,
@@ -129,6 +129,7 @@ app.post('/login', async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 });
+
 
 
 app.get('/verify-token', async (req, res) => {
