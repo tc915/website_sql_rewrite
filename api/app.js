@@ -686,7 +686,7 @@ app.post('/save-boat-setup', async (req, res) => {
                 id: boatSetupAlreadySaved.id,
                 ...setupData
             }
-            await updateTable('boatCalculator', boatSetupAlreadySaved)
+            await updateTable('boatCalculator', newData)
             res.status(200).json('Boat setup saved')
             console.log('boat setup saved to already existing setup')
         } else {
