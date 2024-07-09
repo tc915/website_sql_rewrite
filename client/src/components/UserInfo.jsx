@@ -59,13 +59,13 @@ const UserInfo = () => {
                     >Ok</button>
                 </div>
             </div>
-            <div className={`pt-32 w-full h-screen ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} flex`}>
-                <div className="h-full w-[20rem] lgMobile:w-full flex flex-col py-16">
-                    <button className={`${page === 'accountInfo' ? 'bg-[#FF7F11] text-white' : ''} h-[4rem] rounded-e-full mb-4 flex items-center pl-10 text-xl lgMobile:text-sm font-semibold`}
+            <div className={`py-32 lgMobile:py-44 w-full h-screen ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} flex`}>
+                <div className="h-full w-[20rem] mr-28 lgMobile:-mr-[15rem] flex flex-col py-16">
+                    <button className={`${page === 'accountInfo' ? 'bg-[#FF7F11] text-white' : ''} h-[4rem] rounded-e-full mb-4 flex items-center pl-10 lgMobile:pl-2 text-xl lgMobile:text-sm font-semibold`}
                         onClick={() => setPage('accountInfo')}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill={darkMode ? '#fff' : (page === 'accountInfo' ? '#fff' : '#131313')}><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z" /></svg>
-                        <span className="ml-2">Account Info</span>
+                        <span className="ml-2 lgMobile:ml-0">Account Info</span>
                     </button>
                 </div>
                 {page === 'accountInfo' && user && <AccountInfo email={email} setEmail={setEmail} password={password} setPassword={setPassword} name={name} setName={setName} darkMode={darkMode} username={user.username} needNewEmailVerification={needNewEmailVerification} setNeedNewEmailVerification={setNeedNewEmailVerification} changedPassword={changedPassword} setChangedPassword={setChangedPassword} />}
