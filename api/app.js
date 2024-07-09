@@ -106,9 +106,7 @@ app.post('/login', async (req, res) => {
         } else if (!userDoc.confirmed && !googleUser) {
             res.status(420).json({ message: 'Email not verified' })
         } else {
-            console.log(typeof password, password);
-            console.log(typeof userDoc.password, userDoc.password);
-            const passOk = googleUser || bcrypt.compareSync(password, userDoc.password);
+            const passOk = googleUser || (userDoc.password && bcrypt.compareSync(password, userDoc.password));
             console.log(passOk)
             if (passOk) {
                 jwt.sign({
