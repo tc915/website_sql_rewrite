@@ -100,12 +100,14 @@ app.post('/login', async (req, res) => {
     const { username, email, password, googleUser } = req.body;
     try {
         const userDoc = await findUserByUsername(username);
+        console.log(userDoc)
         if (!userDoc) {
             res.status(422).json({ message: 'user not found' });
         } else if (!userDoc.confirmed && !googleUser) {
             res.status(420).json({ message: 'Email not verified' })
         } else {
             const passOk = googleUser || bcrypt.compareSync(password, userDoc.password);
+            console.log(passOk)
             if (passOk) {
                 jwt.sign({
                     username: userDoc.username,

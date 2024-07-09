@@ -142,9 +142,9 @@ const Home = ({ scrollY }) => {
         }
     }, [scrollY]);
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // }, []);
 
     useEffect(() => {
         if (user) {
@@ -591,12 +591,12 @@ const Home = ({ scrollY }) => {
                     </div>
                 </div>
             </div>
-            <motion.div className={`relative w-full lgMobile:pt-[12rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+            <motion.div className={`relative w-full lgMobile:pt-[12rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'} overflow-x-hidden`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
             >
-                <motion.div className={`w-full mdMobile:w-[60rem]`}>
+                <motion.div className={`w-full mdMobile:w-[60rem] lgMobile:w-[30rem] overflow-hidden`}>
                     <img className="-z-[5] w-full object-cover lgMobile:h-[38rem] mdMobile:h-[100rem]" src="motherboard_bg_unsplash.jpg" />
                     <div className="w-full h-[20rem] absolute -mt-[52rem] lgMobile:-mt-[36rem] lgMobile:w-[85%] text-white pl-[9.5rem] xsm:pl-[7rem] xxsm:pl-[7rem] laptop:pl-[7rem] smLaptop:pl-[5rem] tablet:pl-[5rem] lgMobile:pl-[3rem] mdMobile:w-[60rem] mdMobile:-mt-[80rem]">
                         <h1 className="font-bold text-6xl xl:mt-36 lg:mt-44 md:mt-[15rem] md:text-5xl sm:mt-[18rem] sm:text-5xl xsm:mt-[24rem] xsm:text-4xl xxsm:mt-[24rem] xxsm:text-4xl laptop:mt-[25rem] laptop:text-4xl smLaptop:mt-[26rem] smLaptop:text-4xl tablet:mt-[32rem] tablet:text-3xl lgMobile:text-xl lgMobile:mt-24 mdMobile:text-7xl">{landingPageQuote}</h1>
@@ -627,34 +627,34 @@ const Home = ({ scrollY }) => {
                             </div>
                         </div>
                         <div className="w-[60%] lgMobile:w-full">
-                            <div className={`w-full h-screen p-24 lgMobile:p-4 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="design_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">IDEATION</h3>
                                 <p className="w-3/4 mt-2 text-lg">A product always starts with an idea, whether that be a napkin sketch or a full mockup. Ideation is the core foundation to a product and determines what service it aims to bring and how it innnovates. We swiftly create working models to validate concepts, iron out flaws, and refine functionality. By emphasizing quick iterations, we ensure that prototypes aligns with your vision while addressing user needs effectively.</p>
                             </div>
-                            <div className={`w-full h-screen px-24 py-24 lgMobile:p-4 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="prototyping_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">MECHANICAL</h3>
                                 <p className="w-3/4 mt-2 text-lg">Mechanical needs in production are essential, ensuring products are convenient and meet user demands. Elegant designs enhance accessibility and user experience, while durability in different environments guarantee product longevity across various conditions. These elements are fundamental to a product’s success, reflecting the original vision and adapting to market expectations sustainably.</p>
                             </div>
-                            <div className={`w-full h-screen px-24 py-24 lgMobile:p-4 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="electrical_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">ELECTRICAL</h3>
                                 <p className="w-3/4 mt-2 text-lg">Innovative circuitry is crucial, providing longer battery life and ensuring device functionality aligns with consumer needs. Robust  protections are implemented to extend the device’s lifespan against power surges or voltage harsh situations.</p>
                             </div>
-                            <div className={`w-full h-screen px-24 py-24 lgMobile:p-4 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="software_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">SOFTWARE</h3>
                                 <p className="w-3/4 mt-2 text-lg">At our core, we are committed to innovation, consistently integrating cutting-edge technology into our software development process. We embrace experimentation and continuously explore new methodologies to enhance performance, ensure scalability, and maintain the utmost reliability in our products.</p>
                             </div>
-                            <div className={`w-full h-screen px-24 py-24 lgMobile:p-4 mb-32 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="manufacturing_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">MANUFACTURING</h3>
                                 <p className="w-3/4 mt-2 text-lg">Manufacturing is a critical process in the product lifecycle, powering the transformation of concepts into market-ready goods. It encompasses design, prototyping, and production, ensuring that ideas are not only realized but optimized for consumer use. The goal is to deliver quality and innovation, seamlessly integrating functionality with user expectations. We manufacture locally in the United States in our own facility as well as overseas depending on costs and demand.</p>
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-screen flex relative">
+                    <div className="w-full h-screen flex lgMobile:hidden relative">
                         {adminPrivileges && (
                             <button className={`absolute top-[10rem] right-[10rem] px-6 py-2 rounded-full border-2 font-semibold ${darkMode ? 'text-white' : 'text-black'}`}
                                 onClick={() => setEditProducts(true)}
@@ -672,7 +672,7 @@ const Home = ({ scrollY }) => {
                         </div>
                         <div className="w-1/2 flex lgMobile:flex-col items-center justify-center py-16 pr-32">
                             <div className={`h-2/3 w-2/3 relative ${darkMode ? 'text-white' : 'text-black'}`}>
-                                <h2 className="text-5xl font-thin">Our Products</h2>
+                                <h2 className="text-5xl lgMobile:text-3xl font-thin">Our Products</h2>
                                 <h3 className="text-3xl text-[#FF7F11] mt-4">{`${productsPageNames[productNum - 1]}`}</h3>
                                 <p className="mt-4">{`${productsPageDescriptions[productNum - 1]}`}</p>
                                 <div className="flex flex-col justify-center mt-10">
@@ -719,25 +719,25 @@ const Home = ({ scrollY }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-screen flex">
-                        <div className={`w-1/2 flex flex-col justify-center pl-32 ${darkMode ? 'text-white' : 'text-black'} relative`}>
+                    <div className="w-full h-screen flex lgMobile:flex-col lgMobile:mt-[5rem]">
+                        <div className={`w-1/2 lgMobile:w-full flex flex-col justify-center pl-32 ${darkMode ? 'text-white' : 'text-black'} relative`}>
                             <button className={`absolute top-[13rem] left-[5rem] ${adminPrivileges ? '' : 'hidden'} ${darkMode ? 'text-white' : 'text-black'} border-2 px-8 rounded-full`}
                                 onClick={() => setEditThinkTank(true)}
                             >Edit</button>
-                            <h2 className="text-5xl font-thin">Think Tank</h2>
-                            <p className="pr-[6em] mt-6 text-lg whitespace-pre-wrap">{thinkTankText}</p>
+                            <h2 className="text-5xl lgMobile:-ml-10 font-thin">Think Tank</h2>
+                            <p className="pr-[6em] lgMobile:pr-0 lgMobile:-ml-28 lgMobile:w-full mt-6 text-lg whitespace-pre-wrap">{thinkTankText}</p>
                         </div>
-                        <div className="w-1/2 flex justify-center items-center">
+                        <div className="w-1/2 lgMobile:w-full lgMobile:px-4 lgMobile:h-[35rem] lgMobile:-mt-14 flex justify-center items-center">
                             <div className="w-full h-[45%] bg-black mr-24">
                                 <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${thinkTankImageId}`} className="object-cover h-full w-full"></img>
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-screen flex">
-                        <div className="w-1/2 flex justify-center items-center">
-                            <div className="w-full h-[45%] bg-black ml-24">Building Image</div>
+                    <div className="w-full h-screen flex lgMobile:flex-col-reverse lgMobile:mb-32 lgMobile:-mt-[15rem]">
+                        <div className="w-1/2 lgMobile:w-[24rem] flex justify-center items-center">
+                            <div className="w-full h-[45%] lgMobile:h-[15rem] bg-black ml-24 lgMobile:ml-4 lgMobile:mr-4">Building Image</div>
                         </div>
-                        <div className={`w-1/2 flex flex-col justify-center pl-32 ${darkMode ? 'text-white' : 'text-black'}`}>
+                        <div className={`w-1/2 lgMobile:w-full flex flex-col justify-center pl-32 lgMobile:pl-10 lgMobile:mb-10 ${darkMode ? 'text-white' : 'text-black'}`}>
                             <h2 className="text-5xl font-thin">About Us</h2>
                             <p className="pr-[6em] mt-6 text-lg">Interactive Technologies, Inc. is always
                                 willing to push the boundaries and

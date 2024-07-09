@@ -69,7 +69,13 @@ const Header = () => {
                     </button>
                 </div>
             </div>
-            <Link as={NavLink} to={'/'} className="text-4xl font-bold ml-[2rem] text-white">
+            <Link as={NavLink} to={'/'} className="text-4xl font-bold ml-[2rem] text-white"
+                onClick={() => {
+                    if (hamburgerNavOpen) {
+                        setHamburgerNavOpen(false)
+                    }
+                }}
+            >
                 <img className="2xl:w-[28%] xl:w-[32%] lg:w-[35%] md:w-[40%] sm:w-[50%] xsm:w-[50%] xxsm:w-[45%] xxsm:mt-4 laptop:w-[50%] smLaptop:w-[50%] smLaptop:mt-4 laptop:mt-4 tablet:w-[25%] lgMobile:w-[50%] mdMobile:w-[50%]" src="/iTi_logo_color.png" />
             </Link>
             <nav className="mt-10">
@@ -165,8 +171,8 @@ const Header = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" className={`tablet:w-[35px] lgMobile:w-[50px] mdMobile:w-[40px] mdMobile:-mt-4 ${hamburgerNavOpen ? 'hidden' : ''}`} viewBox="0 -960 960 960" fill="#FFFFFF"><path d="M120-240v-66.67h720V-240H120Zm0-206.67v-66.66h720v66.66H120Zm0-206.66V-720h720v66.67H120Z" /></svg>
                         <svg xmlns="http://www.w3.org/2000/svg" className={`tablet:w-[35px] lgMobile:w-[50px] mdMobile:w-[40px] mdMobile:-mt-4 ${hamburgerNavOpen ? '' : 'hidden'}`} viewBox="0 -960 960 960" fill="#fff"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                     </button>
-                    <div className={`absolute tablet:top-[4.5rem] tablet:-right-[4.75rem] tablet:h-[15rem] tablet:w-[16rem] tablet:pt-2 bg-black lgMobile:w-[28rem] lgMobile:-left-[19.2rem] lgMobile:h-[100vh] top-[7rem] flex flex-col items-center ${hamburgerNavOpen ? 'tablet:block lgMobile:block mdMobile:block' : 'hidden'}`}>
-                        <ul className="text-center tablet:text-[2rem] lgMobile:text-[1.75rem] tablet:text-[1.65rem]">
+                    <div className={`absolute tablet:top-[4.5rem] tablet:-right-[4.75rem] tablet:h-[15rem] tablet:w-[16rem] tablet:pt-2 bg-black lgMobile:w-[30rem] lgMobile:-left-[19.75rem] lgMobile:h-[100vh] top-[7rem] flex flex-col items-center ${hamburgerNavOpen ? 'tablet:block lgMobile:block mdMobile:block' : 'hidden'}`}>
+                        <ul className="text-center tablet:text-[2rem] lgMobile:text-[1.75rem]">
                             {user && (
                                 <div className="flex items-center justify-center mb-4 tablet:hidden">
                                     <motion.button className=""
@@ -195,6 +201,7 @@ const Header = () => {
                                     variants={navVariants}
                                     whileHover="hover"
                                     whileTap="click"
+                                    onClick={() => setHamburgerNavOpen(false)}
                                 >Services</motion.li>
                             </Link>
                             <Link as={NavLink} to={'/industries'}>
@@ -203,6 +210,7 @@ const Header = () => {
                                     variants={navVariants}
                                     whileHover="hover"
                                     whileTap="click"
+                                    onClick={() => setHamburgerNavOpen(false)}
                                 >Industries</motion.li>
                             </Link>
                             <Link as={NavLink} to={'/products'}>
@@ -210,6 +218,7 @@ const Header = () => {
                                     style={{ color: location.pathname === '/products' ? '#FF7F11' : '#fff' }}
                                     variants={navVariants}
                                     whileHover="hover"
+                                    onClick={() => setHamburgerNavOpen(false)}
                                     whileTap="click"
                                 >Products</motion.li>
                             </Link>
@@ -219,6 +228,7 @@ const Header = () => {
                                     variants={navVariants}
                                     whileHover="hover"
                                     whileTap="click"
+                                    onClick={() => setHamburgerNavOpen(false)}
                                 >Demos</motion.li>
                             </Link>
                             <Link as={NavLink} to={'/about'}>
@@ -227,6 +237,7 @@ const Header = () => {
                                     variants={navVariants}
                                     whileHover="hover"
                                     whileTap="click"
+                                    onClick={() => setHamburgerNavOpen(false)}
                                 >About Us</motion.li>
                             </Link>
                         </ul>

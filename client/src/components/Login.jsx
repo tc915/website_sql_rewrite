@@ -70,7 +70,7 @@ const Login = () => {
 
 
     return (
-        <div>
+        <div className="lgMobile:overflow-x-hidden">
             <div className={`flex flex-col justify-center items-center h-screen pt-32 ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}>
                 <div className={`flex flex-col justify-center items-center ${darkMode ? 'bg-white' : 'bg-[#131313] text-white'} px-10 py-6 rounded-xl shadow-md`}>
                     <h1 className="font-semibold text-3xl mb-8">Login</h1>
@@ -91,15 +91,15 @@ const Login = () => {
                             loginUser();
                         }}
                     >
-                        <input className="bg-transparent text-2xl font-semibold mb-4 outline-none" type="email" placeholder="Email" spellCheck="false" autoComplete="email" required
+                        <input className="bg-transparent text-2xl lgMobile:text-[1rem] font-semibold mb-4 outline-none" type="email" placeholder="Email" spellCheck="false" autoComplete="email" required
                             value={email}
                             onChange={(ev) => setEmail(ev.target.value)}
                         />
-                        <input className="bg-transparent text-2xl font-semibold outline-none" type="password" placeholder="Password" spellCheck="false" autoComplete="current-password" required
+                        <input className="bg-transparent text-2xl lgMobile:text-[1rem] font-semibold outline-none" type="password" placeholder="Password" spellCheck="false" autoComplete="current-password" required
                             value={password}
                             onChange={(ev) => setPassword(ev.target.value)}
                         />
-                        <button className="bg-[#FF7F11] text-white mt-6 py-2 rounded-lg text-lg font-semibold" type="submit">Login</button>
+                        <button className="bg-[#FF7F11] text-white mt-6 py-2 rounded-lg text-lg  lgMobile:text-[1rem] font-semibold" type="submit">Login</button>
                         <p className="text-center mt-4">Don't have an account? <Link to='/register' className="text-[#FF7F11] hover:underline">Register</Link></p>
                         <Link to={'/login/forgot-password'}><p className="mt-2 text-sm text-center text-[#FF7F11] hover:underline">Forgot Password?</p></Link>
                     </form>
