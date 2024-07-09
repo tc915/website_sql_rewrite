@@ -37,18 +37,18 @@ const AccountInfo = ({ name, setName, email, setEmail, password, setPassword, da
     }
 
     return (
-        <form className="w-[65rem] flex flex-col items-center px-24"
+        <form className="w-[65rem] lgMobile:w-full lgMobile:px-0 lgMobile:mt-16 flex flex-col items-center px-24"
             onSubmit={(ev) => {
                 ev.preventDefault();
                 saveAccountChanges();
             }}
         >
-            <h1 className="mt-[6rem] font-bold text-3xl">Account Info</h1>
-            <p className="mt-6 text-2xl font-semibold">{name}</p>
+            <h1 className="mt-[6rem] font-bold text-3xl lgMobile:text-xl">Account Info</h1>
+            <p className="mt-6 text-2xl lgMobile:text-lg font-semibold">{name}</p>
             <div className="w-full h-[5rem] mt-6 flex items-center px-24 rounded-2xl border-2">
                 <label htmlFor="userEmail" className="text-xl font-semibold mr-4">Email:</label>
-                <p className={`text-xl font-semibold ${darkMode ? 'text-white/50' : 'text-black/40'} ${isChangeEmail ? 'hidden' : ''}`}>{email || ''}</p>
-                <input type="email" name="userEmail" id="userEmail" placeholder="Email" required autoComplete="email" className={`border-b-2 p-2 text-xl font-semibold outline-none bg-transparent ${isChangeEmail ? '' : 'hidden'}`}
+                <p className={`text-xl lgMobile:text-lg font-semibold ${darkMode ? 'text-white/50' : 'text-black/40'} ${isChangeEmail ? 'hidden' : ''}`}>{email || ''}</p>
+                <input type="email" name="userEmail" id="userEmail" placeholder="Email" required autoComplete="email" className={`border-b-2 p-2 lgMobile:text-lg text-xl font-semibold outline-none bg-transparent ${isChangeEmail ? '' : 'hidden'}`}
                     value={email || ''}
                     onChange={(ev) => setEmail(ev.target.value)}
                 />
