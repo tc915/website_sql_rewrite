@@ -105,8 +105,6 @@ app.post('/login', async (req, res) => {
             res.status(422).json({ message: 'user not found' });
         } else if (!userDoc.confirmed && !googleUser) {
             res.status(420).json({ message: 'Email not verified' })
-        } else if (userDoc.password === null) {
-            res.status(401).json({ message: 'Please log in through Google' });
         } else {
             const passOk = googleUser || bcrypt.compareSync(password, userDoc.password);
             console.log(passOk)
@@ -130,6 +128,8 @@ app.post('/login', async (req, res) => {
 
                     res.json(userDoc);
                 })
+            } else if (userDoc.password === null) {
+                res.status(401).json({ message: 'Please log in through Google' });
             } else {
                 res.status(422).json('incorrect password')
             }

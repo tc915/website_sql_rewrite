@@ -46,7 +46,7 @@ const Login = () => {
                     setIncorrectPopUpText('Email not verified')
                 } else if (e.message === 'Request failed with status code 422') {
                     setIncorrectPopUpText('User not found');
-                } else if (e.message === 'Please log in through Google') {
+                } else if (e.message === 'Request failed with status code 401') {
                     setIncorrectPopUpText('Please log in with google')
                 }
             }
