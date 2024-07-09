@@ -105,8 +105,10 @@ app.post('/login', async (req, res) => {
             res.status(422).json({ message: 'user not found' });
         } else if (!userDoc.confirmed && !googleUser) {
             res.status(420).json({ message: 'Email not verified' })
+        } else if (userDoc.password === null) {
+            res.status(401).json({ message: 'Please log in through Google' });
         } else {
-            const passOk = googleUser || (userDoc.password && bcrypt.compareSync(password, userDoc.password));
+            const passOk = googleUser || bcrypt.compareSync(password, userDoc.password);
             console.log(passOk)
             if (passOk) {
                 jwt.sign({
@@ -136,6 +138,7 @@ app.post('/login', async (req, res) => {
         res.status(500).json(err.stack)
     }
 });
+
 
 
 
