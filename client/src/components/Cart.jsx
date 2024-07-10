@@ -111,10 +111,10 @@ const Cart = () => {
 
     return (
         <div className={`pt-44 w-full ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
-            <div className="mx-[22rem] mb-56">
+            <div className="mx-[22rem] lgMobile:mx-6 mb-56">
                 <div className="flex justify-between items-end h-[6rem] mb-16">
-                    <h1 className="text-6xl font-bold">Your Cart</h1>
-                    <p className="text-4xl font-semibold">{`Total items: ${cart.productCountTotal ? cart.productCountTotal : '0'}`}</p>
+                    <h1 className="text-6xl lgMobile:text-4xl font-bold">Your Cart</h1>
+                    <p className="text-4xl lgMobile:text-2xl font-semibold">{`Total items: ${cart.productCountTotal ? cart.productCountTotal : '0'}`}</p>
                 </div>
                 {cartProducts && cartProducts.length > 0 && cartProducts.map((product, index) => (
                     <Product key={index} product={product} index={index} cart={cart} setCart={setCart} prices={prices} setPrices={setPrices} darkMode={darkMode} cartProducts={cartProducts} setCartProducts={setCartProducts} />
