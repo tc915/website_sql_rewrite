@@ -78,7 +78,7 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
                     >Ok</button>
                 </div>
             </div>
-            <motion.div className="pt-44"
+            <motion.div className="pt-44 lgMobile:pt-[15rem]"
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
