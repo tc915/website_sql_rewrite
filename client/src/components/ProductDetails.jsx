@@ -329,7 +329,7 @@ const ProductDetails = () => {
                             }}
                         />
                         <div className="w-full flex lgMobile:flex-col items-center">
-                            <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full rounded-xl self-start ml-[11rem] mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputThumbnailText}</label>
+                            <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full rounded-xl self-start ml-[11rem] lgMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputThumbnailText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem]`}>{thumbnailFilePath}</p>
                         </div>
                         <div className='w-2/3 lgMobile:w-full mt-4 text-xl lgMobile:text-lg font-semibold mb-2'>
@@ -343,7 +343,7 @@ const ProductDetails = () => {
                             }}
                         />
                         <div className="w-full flex lgMobile:flex-col items-center">
-                            <label htmlFor="fileUploadDetails" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full rounded-xl self-start ml-[11rem] mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
+                            <label htmlFor="fileUploadDetails" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full rounded-xl self-start ml-[11rem] lgMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem]`}>{detailsFilePath}</p>
                         </div>
                         <button type="submit" className='w-2/3 bg-[#FF7F11] rounded-3xl p-2 text-white font-semibold text-2xl mt-10'>Save product</button>
