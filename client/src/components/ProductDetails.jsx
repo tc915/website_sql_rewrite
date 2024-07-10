@@ -347,7 +347,9 @@ const ProductDetails = () => {
                     </form>
                 </div>
             </div>
-            <Footer />
+            <div className="lgMobile:mt-44">
+                <Footer />
+            </div>
         </div>
     );
 }
