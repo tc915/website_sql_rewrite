@@ -332,7 +332,7 @@ const Products = () => {
                     </form>
                 </div>
             </div>
-            <motion.div className={`${darkMode ? 'text-white' : 'text-black'} lgMobile:overflow-x-hidden`}
+            <motion.div className={`${darkMode ? 'text-white' : 'text-black'} lgMobile:overflow-x-hidden lgMobile:pl-2`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
