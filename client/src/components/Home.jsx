@@ -305,14 +305,14 @@ const Home = ({ scrollY }) => {
                     >Ok</button>
                 </div>
             </div>
-            <div className={`fixed top-0 left-0 w-full h-screen z-[99] bg-black/50 justify-center items-center ${editThinkTank ? 'flex' : 'hidden'}`}>
+            <div className={`fixed top-0 left-0 w-full h-screen z-[99] bg-black/50 justify-center items-center ${editThinkTank ? 'flex' : 'hidden'} lgMobile:text-sm`}>
                 <div className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[50rem] h-[33rem] relative flex flex-col items-center rounded-xl overflow-y-auto`}>
                     <button className="absolute top-4 right-4"
                         onClick={() => setEditThinkTank(false)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                     </button>
-                    <h2 className="text-3xl font-semibold mt-6">Edit In The Lab</h2>
+                    <h2 className="text-3xl font-semibold mt-6">Edit Think Tank</h2>
                     <p className="w-2/3 mt-10 text-xl font-semibold">Message:</p>
                     <TextAreaAutosize className={`bg-transparent resize-none w-2/3 border-2 rounded-xl mt-4 p-4 text-xl ${darkMode ? 'outline-white' : ''}`} required placeholder="Message"
                         value={thinkTankText}
