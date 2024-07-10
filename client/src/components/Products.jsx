@@ -240,7 +240,7 @@ const Products = () => {
                                     <div className={`py-2 px-4 lgMobile:px-1 lgMobile:py-2 mr-4 lgMobile:mr-2 font-semibold text-xl lgMobile:text-sm lgMobile:flex lgMobile:justify-center lgMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
                                         {`${price.max ? (index === newProductVariablePricing.length - 1 ? 'Quantity: ' + price.min + ' - ' + price.max + '+' : 'Quantity: ' + price.min + ' - ' + price.max) : (index === newProductVariablePricing.length - 1 ? 'Quantity: ' + price.min + '+' : 'Quantity: ' + price.min)}`}
                                     </div>
-                                    <div className={`py-2 lgMobile:py-2 px-4 lgMobile:px-1 font-semibold text-xl lgMobile:text-sm lgMobile:flex lgMobile:justify-center lgMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'} w-1/2 rounded-full`}>{`Price: $${price.price}`}</div>
+                                    <div className={`py-2 px-4 lgMobile:px-1 font-semibold text-xl lgMobile:text-sm lgMobile:flex lgMobile:justify-center lgMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'} w-1/2 rounded-full`}>{`Price: $${price.price}`}</div>
                                     <button className='absolute top-0 -right-12 lgMobile:mr-2 lgMobile:mt-1 bg-[#FF7F11] rounded-full p-1'
                                         onClick={(ev) => {
                                             ev.preventDefault();
