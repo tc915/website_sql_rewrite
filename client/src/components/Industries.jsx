@@ -62,7 +62,7 @@ const Industries = () => {
 
 
     return (
-        <motion.div className={`pt-44 flex flex-col items-center overflow-x-hidden ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+        <motion.div className={`pt-44 lgMobile:pt-56 flex flex-col items-center overflow-x-hidden ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
             variants={fadeInVariants}
             initial="initial"
             animate="animate"
