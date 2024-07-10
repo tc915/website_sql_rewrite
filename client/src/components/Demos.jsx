@@ -667,24 +667,24 @@ const Demos = () => {
                 <div className="w-full h-full mt-8 print:hidden">
                     <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2">{`Switch Count: ${switchOnCount} / ${lightTypes && lightTypes.length > 0 ? lightTypes.length + pumpTypes.length + boatControlTypes.length : 0}`}</p>
                 </div>
-                <div className="w-full px-12 py-12 flex flex-wrap print:block">
-                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
+                <div className="w-full px-12 lgMobile:px-4 lgMobile:pl-10 py-12 flex items-center flex-wrap print:block">
+                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 lgMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
                         <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Lights</p>
                         {lightTypes.map((lightType) => (
                             <div className="flex mb-4 w-full" key={lightType}>
-                                <p className="mr-auto">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
-                                <button className={`border-2 px-2 rounded-xl mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                                <p className="mr-auto lgMobile:text-sm">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
+                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                     onClick={() => setLightStates(prev => ({ ...prev, [lightType]: !prev[lightType] }))}
                                 >{lightStates[lightType] ? 'On' : 'Off'}</button>
                             </div>
                         ))}
                     </div>
-                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
+                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 lgMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
                         <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Pumps</p>
                         {pumpTypes.map((pumpType) => (
                             <div className="flex mb-4" key={pumpType}>
-                                <p className="mr-auto">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
-                                <button className={`border-2 px-2 rounded-xl mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                                <p className="mr-auto lgMobile:text-sm">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
+                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                     onClick={() => setPumpStates(prev => ({ ...prev, [pumpType]: !prev[pumpType] }))}
                                 >{pumpStates[pumpType] ? 'On' : 'Off'}</button>
                             </div>
@@ -694,8 +694,8 @@ const Demos = () => {
                         <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Boat Controls</p>
                         {boatControlTypes.map((controlType) => (
                             <div className="flex mb-4" key={controlType}>
-                                <p className="mr-auto">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
-                                <button className={`border-2 px-2 rounded-xl mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                                <p className="mr-auto lgMobile:text-sm">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
+                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                     onClick={() => setBoatControlStates(prev => ({ ...prev, [controlType]: !prev[controlType] }))}
                                 >{boatControlStates[controlType] ? 'On' : 'Off'}</button>
                             </div>
@@ -780,34 +780,32 @@ const Demos = () => {
                         {productKeys && productKeys.length > 0 && productKeys.map((product, index) => {
                             const [newPrice, setNewPrice] = useState(0);
                             return (
-                                <ul className="">
-                                    <li className="mb-4 w-1/3">
-                                        <div className="flex">
-                                            <p className={`mr-auto ${changingProductPriceList[index] ? 'hidden' : ''}`}>{`- ${productData[product].name}: $${productData[product].units !== 'each' ? `${productData[product].cost} / ${productData[product].units.unit}` : (productData[product].cost).toFixed(2)}`}</p>
-                                            <input type="number" placeholder="New price" className={`${changingProductPriceList[index] ? `border-2 p-1 mr-auto ${darkMode ? 'border-white' : 'border-black'}` : 'hidden'}`}
-                                                onChange={(ev) => setNewPrice(Number(ev.target.value))}
-                                            />
-                                            <button className={`${darkMode ? 'border-white' : 'border-black'} border-2 ml-4 px-4 rounded-full ${changingProductPriceList[index] ? 'hidden' : ''}`}
-                                                onClick={() => {
-                                                    const anyTrue = changingProductPriceList.some(value => value)
-                                                    if (!anyTrue) {
-                                                        const updatedList = [...changingProductPriceList];
-                                                        updatedList[index] = true;
-                                                        setChangingProductPricingList(updatedList);
-                                                    }
-                                                }}
-                                            >Change price</button>
-                                            <button className={`border-2 px-2 rounded-full py-1 ${changingProductPriceList[index] ? '' : 'hidden'} bg-[#FF7F11] text-white border-transparent`}
-                                                onClick={() => {
-                                                    saveProductPriceChange(index, newPrice)
-                                                    const updatedList = [...changingProductPriceList]
-                                                    updatedList[index] = false;
-                                                    setChangingProductPricingList(updatedList)
-                                                }}
-                                            >Save New Price</button>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <div className="mb-4 w-1/3 lgMobile:w-full lgMobile:mb-6">
+                                    <div className="flex">
+                                        <p className={`mr-auto ${changingProductPriceList[index] ? 'hidden' : ''}`}>{`${productData[product].name}: $${productData[product].units !== 'each' ? `${productData[product].cost} / ${productData[product].units.unit}` : (productData[product].cost).toFixed(2)}`}</p>
+                                        <input type="number" placeholder="New price" className={`${changingProductPriceList[index] ? `border-2 lgMobile:w-2/3 p-1 mr-auto ${darkMode ? 'border-white' : 'border-black'}` : 'hidden'}`}
+                                            onChange={(ev) => setNewPrice(Number(ev.target.value))}
+                                        />
+                                        <button className={`${darkMode ? 'border-white' : 'border-black'} border-2 ml-4 px-4 lgMobile:text-sm lgMobile:h-[3rem] lgMobile:w-[5rem] rounded-full lgMobile:rounded-lg ${changingProductPriceList[index] ? 'hidden' : ''}`}
+                                            onClick={() => {
+                                                const anyTrue = changingProductPriceList.some(value => value)
+                                                if (!anyTrue) {
+                                                    const updatedList = [...changingProductPriceList];
+                                                    updatedList[index] = true;
+                                                    setChangingProductPricingList(updatedList);
+                                                }
+                                            }}
+                                        >Change price</button>
+                                        <button className={`border-2 px-2 lgMobile:text-sm lgMobile:rounded-lg lgMobile:w-[6rem] rounded-full py-1 ${changingProductPriceList[index] ? '' : 'hidden'} bg-[#FF7F11] text-white border-transparent`}
+                                            onClick={() => {
+                                                saveProductPriceChange(index, newPrice)
+                                                const updatedList = [...changingProductPriceList]
+                                                updatedList[index] = false;
+                                                setChangingProductPricingList(updatedList)
+                                            }}
+                                        >Save New Price</button>
+                                    </div>
+                                </div>
                             )
                         })}
                     </div>
