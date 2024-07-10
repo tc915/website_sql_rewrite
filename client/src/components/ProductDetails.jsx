@@ -155,7 +155,7 @@ const ProductDetails = () => {
 
     return (
         <div className={`pt-40 lgMobile:py-56 lgMobile:pb-24 ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'} lgMobile:overflow-x-hidden`}>
-            <div className="w-full h-[40rem] p-10 flex lgMobile:flex-col relative px-[15rem] lgMobile:px-6 mb-44 lgMobile:overflow-y-hidden">
+            <div className="w-full h-[40rem] p-10 flex lgMobile:flex-col relative px-[15rem] lgMobile:px-6 mb-44">
                 {adminPrivileges && (
                     <button className="absolute top-4 right-[17rem] px-10 border-[3px] border-gray-300 rounded-xl font-semibold"
                         onClick={() => setShowEdit(true)}
@@ -201,7 +201,7 @@ const ProductDetails = () => {
                         <p className="mt-8 text-xl">Part Number: <span className="font-bold">{product.partNumber}</span></p>
                     </div>
                     <p className="mt-4 text-2xl font-bold">Product Description:</p>
-                    <div className="w-full h-[15rem] py-6 pr-4 rounded-xl overflow-y-auto overflow-x-hidden whitespace-pre-wrap text-2xl">{product.description}</div>
+                    <div className="w-full h-[15rem] py-6 pr-4 rounded-xl overflow-x-hidden whitespace-pre-wrap text-2xl">{product.description}</div>
                 </div>
                 <div className="lgMobile:mt-44 lgMobile:w-full lgMobile:-translate-x-8">
                     <Footer />
