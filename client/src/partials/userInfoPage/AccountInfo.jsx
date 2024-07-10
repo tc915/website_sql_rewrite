@@ -67,7 +67,7 @@ const AccountInfo = ({ name, setName, email, setEmail, password, setPassword, da
                     <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill={darkMode ? '#fff' : '#131313'}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                 </button>
             </div>
-            <div className="w-full lgMobile:w-1/2 h-[5rem] mt-6 flex items-center px-24 lgMobile:px-4 rounded-2xl border-2">
+            <div className="w-full lgMobile:w-1/2 h-[5rem] mt-6 flex lgMobile:flex-col lgMobile:justify-center items-center px-24 lgMobile:px-4 rounded-2xl border-2">
                 <label htmlFor="userPassword" className="text-xl font-semibold mr-4 lgMobile:hidden">Password:</label>
                 <button className={`${isChangePassword ? 'hidden' : ''} border-4 border-[#FF7F11] px-6 rounded-full text-xl lgMobile:text-sm font-semibold ${darkMode ? 'text-white' : 'text-black'} py-2 ml-auto`}
                     onClick={(ev) => {
