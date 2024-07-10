@@ -203,7 +203,7 @@ const ProductDetails = () => {
                     <p className="mt-4 text-2xl font-bold">Product Description:</p>
                     <div className="w-full h-[15rem] py-6 pr-4 rounded-xl overflow-y-auto overflow-x-hidden whitespace-pre-wrap text-2xl">{product.description}</div>
                 </div>
-                <div className="lgMobile:mt-44 lgMobile:w-full lgMobile:-translate-x-10">
+                <div className="lgMobile:mt-44 lgMobile:w-full lgMobile:-translate-x-8">
                     <Footer />
                 </div>
             </div>
