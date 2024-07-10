@@ -192,29 +192,29 @@ const Products = () => {
     return (
         <div className={`${darkMode ? 'bg-[#131313]' : 'bg-white'}`}>
             <div className={`${showAddProduct ? 'fixed flex justify-center items-center' : 'hidden'} w-full z-[99] top-0 left-0 bg-black/50 h-full`}>
-                <div className={`w-2/3 lgMobile:w-full h-[43rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] text-white rounded-3xl flex flex-col items-center p-12 overflow-auto relative scroll-p-5`}>
+                <div className={`w-2/3 lgMobile:w-[90%] h-[43rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] text-white rounded-3xl flex flex-col items-center p-12 overflow-auto relative scroll-p-5`}>
                     <button
                         onClick={() => setShowAddProduct(false)}
                     >
                         <svg className='absolute top-2 right-2 cursor-pointer' xmlns="https://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg>
                     </button>
-                    <h2 className={`text-4xl font-semibold ${darkMode ? 'text-white' : 'text-black'}`}>New Product</h2>
+                    <h2 className={`text-4xl lgMobile:text-2xl font-semibold ${darkMode ? 'text-white' : 'text-black'}`}>New Product</h2>
                     <form className={`w-full flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}
                         onSubmit={(ev) => {
                             ev.preventDefault();
                             addProduct();
                         }}
                     >
-                        <div className='w-2/3 mt-10 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mt-10 text-xl font-semibold mb-2'>
                             <p>Product name:</p>
                         </div>
-                        <input type="text" placeholder='Product name' className='w-2/3 text-2xl border-b-2 p-2 bg-transparent outline-none' required
+                        <input type="text" placeholder='Product name' className='w-2/3 lgMobile:w-full text-2xl lgMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required
                             onChange={(ev) => setNewProductName(ev.target.value)}
                         />
-                        <div className='w-2/3 mt-10 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mt-10 text-xl font-semibold mb-2'>
                             <p>Part number:</p>
                         </div>
-                        <input type="text" placeholder='XXX-XXXXX' className='w-2/3 text-2xl border-b-2 p-2 bg-transparent outline-none' required maxLength="9"
+                        <input type="text" placeholder='XXX-XXXXX' className='w-2/3 lgMobile:w-full text-2xl lgMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required maxLength="9"
                             value={newProductPartNumber}
                             onChange={(ev) => {
                                 let value = ev.target.value;
