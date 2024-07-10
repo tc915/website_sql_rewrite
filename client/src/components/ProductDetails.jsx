@@ -165,10 +165,10 @@ const ProductDetails = () => {
                     <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${detailsImageId ? detailsImageId : thumbnailImageId}`} className="h-full object-cover" />
                 </div>
                 <div className="h-full w-1/2 lgMobile:w-full ml-10 lgMobile:ml-0 p-10 lgMobile:p-6">
-                    <h1 className="text-4xl font-bold pb-4">{product.name}</h1>
-                    <p className="text-4xl font-semibold mb-6">${displayPrice}</p>
+                    <h1 className="text-4xl lgMobile:text-2xl font-bold pb-4">{product.name}</h1>
+                    <p className="text-4xl lgMobile:text-2xl font-semibold mb-6">${displayPrice}</p>
                     <p className="text-md">Quantity</p>
-                    <div className="w-1/3 mt-2 h-[3rem] rounded-lg bg-gradient-to-l from-[#facc22] to-[#FF7F11] p-[2px]">
+                    <div className="w-1/3 lgMobile:w-full mt-2 h-[3rem] rounded-lg bg-gradient-to-l from-[#facc22] to-[#FF7F11] p-[2px]">
                         <div className="w-full h-full bg-[#131313] rounded-lg flex items-center justify-between px-6 font-semibold text-xl text-white">
                             <button className="p-2"
                                 onClick={() => {
@@ -203,6 +203,7 @@ const ProductDetails = () => {
                     <p className="mt-4 text-2xl font-bold">Product Description:</p>
                     <div className="w-full h-[15rem] py-6 pr-4 rounded-xl overflow-y-auto overflow-x-hidden whitespace-pre-wrap text-2xl">{product.description}</div>
                 </div>
+                <Footer />
             </div>
 
             <div className={`fixed top-0 left-0 w-full h-full ${darkMode ? 'text-white' : 'text-black'} bg-black/50 z-[99] ${showEdit ? 'flex justify-center items-center' : 'hidden'}`}>
@@ -348,7 +349,6 @@ const ProductDetails = () => {
                     </form>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 }
