@@ -265,8 +265,8 @@ const Products = () => {
                                 <p className='text-xl font-semibold ml-4'>Add Price</p>
                             </button>
                             <div className={` w-full text-xl lgMobile:text-lg font-thin ${showAddPrice ? 'flex lgMobile:flex-col' : 'hidden'}`}>
-                                <div className='w-1/2 lgMobile:w-full mr-4'>
-                                    <p className='mb-4'>Quantity Range</p>
+                                <div className='w-1/2 lgMobile:w-full mr-4 lgMobile:mb-4'>
+                                    <p className='mb-4'>Quantity & Range</p>
                                     <input type="number" className={`${showAddPrice ? '' : 'hidden'} bg-transparent border-b-2 w-1/2 outline-none`} placeholder='Min'
                                         value={pricingMin}
                                         onChange={(ev) => setPricingMin(ev.target.value)}
@@ -277,7 +277,7 @@ const Products = () => {
                                     />
                                 </div>
                                 <div className='w-1/2 lgMobile:w-full'>
-                                    <p className='mb-4'>Price</p>
+                                    <p className='mb-4 lgMobile:mb-2'>Price</p>
                                     <input type="number" className={`${showAddPrice ? '' : 'hidden'} bg-transparent border-b-2 w-full outline-none`} placeholder='Price'
                                         value={pricingPrice}
                                         onChange={(ev) => {
