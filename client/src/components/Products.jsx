@@ -225,16 +225,16 @@ const Products = () => {
                                 setNewProductPartNumber(value);
                             }}
                         />
-                        <div className='w-2/3 mt-4 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mt-4 text-xl font-semibold mb-2'>
                             <p>Product description:</p>
                         </div>
-                        <TextAreaAutosize className='w-2/3 bg-transparent border-b-2 p-2 text-2xl resize-none outline-none' autoComplete='off' placeholder='Product description' required
+                        <TextAreaAutosize className='w-2/3 lgMobile:w-full bg-transparent border-b-2 p-2 text-2xl lgMobile:text-xl resize-none outline-none' autoComplete='off' placeholder='Product description' required
                             onChange={(ev) => setNewProductDescription(ev.target.value)}
                         ></TextAreaAutosize>
-                        <div className='w-2/3 mt-4 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mt-4 text-xl font-semibold mb-2'>
                             <p>Variable pricing:</p>
                         </div>
-                        <div className='w-2/3 flex flex-col'>
+                        <div className='w-2/3 lgMobile:w-full flex flex-col'>
                             {newProductVariablePricing && newProductVariablePricing.length > 0 && newProductVariablePricing.map((price, index) => (
                                 <div key={index} className='flex relative'>
                                     <div className={`py-2 px-4 mr-4 font-semibold text-xl mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
