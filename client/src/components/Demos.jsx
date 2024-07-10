@@ -712,7 +712,7 @@ const Demos = () => {
                             {num2mBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 6.4ft backbone cables:</span><span>{num2mBackboneCables}</span></li>}
                             {numHalfMeterBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 1.6ft backbone cables:</span><span>{numHalfMeterBackboneCables}</span></li>}
                         </ul>
-                        <ul className="my-4">
+                        <ul className="my-4 lgMobile:space-y-4">
                             {num6ButtonKeypads > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Way Keypads:</span><span>{num6ButtonKeypads}</span></li>}
                             {num12ButtonKeypads > 0 && <li className="w-full flex"><span className="mr-auto">Number of 12 Way Keypads:</span><span>{num12ButtonKeypads}</span></li>}
                             {numsixOutputDigitalSwitchingBox > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Output Digital Switching Boxes:</span><span>{numsixOutputDigitalSwitchingBox}</span></li>}
@@ -765,7 +765,7 @@ const Demos = () => {
                         <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full font-semibold mr-2 print:hidden`}
                             onClick={() => addAllInputs()}
                         >Add All Options</button>
-                        <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full font-semibold print:hidden ${showChangeComponentPricing ? 'bg-[#FF7F11] text-white border-0' : ''}`}
+                        <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 lgMobile:mb-4 border-2 px-4 py-1 rounded-full font-semibold print:hidden ${showChangeComponentPricing ? 'bg-[#FF7F11] text-white border-0' : ''}`}
                             onClick={() => setShowChangeComponentPricing(!showChangeComponentPricing)}
                         >{showChangeComponentPricing ? 'Close Component Pricing' : 'Change Component Pricing'}</button>
                         <button className={`print:hidden ml-2 font-semibold border-2 px-4 py-1 rounded-full ${darkMode ? 'border-white' : 'border-black'}`}
