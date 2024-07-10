@@ -300,7 +300,7 @@ const Products = () => {
                                 }}
                             >Save Price</button>
                         </div>
-                        <div className='w-2/3 mt-4 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mt-4 text-xl lgMobile:text-lg font-semibold mb-2'>
                             <p>Product thumbnail image:</p>
                         </div>
                         <input id='fileUploadThumbnail' accept='image/*' type="file" className='hidden' required
@@ -311,7 +311,7 @@ const Products = () => {
                             }}
                         />
                         <div className='flex w-full items-center'>
-                            <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 rounded-xl self-start ml-[11rem] mt-2 h-[4rem] font-bold text-2xl flex justify-center items-center cursor-pointer ${darkMode ? 'text-white' : 'text-black'}`}>{fileInputThumbnailText}</label>
+                            <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full rounded-xl self-start ml-[11rem] lgMobile:ml-6 mt-2 h-[4rem] font-bold text-2xl flex justify-center items-center cursor-pointer ${darkMode ? 'text-white' : 'text-black'}`}>{fileInputThumbnailText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4`}>{thumbnailFilePath}</p>
                         </div>
                         <div className='w-2/3 mt-4 text-xl font-semibold mb-2'>
