@@ -236,7 +236,7 @@ const Products = () => {
                         </div>
                         <div className='w-2/3 lgMobile:w-full flex flex-col'>
                             {newProductVariablePricing && newProductVariablePricing.length > 0 && newProductVariablePricing.map((price, index) => (
-                                <div key={index} className='flex relative'>
+                                <div key={index} className='flex lgMobile:flex-col relative'>
                                     <div className={`py-2 px-4 mr-4 font-semibold text-xl mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
                                         {`${price.max ? (index === newProductVariablePricing.length - 1 ? 'Quantity: ' + price.min + ' - ' + price.max + '+' : 'Quantity: ' + price.min + ' - ' + price.max) : (index === newProductVariablePricing.length - 1 ? 'Quantity: ' + price.min + '+' : 'Quantity: ' + price.min)}`}
                                     </div>
