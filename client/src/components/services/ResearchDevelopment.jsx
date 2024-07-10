@@ -24,7 +24,9 @@ const ResearchDevelopment = () => {
     }, []);
     return (
         <div className={`pt-44 ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
-            <ServicesNav location={location} />
+            <div className="lgMobile:hidden">
+                <ServicesNav location={location} />
+            </div>
             <div className="flex lgMobile:flex-col h-[36rem]">
                 <div className="w-1/2 lgMobile:w-full">
                     <p className="mt-16 ml-[15rem] lgMobile:ml-6 tracking-[0.3em] text-white bg-[#FF7F11] w-fit px-2">SERVICES</p>
