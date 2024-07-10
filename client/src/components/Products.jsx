@@ -264,8 +264,8 @@ const Products = () => {
                                 <svg xmlns="https://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FF7F11"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" /></svg>
                                 <p className='text-xl font-semibold ml-4'>Add Price</p>
                             </button>
-                            <div className={` w-full text-xl font-thin ${showAddPrice ? 'flex' : 'hidden'}`}>
-                                <div className='w-1/2 mr-4'>
+                            <div className={` w-full text-xl lgMobile:text-lg font-thin ${showAddPrice ? 'flex lgMobile:flex-col' : 'hidden'}`}>
+                                <div className='w-1/2 lgMobile:w-full mr-4'>
                                     <p className='mb-4'>Quantity Range</p>
                                     <input type="number" className={`${showAddPrice ? '' : 'hidden'} bg-transparent border-b-2 w-1/2 outline-none`} placeholder='Min'
                                         value={pricingMin}
@@ -276,7 +276,7 @@ const Products = () => {
                                         onChange={(ev) => setPricingMax(ev.target.value)}
                                     />
                                 </div>
-                                <div className='w-1/2'>
+                                <div className='w-1/2 lgMobile:w-full'>
                                     <p className='mb-4'>Price</p>
                                     <input type="number" className={`${showAddPrice ? '' : 'hidden'} bg-transparent border-b-2 w-full outline-none`} placeholder='Price'
                                         value={pricingPrice}
