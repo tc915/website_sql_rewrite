@@ -55,9 +55,9 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
         setMessage('');
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // }, []);
 
     useEffect(() => {
         if (emailSentPopup && !inAboutPage) {
@@ -83,20 +83,21 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
                 initial="initial"
                 animate="animate"
             >
-                <img className="absolute -z-10 -translate-y-[15rem]" src="contact_background_unsplash.jpg" />
-                <div className="h-[48rem] flex text-white">
-                    <form className="w-1/2 p-44 -mt-16"
+                <img className="absolute -z-10 -translate-y-[15rem] lgMobile:-translate-y-[10rem] lgMobile:h-[50rem] object-cover" src="contact_background_unsplash.jpg" />
+                <div className="h-[48rem] flex lgMobile:flex-col text-white">
+                    <h2 className='lgMobile:mb-24 lgMobile:block hidden lgMobile:text-4xl lgMobile:font-semibold lgMobile:ml-6'>Contact Us</h2>
+                    <form className="w-1/2 lgMobile:w-full p-44 lgMobile:p-6 -mt-16"
                         onSubmit={(ev) => {
                             ev.preventDefault();
                             sendMessage();
                         }}
                     >
                         <div className="w-full">
-                            <input type="text" required placeholder="Name" className="bg-transparent placeholder:text-white text-xl font-thin border-b-2 pb-2 mr-4 w-1/2 outline-none"
+                            <input type="text" required placeholder="Name" className="bg-transparent placeholder:text-white text-xl lgMobile:text-lg font-thin border-b-2 pb-2 lgMobile:pb-1 lgMobile:mb-8 mr-4 w-1/2 outline-none"
                                 value={name}
                                 onChange={(ev) => setName(ev.target.value)}
                             />
-                            <input type='text' placeholder="Phone (not required)" className="bg-transparent placeholder:text-white text-xl font-thin border-b-2 pb-2 outline-none"
+                            <input type='text' placeholder="Phone (not required)" className="bg-transparent placeholder:text-white text-xl lgMobile:text-lg font-thin border-b-2 pb-2 lgMobile:pb-1 outline-none"
                                 value={phoneNum}
                                 onChange={(ev) => setPhoneNum(ev.target.value)}
                             />
@@ -119,7 +120,7 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
                             whileTap="click"
                         >Send</motion.button>
                     </form>
-                    <div className="text-8xl flex justify-center items-center -mt-44">
+                    <div className="text-8xl flex justify-center items-center -mt-44 lgMobile:hidden">
                         <p className="w-2/3">Let's Work Together!</p>
                     </div>
                 </div>

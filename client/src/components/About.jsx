@@ -68,39 +68,41 @@ const About = () => {
                 initial="initial"
                 animate="animate"
             >
-                <div className={`w-full h-[41rem] flex ${darkMode ? 'text-white' : 'text-black'}`}>
-                    <div className="w-1/2">
-                        <h1 className="font-bold text-7xl pl-44 mt-24">About Us</h1>
-                        <p className="pl-44 pr-20 text-2xl mt-6">Interactive Technologies, Inc. is always willing to
+                <div className={`w-full h-[41rem] flex lgMobile:flex-col ${darkMode ? 'text-white' : 'text-black'}`}>
+                    <div className="w-1/2 lgMobile:w-full">
+                        <h1 className="font-bold text-7xl lgMobile:text-4xl pl-44 lgMobile:pl-10 mt-24">About Us</h1>
+                        <p className="pl-44 lgMobile:pl-10 pr-20 lgMobile:pr-10 text-2xl mt-6">Interactive Technologies, Inc. is always willing to
                             push the boundaries and experiment with
                             cutting edge technology. We make simple ideas
                             into full-fledged products that bring forth a
                             customer's vision to completeion.</p>
                         <Link to={'/contact'}>
-                            <motion.button className="px-6 py-2 rounded-full text-2xl ml-44 mt-6 bg-[#f77d1b] text-white font-semibold"
+                            <motion.button className="px-6 py-2 rounded-full text-2xl ml-44 lgMobile:ml-10 mt-6 bg-[#f77d1b] text-white font-semibold"
                                 variants={buttonVariants}
                                 whileHover="hover"
                                 whileTap="click"
                             >Contact Us</motion.button></Link>
                     </div>
-                    <div className="w-1/2 flex justify-center items-center">
-                        <div className="bg-black w-3/4 h-2/3 mb-32 mr-16"></div>
+                    <div className="w-1/2 lgMobile:w-full flex justify-center items-center">
+                        <div className="bg-black w-3/4 lgMobile:w-full h-2/3 mb-32 mr-16 lgMobile:ml-8 lgMobile:mr-8 lgMobile:h-[15rem] lgMobile:mt-16"></div>
                     </div>
                 </div>
-                <div className={`w-full h-[41rem] flex ${darkMode ? 'text-white' : 'text-black'}`}>
-                    <div className="w-1/2 flex justify-center items-center">
+                <div className={`w-full h-[41rem] flex lgMobile:flex-col ${darkMode ? 'text-white' : 'text-black'}`}>
+                    <div className="w-1/2 lgMobile:w-full flex justify-center items-center">
                         <div className="bg-black w-2/3 h-2/3 mb-32"></div>
                     </div>
-                    <div className="w-1/2">
-                        <h1 className="font-bold text-7xl pr-44 mt-36">History</h1>
-                        <p className="pr-44 text-2xl mt-6">Interactive Technologies, Inc. is always willing to
+                    <div className="w-1/2 lgMobile:w-full">
+                        <h1 className="font-bold text-7xl lgMobile:text-4xl pr-44 lgMobile:pr-0 lgMobile:pl-10 mt-36">History</h1>
+                        <p className="pr-44 lgMobile:pr-10 lgMobile:pl-10 text-2xl mt-6">Interactive Technologies, Inc. is always willing to
                             push the boundaries and experiment with
                             cutting edge technology. We make simple ideas
                             into full-fledged products that bring forth a
                             customer's vision to completeion.</p>
                     </div>
                 </div>
-                <Contact inAboutPage={inAboutPage} setAboutPageEmailSentPopup={setAboutPageEmailSentPopup} />
+                <div className="lgMobile:mt-36">
+                    <Contact inAboutPage={inAboutPage} setAboutPageEmailSentPopup={setAboutPageEmailSentPopup} />
+                </div>
             </motion.div >
         </>
     );
