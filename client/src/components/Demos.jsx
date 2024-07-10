@@ -702,7 +702,7 @@ const Demos = () => {
                         ))}
                     </div>
                     <div className="w-1/4 lgMobile:w-full mt-8 print:w-full">
-                        <ul className="space-y-4">
+                        <ul className="lgMobile:space-y-4">
                             {boatLength > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 Power Injectors:</span><div>1</div></li>}
                             {boatLength > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 6.5ft drop cables:</span><div>1</div></li>}
                             {boatLength > 0 && switchOnCount > 0 && <li className="w-full flex"><span className="mr-auto">Total Length of 16AWG Power Cables:</span><span>{`${(switchOnCount * (boatLength * 0.6)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}ft`}</span></li>}
