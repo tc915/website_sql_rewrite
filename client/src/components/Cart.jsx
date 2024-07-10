@@ -36,7 +36,7 @@ const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, c
     }, []);
 
     return (
-        <div key={index} className={`text-3xl mt-10 flex lgMobile:flex-col border-b-2 border-[#FF7F11] pb-16 ${darkMode ? 'text-white' : 'text-black'}`}>
+        <div key={index} className={`text-3xl mt-10 flex lgMobile:flex-col lgMobile:items-center border-b-2 border-[#FF7F11] pb-16 ${darkMode ? 'text-white' : 'text-black'}`}>
             <div className="w-[20rem] h-[20rem] flex justify-center">
                 <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.details.thumbnailImageId}`} className="h-full object-cover" />
             </div>
