@@ -338,7 +338,7 @@ const Products = () => {
                 animate="animate"
             >
 
-                <div className='pt-[10rem] px-[22rem] flex lgMobile:flex-col justify-between items-end'>
+                <div className='pt-[10rem] px-[22rem] flex justify-between items-end'>
                     <h1 className="font-bold text-6xl text-center">Products</h1>
                     <div className='flex items-center'>
                         <div className='text-2xl mr-2 font-md rounded-full w-[3rem] h-[3rem] bg-gradient-to-br from-[#FF7F11] to-[#facc22] text-white p-[3px] flex justify-center items-center'>
@@ -352,7 +352,7 @@ const Products = () => {
                         </button>
                     </div>
                 </div>
-                <div className="grid grid-cols-3 gap-y-44 px-[20rem] py-14 mb-44 text-center">
+                <div className="grid grid-cols-3 lgMobile:grid-cols-1 gap-y-44 px-[20rem] lgMobile:px-6 py-14 mb-44 text-center">
                     {products.length > 0 && products.map((product, index) => (
                         <Product key={index} product={product} refresh={refresh} setRefresh={setRefresh} adminPrivileges={adminPrivileges} user={user} navigate={navigate} darkMode={darkMode} />
                     ))}
