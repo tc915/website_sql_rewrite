@@ -124,7 +124,9 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
                         <p className="w-2/3">Let's Work Together!</p>
                     </div>
                 </div>
-                <Footer />
+                <div className='lgMobile:-mt-32'>
+                    <Footer />
+                </div>
             </motion.div>
         </>
     );
