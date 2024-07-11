@@ -613,8 +613,8 @@ const Home = ({ scrollY }) => {
                             >Our Products</motion.button></Link>
                         </div>
                     </div>
-                    <div className="flex lgMobile:flex-col">
-                        <div className="w-[40%] lgMobile:w-[10%] px-32 py-56 lgMobile:px-10 lgMobile:py-24">
+                    <div className="flex lgMobile:flex-col mdMobile:flex-col">
+                        <div className="w-[40%] lgMobile:w-[10%] mdMobile:w-[10%] px-32 py-56 lgMobile:px-10 mdMobile:px-6 lgMobile:py-24 mdMobile:py-20">
                             <div className="sticky h-[65vh] top-[24vh] lgMobile:hidden">
                                 <h2 className={`font-bold text-6xl lgMobile:text-2xl lgMobile:w-[20rem] ${darkMode ? 'text-white' : 'text-black'}`}>What We Do</h2>
                                 <ul className="text-5xl lgMobile:text-3xl font-semibold mt-14 text-[#767676]">
