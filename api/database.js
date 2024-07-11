@@ -83,18 +83,14 @@ export const findUserByVerificationToken = async (verificationToken) => {
 export const updateTable = async (tableName, doc) => {
     // Get the keys of the doc object
     const keys = Object.keys(doc);
-    console.log(keys)
 
     // Generate the SET clause of the SQL query
     const setClause = keys.map((key, index) => `${key} = ?`).join(', ');
-    console.log(setClause)
-
     // Generate the values array for the SQL query
     const values = keys.map(key => doc[key]);
 
     // Add the doc's id to the values array
     values.push(doc.id);
-    console.log(values)
 
     // Generate and execute the SQL query
     const [result] = await pool.query(`
@@ -102,8 +98,6 @@ export const updateTable = async (tableName, doc) => {
         SET ${setClause}
         WHERE id = ?
     `, values);
-
-    console.log(result)
 }
 
 

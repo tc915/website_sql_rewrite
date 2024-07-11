@@ -68,7 +68,6 @@ app.post('/register', async (req, res) => {
                     console.log(err);
                     res.status(500).json({ message: 'Error occurred' })
                 } else {
-                    console.log('Verification email sent');
                     res.status(200).json({ message: 'Verification email sent' })
                 }
             });
@@ -100,14 +99,12 @@ app.post('/login', async (req, res) => {
     const { username, email, password, googleUser } = req.body;
     try {
         const userDoc = await findUserByUsername(username);
-        console.log(userDoc)
         if (!userDoc) {
             res.status(422).json({ message: 'user not found' });
         } else if (!userDoc.confirmed && !googleUser) {
             res.status(420).json({ message: 'Email not verified' })
         } else {
             const passOk = googleUser || (userDoc.password && bcrypt.compareSync(password, userDoc.password));
-            console.log(passOk)
             if (passOk) {
                 jwt.sign({
                     username: userDoc.username,
@@ -444,7 +441,6 @@ app.post('/delete-cart-item', async (req, res) => {
 });
 
 app.post('/send-email', async (req, res) => {
-    console.log('email sending')
     const { name, phoneNum, email, message } = req.body;
 
     let transporter = nodemailer.createTransport({
@@ -487,7 +483,6 @@ app.post('/send-email', async (req, res) => {
             console.error(err);
             res.status(500).json({ message: 'Error occured' })
         } else {
-            console.log('email success')
             res.status(200).json({ message: 'Email send' })
         }
     });
@@ -535,7 +530,6 @@ app.post('/reset-password-email', async (req, res) => {
                     console.log(err);
                     res.status(500).json({ message: 'Error occurred' })
                 } else {
-                    console.log('Verification email sent');
                     res.status(200).json({ message: 'Verification email sent' })
                 }
             });
@@ -699,7 +693,6 @@ app.get('/showcase-products', async (req, res) => {
 app.post('/save-boat-setup', async (req, res) => {
     try {
         const setupData = req.body;
-        console.log(setupData.userId)
         const boatSetupAlreadySaved = await getBoatSetupWithUserId(setupData.userId)
         if (boatSetupAlreadySaved) {
             const newData = {
@@ -708,11 +701,9 @@ app.post('/save-boat-setup', async (req, res) => {
             }
             await updateTable('boatCalculator', newData)
             res.status(200).json('Boat setup saved')
-            console.log('boat setup saved to already existing setup')
         } else {
             const savedBoatSetup = await createBoatSetupTable(setupData)
             res.status(201).json(savedBoatSetup)
-            console.log(savedBoatSetup)
         }
     } catch (err) {
         console.log(err.stack)
