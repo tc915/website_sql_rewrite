@@ -285,9 +285,17 @@ app.patch('/product/:id', upload.fields([{ name: 'imageThumbnail', maxCount: 1 }
     }
 });
 
-
 app.post('/sign-guest-token', async (req, res) => {
     try {
+        // Check if a valid cartToken was sent in the request
+        const existingToken = req.cookies.cartToken;
+        if (existingToken) {
+            // Verify the existing token...
+            // If the token is valid, return it
+            return res.status(200).json(existingToken);
+        }
+
+        // If no valid token was sent, sign a new one
         jwt.sign({
             guest: true
         }, jwtSecret, {}, async (err, token) => {
@@ -310,6 +318,7 @@ app.post('/sign-guest-token', async (req, res) => {
         res.status(500).json({ message: err.message })
     }
 });
+
 
 app.post('/sign-theme-token', async (req, res) => {
     try {
