@@ -15,7 +15,6 @@ export const UserContextProvider = ({ children }) => {
             if (!token) {
                 const res = await axios.post('/sign-guest-token', {}, { withCredentials: true });
                 token = res.data;
-                Cookies.set('cartToken', token)
             }
             setGuestCookie(token);
         }
