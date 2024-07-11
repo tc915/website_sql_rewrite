@@ -627,7 +627,7 @@ const Home = ({ scrollY }) => {
                             </div>
                         </div>
                         <div className="w-[60%] lgMobile:w-full">
-                            <h2 className="lgMobile:block hidden font-semibold text-3xl w-full text-center"></h2>
+                            <h2 className={`lgMobile:block hidden font-semibold text-3xl w-full text-center ${darkMode ? 'text-white' : 'text-black'}`}></h2>
                             <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="design_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">IDEATION</h3>
