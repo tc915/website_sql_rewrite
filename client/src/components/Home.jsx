@@ -606,7 +606,7 @@ const Home = ({ scrollY }) => {
                                 whileHover="hover"
                                 whileTap="click"
                             >Start a Project</motion.button></Link>
-                            <Link to={'/products'}><motion.button className="py-2 px-6 lgMobile:py-2 lgMobile:px-8 mdMobile:px-10 ml-8 lgMobile:ml-0 lgMobile:mt-6 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold rounded-full border-2 border-white"
+                            <Link to={'/products'}><motion.button className="py-2 px-6 lgMobile:py-2 lgMobile:px-8 mdMobile:px-10 ml-8 lgMobile:ml-0 mdMobile:ml-0 mdMobile:mt-6 lgMobile:mt-6 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold rounded-full border-2 border-white"
                                 variants={buttonVariants}
                                 whileHover="hover"
                                 whileTap="click"
