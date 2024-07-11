@@ -633,22 +633,22 @@ const Home = ({ scrollY }) => {
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">IDEATION</h3>
                                 <p className="w-3/4 mt-2 text-lg">A product always starts with an idea, whether that be a napkin sketch or a full mockup. Ideation is the core foundation to a product and determines what service it aims to bring and how it innnovates. We swiftly create working models to validate concepts, iron out flaws, and refine functionality. By emphasizing quick iterations, we ensure that prototypes aligns with your vision while addressing user needs effectively.</p>
                             </div>
-                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 mdMobile:-ml-12 mdMobile:pr-10 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="prototyping_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">MECHANICAL</h3>
                                 <p className="w-3/4 mt-2 text-lg">Mechanical needs in production are essential, ensuring products are convenient and meet user demands. Elegant designs enhance accessibility and user experience, while durability in different environments guarantee product longevity across various conditions. These elements are fundamental to a product’s success, reflecting the original vision and adapting to market expectations sustainably.</p>
                             </div>
-                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 mdMobile:-ml-12 mdMobile:pr-10 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="electrical_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">ELECTRICAL</h3>
                                 <p className="w-3/4 mt-2 text-lg">Innovative circuitry is crucial, providing longer battery life and ensuring device functionality aligns with consumer needs. Robust  protections are implemented to extend the device’s lifespan against power surges or voltage harsh situations.</p>
                             </div>
-                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 mdMobile:-ml-12 mdMobile:pr-10 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="software_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">SOFTWARE</h3>
                                 <p className="w-3/4 mt-2 text-lg">At our core, we are committed to innovation, consistently integrating cutting-edge technology into our software development process. We embrace experimentation and continuously explore new methodologies to enhance performance, ensure scalability, and maintain the utmost reliability in our products.</p>
                             </div>
-                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 mdMobile:-ml-12 mdMobile:pr-10 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="manufacturing_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">MANUFACTURING</h3>
                                 <p className="w-3/4 mt-2 text-lg">Manufacturing is a critical process in the product lifecycle, powering the transformation of concepts into market-ready goods. It encompasses design, prototyping, and production, ensuring that ideas are not only realized but optimized for consumer use. The goal is to deliver quality and innovation, seamlessly integrating functionality with user expectations. We manufacture locally in the United States in our own facility as well as overseas depending on costs and demand.</p>
