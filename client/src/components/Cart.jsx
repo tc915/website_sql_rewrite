@@ -42,9 +42,9 @@ const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, c
             </div>
             <div className="flex flex-col justify-center ml-6">
                 <p className="mb-8 font-semibold text-xl">{product.details.name}</p>
-                <p className="text-lg">{`Quantity: ${product.count}`}</p>
+                <p className="text-lg lgMobile:mg-2">{`Quantity: ${product.count}`}</p>
             </div>
-            <div className="flex flex-col justify-center ml-auto lgMobile:ml-0">
+            <div className="flex flex-col justify-center ml-auto lgMobile:ml-2">
                 <p className="text-3xl font-bold text-center mb-6">Price: ${getProductPrice().toFixed(2)}</p>
                 <button className="bg-transparent border-2 border-[#FF7F11] font-semibold text-lg px-4 py-1 rounded-full"
                     onClick={() => {
