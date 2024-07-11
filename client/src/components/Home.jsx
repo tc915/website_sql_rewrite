@@ -598,7 +598,7 @@ const Home = ({ scrollY }) => {
             >
                 <motion.div className={`w-full mdMobile:w-[30rem] lgMobile:w-[30rem] overflow-hidden`}>
                     <img className="-z-[5] w-full object-cover lgMobile:h-[38rem] mdMobile:h-[45rem]" src="motherboard_bg_unsplash.jpg" />
-                    <div className="w-full h-[20rem] absolute -mt-[52rem] lgMobile:-mt-[36rem] lgMobile:w-[85%] text-white pl-[9.5rem] xsm:pl-[7rem] xxsm:pl-[7rem] laptop:pl-[7rem] smLaptop:pl-[5rem] tablet:pl-[5rem] lgMobile:pl-[3rem] mdMobile:w-[60rem] mdMobile:-mt-[10rem]">
+                    <div className="w-full h-[20rem] absolute -mt-[52rem] lgMobile:-mt-[36rem] lgMobile:w-[85%] text-white pl-[9.5rem] xsm:pl-[7rem] xxsm:pl-[7rem] laptop:pl-[7rem] smLaptop:pl-[5rem] tablet:pl-[5rem] lgMobile:pl-[3rem] mdMobile:w-[60rem] mdMobile:-mt-[30rem]">
                         <h1 className="font-bold text-6xl xl:mt-36 lg:mt-44 md:mt-[15rem] md:text-5xl sm:mt-[18rem] sm:text-5xl xsm:mt-[24rem] xsm:text-4xl xxsm:mt-[24rem] xxsm:text-4xl laptop:mt-[25rem] laptop:text-4xl smLaptop:mt-[26rem] smLaptop:text-4xl tablet:mt-[32rem] tablet:text-3xl lgMobile:text-xl lgMobile:mt-24 mdMobile:text-7xl">{landingPageQuote}</h1>
                         <div className="flex mt-16 lgMobile:mt-8 lgMobile:flex-col">
                             <Link to={'/contact'}><motion.button className="py-2 px-10 lgMobile:py-2 lgMobile:px-8 text-xl lgMobile:text-xl font-semibold rounded-full bg-[#FF7F11]"
