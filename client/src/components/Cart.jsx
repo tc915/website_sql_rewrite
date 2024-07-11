@@ -42,7 +42,7 @@ const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, c
             </div>
             <div className="flex flex-col justify-center lgMobile:items-center ml-6">
                 <p className="mb-8 font-semibold text-xl">{product.details.name}</p>
-                <p className="text-lg lgMobile:mg-2">{`Quantity: ${product.count}`}</p>
+                <p className="text-lg lgMobile:mb-2">{`Quantity: ${product.count}`}</p>
             </div>
             <div className="flex flex-col justify-center ml-auto lgMobile:ml-2">
                 <p className="text-3xl font-bold text-center mb-6">Price: ${getProductPrice().toFixed(2)}</p>
