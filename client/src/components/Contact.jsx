@@ -55,9 +55,9 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
         setMessage('');
     }
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         if (emailSentPopup && !inAboutPage) {

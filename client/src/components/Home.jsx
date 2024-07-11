@@ -142,9 +142,9 @@ const Home = ({ scrollY }) => {
         }
     }, [scrollY]);
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         if (user) {
