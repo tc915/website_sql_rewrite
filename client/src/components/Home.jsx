@@ -628,7 +628,7 @@ const Home = ({ scrollY }) => {
                         </div>
                         <div className="w-[60%] lgMobile:w-full mdMobile:w-full">
                             <h2 className={`lgMobile:block mdMobile:block hidden font-semibold text-3xl w-full text-center lgMobile:-ml-[6.2rem] -mb-24 ${darkMode ? 'text-white' : 'text-black'}`}>What We Do</h2>
-                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 mdMobile:mr-6 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <div className={`w-full lgMobile:w-[90%] h-screen p-6 -ml-6 lgMobile:mr-6 mdMobile:mr-14 flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <img src="design_unsplash.jpg" className="w-3/4 mt-24" />
                                 <h3 className="w-3/4 mt-2 tracking-[0.2em] text-xl">IDEATION</h3>
                                 <p className="w-3/4 mt-2 text-lg">A product always starts with an idea, whether that be a napkin sketch or a full mockup. Ideation is the core foundation to a product and determines what service it aims to bring and how it innnovates. We swiftly create working models to validate concepts, iron out flaws, and refine functionality. By emphasizing quick iterations, we ensure that prototypes aligns with your vision while addressing user needs effectively.</p>
