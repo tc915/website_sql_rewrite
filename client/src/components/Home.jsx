@@ -671,7 +671,7 @@ const Home = ({ scrollY }) => {
                                 );
                             })}
                         </div>
-                        <div className="w-1/2 flex lgMobile:flex-col mdMobile:flex-col items-center justify-center py-16 pr-32">
+                        <div className="w-1/2 flex items-center justify-center py-16 pr-32">
                             <div className={`h-2/3 w-2/3 relative ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <h2 className="text-5xl lgMobile:text-3xl mdMobile:text-2xl font-thin">Our Products</h2>
                                 <h3 className="text-3xl text-[#FF7F11] mt-4">{`${productsPageNames[productNum - 1]}`}</h3>
@@ -720,7 +720,7 @@ const Home = ({ scrollY }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-screen flex lgMobile:flex-col lgMobile:mt-[5rem]">
+                    <div className="w-full h-screen flex lgMobile:flex-col mdMobile:flex-col lgMobile:mt-[5rem] mdMobile:mt-[5rem]">
                         <div className={`w-1/2 lgMobile:w-full flex flex-col justify-center pl-32 ${darkMode ? 'text-white' : 'text-black'} relative`}>
                             <button className={`absolute top-[13rem] left-[5rem] lgMobile:w-[7rem] lgMobile:-top-10 lgMobile:left-[15rem] ${adminPrivileges ? '' : 'hidden'} ${darkMode ? 'text-white' : 'text-black'} border-2 px-8 rounded-full`}
                                 onClick={() => setEditThinkTank(true)}
