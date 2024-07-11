@@ -40,7 +40,7 @@ const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, c
             <div className="w-[20rem] h-[20rem] flex justify-center">
                 <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.details.thumbnailImageId}`} className="h-full object-cover" />
             </div>
-            <div className="flex flex-col justify-center ml-6">
+            <div className="flex flex-col justify-center lgMobile:items-center ml-6">
                 <p className="mb-8 font-semibold text-xl">{product.details.name}</p>
                 <p className="text-lg lgMobile:mg-2">{`Quantity: ${product.count}`}</p>
             </div>
