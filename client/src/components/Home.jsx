@@ -734,9 +734,9 @@ const Home = ({ scrollY }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-screen flex lgMobile:flex-col-reverse lgMobile:mb-32 lgMobile:-mt-[15rem]">
-                        <div className="w-1/2 lgMobile:w-[24rem] flex justify-center items-center">
-                            <div className="w-full h-[45%] lgMobile:h-[15rem] bg-black ml-24 lgMobile:ml-4 lgMobile:mr-4">Building Image</div>
+                    <div className="w-full h-screen flex lgMobile:flex-col-reverse mdMobile:flex-col-reverse lgMobile:mb-32 mdMobile:mb-32 lgMobile:-mt-[15rem] mdMobile:-mt-[15rem]">
+                        <div className="w-1/2 lgMobile:w-[24rem] mdMobile:w-[24rem] flex justify-center items-center">
+                            <div className="w-full h-[45%] lgMobile:h-[15rem] mdMobile:h-[15rem] bg-black ml-24 lgMobile:ml-4 mdMobile:ml-4 lgMobile:mr-4 mdMobile:mr-4">Building Image</div>
                         </div>
                         <div className={`w-1/2 lgMobile:w-full flex flex-col justify-center pl-32 lgMobile:pl-10 lgMobile:mb-10 ${darkMode ? 'text-white' : 'text-black'}`}>
                             <h2 className="text-5xl font-thin">About Us</h2>
