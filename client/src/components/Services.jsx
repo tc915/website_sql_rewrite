@@ -127,8 +127,13 @@ const Services = () => {
                         </Link>
                     </div>
                 </div>
-                <Footer />
+                <div className="lgMobile:block hidden">
+                    <Footer />
+                </div>
             </motion.div>
+            <div className="lgMobile:hidden block">
+                <Footer />
+            </div>
         </>
     );
 }
