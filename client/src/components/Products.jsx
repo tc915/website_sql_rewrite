@@ -198,17 +198,17 @@ const Products = () => {
                     >
                         <svg className='absolute top-2 right-2 cursor-pointer' xmlns="https://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg>
                     </button>
-                    <h2 className={`text-4xl lgMobile:text-2xl mdMobile:text-2xl font-semibold ${darkMode ? 'text-white' : 'text-black'}`}>New Product</h2>
+                    <h2 className={`text-4xl tablet:text-2xl lgMobile:text-2xl mdMobile:text-2xl font-semibold ${darkMode ? 'text-white' : 'text-black'}`}>New Product</h2>
                     <form className={`w-full flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}
                         onSubmit={(ev) => {
                             ev.preventDefault();
                             addProduct();
                         }}
                     >
-                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
                             <p>Product name:</p>
                         </div>
-                        <input type="text" placeholder='Product name' className='w-2/3 lgMobile:w-full mdMobile:w-full text-2xl lgMobile:text-xl mdMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required
+                        <input type="text" placeholder='Product name' className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full text-2xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required
                             onChange={(ev) => setNewProductName(ev.target.value)}
                         />
                         <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
