@@ -71,7 +71,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
                 </button>
             )}
             <Link to={`/products/${product.id}`}>
-                <button className="w-full h-full flex flex-col items-center mb-24 tablet:mb-4">
+                <button className="w-full h-full flex flex-col items-center mb-24">
                     <motion.img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 tablet:pt-2 object-cover'
                         variants={productWidgetImageVariants}
                         initial="initial"
