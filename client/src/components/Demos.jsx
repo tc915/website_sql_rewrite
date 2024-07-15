@@ -650,7 +650,7 @@ const Demos = () => {
                     >Ok</button>
                 </div>
             </div>
-            <motion.div className={`pt-32 lgMobile:pt-[14rem] ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'}`}
+            <motion.div className={`pt-32 lgMobile:pt-[14rem] mdMobile:pt-[14rem] ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'}`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
@@ -667,24 +667,24 @@ const Demos = () => {
                 <div className="w-full h-full mt-8 print:hidden">
                     <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2">{`Switch Count: ${switchOnCount} / ${lightTypes && lightTypes.length > 0 ? lightTypes.length + pumpTypes.length + boatControlTypes.length : 0}`}</p>
                 </div>
-                <div className="w-full px-12 lgMobile:px-4 lgMobile:pl-10 py-12 flex items-center flex-wrap print:block">
-                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 lgMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
+                <div className="w-full px-12 lgMobile:px-4 mdMobile:px-4 lgMobile:pl-10 mdMobile:pl-10 py-12 flex items-center flex-wrap print:block">
+                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 lgMobile:mb-6 mdMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
                         <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Lights</p>
                         {lightTypes.map((lightType) => (
                             <div className="flex mb-4 w-full" key={lightType}>
-                                <p className="mr-auto lgMobile:text-sm">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
-                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                                <p className="mr-auto lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
+                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                     onClick={() => setLightStates(prev => ({ ...prev, [lightType]: !prev[lightType] }))}
                                 >{lightStates[lightType] ? 'On' : 'Off'}</button>
                             </div>
                         ))}
                     </div>
-                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 lgMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
+                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 lgMobile:mb-6 mdMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
                         <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Pumps</p>
                         {pumpTypes.map((pumpType) => (
                             <div className="flex mb-4" key={pumpType}>
-                                <p className="mr-auto lgMobile:text-sm">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
-                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                                <p className="mr-auto lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
+                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                     onClick={() => setPumpStates(prev => ({ ...prev, [pumpType]: !prev[pumpType] }))}
                                 >{pumpStates[pumpType] ? 'On' : 'Off'}</button>
                             </div>
@@ -694,15 +694,15 @@ const Demos = () => {
                         <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Boat Controls</p>
                         {boatControlTypes.map((controlType) => (
                             <div className="flex mb-4" key={controlType}>
-                                <p className="mr-auto lgMobile:text-sm">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
-                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                                <p className="mr-auto lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
+                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
                                     onClick={() => setBoatControlStates(prev => ({ ...prev, [controlType]: !prev[controlType] }))}
                                 >{boatControlStates[controlType] ? 'On' : 'Off'}</button>
                             </div>
                         ))}
                     </div>
-                    <div className="w-1/4 lgMobile:w-full mt-8 print:w-full">
-                        <ul className="lgMobile:space-y-4">
+                    <div className="w-1/4 lgMobile:w-full mdMobile:w-full mt-8 print:w-full">
+                        <ul className="lgMobile:space-y-4 mdMobile:space-y-4">
                             {boatLength > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 Power Injectors:</span><div>1</div></li>}
                             {boatLength > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 6.5ft drop cables:</span><div>1</div></li>}
                             {boatLength > 0 && switchOnCount > 0 && <li className="w-full flex"><span className="mr-auto">Total Length of 16AWG Power Cables:</span><span>{`${(switchOnCount * (boatLength * 0.6)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}ft`}</span></li>}
@@ -712,7 +712,7 @@ const Demos = () => {
                             {num2mBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 6.4ft backbone cables:</span><span>{num2mBackboneCables}</span></li>}
                             {numHalfMeterBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 1.6ft backbone cables:</span><span>{numHalfMeterBackboneCables}</span></li>}
                         </ul>
-                        <ul className="my-4 lgMobile:space-y-4">
+                        <ul className="my-4 lgMobile:space-y-4 mdMobile:space-y-4">
                             {num6ButtonKeypads > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Way Keypads:</span><span>{num6ButtonKeypads}</span></li>}
                             {num12ButtonKeypads > 0 && <li className="w-full flex"><span className="mr-auto">Number of 12 Way Keypads:</span><span>{num12ButtonKeypads}</span></li>}
                             {numsixOutputDigitalSwitchingBox > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Output Digital Switching Boxes:</span><span>{numsixOutputDigitalSwitchingBox}</span></li>}
@@ -780,13 +780,13 @@ const Demos = () => {
                         {productKeys && productKeys.length > 0 && productKeys.map((product, index) => {
                             const [newPrice, setNewPrice] = useState(0);
                             return (
-                                <div className="mb-4 w-1/3 lgMobile:w-full lgMobile:mb-6">
+                                <div className="mb-4 w-1/3 lgMobile:w-full mdMobile:w-full lgMobile:mb-6 mdMobile:mb-6">
                                     <div className="flex">
                                         <p className={`mr-auto ${changingProductPriceList[index] ? 'hidden' : ''}`}>{`${productData[product].name}: $${productData[product].units !== 'each' ? `${productData[product].cost} / ${productData[product].units.unit}` : (productData[product].cost).toFixed(2)}`}</p>
-                                        <input type="number" placeholder="New price" className={`${changingProductPriceList[index] ? `border-2 lgMobile:w-2/3 p-1 mr-auto ${darkMode ? 'border-white' : 'border-black'}` : 'hidden'}`}
+                                        <input type="number" placeholder="New price" className={`${changingProductPriceList[index] ? `border-2 lgMobile:w-2/3 mdMobile:w-2/3 p-1 mr-auto ${darkMode ? 'border-white' : 'border-black'}` : 'hidden'}`}
                                             onChange={(ev) => setNewPrice(Number(ev.target.value))}
                                         />
-                                        <button className={`${darkMode ? 'border-white' : 'border-black'} border-2 ml-4 px-4 lgMobile:text-sm lgMobile:h-[3rem] lgMobile:w-[5rem] rounded-full lgMobile:rounded-lg ${changingProductPriceList[index] ? 'hidden' : ''}`}
+                                        <button className={`${darkMode ? 'border-white' : 'border-black'} border-2 ml-4 px-4 lgMobile:text-sm mdMobile:text-sm lgMobile:h-[3rem] mdMobile:h-[3rem] lgMobile:w-[5rem] mdMobile:w-[5rem] rounded-full lgMobile:rounded-lg mdMobile:rounded-lg ${changingProductPriceList[index] ? 'hidden' : ''}`}
                                             onClick={() => {
                                                 const anyTrue = changingProductPriceList.some(value => value)
                                                 if (!anyTrue) {
@@ -796,7 +796,7 @@ const Demos = () => {
                                                 }
                                             }}
                                         >Change price</button>
-                                        <button className={`border-2 px-2 lgMobile:text-sm lgMobile:rounded-lg lgMobile:w-[6rem] rounded-full py-1 ${changingProductPriceList[index] ? '' : 'hidden'} bg-[#FF7F11] text-white border-transparent`}
+                                        <button className={`border-2 px-2 lgMobile:text-sm mdMobile:text-sm lgMobile:rounded-lg mdMobile:rounded-lg lgMobile:w-[6rem] mdMobile:w-[6rem] rounded-full py-1 ${changingProductPriceList[index] ? '' : 'hidden'} bg-[#FF7F11] text-white border-transparent`}
                                             onClick={() => {
                                                 saveProductPriceChange(index, newPrice)
                                                 const updatedList = [...changingProductPriceList]
