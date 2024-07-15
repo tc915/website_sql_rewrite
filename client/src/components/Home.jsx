@@ -121,7 +121,6 @@ const Home = ({ scrollY }) => {
 
     useEffect(() => {
         if (!userChangeProductNum && inProducts) {
-            console.log('timer')
             const timer = setTimeout(() => {
                 if (productNum >= 1 && productNum < 5) {
                     setProductNum(productNum + 1)
@@ -129,6 +128,7 @@ const Home = ({ scrollY }) => {
                     setProductNum(1)
                 }
             }, 5000);
+            console.log('timer')
             return () => clearTimeout(timer)
         } else {
             return
