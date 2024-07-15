@@ -36,15 +36,15 @@ const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, c
     }, []);
 
     return (
-        <div key={index} className={`text-3xl mt-10 flex lgMobile:flex-col lgMobile:items-center border-b-2 border-[#FF7F11] pb-16 ${darkMode ? 'text-white' : 'text-black'}`}>
+        <div key={index} className={`text-3xl mt-10 flex lgMobile:flex-col mdMobile:flex-col lgMobile:items-center mdMobile:items-center border-b-2 border-[#FF7F11] pb-16 ${darkMode ? 'text-white' : 'text-black'}`}>
             <div className="w-[20rem] h-[20rem] flex justify-center">
                 <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.details.thumbnailImageId}`} className="h-full object-cover" />
             </div>
-            <div className="flex flex-col justify-center lgMobile:items-center ml-6">
+            <div className="flex flex-col justify-center lgMobile:items-center mdMobile:items-center ml-6">
                 <p className="mb-8 font-semibold text-xl">{product.details.name}</p>
-                <p className="text-lg lgMobile:mb-2">{`Quantity: ${product.count}`}</p>
+                <p className="text-lg lgMobile:mb-2 mdMobile:mb-2">{`Quantity: ${product.count}`}</p>
             </div>
-            <div className="flex flex-col justify-center ml-auto lgMobile:ml-2">
+            <div className="flex flex-col justify-center ml-auto lgMobile:ml-2 mdMobile:ml-2">
                 <p className="text-3xl font-bold text-center mb-6">Price: ${getProductPrice().toFixed(2)}</p>
                 <button className="bg-transparent border-2 border-[#FF7F11] font-semibold text-lg px-4 py-1 rounded-full"
                     onClick={() => {
@@ -111,10 +111,10 @@ const Cart = () => {
 
     return (
         <div className={`pt-44 w-full ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
-            <div className="mx-[22rem] lgMobile:mx-6 mb-56">
+            <div className="mx-[22rem] lgMobile:mx-6 mdMobile:mx-6 mb-56">
                 <div className="flex justify-between items-end h-[6rem] mb-16">
-                    <h1 className="text-6xl lgMobile:text-4xl font-bold">Your Cart</h1>
-                    <p className="text-4xl lgMobile:text-2xl font-semibold">{`Total items: ${cart.productCountTotal ? cart.productCountTotal : '0'}`}</p>
+                    <h1 className="text-6xl lgMobile:text-4xl mdMobile:text-4xl font-bold">Your Cart</h1>
+                    <p className="text-4xl lgMobile:text-2xl mdMobile:text-2xl font-semibold">{`Total items: ${cart.productCountTotal ? cart.productCountTotal : '0'}`}</p>
                 </div>
                 {cartProducts && cartProducts.length > 0 && cartProducts.map((product, index) => (
                     <Product key={index} product={product} index={index} cart={cart} setCart={setCart} prices={prices} setPrices={setPrices} darkMode={darkMode} cartProducts={cartProducts} setCartProducts={setCartProducts} />
