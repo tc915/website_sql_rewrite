@@ -52,7 +52,7 @@ const Header = () => {
 
     return (
         <motion.header
-            className={`flex print:hidden w-full justify-between items-center h-[8em] lgMobile:h-[12rem] mdMobile:h-[12rem] p-2 z-[10] fixed bg-black`}>
+            className={`flex print:hidden w-full justify-between items-center h-[8em] lgMobile:h-[12rem] mdMobile:h-[12rem] tablet:h-[5rem] p-2 z-[10] fixed bg-black`}>
             <div className={`absolute top-0 left-0 z-[99] bg-black/50 w-full h-screen ${isLogoutPopup ? '' : 'hidden'} flex justify-center items-center`}>
                 <div className="text-white rounded-lg bg-black border-4 border-[#FF7F11] w-1/4 lgMobile:w-2/3 mdMobile:w-2/3 h-1/6 px-24 lgMobile:px-14 mdMobile:px-14 py-4 flex flex-col items-center justify-center relative">
                     <p className="text-2xl lgMobile:text-lg mdMobile:text-lg font-semibold">Log out?</p>
@@ -76,7 +76,7 @@ const Header = () => {
                     }
                 }}
             >
-                <img className="2xl:w-[28%] xl:w-[32%] lg:w-[35%] md:w-[40%] sm:w-[50%] xsm:w-[50%] xxsm:w-[45%] xxsm:mt-4 laptop:w-[50%] smLaptop:w-[50%] smLaptop:mt-4 laptop:mt-4 tablet:w-[25%] lgMobile:w-[50%] mdMobile:w-[50%]" src="/iTi_logo_color.png" />
+                <img className="2xl:w-[28%] xl:w-[32%] lg:w-[35%] md:w-[40%] sm:w-[50%] xsm:w-[50%] xxsm:w-[45%] xxsm:mt-4 laptop:w-[50%] smLaptop:w-[50%] smLaptop:mt-4 laptop:mt-4 tablet:w-[20%] lgMobile:w-[50%] mdMobile:w-[50%]" src="/iTi_logo_color.png" />
             </Link>
             <nav className="mt-10">
                 <ul className={`text-xl xl:text-lg xsm:text-[1.15rem] xxsm:text-[1.05rem] laptop:text-[1rem] smLaptop:text-[0.95rem] ${user ? 'mr-[14rem]' : '2xl:mr-[15rem] xl:mr-[13rem] lg:mr-[12rem] md:mr-[7rem] sm:mr-[4rem] xsm:mr-[5rem] xxsm:mr-[3rem] laptop:mr-[2.6rem] smLaptop:mr-[3rem]'} rounded-3xl flex tablet:hidden lgMobile:hidden mdMobile:hidden`}>
