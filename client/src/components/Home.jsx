@@ -703,7 +703,7 @@ const Home = ({ scrollY }) => {
                                         }
                                     }}
                                 >
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="42px" viewBox="0 -960 960 960" width="42px" fill="#FF7F11"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-[42px] w-[42px] tablet:w-[35px] tablet:h-[35px]" viewBox="0 -960 960 960" fill="#FF7F11"><path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" /></svg>
                                 </button>
                                 <button className="absolute top-48 tablet:top-1/2 -right-20"
                                     onClick={() => {
