@@ -72,15 +72,15 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
             )}
             <Link to={`/products/${product.id}`}>
                 <button className="w-full h-full flex flex-col items-center mb-24">
-                    <motion.img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 object-cover'
+                    <motion.img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 tablet:pt-2 object-cover'
                         variants={productWidgetImageVariants}
                         initial="initial"
                         animate={isHoverContainer ? "hover" : "initial"}
                     />
-                    <h2 className='mt-4'>{product.name}</h2>
+                    <h2 className='mt-4 tablet:mt-2 tablet:text-sm'>{product.name}</h2>
                 </button>
             </Link>
-            <button className='w-5/6'
+            <button className='w-5/6 tablet:w-full'
                 onClick={() => {
                     addProductToCart(product.id)
                 }}
