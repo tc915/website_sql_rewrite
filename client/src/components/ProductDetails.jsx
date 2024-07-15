@@ -211,7 +211,7 @@ const ProductDetails = () => {
                 <Footer />
             </div>
             <div className={`fixed top-0 left-0 w-full h-full ${darkMode ? 'text-white' : 'text-black'} bg-black/50 z-[99] ${showEdit ? 'flex justify-center items-center' : 'hidden'}`}>
-                <div className={`w-2/3 lgMobile:w-[90%] mdMobile:w-[90%] mdMobile:-translate-x-5 h-[85%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] rounded-3xl flex flex-col items-center p-12 overflow-y-auto scroll-p-5 relative`}>
+                <div className={`w-2/3 lgMobile:w-[90%] mdMobile:w-[90%] mdMobile:-translate-x-2 h-[85%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] rounded-3xl flex flex-col items-center p-12 overflow-y-auto scroll-p-5 relative`}>
                     <div className="absolute top-2 right-2 cursor-pointer"
                         onClick={() => setShowEdit(false)}
                     >
