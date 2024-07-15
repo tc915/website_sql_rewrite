@@ -45,7 +45,7 @@ const EmbeddedFirmware = () => {
                     <div className="bg-black w-2/3 h-2/3 mr-24"></div>
                 </div>
             </div>
-            <div className="w-full h-[36rem] mt-[6rem] mb-[3rem] lgMobile:mb-[20rem] mdMobile:mb-[20rem] flex lgMobile:flex-col mdMobile:flex-col">
+            <div className="w-full h-[36rem] mdMobile:h-[42rem] mt-[6rem] mb-[3rem] lgMobile:mb-[20rem] mdMobile:mb-[20rem] flex lgMobile:flex-col mdMobile:flex-col">
                 <div className="w-1/2 lgMobile:w-full mdMobile:w-full flex justify-center items-center">
                     <div className="bg-black w-2/3 lgMobile:w-full mdMobile:w-full h-2/3 lgMobile:h-[15rem] mdMobile:h-[15rem] ml-24 lgMobile:ml-6 mdMobile:ml-6 lgMobile:mr-6 mdMobile:mr-6 mb-10"></div>
                 </div>
