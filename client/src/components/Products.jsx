@@ -66,12 +66,12 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
                         deleteProduct();
                     }}
                 >
-                    <svg xmlns="https://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill={`${darkMode ? '#fff' : '#131313'}`}
+                    <svg xmlns="https://www.w3.org/2000/svg" className="h-[40px] w-[40px] tablet:h-[20px] tablet:w-[20px]" viewBox="0 -960 960 960" fill={`${darkMode ? '#fff' : '#131313'}`}
                     ><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" /></svg>
                 </button>
             )}
             <Link to={`/products/${product.id}`}>
-                <button className="w-full h-full flex flex-col items-center mb-24">
+                <button className="w-full h-full flex flex-col items-center mb-24 tablet:mb-4">
                     <motion.img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.thumbnailImageId}`} className='h-full pt-16 tablet:pt-2 object-cover'
                         variants={productWidgetImageVariants}
                         initial="initial"
