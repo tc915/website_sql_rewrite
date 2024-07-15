@@ -352,7 +352,7 @@ const Products = () => {
                         </button>
                     </div>
                 </div>
-                <div className="grid grid-cols-3 lgMobile:grid-cols-1 mdMobile:grid-cols-1 gap-y-44 tablet:gap-y-36 px-[20rem] tablet:px-[5rem] tablet:ml-[5rem] lgMobile:px-6 mdMobile:px-6 py-14 mb-44 text-center">
+                <div className="grid grid-cols-3 lgMobile:grid-cols-1 mdMobile:grid-cols-1 gap-y-44 tablet:gap-y-36 px-[20rem] tablet:px-[5rem] tablet:ml-[4rem] lgMobile:px-6 mdMobile:px-6 py-14 mb-44 text-center">
                     {products.length > 0 && products.map((product, index) => (
                         <Product key={index} product={product} refresh={refresh} setRefresh={setRefresh} adminPrivileges={adminPrivileges} user={user} navigate={navigate} darkMode={darkMode} />
                     ))}
