@@ -657,7 +657,7 @@ const Home = ({ scrollY }) => {
                     </div>
                     <div className="w-full h-screen flex lgMobile:hidden mdMobile:hidden relative">
                         {adminPrivileges && (
-                            <button className={`absolute top-[10rem] tablet:top-[2rem] right-[10rem] tablet:right-[2rem] px-6 py-2 rounded-full border-2 font-semibold ${darkMode ? 'text-white' : 'text-black'}`}
+                            <button className={`absolute top-[10rem] tablet:top-[7rem] right-[10rem] tablet:right-[2rem] px-6 py-2 rounded-full border-2 font-semibold ${darkMode ? 'text-white' : 'text-black'}`}
                                 onClick={() => setEditProducts(true)}
                             >Edit Products</button>
                         )}
@@ -675,7 +675,7 @@ const Home = ({ scrollY }) => {
                             <div className={`h-2/3 w-2/3 relative ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <h2 className="text-5xl tablet:text-3xl lgMobile:text-3xl mdMobile:text-2xl font-thin">Our Products</h2>
                                 <h3 className="text-3xl tablet:text-lg text-[#FF7F11] mt-4">{`${productsPageNames[productNum - 1]}`}</h3>
-                                <p className="mt-4">{`${productsPageDescriptions[productNum - 1]}`}</p>
+                                <p className="mt-4 tablet:text-sm">{`${productsPageDescriptions[productNum - 1]}`}</p>
                                 <div className="flex flex-col justify-center mt-10">
                                     <div className="flex">
                                         {widths.map((width, index) => (
