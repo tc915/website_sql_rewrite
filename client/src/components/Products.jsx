@@ -55,7 +55,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
 
 
     return (
-        <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] tablet:h-[10rem] w-[20rem] tablet:w-[5rem] rounded-3xl p-4`}
+        <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] tablet:h-[10rem] w-[20rem] tablet:w-[8rem] rounded-3xl p-4 tablet:p-0`}
             onMouseEnter={() => setIsHoverContainer(true)}
             onMouseLeave={() => setIsHoverContainer(false)}
         >
