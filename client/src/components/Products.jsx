@@ -192,7 +192,7 @@ const Products = () => {
     return (
         <div className={`${darkMode ? 'bg-[#131313]' : 'bg-white'}`}>
             <div className={`${showAddProduct ? 'fixed flex justify-center items-center' : 'hidden'} w-full z-[99] top-0 left-0 bg-black/50 h-full`}>
-                <div className={`w-2/3 lgMobile:w-[90%] mdMobile:w-[90%] h-[43rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] text-white rounded-3xl flex flex-col items-center p-12 overflow-auto relative scroll-p-5`}>
+                <div className={`w-2/3 lgMobile:w-[90%] mdMobile:w-[90%] h-[43rem] tablet:h-[20rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] text-white rounded-3xl flex flex-col items-center p-12 overflow-auto relative scroll-p-5`}>
                     <button
                         onClick={() => setShowAddProduct(false)}
                     >
