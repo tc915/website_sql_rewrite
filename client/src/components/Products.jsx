@@ -60,7 +60,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
             onMouseLeave={() => setIsHoverContainer(false)}
         >
             {adminPrivileges && (
-                <button className='absolute top-4 tablet:top-0 right-4 tablet:right-0'
+                <button className='absolute top-4 tablet:-top-4 right-4 tablet:-right-4'
                     onClick={(ev) => {
                         ev.preventDefault();
                         deleteProduct();
