@@ -591,7 +591,7 @@ const Home = ({ scrollY }) => {
                     </div>
                 </div>
             </div>
-            <motion.div className={`relative w-full lgMobile:pt-[12rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'} overflow-x-hidden`}
+            <motion.div className={`relative w-full lgMobile:pt-[12rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'} lgMobile:overflow-x-hidden mdMobile:overflow-x-hidden`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
