@@ -109,7 +109,6 @@ const Home = ({ scrollY }) => {
     const [colors, setColors] = useState(["#404040", "#404040", "#404040", "#404040", "#404040"]);
 
     useEffect(() => {
-        console.log(productNum)
         setWidths(widths.map((width, index) => (productNum === index + 1 ? "6em" : "2em")));
         setColors(colors.map((color, index) => (productNum === index + 1 ? "#FF7F11" : "#404040")));
     }, [productNum]);
@@ -128,7 +127,6 @@ const Home = ({ scrollY }) => {
                     setProductNum(1)
                 }
             }, 5000);
-            console.log('timer')
             return () => clearTimeout(timer)
         } else {
             return

@@ -59,6 +59,7 @@ function App() {
         return () => {
             window.removeEventListener('scroll', setScrollPosition);
         }
+        console.log(scrollY)
     }, [scrollY]);
 
 
