@@ -55,7 +55,6 @@ function App() {
         const setScrollPosition = () => {
             setScrollY(window.scrollY)
         }
-        console.log(scrollY)
         window.addEventListener('scroll', setScrollPosition);
         return () => {
             window.removeEventListener('scroll', setScrollPosition);

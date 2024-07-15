@@ -134,9 +134,9 @@ const Home = ({ scrollY }) => {
     }, [productNum, inProducts])
 
     useEffect(() => {
-        if (scrollY >= 5000 && scrollY < 5900 && !inProducts) {
+        if (scrollY >= 5500 && scrollY < 6600 && !inProducts) {
             setInProducts(true);
-        } else if (inProducts && scrollY < 5000 || inProducts && scrollY >= 5900) {
+        } else if (inProducts && scrollY < 5500 || inProducts && scrollY >= 6600) {
             setInProducts(false);
             setUserChangeProcuctNum(false)
         }
