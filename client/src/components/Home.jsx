@@ -591,7 +591,7 @@ const Home = ({ scrollY }) => {
                     </div>
                 </div>
             </div>
-            <motion.div className={`relative w-full lgMobile:pt-[12rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+            <motion.div className={`relative w-full lgMobile:pt-[12rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'} lgMobile:overflow-x-hidden mdMobile:overflow-x-hidden`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
@@ -615,7 +615,7 @@ const Home = ({ scrollY }) => {
                     </div>
                     <div className="flex lgMobile:flex-col mdMobile:flex-col">
                         <div className="w-[40%] lgMobile:w-[10%] mdMobile:w-[10%] px-32 py-56 lgMobile:px-10 mdMobile:px-6 lgMobile:py-24 mdMobile:py-20">
-                            <div className="sticky h-[65vh] top-[24vh] lgMobile:hidden mdMobile:hidden">
+                            <div className="sticky h-[65vh] top-[24vh]">
                                 <h2 className={`font-bold text-6xl lgMobile:text-2xl lgMobile:w-[20rem] ${darkMode ? 'text-white' : 'text-black'}`}>What We Do</h2>
                                 <ul className="text-5xl lgMobile:text-3xl font-semibold mt-14 text-[#767676]">
                                     <li className={`mb-5 p-2 ${scrollY >= 0 && scrollY < 1800 ? 'bg-gradient-to-r from-[#FF7F11] to-[#ffdd8b] text-transparent inline-block bg-clip-text' : ''}`}>Ideation</li>
