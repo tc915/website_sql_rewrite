@@ -201,7 +201,7 @@ const ProductDetails = () => {
                         <p className="mt-8 text-xl">Part Number: <span className="font-bold">{product.partNumber}</span></p>
                     </div>
                     <p className="mt-4 text-2xl font-bold">Product Description:</p>
-                    <div className="w-full h-[15rem] py-6 pr-4 rounded-xl overflow-y-auto overflow-x-hidden whitespace-pre-wrap text-2xl">{product.description}</div>
+                    <div className="w-full h-[15rem] mdMobile:h-[20rem] py-6 pr-4 rounded-xl overflow-y-auto overflow-x-hidden whitespace-pre-wrap text-2xl">{product.description}</div>
                 </div>
                 <div className="lgMobile:mt-44 mdMobile:mt-44 lgMobile:w-full mdMobile:w-full lgMobile:-translate-x-8 mdMobile:-translate-x-8 lgMobile:block mdMobile:block hidden">
                     <Footer />
