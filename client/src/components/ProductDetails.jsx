@@ -154,21 +154,21 @@ const ProductDetails = () => {
 
 
     return (
-        <div className={`pt-40 lgMobile:py-56 lgMobile:pb-24 ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
-            <div className="w-full h-[40rem] p-10 flex lgMobile:flex-col relative px-[15rem] lgMobile:px-6 mb-44">
+        <div className={`pt-40 lgMobile:py-56 mdMobile:py-56 lgMobile:pb-24 mdMobile:pb-24 ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
+            <div className="w-full h-[40rem] p-10 flex lgMobile:flex-col mdMobile:flex-col relative px-[15rem] lgMobile:px-6 mdMobile:px-6 mb-44">
                 {adminPrivileges && (
                     <button className="absolute top-4 right-[17rem] px-10 border-[3px] border-gray-300 rounded-xl font-semibold"
                         onClick={() => setShowEdit(true)}
                     >Edit</button>
                 )}
-                <div className="h-full w-1/2 lgMobile:w-full flex justify-center lgMobile:mt-10">
+                <div className="h-full w-1/2 lgMobile:w-full mdMobile:w-full flex justify-center lgMobile:mt-10 mdMobile:mt-10">
                     <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${detailsImageId ? detailsImageId : thumbnailImageId}`} className="h-full object-cover" />
                 </div>
-                <div className="h-full w-1/2 lgMobile:w-full ml-10 lgMobile:ml-0 p-10 lgMobile:p-6">
-                    <h1 className="text-4xl lgMobile:text-2xl font-bold pb-4">{product.name}</h1>
-                    <p className="text-4xl lgMobile:text-2xl font-semibold mb-6">${displayPrice}</p>
+                <div className="h-full w-1/2 lgMobile:w-full mdMobile:w-full ml-10 lgMobile:ml-0 mdMobile:ml-0 p-10 lgMobile:p-6 mdMobile:p-6">
+                    <h1 className="text-4xl lgMobile:text-2xl mdMobile:text-2xl font-bold pb-4">{product.name}</h1>
+                    <p className="text-4xl lgMobile:text-2xl mdMobile:text-2xl font-semibold mb-6">${displayPrice}</p>
                     <p className="text-md">Quantity</p>
-                    <div className="w-1/3 lgMobile:w-full mt-2 h-[3rem] rounded-lg bg-gradient-to-l from-[#facc22] to-[#FF7F11] p-[2px]">
+                    <div className="w-1/3 lgMobile:w-full mdMobile:w-full mt-2 h-[3rem] rounded-lg bg-gradient-to-l from-[#facc22] to-[#FF7F11] p-[2px]">
                         <div className="w-full h-full bg-[#131313] rounded-lg flex items-center justify-between px-6 font-semibold text-xl text-white">
                             <button className="p-2"
                                 onClick={() => {
@@ -203,38 +203,38 @@ const ProductDetails = () => {
                     <p className="mt-4 text-2xl font-bold">Product Description:</p>
                     <div className="w-full h-[15rem] py-6 pr-4 rounded-xl overflow-y-auto overflow-x-hidden whitespace-pre-wrap text-2xl">{product.description}</div>
                 </div>
-                <div className="lgMobile:mt-44 lgMobile:w-full lgMobile:-translate-x-8 lgMobile:block hidden">
+                <div className="lgMobile:mt-44 mdMobile:mt-44 lgMobile:w-full mdMobile:w-full lgMobile:-translate-x-8 mdMobile:-translate-x-8 lgMobile:block mdMobile:block hidden">
                     <Footer />
                 </div>
             </div>
-            <div className="lgMobile:hidden block">
+            <div className="lgMobile:hidden mdMobile:hidden block">
                 <Footer />
             </div>
             <div className={`fixed top-0 left-0 w-full h-full ${darkMode ? 'text-white' : 'text-black'} bg-black/50 z-[99] ${showEdit ? 'flex justify-center items-center' : 'hidden'}`}>
-                <div className={`w-2/3 lgMobile:w-[90%] h-[85%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] rounded-3xl flex flex-col items-center p-12 overflow-y-auto scroll-p-5 relative`}>
+                <div className={`w-2/3 lgMobile:w-[90%] mdMobile:w-[90%] h-[85%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] rounded-3xl flex flex-col items-center p-12 overflow-y-auto scroll-p-5 relative`}>
                     <div className="absolute top-2 right-2 cursor-pointer"
                         onClick={() => setShowEdit(false)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg>
                     </div>
-                    <h2 className='text-4xl lgMobile:text-2xl font-semibold'>Edit Product</h2>
+                    <h2 className='text-4xl lgMobile:text-2xl mdMobile:text-2xl font-semibold'>Edit Product</h2>
                     <form className='w-full flex flex-col items-center'
                         onSubmit={(ev) => {
                             ev.preventDefault();
                             saveProductEdits();
                         }}
                     >
-                        <div className='w-2/3 lgMobile:w-full mt-10 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
                             <p>Product name:</p>
                         </div>
-                        <input type="text" placeholder='Product name' className='w-2/3 lgMobile:w-full text-2xl lgMobile:text-xl border-b-2 bg-transparent p-2 border-gray-300 outline-none' required
+                        <input type="text" placeholder='Product name' className='w-2/3 lgMobile:w-full mdMobile:w-full text-2xl lgMobile:text-xl mdMobile:text-xl border-b-2 bg-transparent p-2 border-gray-300 outline-none' required
                             value={productName}
                             onChange={(ev) => setProductName(ev.target.value)}
                         />
-                        <div className='w-2/3 lgMobile:w-full mt-10 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
                             <p>Part number:</p>
                         </div>
-                        <input type="text" placeholder='XXX-XXXXX' className='w-2/3 lgMobile:w-full text-2xl lgMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required maxLength="9"
+                        <input type="text" placeholder='XXX-XXXXX' className='w-2/3 lgMobile:w-full mdMobile:w-full text-2xl lgMobile:text-xl mdMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required maxLength="9"
                             value={productPartNumber}
                             onChange={(ev) => {
                                 let value = ev.target.value;
@@ -245,31 +245,31 @@ const ProductDetails = () => {
                                 setProductPartNumber(value);
                             }}
                         />
-                        <div className='w-2/3 lgMobile:w-full mt-4 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-4 text-xl font-semibold mb-2'>
                             <p>Product description:</p>
                         </div>
-                        <TextAreaAutosize className='w-2/3 lgMobile:w-full border-b-2 bg-transparent p-2 text-2xl lgMobile:text-xl resize-none outline-none' autoComplete='off' placeholder='Product description' required
+                        <TextAreaAutosize className='w-2/3 lgMobile:w-full mdMobile:w-full border-b-2 bg-transparent p-2 text-2xl lgMobile:text-xl mdMobile:text-xl resize-none outline-none' autoComplete='off' placeholder='Product description' required
                             value={productDescription}
                             onChange={(ev) => setProductDescrition(ev.target.value)}
                         ></TextAreaAutosize>
-                        <div className='w-2/3 lgMobile:w-full mt-4 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-4 text-xl font-semibold mb-2'>
                             <p>Variable pricing:</p>
                         </div>
-                        <div className='w-2/3 lgMobile:w-full flex flex-col'>
+                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full flex flex-col'>
                             {variablePricing && variablePricing.length > 0 && variablePricing.map((price, index) => (
                                 <div key={index} className='flex relative'>
-                                    <div className={`py-2 px-4 lgMobile:px-1 lgMobile:py-2 mr-4 lgMobile:mr-2 font-semibold text-xl lgMobile:text-sm lgMobile:flex lgMobile:justify-center lgMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
+                                    <div className={`py-2 px-4 lgMobile:px-1 mdMobile:px-1 lgMobile:py-2 mdMobile:py-2 mr-4 lgMobile:mr-2 mdMobile:mr-2 font-semibold text-xl lgMobile:text-sm mdMobile:text-sm lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
                                         {`${price.max ? (index === variablePricing.length - 1 ? 'Quantity: ' + price.min + ' - ' + price.max + '+' : 'Quantity: ' + price.min + ' - ' + price.max) : (index === variablePricing.length - 1 ? 'Quantity: ' + price.min + '+' : 'Quantity: ' + price.min)}`}
                                     </div>
-                                    <div className={`py-2 lgMobile:px-2 px-4 font-semibold text-xl lgMobile:text-sm lgMobile:flex lgMobile:justify-center lgMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'} w-1/2 rounded-full`}>{`Price: $${price.price}`}</div>
-                                    <button className='absolute top-0 -right-12 lgMobile:mr-2 lgMobile:mt-1 bg-[#FF7F11] rounded-full p-1'
+                                    <div className={`py-2 lgMobile:px-2 mdMobile:px-2 px-4 font-semibold text-xl lgMobile:text-sm mdMobile:text-xl lgMobile:flex mdMo   flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'} w-1/2 rounded-full`}>{`Price: $${price.price}`}</div>
+                                    <button className='absolute top-0 -right-12 lgMobile:mr-2 mdMobile:mr-2 lgMobile:mt-1 mdMobile:mt-1 bg-[#FF7F11] rounded-full p-1'
                                         onClick={(ev) => {
                                             ev.preventDefault();
                                             const updatedPricing = variablePricing.filter((_, i) => i !== index);
                                             setVariablePricing(updatedPricing);
                                         }}
                                     >
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-[36px] h-[36px] lgMobile:w-[24px] lgMobile:h-[24px]" viewBox="0 -960 960 960" fill="#fff"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" /></svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-[36px] h-[36px] lgMobile:w-[24px] mdMobile:w-[24px] lgMobile:h-[24px mdobile:w-[24px]" viewBox="0 -960 960 960" fill="#fff"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" /></svg>
                                     </button>
                                 </div>
                             ))}
@@ -286,8 +286,8 @@ const ProductDetails = () => {
                                 <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FF7F11"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" /></svg>
                                 <p className='text-xl font-semibold ml-4'>Add Price</p>
                             </button>
-                            <div className={`w-full text-xl lgMobile:text-lg font-thin ${showAddPrice ? 'flex' : 'hidden'}`}>
-                                <div className='w-1/2 lgMobile:w-full mr-4 lgMobile:mb-4'>
+                            <div className={`w-full text-xl lgMobile:text-lg mdMobile:text-lg font-thin ${showAddPrice ? 'flex' : 'hidden'}`}>
+                                <div className='w-1/2 lgMobile:w-full mdMobile:w-full mr-4 lgMobile:mb-4 mdMobile:mb-4'>
                                     <p className='mb-4'>Quantity Range</p>
                                     <input type="number" className={`${showAddPrice ? '' : 'hidden'} bg-transparent border-b-2 w-1/2 outline-none`} placeholder='Min'
                                         value={pricingMin}
@@ -298,8 +298,8 @@ const ProductDetails = () => {
                                         onChange={(ev) => setPricingMax(ev.target.value)}
                                     />
                                 </div>
-                                <div className='w-1/2 lgMobile:w-full'>
-                                    <p className='mb-4 lgMobile:mb-2'>Price</p>
+                                <div className='w-1/2 lgMobile:w-full mdMobile:w-full'>
+                                    <p className='mb-4 lgMobile:mb-2 mdMobile:mb-2'>Price</p>
                                     <input type="number" className={`${showAddPrice ? '' : 'hidden'} bg-transparent border-b-2 w-full outline-none`} placeholder='Price'
                                         onChange={(ev) => {
                                             let value = ev.target.value;
@@ -321,7 +321,7 @@ const ProductDetails = () => {
                                 }}
                             >Save Price</button>
                         </div>
-                        <div className='w-2/3 lgMobile:w-full mt-4 text-xl lgMobile:text-lg font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
                             <p>Product thumbnail image:</p>
                         </div>
                         <input id='fileUploadThumbnail' type="file" className='hidden'
@@ -331,11 +331,11 @@ const ProductDetails = () => {
                                 setFileInputThumbnailText('Change File');
                             }}
                         />
-                        <div className="w-full flex lgMobile:flex-col items-center">
-                            <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full rounded-xl self-start ml-[11rem] lgMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputThumbnailText}</label>
+                        <div className="w-full flex lgMobile:flex-col mdMobile:flex-col items-center">
+                            <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] lgMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputThumbnailText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem]`}>{thumbnailFilePath}</p>
                         </div>
-                        <div className='w-2/3 lgMobile:w-full mt-4 text-xl lgMobile:text-lg font-semibold mb-2'>
+                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
                             <p>Product details image (optional):</p>
                         </div>
                         <input id='fileUploadDetails' type="file" className='hidden'
@@ -345,9 +345,9 @@ const ProductDetails = () => {
                                 setFileInputDetailsText('Change File');
                             }}
                         />
-                        <div className="w-full flex lgMobile:flex-col items-center">
-                            <label htmlFor="fileUploadDetails" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full rounded-xl self-start ml-[11rem] lgMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
-                            <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem]`}>{detailsFilePath}</p>
+                        <div className="w-full flex lgMobile:flex-col mdMobile:flex-col items-center">
+                            <label htmlFor="fileUploadDetails" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
+                            <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem] mdMobile:text-[1rem]`}>{detailsFilePath}</p>
                         </div>
                         <button type="submit" className='w-2/3 bg-[#FF7F11] rounded-3xl p-2 text-white font-semibold text-2xl mt-10'>Save product</button>
                     </form>
