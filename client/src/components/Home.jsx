@@ -674,7 +674,7 @@ const Home = ({ scrollY }) => {
                         <div className="w-1/2 flex items-center justify-center py-16 pr-32">
                             <div className={`h-2/3 w-2/3 relative ${darkMode ? 'text-white' : 'text-black'}`}>
                                 <h2 className="text-5xl tablet:text-3xl lgMobile:text-3xl mdMobile:text-2xl font-thin">Our Products</h2>
-                                <h3 className="text-3xl text-[#FF7F11] mt-4">{`${productsPageNames[productNum - 1]}`}</h3>
+                                <h3 className="text-3xl tablet:text-xl text-[#FF7F11] mt-4">{`${productsPageNames[productNum - 1]}`}</h3>
                                 <p className="mt-4">{`${productsPageDescriptions[productNum - 1]}`}</p>
                                 <div className="flex flex-col justify-center mt-10">
                                     <div className="flex">
