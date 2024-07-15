@@ -358,13 +358,13 @@ const Products = () => {
                     ))}
 
                     {adminPrivileges && (
-                        <motion.button className='h-[25rem] w-[20rem] border-4 rounded-3xl flex flex-col justify-center items-center mt-10'
+                        <motion.button className='h-[25rem] tablet:h-[10rem] w-[20rem] tablet:w-[8rem] border-4 rounded-3xl flex flex-col justify-center items-center mt-10'
                             onClick={() => setShowAddProduct(true)}
                             initial={{ scale: 1 }}
                             whileHover={{ scale: 0.95 }}
                         >
-                            <svg xmlns="https://www.w3.org/2000/svg" height="100px" viewBox="0 -960 960 960" width="100px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" /></svg>
-                            <p className='font-semibold text-4xl'>Add Product</p>
+                            <svg xmlns="https://www.w3.org/2000/svg" className='h-[100px] w-[100px] tablet:h-[50px] tablet:w-[50px]' height="100px" viewBox="0 -960 960 960" width="100px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" /></svg>
+                            <p className='font-semibold text-4xl tablet:text-lg'>Add Product</p>
                         </motion.button>
                     )}
 
