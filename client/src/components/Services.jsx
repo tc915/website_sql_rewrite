@@ -76,9 +76,9 @@ const Services = () => {
                             >Learn More</motion.button>
                         </Link>
                     </div>
-                    <div className="w-full h-[38rem] mt-10 p-24 lgMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative">
-                        <h2 className="text-5xl lgMobile:text-2xl font-md tracking-widest">PCB / Electrical Design</h2>
-                        <p className="text-white mt-10 text-2xl lgMobile:text-lg">
+                    <div className="w-full h-[38rem] mt-10 p-24 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative">
+                        <h2 className="text-5xl lgMobile:text-2xl mdMobile:text-2xl font-md tracking-widest">PCB / Electrical Design</h2>
+                        <p className="text-white mt-10 text-2xl lgMobile:text-lg mdMobile:text-lg">
                             Our PCB and Electrical Design services are at the forefront of innovation, delivering high-quality, precision-engineered circuitry tailored to the specific needs of each product. We emphasize compact, efficient designs that maximize functionality while minimizing space, ensuring our clients receive the most advanced and reliable electronic components.</p>
                         <Link to={'/services/electrical-design'}>
                             <motion.button className="absolute bottom-8 right-8 text-2xl px-10 py-1 text-[#FF7F11] border-2 border-[#FF7F11] rounded-full"
@@ -89,10 +89,10 @@ const Services = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="w-1/2 lgMobile:w-full p-5 pr-24 lgMobile:pr-6">
-                    <div className="w-full h-[50rem] p-24 lgMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative">
-                        <h2 className="text-9xl lgMobile:text-5xl font-thin tracking-widest">R&D</h2>
-                        <p className="text-white mt-14 text-xl lgMobile:text-lg">
+                <div className="w-1/2 lgMobile:w-full mdMobile:w-full p-5 pr-24 lgMobile:pr-6 mdMobile:pr-6">
+                    <div className="w-full h-[50rem] p-24 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative">
+                        <h2 className="text-9xl lgMobile:text-5xl mdMobile:text-5xl font-thin tracking-widest">R&D</h2>
+                        <p className="text-white mt-14 text-xl lgMobile:text-lg mdMobile:text-lg">
                             Our Research and Development (R&D) is the driving force behind our innovative production solutions. We’re dedicated to exploring new frontiers in technology and materials to enhance the quality and efficiency of our products. Our R&D efforts focus on sustainable practices, ensuring that we not only meet but exceed industry standards while fostering environmental stewardship. Partner with us for products that are at the cutting edge of the market, crafted with expertise and a vision for the future.</p>
                         <Link to={'/services/research-and-development'}>
                             <motion.button className="absolute bottom-8 right-8 text-2xl px-10 py-1 text-[#FF7F11] border-2 border-[#FF7F11] rounded-full"
@@ -102,9 +102,9 @@ const Services = () => {
                             >Learn More</motion.button>
                         </Link>
                     </div>
-                    <div className="w-full h-[27.5rem] lgMobile:h-[42rem] mt-10 p-24 lgMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative">
-                        <h2 className="text-4xl lgMobile:text-2xl font-md tracking-widest">Embedded Firmware</h2>
-                        <p className="text-white mt-8 text-lg">
+                    <div className="w-full h-[27.5rem] lgMobile:h-[42rem] mdMobile:h-[42rem] mt-10 p-24 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative">
+                        <h2 className="text-4xl lgMobile:text-2xl mdMobile:text-2xl font-md tracking-widest">Embedded Firmware</h2>
+                        <p className="text-white mt-8 text-lg mdMobile:mb-10">
                             Embedded firmware is the heartbeat of modern devices, meticulously crafted to ensure seamless performance and reliability. It’s engineered to provide the precision and control needed for optimal functionality, with a focus on real-time processing and responsiveness. Our firmware solutions are customizable, scalable, and designed to meet the rigorous demands of various applications, ensuring your products are not just smart, but also secure and future-ready.</p>
                         <Link to={'/services/embedded-firmware'}>
                             <motion.button className="absolute bottom-8 right-8 text-2xl px-10 py-1 text-[#FF7F11] border-2 border-[#FF7F11] rounded-full"
@@ -114,9 +114,9 @@ const Services = () => {
                             >Learn More</motion.button>
                         </Link>
                     </div>
-                    <div className="w-full h-[45rem] lgMobile:h-[40rem] mt-10 p-24 lgMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative">
-                        <h2 className="text-7xl lgMobile:text-2xl font-md tracking-widest">App Development</h2>
-                        <p className="text-white mt-10 text-2xl lgMobile:text-lg">
+                    <div className="w-full h-[45rem] lgMobile:h-[40rem] mdMobile:h-[40rem] mt-10 p-24 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative">
+                        <h2 className="text-7xl lgMobile:text-2xl mdMobile:text-2xl font-md tracking-widest">App Development</h2>
+                        <p className="text-white mt-10 text-2xl lgMobile:text-lg mdMobile:text-lg">
                             Phone App Development is dedicated to crafting exceptional mobile applications that cater to the unique needs of our clients. We combine sleek design with powerful functionality, creating apps that offer a seamless and engaging user experience. With a focus on cross-platform compatibility and user-centric interfaces, our apps are tools meant for convenience and connectivity.</p>
                         <Link to={'/services/app-development'}>
                             <motion.button className="absolute bottom-8 right-8 text-2xl px-10 py-1 text-[#FF7F11] border-2 border-[#FF7F11] rounded-full"
@@ -127,11 +127,11 @@ const Services = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="lgMobile:block hidden">
+                <div className="lgMobile:block mdMobile:block hidden">
                     <Footer />
                 </div>
             </motion.div>
-            <div className="lgMobile:hidden block">
+            <div className="lgMobile:hidden mdMobile:hidden block">
                 <Footer />
             </div>
         </>
