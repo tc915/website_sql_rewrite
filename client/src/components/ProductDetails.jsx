@@ -191,7 +191,7 @@ const ProductDetails = () => {
                         </div>
                     </div>
 
-                    <button className={`w-full text-center text-xl h-[3rem] border-2 ${darkMode ? 'border-white' : 'border-black'} mt-6 rounded-lg`}
+                    <button className={`w-full text-center text-xl tablet:text-lg h-[3rem] tablet:h-[2.5rem] border-2 ${darkMode ? 'border-white' : 'border-black'} mt-6 rounded-lg`}
                         onClick={() => {
                             addProductToCart();
                         }}
