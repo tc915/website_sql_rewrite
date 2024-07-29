@@ -196,7 +196,7 @@ const ProductDetails = () => {
                             addProductToCart();
                         }}
                     >Add to Cart</button>
-                    <button className="w-full text-center text-xl h-[3rem] bg-[#FF7F11] text-white mt-4 rounded-lg">Buy Now</button>
+                    <button className="w-full text-center text-xl tablet:text-lg h-[3rem] tablet:h-[2.5rem] bg-[#FF7F11] text-white mt-4 rounded-lg">Buy Now</button>
                     <div>
                         <p className="mt-8 text-xl">Part Number: <span className="font-bold">{product.partNumber}</span></p>
                     </div>
