@@ -157,7 +157,7 @@ const ProductDetails = () => {
         <div className={`pt-40 tablet:py-32 lgMobile:py-56 mdMobile:py-56 lgMobile:pb-24 mdMobile:pb-24 ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
             <div className="w-full h-[40rem] p-10 tablet:p-2 flex lgMobile:flex-col mdMobile:flex-col relative px-[15rem] lgMobile:px-0 mdMobile:px-0 mb-44">
                 {adminPrivileges && (
-                    <button className="absolute top-4 right-[17rem] px-10 border-[3px] border-gray-300 rounded-xl font-semibold"
+                    <button className="absolute top-4 tablet:top-0 right-[17rem] tablet:right-0 px-10 border-[3px] border-gray-300 rounded-xl font-semibold"
                         onClick={() => setShowEdit(true)}
                     >Edit</button>
                 )}
