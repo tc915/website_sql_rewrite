@@ -133,6 +133,10 @@ const Home = ({ scrollY }) => {
         }
     }, [productNum, inProducts])
 
+    const scrollPoints = {
+        'tablet': [0]
+    }
+
     useEffect(() => {
         if (scrollY >= 5500 && scrollY < 6600 && !inProducts) {
             setInProducts(true);
