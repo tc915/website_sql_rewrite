@@ -134,7 +134,7 @@ const Home = ({ scrollY }) => {
     }, [productNum, inProducts])
 
     const scrollPoints = {
-        'tablet': [0]
+        'tablet': [{ start: 0, end: 999 }, { start: 1000, end: 1599 }, { start: 1600, end: 2099 }, { start: 2100, end: 4306 }]
     }
 
     useEffect(() => {
@@ -297,6 +297,10 @@ const Home = ({ scrollY }) => {
             updateProducts();
         }
     }, [showcaseProducts]);
+
+    useEffect(() => {
+        console.log(window.innerWidth)
+    }, [])
 
 
     return (
