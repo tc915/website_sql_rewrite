@@ -155,7 +155,7 @@ const ProductDetails = () => {
 
     return (
         <div className={`pt-40 lgMobile:py-56 mdMobile:py-56 lgMobile:pb-24 mdMobile:pb-24 ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
-            <div className="w-full h-[40rem] p-10 tablet:p-0 flex lgMobile:flex-col mdMobile:flex-col relative px-[15rem] lgMobile:px-0 mdMobile:px-0 mb-44">
+            <div className="w-full h-[40rem] p-10 tablet:p-2 flex lgMobile:flex-col mdMobile:flex-col relative px-[15rem] lgMobile:px-0 mdMobile:px-0 mb-44">
                 {adminPrivileges && (
                     <button className="absolute top-4 right-[17rem] px-10 border-[3px] border-gray-300 rounded-xl font-semibold"
                         onClick={() => setShowEdit(true)}
@@ -164,9 +164,9 @@ const ProductDetails = () => {
                 <div className="h-full w-1/2 lgMobile:w-full mdMobile:w-full flex justify-center lgMobile:mt-10 mdMobile:mt-10">
                     <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${detailsImageId ? detailsImageId : thumbnailImageId}`} className="h-full object-cover" />
                 </div>
-                <div className="h-full w-1/2 lgMobile:w-full mdMobile:w-full ml-10 lgMobile:ml-0 mdMobile:ml-0 p-10 lgMobile:p-6 mdMobile:p-6">
-                    <h1 className="text-4xl lgMobile:text-2xl mdMobile:text-2xl font-bold pb-4">{product.name}</h1>
-                    <p className="text-4xl lgMobile:text-2xl mdMobile:text-2xl font-semibold mb-6">${displayPrice}</p>
+                <div className="h-full w-1/2 lgMobile:w-full mdMobile:w-full ml-10 lgMobile:ml-0 mdMobile:ml-0 p-10 tablet:p-5 lgMobile:p-6 mdMobile:p-6">
+                    <h1 className="text-4xl tablet:text-3xl lgMobile:text-2xl mdMobile:text-2xl font-bold pb-4">{product.name}</h1>
+                    <p className="text-4xl tablet:text-3xl lgMobile:text-2xl mdMobile:text-2xl font-semibold mb-6">${displayPrice}</p>
                     <p className="text-md">Quantity</p>
                     <div className="w-1/3 lgMobile:w-full mdMobile:w-full mt-2 h-[3rem] rounded-lg bg-gradient-to-l from-[#facc22] to-[#FF7F11] p-[2px]">
                         <div className="w-full h-full bg-[#131313] rounded-lg flex items-center justify-between px-6 font-semibold text-xl text-white">
