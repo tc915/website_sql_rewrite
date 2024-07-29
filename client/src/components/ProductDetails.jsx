@@ -234,7 +234,7 @@ const ProductDetails = () => {
                         <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
                             <p>Part number:</p>
                         </div>
-                        <input type="text" placeholder='XXX-XXXXX' className='w-2/3 lgMobile:w-full mdMobile:w-full text-2xl lgMobile:text-xl mdMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required maxLength="9"
+                        <input type="text" placeholder='XXX-XXXXX' className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full text-2xl lgMobile:text-xl mdMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required maxLength="9"
                             value={productPartNumber}
                             onChange={(ev) => {
                                 let value = ev.target.value;
@@ -245,17 +245,17 @@ const ProductDetails = () => {
                                 setProductPartNumber(value);
                             }}
                         />
-                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-4 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl font-semibold mb-2'>
                             <p>Product description:</p>
                         </div>
-                        <TextAreaAutosize className='w-2/3 lgMobile:w-full mdMobile:w-full border-b-2 bg-transparent p-2 text-2xl lgMobile:text-xl mdMobile:text-xl resize-none outline-none' autoComplete='off' placeholder='Product description' required
+                        <TextAreaAutosize className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full border-b-2 bg-transparent p-2 text-2xl lgMobile:text-xl mdMobile:text-xl resize-none outline-none' autoComplete='off' placeholder='Product description' required
                             value={productDescription}
                             onChange={(ev) => setProductDescrition(ev.target.value)}
                         ></TextAreaAutosize>
-                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-4 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl font-semibold mb-2'>
                             <p>Variable pricing:</p>
                         </div>
-                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full flex flex-col'>
+                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full flex flex-col'>
                             {variablePricing && variablePricing.length > 0 && variablePricing.map((price, index) => (
                                 <div key={index} className='flex relative'>
                                     <div className={`py-2 px-4 lgMobile:px-1 mdMobile:px-1 lgMobile:py-2 mdMobile:py-2 mr-4 lgMobile:mr-2 mdMobile:mr-2 font-semibold text-xl lgMobile:text-sm mdMobile:text-sm lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
