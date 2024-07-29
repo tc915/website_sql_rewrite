@@ -300,7 +300,7 @@ const Products = () => {
                                 }}
                             >Save Price</button>
                         </div>
-                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
                             <p>Product thumbnail image:</p>
                         </div>
                         <input id='fileUploadThumbnail' accept='image/*' type="file" className='hidden' required
@@ -310,11 +310,11 @@ const Products = () => {
                                 setFileInputThumbnailText('Change File');
                             }}
                         />
-                        <div className='flex lgMobile:flex-col  mdMobile:flex-col w-full items-center'>
+                        <div className='flex lgMobile:flex-col mdMobile:flex-col w-full items-center'>
                             <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer ${darkMode ? 'text-white' : 'text-black'}`}>{fileInputThumbnailText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem] mdMobile:text-[1rem]`}>{thumbnailFilePath}</p>
                         </div>
-                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
                             <p>Product details image (optional):</p>
                         </div>
                         <input id='fileUploadDetails' accept='image/*' type="file" className='hidden'
