@@ -161,7 +161,7 @@ const ProductDetails = () => {
                         onClick={() => setShowEdit(true)}
                     >Edit</button>
                 )}
-                <div className="h-full tablet:h-[20rem] w-1/2 lgMobile:w-full mdMobile:w-full flex justify-center lgMobile:mt-10 mdMobile:mt-10">
+                <div className="h-full tablet:h-[20rem] w-1/2 lgMobile:w-full mdMobile:w-full flex justify-center tablet:mt-10 lgMobile:mt-10 mdMobile:mt-10">
                     <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${detailsImageId ? detailsImageId : thumbnailImageId}`} className="h-full object-cover" />
                 </div>
                 <div className="h-full w-1/2 lgMobile:w-full mdMobile:w-full ml-10 lgMobile:ml-0 mdMobile:ml-0 p-10 tablet:p-5 lgMobile:p-6 mdMobile:p-6">
