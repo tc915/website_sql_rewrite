@@ -203,11 +203,11 @@ const ProductDetails = () => {
                     <p className="mt-4 text-2xl font-bold">Product Description:</p>
                     <div className="w-full h-[15rem] mdMobile:h-[20rem] py-6 pr-4 rounded-xl overflow-y-auto overflow-x-hidden whitespace-pre-wrap text-2xl">{product.description}</div>
                 </div>
-                <div className="lgMobile:mt-44 mdMobile:mt-[20rem] lgMobile:w-full mdMobile:w-full tablet:block lgMobile:block mdMobile:block hidden">
+                <div className="lgMobile:mt-44 mdMobile:mt-[20rem] lgMobile:w-full mdMobile:w-full lgMobile:block mdMobile:block hidden">
                     <Footer />
                 </div>
             </div>
-            <div className="tablet:hidden lgMobile:hidden mdMobile:hidden block">
+            <div className="lgMobile:hidden mdMobile:hidden block">
                 <Footer />
             </div>
             <div className={`fixed top-0 left-0 w-full h-full ${darkMode ? 'text-white' : 'text-black'} bg-black/50 z-[99] ${showEdit ? 'flex justify-center items-center' : 'hidden'}`}>
