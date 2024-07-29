@@ -331,8 +331,8 @@ const ProductDetails = () => {
                                 setFileInputThumbnailText('Change File');
                             }}
                         />
-                        <div className="w-full flex lgMobile:flex-col mdMobile:flex-col items-center">
-                            <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputThumbnailText}</label>
+                        <div className="w-full flex tablet:flex-col lgMobile:flex-col mdMobile:flex-col items-center">
+                            <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 tablet:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputThumbnailText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem]`}>{thumbnailFilePath}</p>
                         </div>
                         <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
@@ -345,7 +345,7 @@ const ProductDetails = () => {
                                 setFileInputDetailsText('Change File');
                             }}
                         />
-                        <div className="w-full flex lgMobile:flex-col mdMobile:flex-col items-center">
+                        <div className="w-full flex tablet:flex-col lgMobile:flex-col mdMobile:flex-col items-center">
                             <label htmlFor="fileUploadDetails" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem] mdMobile:text-[1rem]`}>{detailsFilePath}</p>
                         </div>
