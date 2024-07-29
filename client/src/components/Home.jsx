@@ -747,7 +747,7 @@ const Home = ({ scrollY }) => {
                                 into full-fledged products that bring
                                 forth a customer's vision to
                                 completeion.</p>
-                            <Link to={'/about'} className="text-[#FF7F11] text-xl mt-6">More About Us</Link>
+                            <Link to={'/about'} className="text-[#FF7F11] text-xl tablet:text-lg mt-6 tablet:mt-3">More About Us</Link>
                         </div>
 
                     </div>
