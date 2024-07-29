@@ -339,7 +339,7 @@ const Products = () => {
             >
 
                 <div className='pt-[10rem] tablet:pt-[8rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem] px-[22rem] tablet:px-[5rem] lgMobile:px-6 mdMobile:px-6 flex justify-between items-end'>
-                    <h1 className="font-bold text-6xl tablet:text-5xl lgMobile:text-4xl mdMobile:text-4xl lgMobile:mr-6 mdMobile:mr-6 text-center">Products</h1>
+                    <h1 className="font-bold text-6xl tablet:text-4xl lgMobile:text-4xl mdMobile:text-4xl lgMobile:mr-6 mdMobile:mr-6 text-center">Products</h1>
                     <div className='flex items-center'>
                         <div className='text-2xl mr-2 font-md rounded-full w-[3rem] h-[3rem] bg-gradient-to-br from-[#FF7F11] to-[#facc22] text-white p-[3px] flex justify-center items-center'>
                             <div className='bg-[#131313] w-full h-full rounded-full'>
