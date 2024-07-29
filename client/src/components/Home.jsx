@@ -729,7 +729,7 @@ const Home = ({ scrollY }) => {
                             <p className="pr-[6em] lgMobile:pr-0 mdMobile:pr-0 lgMobile:-ml-28 mdMobile:-ml-28 lgMobile:w-full mdMobile:w-full mt-6 text-lg whitespace-pre-wrap">{thinkTankText}</p>
                         </div>
                         <div className="w-1/2 lgMobile:w-full mdMobile:w-full lgMobile:px-4 mdMobile:px-4 lgMobile:h-[35rem] mdMobile:h-[35rem] lgMobile:-mt-14 mdMobile:-mt-14 flex justify-center items-center">
-                            <div className="w-full h-[45%] bg-black mr-24">
+                            <div className="w-full h-[45%] bg-black mr-24 tablet:mr-10">
                                 <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${thinkTankImageId}`} className="object-cover h-full w-full"></img>
                             </div>
                         </div>
