@@ -334,10 +334,6 @@ const Home = ({ scrollY }) => {
         }
     }, [showcaseProducts]);
 
-    useEffect(() => {
-        console.log(window.innerWidth)
-    }, [])
-
 
     return (
         <>

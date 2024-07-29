@@ -51,7 +51,7 @@ function App() {
     const [navBackgroundOpaque, setNavBackgroundOpaque] = useState(false);
 
     useEffect(() => {
-        console.log(window.scrollY)
+        // console.log(window.scrollY)
         const setScrollPosition = () => {
             setScrollY(window.scrollY)
         }
