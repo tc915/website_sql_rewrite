@@ -734,13 +734,13 @@ const Home = ({ scrollY }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-screen flex tablet:flex-col-reverse lgMobile:flex-col-reverse mdMobile:flex-col-reverse tablet:mb-16 lgMobile:mb-32 mdMobile:mb-32 lgMobile:-mt-[15rem] mdMobile:-mt-[15rem]">
+                    <div className="w-full h-screen flex lgMobile:flex-col-reverse mdMobile:flex-col-reverse lgMobile:mb-32 mdMobile:mb-32 lgMobile:-mt-[15rem] mdMobile:-mt-[15rem]">
                         <div className="w-1/2 lgMobile:w-[24rem] mdMobile:w-[24rem] flex justify-center items-center">
                             <div className="w-full h-[45%] lgMobile:h-[15rem] mdMobile:h-[15rem] bg-black ml-24 lgMobile:ml-4 mdMobile:ml-4 lgMobile:mr-4 mdMobile:mr-4">Building Image</div>
                         </div>
-                        <div className={`w-1/2 lgMobile:w-full mdMobile:w-[90%] flex flex-col justify-center pl-32 lgMobile:pl-10 mdMobile:pl-6 lgMobile:mb-10 mdMobile:mb-10 ${darkMode ? 'text-white' : 'text-black'}`}>
-                            <h2 className="text-5xl font-thin">About Us</h2>
-                            <p className="pr-[6em] mt-6 text-lg">Interactive Technologies, Inc. is always
+                        <div className={`w-1/2 lgMobile:w-full mdMobile:w-[90%] flex flex-col justify-center pl-32 tablet:pl-0 lgMobile:pl-10 mdMobile:pl-6 lgMobile:mb-10 mdMobile:mb-10 ${darkMode ? 'text-white' : 'text-black'}`}>
+                            <h2 className="text-5xl tablet:text-3xl font-thin">About Us</h2>
+                            <p className="pr-[6em] tablet:pr-[3em] mt-6 text-lg tablet:text-[1rem]">Interactive Technologies, Inc. is always
                                 willing to push the boundaries and
                                 experiment with cutting edge
                                 technology. We make simple ideas
