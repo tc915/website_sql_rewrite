@@ -48,7 +48,7 @@ const Services = () => {
             >
                 <div className="w-1/2 lgMobile:w-full mdMobile:w-full flex flex-col p-5 tablet:p-0 pl-24 tablet:pl-6 lgMobile:pl-4 mdMobile:pl-4">
                     <div className="h-[35rem]">
-                        <h1 className="text-transparent font-md text-8xl lgMobile:text-6xl mdMobile:text-6xl ml-20 lgMobile:ml-6 mdMobile:ml-6 pt-20 bg-gradient-to-r from-[#facc22] to-[#FF7F11] inline-block bg-clip-text">Services</h1>
+                        <h1 className="text-transparent font-md text-8xl tablet:text-4xl lgMobile:text-6xl mdMobile:text-6xl ml-20 lgMobile:ml-6 mdMobile:ml-6 pt-20 bg-gradient-to-r from-[#facc22] to-[#FF7F11] inline-block bg-clip-text">Services</h1>
                         <p className={`mt-6 px-20 lgMobile:px-6 mdMobile:px-6 text-2xl lgMobile:text-xl mdMobile:text-xl ${darkMode ? 'text-white' : 'text-black'}`}>
                             Interactive Technologies, Inc. is a  hub for production and development services, offering a wide array of solutions from initial concept to final product delivery. We excel in transforming ideas into reality with our state-of-the-art design, engineering, and manufacturing capabilities. With a commitment to innovation and quality, we empower our clients to achieve excellence in their respective markets.</p>
                     </div>
