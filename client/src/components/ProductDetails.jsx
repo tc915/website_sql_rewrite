@@ -211,27 +211,27 @@ const ProductDetails = () => {
                 <Footer />
             </div>
             <div className={`fixed top-0 left-0 w-full h-full ${darkMode ? 'text-white' : 'text-black'} bg-black/50 z-[99] ${showEdit ? 'flex justify-center items-center' : 'hidden'}`}>
-                <div className={`w-2/3 lgMobile:w-[90%] mdMobile:w-[90%] mdMobile:-translate-x-2 h-[85%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] rounded-3xl flex flex-col items-center p-12 overflow-y-auto scroll-p-5 relative`}>
+                <div className={`w-2/3 tablet:w-[90%] lgMobile:w-[90%] mdMobile:w-[90%] mdMobile:-translate-x-2 h-[85%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] rounded-3xl flex flex-col items-center p-12 overflow-y-auto scroll-p-5 relative`}>
                     <div className="absolute top-2 right-2 cursor-pointer"
                         onClick={() => setShowEdit(false)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg>
                     </div>
-                    <h2 className='text-4xl lgMobile:text-2xl mdMobile:text-2xl font-semibold'>Edit Product</h2>
+                    <h2 className='text-4xl tablet:text-3xl lgMobile:text-2xl mdMobile:text-2xl font-semibold'>Edit Product</h2>
                     <form className='w-full flex flex-col items-center'
                         onSubmit={(ev) => {
                             ev.preventDefault();
                             saveProductEdits();
                         }}
                     >
-                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
                             <p>Product name:</p>
                         </div>
-                        <input type="text" placeholder='Product name' className='w-2/3 lgMobile:w-full mdMobile:w-full text-2xl lgMobile:text-xl mdMobile:text-xl border-b-2 bg-transparent p-2 border-gray-300 outline-none' required
+                        <input type="text" placeholder='Product name' className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full text-2xl lgMobile:text-xl mdMobile:text-xl border-b-2 bg-transparent p-2 border-gray-300 outline-none' required
                             value={productName}
                             onChange={(ev) => setProductName(ev.target.value)}
                         />
-                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
                             <p>Part number:</p>
                         </div>
                         <input type="text" placeholder='XXX-XXXXX' className='w-2/3 lgMobile:w-full mdMobile:w-full text-2xl lgMobile:text-xl mdMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required maxLength="9"
