@@ -134,7 +134,7 @@ const Home = ({ scrollY }) => {
     }, [productNum, inProducts])
 
     const scrollPoints = {
-        'tablet': [{ start: 0, end: 999 }, { start: 1000, end: 1599 }, { start: 1600, end: 2099 }, { start: 2100, end: 4306 }],
+        'tablet': [{ start: 0, end: 999 }, { start: 1000, end: 1599 }, { start: 1600, end: 2099 }, { start: 2100, end: 2999 }, { start: 3000, end: 4306 }],
         'smLaptop': [{ start: 0, end: 1199 }, { start: 1200, end: 1799 }, { start: 1800, end: 2499 }, { start: 2500, end: 3099 }, { start: 3100, end: 5503 }],
         'laptop': [{ start: 0, end: 1099 }, { start: 1100, end: 1799 }, { start: 1800, end: 2499 }, { start: 2500, end: 3199 }, { start: 3200, end: 5552 }],
         'xxsm': [{ start: 0, end: 1199 }, { start: 1200, end: 1899 }, { start: 1900, end: 2599 }, { start: 2600, end: 3199 }, { start: 3200, end: 5610 }],
