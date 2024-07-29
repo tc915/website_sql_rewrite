@@ -236,7 +236,7 @@ const Products = () => {
                         </div>
                         <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full flex flex-col'>
                             {newProductVariablePricing && newProductVariablePricing.length > 0 && newProductVariablePricing.map((price, index) => (
-                                <div key={index} className='flex relative'>
+                                <div key={index} className='flex relative tablet:-ml-6'>
                                     <div className={`py-2 px-4 lgMobile:px-1 mdMobile:px-1 lgMobile:py-2 mdMobile:py-2 mr-4 lgMobile:mr-2 mdMobile:mr-2 font-semibold text-xl tablet:text-[1rem] lgMobile:text-sm mdMobile:text-sm lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
                                         {`${price.max ? (index === newProductVariablePricing.length - 1 ? 'Quantity: ' + price.min + ' - ' + price.max + '+' : 'Quantity: ' + price.min + ' - ' + price.max) : (index === newProductVariablePricing.length - 1 ? 'Quantity: ' + price.min + '+' : 'Quantity: ' + price.min)}`}
                                     </div>
@@ -248,7 +248,7 @@ const Products = () => {
                                             setNewProductVariablePricing(updatedPricing);
                                         }}
                                     >
-                                        <svg xmlns="https://www.w3.org/2000/svg" className='w-[36px] h-[36px] tablet:w-[32px] tablet:h-[32px] lgMobile:w-[24px] mdMobile:w-[24px] lgMobile:h-[24px] mdMobile:h-[24px]' viewBox="0 -960 960 960" fill="#fff"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" /></svg>
+                                        <svg xmlns="https://www.w3.org/2000/svg" className='w-[36px] h-[36px] lgMobile:w-[24px] mdMobile:w-[24px] lgMobile:h-[24px] mdMobile:h-[24px]' viewBox="0 -960 960 960" fill="#fff"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" /></svg>
                                     </button>
                                 </div>
                             ))}
