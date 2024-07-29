@@ -722,7 +722,7 @@ const Home = ({ scrollY }) => {
                     </div>
                     <div className="w-full h-screen flex lgMobile:flex-col mdMobile:flex-col lgMobile:mt-[10rem] mdMobile:mt-[5rem]">
                         <div className={`w-1/2 lgMobile:w-full mdMobile:w-full flex flex-col justify-center pl-32 ${darkMode ? 'text-white' : 'text-black'} relative`}>
-                            <button className={`absolute top-[13rem] left-[5rem] tablet:top-[8rem] lgMobile:w-[7rem] mdMobile:w-[7rem] lgMobile:-top-10 mdMobile:-top-10 lgMobile:left-[15rem] mdMobile:left-[15rem] ${adminPrivileges ? '' : 'hidden'} ${darkMode ? 'text-white' : 'text-black'} border-2 px-8 rounded-full`}
+                            <button className={`absolute top-[13rem] left-[5rem] tablet:top-[6rems] lgMobile:w-[7rem] mdMobile:w-[7rem] lgMobile:-top-10 mdMobile:-top-10 lgMobile:left-[15rem] mdMobile:left-[15rem] ${adminPrivileges ? '' : 'hidden'} ${darkMode ? 'text-white' : 'text-black'} border-2 px-8 rounded-full`}
                                 onClick={() => setEditThinkTank(true)}
                             >Edit</button>
                             <h2 className="text-5xl tablet:text-3xl lgMobile:-ml-10 mdMobile:-ml-10 font-thin">Think Tank</h2>
