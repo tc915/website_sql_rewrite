@@ -234,13 +234,13 @@ const Products = () => {
                         <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl font-semibold mb-2'>
                             <p>Variable pricing:</p>
                         </div>
-                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full flex flex-col'>
+                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full flex flex-col'>
                             {newProductVariablePricing && newProductVariablePricing.length > 0 && newProductVariablePricing.map((price, index) => (
                                 <div key={index} className='flex relative'>
-                                    <div className={`py-2 px-4 tablet:px-2 lgMobile:px-1 mdMobile:px-1 lgMobile:py-2 mdMobile:py-2 mr-4 lgMobile:mr-2 mdMobile:mr-2 font-semibold text-xl tablet:text-[1rem] lgMobile:text-sm mdMobile:text-sm tablet:flex tablet:justify-center tablet:items-center lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
+                                    <div className={`py-2 px-4 tablet:px-2 lgMobile:px-1 mdMobile:px-1 lgMobile:py-2 mdMobile:py-2 mr-4 lgMobile:mr-2 mdMobile:mr-2 font-semibold text-xl tablet:text-[1rem] lgMobile:text-sm mdMobile:text-sm lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
                                         {`${price.max ? (index === newProductVariablePricing.length - 1 ? 'Quantity: ' + price.min + ' - ' + price.max + '+' : 'Quantity: ' + price.min + ' - ' + price.max) : (index === newProductVariablePricing.length - 1 ? 'Quantity: ' + price.min + '+' : 'Quantity: ' + price.min)}`}
                                     </div>
-                                    <div className={`py-2 px-4 tablet:px-2 lgMobile:px-1 mdMobile:px-1 font-semibold text-xl tablet:text-[1rem] lgMobile:text-sm mdMobile:text-sm tablet:flex tablet:justify-center tablet:items-center lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'} w-1/2 rounded-full`}>{`Price: $${price.price}`}</div>
+                                    <div className={`py-2 px-4 tablet:px-2 lgMobile:px-1 mdMobile:px-1 font-semibold text-xl tablet:text-[1rem] lgMobile:text-sm mdMobile:text-sm lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'} w-1/2 rounded-full`}>{`Price: $${price.price}`}</div>
                                     <button className='absolute top-0 -right-12 lgMobile:mr-2 mdMobile:mr-2 lgMobile:mt-1 mdMobile:mt-1 bg-[#FF7F11] rounded-full p-1'
                                         onClick={(ev) => {
                                             ev.preventDefault();
