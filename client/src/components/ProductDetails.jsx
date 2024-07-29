@@ -165,7 +165,7 @@ const ProductDetails = () => {
                     <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${detailsImageId ? detailsImageId : thumbnailImageId}`} className="h-full object-cover" />
                 </div>
                 <div className="h-full w-1/2 lgMobile:w-full mdMobile:w-full ml-10 lgMobile:ml-0 mdMobile:ml-0 p-10 tablet:p-5 lgMobile:p-6 mdMobile:p-6">
-                    <h1 className="text-4xl tablet:text-3xl lgMobile:text-2xl mdMobile:text-2xl font-bold pb-4">{product.name}</h1>
+                    <h1 className="text-4xl tablet:text-xl lgMobile:text-2xl mdMobile:text-2xl font-bold pb-4">{product.name}</h1>
                     <p className="text-4xl tablet:text-3xl lgMobile:text-2xl mdMobile:text-2xl font-semibold mb-6">${displayPrice}</p>
                     <p className="text-md">Quantity</p>
                     <div className="w-1/3 lgMobile:w-full mdMobile:w-full mt-2 h-[3rem] rounded-lg bg-gradient-to-l from-[#facc22] to-[#FF7F11] p-[2px]">
