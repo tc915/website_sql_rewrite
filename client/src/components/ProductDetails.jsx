@@ -321,7 +321,7 @@ const ProductDetails = () => {
                                 }}
                             >Save Price</button>
                         </div>
-                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
                             <p>Product thumbnail image:</p>
                         </div>
                         <input id='fileUploadThumbnail' type="file" className='hidden'
@@ -335,7 +335,7 @@ const ProductDetails = () => {
                             <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputThumbnailText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem]`}>{thumbnailFilePath}</p>
                         </div>
-                        <div className='w-2/3 lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
                             <p>Product details image (optional):</p>
                         </div>
                         <input id='fileUploadDetails' type="file" className='hidden'
