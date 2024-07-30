@@ -447,7 +447,7 @@ const Home = ({ scrollY }) => {
                 </div>
             </div>
             <div className={`fixed top-0 left-0 z-[99] bg-black/50 w-full h-screen ${chooseProductPopup ? 'flex justify-center items-center' : 'hidden'}`}>
-                <div ref={chooseProductPopupRef} className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[70rem] h-[30rem] overflow-x-auto overflow-y-hidden flex p-6 py-14 relative`}>
+                <div ref={chooseProductPopupRef} className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[70rem] tablet:w-[90%] h-[30rem] tablet:h-[80%] overflow-x-auto overflow-y-hidden flex p-6 py-14 relative`}>
                     <button className="fixed top-[17rem] tablet:top-8 right-[26rem] tablet:right-2 z-[99]"
                         onClick={() => setChooseProductPopup(false)}
                     >
