@@ -528,7 +528,7 @@ const Home = ({ scrollY }) => {
                                             })
                                         }}
                                     />
-                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 rounded-full p-2 tablet:py-1 tablet:px-2  text-lg tablet:text-[1rem] font-semibold"
+                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 tablet:w-[40%] rounded-full p-2 tablet:py-1 tablet:px-2  text-lg tablet:text-[1rem] font-semibold"
                                         onClick={() => {
                                             setChooseProductPopup(true);
                                         }}
