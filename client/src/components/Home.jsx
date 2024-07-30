@@ -478,36 +478,36 @@ const Home = ({ scrollY }) => {
                                     setProductsPageIndex(0);
                                 }}
                             >Product 1</button>
-                            <button className={`${productsPage === 'product2' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] font-semibold text-lg mb-2`}
+                            <button className={`${productsPage === 'product2' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] tablet:h-[2.25rem] font-semibold text-lg tablet:text-[1rem] mb-2`}
                                 onClick={() => {
                                     setProductsPage('product2');
                                     setProductsPageIndex(1);
                                 }}
                             >Product 2</button>
-                            <button className={`${productsPage === 'product3' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] font-semibold text-lg mb-2`}
+                            <button className={`${productsPage === 'product3' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] tablet:h-[2.25rem] font-semibold text-lg tablet:text-[1rem] mb-2`}
                                 onClick={() => {
                                     setProductsPage('product3');
                                     setProductsPageIndex(2);
                                 }}
                             >Product 3</button>
-                            <button className={`${productsPage === 'product4' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] font-semibold text-lg mb-2`}
+                            <button className={`${productsPage === 'product4' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] tablet:h-[2.25rem] font-semibold text-lg tablet:text-[1rem] mb-2`}
                                 onClick={() => {
                                     setProductsPage('product4');
                                     setProductsPageIndex(3);
                                 }}
                             >Product 4</button>
-                            <button className={`${productsPage === 'product5' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] font-semibold text-lg mb-2`}
+                            <button className={`${productsPage === 'product5' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] tablet:h-[2.25rem] font-semibold text-lg tablet:text-[1rem] mb-2`}
                                 onClick={() => {
                                     setProductsPage('product5');
                                     setProductsPageIndex(4);
                                 }}
                             >Product 5</button>
                         </div>
-                        <div className="h-full w-[30rem] flex flex-col items-center">
+                        <div className="h-full w-[30rem] tablet:w-[90%] flex flex-col items-center">
                             {productsPage === 'product1' && (
                                 <>
-                                    <p className="self-start mt-16 ml-10 text-xl">Product Name:</p>
-                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none" placeholder="Name" required
+                                    <p className="self-start mt-16 tablet:mt-10 ml-10 text-xl tablet:text-lg">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl p-2 outline-none" placeholder="Name" required
                                         value={productsPageNames[0]}
                                         onChange={(ev) => {
                                             setProductsPageNames(prevNames => {
