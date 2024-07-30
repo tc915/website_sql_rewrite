@@ -506,8 +506,8 @@ const Home = ({ scrollY }) => {
                         <div className="h-full w-[30rem] tablet:w-[60%] flex flex-col items-center">
                             {productsPage === 'product1' && (
                                 <>
-                                    <p className="self-start mt-16 tablet:mt-10 ml-10 text-xl tablet:text-[1rem]">Product Name:</p>
-                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-[1rem] p-2 outline-none" placeholder="Name" required
+                                    <p className="self-start mt-16 tablet:mt-10 ml-10 text-xl tablet:text-sm">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-sm p-2 outline-none" placeholder="Name" required
                                         value={productsPageNames[0]}
                                         onChange={(ev) => {
                                             setProductsPageNames(prevNames => {
@@ -517,8 +517,8 @@ const Home = ({ scrollY }) => {
                                             })
                                         }}
                                     />
-                                    <p className="self-start ml-10 text-xl tablet:text-[1rem] mt-10">Product Description</p>
-                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-[1rem] p-2 outline-none resize-none" placeholder="Description"
+                                    <p className="self-start ml-10 text-xl tablet:text-sm mt-10">Product Description</p>
+                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-sm p-2 outline-none resize-none" placeholder="Description"
                                         value={productsPageDescriptions[0]}
                                         onChange={(ev) => {
                                             setProductsPageDescriptions(prevDescriptions => {
@@ -528,13 +528,13 @@ const Home = ({ scrollY }) => {
                                             })
                                         }}
                                     />
-                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 tablet:w-[40%] rounded-full p-2 tablet:py-1 tablet:px-2  text-lg tablet:text-[1rem] font-semibold"
+                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 tablet:w-[40%] rounded-full p-2 tablet:py-1 tablet:px-2  text-lg tablet:text-sm font-semibold"
                                         onClick={() => {
                                             setChooseProductPopup(true);
                                         }}
                                     >Choose product</button>
                                     <p className="tablet:text-sm">{productsSectionProducts[0] !== null ? productsSectionProducts[0].name : ''}</p>
-                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 tablet:p-1 text-xl tablet:text-[1rem] font-semibold mb-10"
+                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 tablet:p-1 text-xl tablet:text-sm font-semibold mb-10"
                                         onClick={(ev) => {
                                             ev.preventDefault();
                                             saveProductsSection();
