@@ -503,11 +503,11 @@ const Home = ({ scrollY }) => {
                                 }}
                             >Product 5</button>
                         </div>
-                        <div className="h-full w-[30rem] tablet:w-[90%] flex flex-col items-center">
+                        <div className="h-full w-[30rem] tablet:w-[70%] flex flex-col items-center">
                             {productsPage === 'product1' && (
                                 <>
-                                    <p className="self-start mt-16 tablet:mt-10 ml-10 text-xl tablet:text-lg">Product Name:</p>
-                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl p-2 outline-none" placeholder="Name" required
+                                    <p className="self-start mt-16 tablet:mt-10 ml-10 text-xl tablet:text-[1rem]">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-[1rem] p-2 outline-none" placeholder="Name" required
                                         value={productsPageNames[0]}
                                         onChange={(ev) => {
                                             setProductsPageNames(prevNames => {
