@@ -53,7 +53,7 @@ const Services = () => {
                             Interactive Technologies, Inc. is a  hub for production and development services, offering a wide array of solutions from initial concept to final product delivery. We excel in transforming ideas into reality with our state-of-the-art design, engineering, and manufacturing capabilities. With a commitment to innovation and quality, we empower our clients to achieve excellence in their respective markets.</p>
                     </div>
                     <div className="w-full h-[45rem] tablet:h-[30rem] p-24 tablet:p-6 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative lgMobile:mt-10 mdMobile:mt-10">
-                        <h2 className="text-7xl tablet:text-xl lgMobile:text-2xl mdMobile:text-2xl font-md tracking-widest">Enclosure Design</h2>
+                        <h2 className="text-7xl tablet:text-2xl lgMobile:text-2xl mdMobile:text-2xl font-md tracking-widest">Enclosure Design</h2>
                         <p className="text-white mt-14 text-xl tablet:text-sm lgMobile:text-lg mdMobile:text-lg">
                             Mechanical enclosure design specializes in creating robust and aesthetically pleasing housings for our diverse range of products. We prioritize functionality and durability, ensuring each design meets the specific needs of our clients while adhering to the highest standards of safety and quality. Our enclosures are engineered to protect and enhance the performance of the components they house, reflecting our commitment to excellence and innovation in every product we deliver.</p>
                         <Link to={'/services/enclosure-design'}>
@@ -64,12 +64,12 @@ const Services = () => {
                             >Learn More</motion.button>
                         </Link>
                     </div>
-                    <div className="w-full h-[34rem] lgMobile:h-[45rem] mdMobile:h-[45rem] mt-10 p-24 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative">
-                        <h2 className="text-5xl lgMobile:text-2xl mdMobile:text-2xl font-md tracking-widest">Garmin / Simrad Custom GUI</h2>
-                        <p className="text-white mt-10 text-xl lgMobile:text-lg mdMobile:text-lg">
+                    <div className="w-full h-[34rem] tablet:h-[30rem] lgMobile:h-[45rem] mdMobile:h-[45rem] mt-10 p-24 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative">
+                        <h2 className="text-5xl tablet:text-2xl lgMobile:text-2xl mdMobile:text-2xl font-md tracking-widest">Garmin / Simrad Custom GUI</h2>
+                        <p className="text-white mt-10 text-xl tablet:text-sm lgMobile:text-lg mdMobile:text-lg">
                             We take pride in offering custom Graphical User Interface (GUI) solutions for Garmin and Simrad devices. Our tailored interfaces are designed to enhance user experience, providing intuitive navigation and seamless operation. We focus on delivering clear, user-friendly layouts that integrate the latest features and functionalities, ensuring that every interaction with your Garmin or Simrad device is both enjoyable and efficient. Choose us for a personalized touch that sets your marine electronics apart.</p>
                         <Link to={'/services/custom-GUI'}>
-                            <motion.button className="absolute bottom-8 right-8 text-2xl px-10 py-1 text-[#FF7F11] border-2 border-[#FF7F11] rounded-full"
+                            <motion.button className="absolute bottom-8 right-8 text-2xl tablet:text-lg px-10 tablet:px-6 py-1 text-[#FF7F11] border-2 border-[#FF7F11] rounded-full"
                                 variants={buttonVariants}
                                 whileHover='hover'
                                 whileTap='click'
