@@ -52,9 +52,9 @@ const Services = () => {
                         <p className={`mt-6 px-20 lgMobile:px-6 mdMobile:px-6 text-2xl tablet:text-sm lgMobile:text-xl mdMobile:text-xl ${darkMode ? 'text-white' : 'text-black'}`}>
                             Interactive Technologies, Inc. is a  hub for production and development services, offering a wide array of solutions from initial concept to final product delivery. We excel in transforming ideas into reality with our state-of-the-art design, engineering, and manufacturing capabilities. With a commitment to innovation and quality, we empower our clients to achieve excellence in their respective markets.</p>
                     </div>
-                    <div className="w-full h-[45rem] p-24 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative lgMobile:mt-10 mdMobile:mt-10">
-                        <h2 className="text-7xl lgMobile:text-2xl mdMobile:text-2xl font-md tracking-widest">Enclosure Design</h2>
-                        <p className="text-white mt-14 text-xl lgMobile:text-lg mdMobile:text-lg">
+                    <div className="w-full h-[45rem] p-24 tablet:p-6 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative lgMobile:mt-10 mdMobile:mt-10">
+                        <h2 className="text-7xl tablet:text-xl lgMobile:text-2xl mdMobile:text-2xl font-md tracking-widest">Enclosure Design</h2>
+                        <p className="text-white mt-14 text-xl tablet:text-sm lgMobile:text-lg mdMobile:text-lg">
                             Mechanical enclosure design specializes in creating robust and aesthetically pleasing housings for our diverse range of products. We prioritize functionality and durability, ensuring each design meets the specific needs of our clients while adhering to the highest standards of safety and quality. Our enclosures are engineered to protect and enhance the performance of the components they house, reflecting our commitment to excellence and innovation in every product we deliver.</p>
                         <Link to={'/services/enclosure-design'}>
                             <motion.button className="absolute bottom-8 right-8 text-2xl px-10 py-1 text-[#FF7F11] border-2 border-[#FF7F11] rounded-full"
