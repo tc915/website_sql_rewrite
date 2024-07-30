@@ -533,7 +533,7 @@ const Home = ({ scrollY }) => {
                                             setChooseProductPopup(true);
                                         }}
                                     >Choose product</button>
-                                    <p className="tablet:text-[1rem]">{productsSectionProducts[0] !== null ? productsSectionProducts[0].name : ''}</p>
+                                    <p className="tablet:text-sm">{productsSectionProducts[0] !== null ? productsSectionProducts[0].name : ''}</p>
                                     <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 tablet:p-1 text-xl tablet:text-[1rem] font-semibold mb-10"
                                         onClick={(ev) => {
                                             ev.preventDefault();
