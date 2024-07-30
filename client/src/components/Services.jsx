@@ -57,7 +57,7 @@ const Services = () => {
                         <p className="text-white mt-14 text-xl tablet:text-sm lgMobile:text-lg mdMobile:text-lg">
                             Mechanical enclosure design specializes in creating robust and aesthetically pleasing housings for our diverse range of products. We prioritize functionality and durability, ensuring each design meets the specific needs of our clients while adhering to the highest standards of safety and quality. Our enclosures are engineered to protect and enhance the performance of the components they house, reflecting our commitment to excellence and innovation in every product we deliver.</p>
                         <Link to={'/services/enclosure-design'}>
-                            <motion.button className="absolute bottom-8 right-8 text-2xl px-10 py-1 text-[#FF7F11] border-2 border-[#FF7F11] rounded-full"
+                            <motion.button className="absolute bottom-8 right-8 text-2xl tablet:text-lg px-10 tablet:px-6 py-1 text-[#FF7F11] border-2 border-[#FF7F11] rounded-full"
                                 variants={buttonVariants}
                                 whileHover='hover'
                                 whileTap='click'
