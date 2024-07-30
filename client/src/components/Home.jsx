@@ -517,8 +517,8 @@ const Home = ({ scrollY }) => {
                                             })
                                         }}
                                     />
-                                    <p className="self-start ml-10 text-xl mt-10">Product Description</p>
-                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none resize-none" placeholder="Description"
+                                    <p className="self-start ml-10 text-xl tablet:text-[1rem] mt-10">Product Description</p>
+                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] tablet:w-full mt-4 text-xl tablet:text-[1rem] p-2 outline-none resize-none" placeholder="Description"
                                         value={productsPageDescriptions[0]}
                                         onChange={(ev) => {
                                             setProductsPageDescriptions(prevDescriptions => {
