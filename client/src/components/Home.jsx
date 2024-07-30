@@ -451,7 +451,7 @@ const Home = ({ scrollY }) => {
                     <button className="fixed top-[17rem] tablet:top-12 right-[26rem] tablet:right-10 z-[99]"
                         onClick={() => setChooseProductPopup(false)}
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" height="45px" viewBox="0 -960 960 960" width="45px" fill={darkMode ? '#fff' : '#131313'}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-[45px] w-[45px] tablet:h-[32px] tablet:w-[32px]" viewBox="0 -960 960 960" fill={darkMode ? '#fff' : '#131313'}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                     </button>
                     <h2 className="fixed top-[17rem] tablet:top-14 left-[56rem] tablet:left-[42%] font-semibold text-xl tablet:text-lg">Choose a Product</h2>
                     {products && products.length > 0 && products.map((product, index) => (
