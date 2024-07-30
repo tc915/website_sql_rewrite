@@ -448,12 +448,12 @@ const Home = ({ scrollY }) => {
             </div>
             <div className={`fixed top-0 left-0 z-[99] bg-black/50 w-full h-screen ${chooseProductPopup ? 'flex justify-center items-center' : 'hidden'}`}>
                 <div ref={chooseProductPopupRef} className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[70rem] tablet:w-[90%] h-[30rem] tablet:h-[80%] overflow-x-auto overflow-y-hidden flex p-6 py-14 relative`}>
-                    <button className="fixed top-[17rem] tablet:top-8 right-[26rem] tablet:right-2 z-[99]"
+                    <button className="fixed top-[17rem] tablet:top-12 right-[26rem] tablet:right-6 z-[99]"
                         onClick={() => setChooseProductPopup(false)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" height="45px" viewBox="0 -960 960 960" width="45px" fill={darkMode ? '#fff' : '#131313'}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                     </button>
-                    <h2 className="fixed top-[17rem] left-[56rem] font-semibold text-xl">Choose a Product</h2>
+                    <h2 className="fixed top-[17rem] left-[56rem] font-semibold text-xl tablet:text-lg tablet:text-white">Choose a Product</h2>
                     {products && products.length > 0 && products.map((product, index) => (
                         <div key={index}>
 
