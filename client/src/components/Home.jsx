@@ -422,15 +422,15 @@ const Home = ({ scrollY }) => {
                     <button className="absolute top-4 right-4"
                         onClick={() => setEditThinkTank(false)}
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-[50px] w-[50px] tablet:h-[32px] tablet:w-[32px]" viewBox="0 -960 960 960" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                     </button>
-                    <h2 className="text-3xl lgMobile:text-xl mdMobile:text-xl font-semibold mt-6">Edit Think Tank</h2>
-                    <p className="w-2/3 mt-10 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold">Message:</p>
-                    <TextAreaAutosize className={`bg-transparent resize-none w-2/3 border-2 rounded-xl mt-4 p-4 text-xl lgMobile:text-lg mdMobile:text-lg ${darkMode ? 'outline-white' : ''}`} required placeholder="Message"
+                    <h2 className="text-3xl tablet:text-lg lgMobile:text-xl mdMobile:text-xl font-semibold mt-6">Edit Think Tank</h2>
+                    <p className="w-2/3 mt-10 text-xl tablet:text-lg lgMobile:text-lg mdMobile:text-lg font-semibold">Message:</p>
+                    <TextAreaAutosize className={`bg-transparent resize-none w-2/3 border-2 rounded-xl mt-4 p-4 text-xl tablet:text-lg lgMobile:text-lg mdMobile:text-lg ${darkMode ? 'outline-white' : ''}`} required placeholder="Message"
                         value={thinkTankText}
                         onChange={(ev) => setThinkTankText(ev.target.value)}
                     />
-                    <p className="w-2/3 mt-10 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold">Image:</p>
+                    <p className="w-2/3 mt-10 text-xl tablet:text-lg lgMobile:text-lg mdMobile:text-lg font-semibold">Image:</p>
                     <input type="file" name="imageInput" id="imageInput" className="hidden"
                         onChange={(ev) => {
                             setThinkTankImage(ev.target.files[0]);
