@@ -53,14 +53,14 @@ const Product = ({ product, index, darkMode, chooseProductFunc, setChooseProduct
     }, [product])
 
     return (
-        <button className="border-4 border-[#FF7F11] rounded-xl h-full w-[20rem] min-w-[20rem] mr-6 flex flex-col items-center"
+        <button className="border-4 border-[#FF7F11] rounded-xl h-full w-[20rem] tablet:w-[12rem] min-w-[20rem] tablet:min-w-[12rem] mr-6 flex flex-col items-center"
             onClick={() => {
                 chooseProductFunc(product, productsPageIndex);
                 setChooseProductPopup(false);
             }}
         >
             <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${product.thumbnailImageId}`} className='h-[60%] mt-10 object-cover' />
-            <p className="mt-auto mb-4 font-semibold text-xl text-center px-10">{product.name}</p>
+            <p className="mt-auto mb-4 font-semibold text-xl tablet:text-sm text-center px-10">{product.name}</p>
         </button>
     )
 }
@@ -453,7 +453,7 @@ const Home = ({ scrollY }) => {
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" height="45px" viewBox="0 -960 960 960" width="45px" fill={darkMode ? '#fff' : '#131313'}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                     </button>
-                    <h2 className="fixed top-[17rem] tablet:top-12 left-[56rem] tablet:left-[50%] font-semibold text-xl tablet:text-lg">Choose a Product</h2>
+                    <h2 className="fixed top-[17rem] tablet:top-12 left-[56rem] tablet:left-[40%] font-semibold text-xl tablet:text-lg">Choose a Product</h2>
                     {products && products.length > 0 && products.map((product, index) => (
                         <div key={index}>
 
