@@ -418,7 +418,7 @@ const Home = ({ scrollY }) => {
                 </div>
             </div>
             <div className={`fixed top-0 left-0 w-full h-screen z-[99] bg-black/50 justify-center items-center ${editThinkTank ? 'flex' : 'hidden'} lgMobile:text-sm mdMobile:text-sm`}>
-                <div className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[50rem] h-[33rem] relative flex flex-col items-center rounded-xl overflow-y-auto`}>
+                <div className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[50rem] tablet:w-[80%] h-[33rem] tablet:h-[80%] relative flex flex-col items-center rounded-xl overflow-y-auto`}>
                     <button className="absolute top-4 right-4"
                         onClick={() => setEditThinkTank(false)}
                     >
