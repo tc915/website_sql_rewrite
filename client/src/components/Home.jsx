@@ -463,7 +463,7 @@ const Home = ({ scrollY }) => {
                 </div>
             </div>
             <div className={`${editProducts ? 'flex justify-center items-center' : 'hidden'} fixed top-0 left-0 w-full h-screen bg-black/50 z-[98]`}>
-                <div className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} h-[35rem] tablet:h-[80%] w-[50rem] tablet:w-[70%] rounded-2xl flex flex-col items-center relative overflow-auto`}>
+                <div className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} h-[35rem] tablet:h-[90%] w-[50rem] tablet:w-[70%] rounded-2xl flex flex-col items-center relative overflow-auto`}>
                     <button className="absolute top-4 right-4"
                         onClick={() => setEditProducts(false)}
                     >
