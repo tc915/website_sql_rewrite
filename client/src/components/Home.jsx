@@ -174,11 +174,83 @@ const Home = ({ scrollY }) => {
     }
 
     useEffect(() => {
-        if (scrollY >= 5500 && scrollY < 6600 && !inProducts) {
-            setInProducts(true);
-        } else if (inProducts && scrollY < 5500 || inProducts && scrollY >= 6600) {
-            setInProducts(false);
-            setUserChangeProcuctNum(false)
+        if (screenTypeName === 'tablet') {
+            if (scrollY >= 3100 && scrollY <= 3400) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 3100 || inProducts && scrollY > 3400) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
+        } else if (screenTypeName === 'smLaptop') {
+            if (scrollY >= 3400 && scrollY <= 3700) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 3400 || inProducts && scrollY > 3700) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
+        } else if (screenTypeName === 'laptop') {
+            if (scrollY >= 3800 && scrollY <= 4300) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 3800 || inProducts && scrollY > 4300) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
+        } else if (screenTypeName === 'xxsm') {
+            if (scrollY >= 3800 && scrollY <= 4300) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 3800 || inProducts && scrollY > 4300) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
+        } else if (screenTypeName === 'xsm') {
+            if (scrollY >= 4100 && scrollY <= 4600) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 4100 || inProducts && scrollY > 4600) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
+        } else if (screenTypeName === 'sm') {
+            if (scrollY >= 4300 && scrollY <= 4900) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 3600 || inProducts && scrollY > 3900) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
+        } else if (screenTypeName === 'md') {
+            if (scrollY >= 4400 && scrollY <= 4900) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 4400 || inProducts && scrollY > 4900) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
+        } else if (screenTypeName === 'lg') {
+            if (scrollY >= 5000 && scrollY <= 5700) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 5000 || inProducts && scrollY > 5700) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
+        } else if (screenTypeName === 'xl') {
+            if (scrollY >= 5100 && scrollY <= 5800) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 5100 || inProducts && scrollY > 5800) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
+        } else if (screenTypeName === 'normal') {
+            if (scrollY >= 6100 && scrollY <= 6900) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 6100 || inProducts && scrollY > 6900) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
+        } else if (screenTypeName === 'xxl') {
+            if (scrollY >= 7400 && scrollY <= 8500) {
+                setInProducts(true)
+            } else if (inProducts && scrollY < 7400 || inProducts && scrollY > 8500) {
+                setInProducts(false)
+                setUserChangeProcuctNum(false)
+            }
         }
     }, [scrollY]);
 
