@@ -503,7 +503,7 @@ const Home = ({ scrollY }) => {
                                 }}
                             >Product 5</button>
                         </div>
-                        <div className="h-full w-[30rem] tablet:w-[70%] flex flex-col items-center">
+                        <div className="h-full w-[30rem] tablet:w-[60%] flex flex-col items-center">
                             {productsPage === 'product1' && (
                                 <>
                                     <p className="self-start mt-16 tablet:mt-10 ml-10 text-xl tablet:text-[1rem]">Product Name:</p>
