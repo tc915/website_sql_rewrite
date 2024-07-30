@@ -471,7 +471,7 @@ const Home = ({ scrollY }) => {
                     </button>
                     <h2 className="font-bold text-3xl tablet:text-xl mt-6">Edit Products</h2>
                     <div className="h-full w-full flex">
-                        <div className="h-full w-[10rem] py-10 tablet:py-4">
+                        <div className="h-full w-[10rem] tablet:w-[7rem] py-10 tablet:py-4">
                             <button className={`${productsPage === 'product1' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] tablet:h-[2.25rem] font-semibold text-lg tablet:text-[1rem] mb-2`}
                                 onClick={() => {
                                     setProductsPage('product1');
