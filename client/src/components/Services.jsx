@@ -41,7 +41,7 @@ const Services = () => {
 
     return (
         <>
-            <motion.div className={`pt-44 tablet:pt-24 flex lgMobile:flex-col mdMobile:flex-col h-[200rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+            <motion.div className={`pt-44 tablet:pt-12 flex lgMobile:flex-col mdMobile:flex-col h-[200rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
