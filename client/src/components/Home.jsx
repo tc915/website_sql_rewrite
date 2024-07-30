@@ -438,7 +438,7 @@ const Home = ({ scrollY }) => {
                         }}
                     />
                     <div className="w-full flex tablet:flex-col lgMobile:flex-col mdMobile:flex-col items-center mt-4">
-                        <label htmlFor="imageInput" className="py-6 tablet:py-2 lgMobile:py-2 mdMobile:py-2 px-10 tablet:px-5 lgMobile:px-5 mdMobile:px-5 self-start ml-[8.3rem] tablet:ml-20 lgMobile:ml-28 mdMobile:ml-28 rounded-xl font-semibold text-xl lgMobile:text-lg mdMobile:text-lg border-4 border-[#FF7F11]">Choose Image</label>
+                        <label htmlFor="imageInput" className="py-6 tablet:py-2 lgMobile:py-2 mdMobile:py-2 px-10 tablet:px-5 lgMobile:px-5 mdMobile:px-5 self-start ml-[8.3rem] tablet:ml-[50%] lgMobile:ml-28 mdMobile:ml-28 rounded-xl font-semibold text-xl lgMobile:text-lg mdMobile:text-lg border-4 border-[#FF7F11]">Choose Image</label>
                         <p className="text-lg tablet:text-[1rem] lgMobile:text-[1rem] mdMobile:text-[1rem] ml-4">{thinkTankImageFilename}</p>
                     </div>
                     <button className="w-2/3 bg-[#FF7F11] text-white my-10 py-2 rounded-full text-xl font-semibold"
