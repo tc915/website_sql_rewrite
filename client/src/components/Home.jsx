@@ -584,8 +584,8 @@ const Home = ({ scrollY }) => {
                             )}
                             {productsPage === 'product3' && (
                                 <>
-                                    <p className="self-start ml-10 mt-16 text-xl">Product Name:</p>
-                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none" placeholder="Name" required
+                                    <p className="self-start ml-10 mt-16 tablet:mt-10 text-xl tablet:text-sm">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-sm p-2 outline-none" placeholder="Name" required
                                         value={productsPageNames[2]}
                                         onChange={(ev) => {
                                             setProductsPageNames(prevNames => {
@@ -595,8 +595,8 @@ const Home = ({ scrollY }) => {
                                             })
                                         }}
                                     />
-                                    <p className="self-start ml-10 text-xl mt-10">Product Description</p>
-                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none resize-none" placeholder="Description"
+                                    <p className="self-start ml-10 text-xl tablet:text-sm mt-10">Product Description</p>
+                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-sm p-2 outline-none resize-none" placeholder="Description"
                                         value={productsPageDescriptions[2]}
                                         onChange={(ev) => {
                                             setProductsPageDescriptions(prevDescriptions => {
@@ -606,13 +606,13 @@ const Home = ({ scrollY }) => {
                                             })
                                         }}
                                     />
-                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 rounded-full p-2 text-lg font-semibold"
+                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 tablet:w-[40%] rounded-full p-2 tablet:py-1 tablet:px-2 text-lg tablet:text-sm font-semibold"
                                         onClick={() => {
                                             setChooseProductPopup(true);
                                         }}
                                     >Choose product</button>
-                                    <p>{productsSectionProducts[2] !== null ? productsSectionProducts[2].name : ''}</p>
-                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 text-xl font-semibold mb-10"
+                                    <p className="tablet:text-sm">{productsSectionProducts[2] !== null ? productsSectionProducts[2].name : ''}</p>
+                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 tablet:p-1 text-xl tablet:text-sm font-semibold mb-10"
                                         onClick={(ev) => {
                                             ev.preventDefault();
                                             saveProductsSection();
@@ -623,8 +623,8 @@ const Home = ({ scrollY }) => {
                             )}
                             {productsPage === 'product4' && (
                                 <>
-                                    <p className="self-start ml-10 mt-16 text-xl">Product Name:</p>
-                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none" placeholder="Name" required
+                                    <p className="self-start ml-10 mt-16 tablet:mt-10 text-xl tablet:text-sm">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-sm p-2 outline-none" placeholder="Name" required
                                         value={productsPageNames[3]}
                                         onChange={(ev) => {
                                             setProductsPageNames(prevNames => {
@@ -634,8 +634,8 @@ const Home = ({ scrollY }) => {
                                             })
                                         }}
                                     />
-                                    <p className="self-start ml-10 text-xl mt-10">Product Description</p>
-                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none resize-none" placeholder="Description"
+                                    <p className="self-start ml-10 text-xl tablet:text-sm mt-10">Product Description</p>
+                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-sm p-2 outline-none resize-none" placeholder="Description"
                                         value={productsPageDescriptions[3]}
                                         onChange={(ev) => {
                                             setProductsPageDescriptions(prevDescriptions => {
@@ -645,13 +645,13 @@ const Home = ({ scrollY }) => {
                                             })
                                         }}
                                     />
-                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 rounded-full p-2 text-lg font-semibold"
+                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 tablet:w-[40%] rounded-full p-2 tablet:py-1 tablet:px-1 text-lg tablet:text-sm font-semibold"
                                         onClick={() => {
                                             setChooseProductPopup(true);
                                         }}
                                     >Choose product</button>
-                                    <p>{productsSectionProducts[3] !== null ? productsSectionProducts[3].name : ''}</p>
-                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 text-xl font-semibold mb-10"
+                                    <p className="tablet:text-sm">{productsSectionProducts[3] !== null ? productsSectionProducts[3].name : ''}</p>
+                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 tablet:p-1 text-xl tablet:text-sm font-semibold mb-10"
                                         onClick={(ev) => {
                                             ev.preventDefault();
                                             saveProductsSection();
@@ -662,8 +662,8 @@ const Home = ({ scrollY }) => {
                             )}
                             {productsPage === 'product5' && (
                                 <>
-                                    <p className="self-start ml-10 mt-16 text-xl">Product Name:</p>
-                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none" placeholder="Name" required
+                                    <p className="self-start ml-10 mt-16 tablet:mt-10 text-xl tablet:text-sm">Product Name:</p>
+                                    <input type="text" className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-sm p-2 outline-none" placeholder="Name" required
                                         value={productsPageNames[4]}
                                         onChange={(ev) => {
                                             setProductsPageNames(prevNames => {
@@ -673,8 +673,8 @@ const Home = ({ scrollY }) => {
                                             })
                                         }}
                                     />
-                                    <p className="self-start ml-10 text-xl mt-10">Product Description</p>
-                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] mt-4 text-xl p-2 outline-none resize-none" placeholder="Description"
+                                    <p className="self-start ml-10 text-xl tablet:text-sm mt-10">Product Description</p>
+                                    <TextAreaAutosize className="bg-transparent border-b-2 w-[25rem] tablet:w-[80%] mt-4 text-xl tablet:text-sm p-2 outline-none resize-none" placeholder="Description"
                                         value={productsPageDescriptions[4]}
                                         onChange={(ev) => {
                                             setProductsPageDescriptions(prevDescriptions => {
@@ -684,13 +684,13 @@ const Home = ({ scrollY }) => {
                                             })
                                         }}
                                     />
-                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 rounded-full p-2 text-lg font-semibold"
+                                    <button className="bg-[#FF7F11] text-white mt-6 w-1/3 tablet:w-[40%] rounded-full p-2 tablet:py-1 tablet:px-2 text-lg tablet:text-sm font-semibold"
                                         onClick={() => {
                                             setChooseProductPopup(true);
                                         }}
                                     >Choose product</button>
-                                    <p>{productsSectionProducts[4] !== null ? productsSectionProducts[4].name : ''}</p>
-                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 text-xl font-semibold mb-10"
+                                    <p className="tablet:text-sm">{productsSectionProducts[4] !== null ? productsSectionProducts[4].name : ''}</p>
+                                    <button className="bg-[#FF7F11] text-white mt-4 w-3/4 rounded-full p-2 tablet:p-1 text-xl tablet:text-sm font-semibold mb-10"
                                         onClick={(ev) => {
                                             ev.preventDefault();
                                             saveProductsSection();
