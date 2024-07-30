@@ -467,12 +467,12 @@ const Home = ({ scrollY }) => {
                     <button className="absolute top-4 right-4"
                         onClick={() => setEditProducts(false)}
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-[50px] w-[50px] tablet:h-[32px] tablet:w-[32px]" viewBox="0 -960 960 960" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                     </button>
-                    <h2 className="font-bold text-3xl mt-6">Edit Products</h2>
+                    <h2 className="font-bold text-3xl tablet:text-xl mt-6">Edit Products</h2>
                     <div className="h-full w-full flex">
-                        <div className="h-full w-[10rem] py-10">
-                            <button className={`${productsPage === 'product1' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] font-semibold text-lg mb-2`}
+                        <div className="h-full w-[10rem] py-10 tablet:py-4">
+                            <button className={`${productsPage === 'product1' ? 'bg-[#FF7F11] text-white' : (darkMode ? 'text-white' : 'text-black')} w-full text-start pl-4 rounded-e-full h-[3rem] tablet:h-[2.25rem] font-semibold text-lg tablet:text-[1rem] mb-2`}
                                 onClick={() => {
                                     setProductsPage('product1');
                                     setProductsPageIndex(0);
