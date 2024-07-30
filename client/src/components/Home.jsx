@@ -426,7 +426,7 @@ const Home = ({ scrollY }) => {
                     </button>
                     <h2 className="text-3xl tablet:text-lg lgMobile:text-xl mdMobile:text-xl font-semibold mt-6">Edit Think Tank</h2>
                     <p className="w-2/3 mt-10 text-xl tablet:text-lg lgMobile:text-lg mdMobile:text-lg font-semibold">Message:</p>
-                    <TextAreaAutosize className={`bg-transparent resize-none w-2/3 border-2 rounded-xl mt-4 p-4 text-xl tablet:text-lg lgMobile:text-lg mdMobile:text-lg ${darkMode ? 'outline-white' : ''}`} required placeholder="Message"
+                    <TextAreaAutosize className={`bg-transparent resize-none w-2/3 border-2 rounded-xl mt-4 p-4 text-xl tablet:text-lg tablet:min-h-[8rem] lgMobile:text-lg mdMobile:text-lg ${darkMode ? 'outline-white' : ''}`} required placeholder="Message"
                         value={thinkTankText}
                         onChange={(ev) => setThinkTankText(ev.target.value)}
                     />
