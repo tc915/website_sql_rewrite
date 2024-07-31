@@ -78,49 +78,49 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
                     >Ok</button>
                 </div>
             </div>
-            <motion.div className="pt-44 lgMobile:pt-[15rem] mdMobile:pt-[15rem]"
+            <motion.div className="pt-44 tablet:pt-20 lgMobile:pt-[15rem] mdMobile:pt-[15rem]"
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
             >
-                <img className="absolute -z-10 -translate-y-[15rem] lgMobile:-translate-y-[10rem] mdMobile:-translate-y-[10rem] lgMobile:h-[50rem] mdMobile:h-[50rem] object-cover" src="contact_background_unsplash.jpg" />
-                <div className="h-[48rem] flex lgMobile:flex-col mdMobile:flex-col text-white">
+                <img className="absolute -z-10 -translate-y-[15rem] tablet:-translate-y-[15rem] lgMobile:-translate-y-[10rem] mdMobile:-translate-y-[10rem] tablet:h-[50rem] lgMobile:h-[50rem] mdMobile:h-[50rem] object-cover" src="contact_background_unsplash.jpg" />
+                <div className="h-[48rem] tablet:h-[35rem] flex lgMobile:flex-col mdMobile:flex-col text-white">
                     <h2 className='lgMobile:mb-24 mdMobile:mb-24 lgMobile:block mdMobile:block hidden lgMobile:text-4xl mdMobile:text-4xl lgMobile:font-semibold mdMobile:font-semibold lgMobile:ml-6 mdMobile:ml-6'>Contact Us</h2>
-                    <form className="w-1/2 lgMobile:w-full mdMobile:w-full p-44 lgMobile:p-6 mdMobile:p-6 -mt-16"
+                    <form className="w-1/2 lgMobile:w-full mdMobile:w-full p-44 tablet:p-12 tablet:pt-32 lgMobile:p-6 mdMobile:p-6 -mt-16"
                         onSubmit={(ev) => {
                             ev.preventDefault();
                             sendMessage();
                         }}
                     >
                         <div className="w-full">
-                            <input type="text" required placeholder="Name" className="bg-transparent placeholder:text-white text-xl lgMobile:text-lg mdMobile:text-lg font-thin border-b-2 pb-2 lgMobile:pb-1 mdMobile:pb-1 lgMobile:mb-8 mdMobile:mb-8 mr-4 w-1/2 outline-none"
+                            <input type="text" required placeholder="Name" className="bg-transparent placeholder:text-white text-xl tablet:text-[1rem] lgMobile:text-lg mdMobile:text-lg font-thin border-b-2 pb-2 lgMobile:pb-1 mdMobile:pb-1 tablet:mb-6 lgMobile:mb-8 mdMobile:mb-8 mr-4 w-1/2 outline-none"
                                 value={name}
                                 onChange={(ev) => setName(ev.target.value)}
                             />
-                            <input type='text' placeholder="Phone (not required)" className="bg-transparent placeholder:text-white text-xl lgMobile:text-lg mdMobile:text-lg font-thin border-b-2 pb-2 lgMobile:pb-1 mdMobile:pb-1 outline-none"
+                            <input type='text' placeholder="Phone (not required)" className="bg-transparent placeholder:text-white text-xl tablet:text-[1rem] lgMobile:text-lg mdMobile:text-lg font-thin border-b-2 pb-2 lgMobile:pb-1 mdMobile:pb-1 outline-none"
                                 value={phoneNum}
                                 onChange={(ev) => setPhoneNum(ev.target.value)}
                             />
                         </div>
                         <div>
-                            <input type="email" required placeholder="Email" className="bg-transparent placeholder:text-white text-xl font-thin border-b-2 pb-2 outline-none w-[97%] mt-6"
+                            <input type="email" required placeholder="Email" className="bg-transparent placeholder:text-white text-xl tablet:text-[1rem] font-thin border-b-2 pb-2 outline-none w-[97%] mt-6"
                                 value={email}
                                 onChange={(ev) => setEmail(ev.target.value)}
                             />
                         </div>
-                        <div className='h-[10rem] mt-6 w-[97%] overflow-y-auto overflow-x-hidden border-b-2'>
-                            <TextAreaAutosize required className='bg-transparent resize-none placeholder:text-white font-thin text-xl  outline-none w-full h-full' placeholder='Message'
+                        <div className='h-[10rem] tablet:h-[5rem] mt-6 w-[97%] overflow-y-auto overflow-x-hidden border-b-2'>
+                            <TextAreaAutosize required className='bg-transparent resize-none placeholder:text-white font-thin text-xl tablet:text-[1rem] outline-none w-full h-full' placeholder='Message'
                                 value={message}
                                 onChange={(ev) => setMessage(ev.target.value)}
                             />
                         </div>
-                        <motion.button type='submit' className='mt-10 bg-[#FF7F11] px-16 py-2 rounded-full text-xl font-semibold'
+                        <motion.button type='submit' className='mt-10 bg-[#FF7F11] px-16 tablet:px-10 py-2 rounded-full text-xl tablet:text-[1rem] font-semibold'
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="click"
                         >Send</motion.button>
                     </form>
-                    <div className="text-8xl flex justify-center items-center -mt-44 lgMobile:hidden mdMobile:hidden">
+                    <div className="text-8xl tablet:text-6xl flex justify-center items-center -mt-44 tablet:-mt-[8rem] lgMobile:hidden mdMobile:hidden">
                         <p className="w-2/3">Let's Work Together!</p>
                     </div>
                 </div>
