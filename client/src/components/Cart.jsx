@@ -100,8 +100,8 @@ const Cart = () => {
     }, []);
 
     const checkoutUser = async (userCart, userDoc) => {
-        console.log(`User Cart: ${userCart}`)
-        console.log(`User Info: ${userDoc}`)
+        const { data } = await axios.post('/checkout-items', { userCart, userDoc })
+        console.log(data)
     }
 
     useEffect(() => {
@@ -131,11 +131,9 @@ const Cart = () => {
                         {prices && prices.length > 0 && (
                             <p className="text-2xl font-semibold font-hind">{`Subtotal (${cart.productCountTotal > 1 ? cart.productCountTotal + ' items' : cart.productCountTotal + ' item'}): $${subtotalCost.toFixed(2)}`}</p>
                         )}
-                        <Link to={`${user ? '/cart/checkout' : '/login'}`}>
-                            <button className="text-white bg-[#FF7F11] mt-6 xlMobile:mt-10 px-10 py-2 text-xl xlMobile:text-2xl font-semibold rounded-lg font-hind"
-                                onClick={() => { checkoutUser(cart, user) }}
-                            >Proceed to Checkout</button>
-                        </Link>
+                        <button className="text-white bg-[#FF7F11] mt-6 xlMobile:mt-10 px-10 py-2 text-xl xlMobile:text-2xl font-semibold rounded-lg font-hind"
+                            onClick={() => { checkoutUser(cartProducts, user) }}
+                        >Proceed to Checkout</button>
                     </div>
                 )}
                 {!cart.productCountTotal && (
