@@ -1,7 +1,7 @@
 const { findUserById } = require('./database')
 const stripeAPI = require('./stripe')
 
-const createCheckoutSession = async (req, res) => {
+export const createCheckoutSession = async (req, res) => {
     // const domainUrl = process.env.WEB_APP_URL
     const { userCart, userDoc } = req.body
 
@@ -55,5 +55,3 @@ const createCheckoutSession = async (req, res) => {
         res.status(400).json({ error: 'An error occured, unable to create session' })
     }
 }
-
-module.exports = createCheckoutSession
