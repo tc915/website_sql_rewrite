@@ -1,3 +1,3 @@
-const stripeAPI = require('stripe')(process.env.STRIPE_SECRET_KEY)
+import Stripe from "stripe";
 
-module.exports = stripeAPI
+export const stripeAPI = new Stripe(process.env.STRIPE_SECRET_KEY)

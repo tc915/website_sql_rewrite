@@ -1,5 +1,5 @@
 import { findUserById } from './database'
-const stripeAPI = require('./stripe')
+import { stripeAPI } from './stripe'
 
 export const createCheckoutSession = async (req, res) => {
     // const domainUrl = process.env.WEB_APP_URL
