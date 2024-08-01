@@ -1,4 +1,4 @@
-const { findUserById } = require('./database')
+import { findUserById } from './database'
 const stripeAPI = require('./stripe')
 
 export const createCheckoutSession = async (req, res) => {
