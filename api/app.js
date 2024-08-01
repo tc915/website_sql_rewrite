@@ -725,7 +725,7 @@ app.get('/boat-setup/:userId', async (req, res) => {
     }
 });
 
-app.post('/checkout-cart', createCheckoutSession())
+app.post('/checkout-cart', createCheckoutSession)
 
 const port = process.env.PORT || 4000;
 
