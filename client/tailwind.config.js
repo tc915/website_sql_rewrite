@@ -19,13 +19,19 @@ export default {
       screens: {
         'mdMobile': { 'min': '50px', 'max': '376px' },
         'lgMobile': { 'min': '376px', 'max': '426px' },
-        'tablet': { 'min': '426px', 'max': '768px' },
+        'xlMobile': { 'min': '426px', 'max': '525px' },
+        'tablet': { 'min': '525px', 'max': '768px' },
         'smLaptop': { 'min': '769px', 'max': '950px' },
         'laptop': { 'min': '951px', 'max': '1024px' },
         'xxsm': { 'min': '1025px', 'max': '1110px' },
         'xsm': { 'min': '1111px', 'max': '1190px' },
         print: { raw: 'print' },
       },
+      fontFamily: {
+        ruda: ['Ruda', 'sans-serif'],
+        shanti: ['Shanti', 'sans-serif'],
+        hind: ['Hind Vadodara', 'sans-serif']
+      }
     },
   },
   plugins: [],

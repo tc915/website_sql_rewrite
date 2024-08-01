@@ -55,7 +55,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
 
 
     return (
-        <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] tablet:h-[10rem] w-[20rem] tablet:w-[8rem] rounded-3xl p-4 tablet:p-0`}
+        <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] xlMobile:w-[27rem] tablet:w-[8rem] rounded-3xl p-4 tablet:p-0`}
             onMouseEnter={() => setIsHoverContainer(true)}
             onMouseLeave={() => setIsHoverContainer(false)}
         >
@@ -66,7 +66,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
                         deleteProduct();
                     }}
                 >
-                    <svg xmlns="https://www.w3.org/2000/svg" className="h-[40px] w-[40px] tablet:h-[20px] tablet:w-[20px]" viewBox="0 -960 960 960" fill={`${darkMode ? '#fff' : '#131313'}`}
+                    <svg xmlns="https://www.w3.org/2000/svg" className="h-[40px] w-[40px] tablet:h-[20px] tablet:w-[20px] xlMobile:h-[60px] xlMobile:w-[60px]" viewBox="0 -960 960 960" fill={`${darkMode ? '#fff' : '#131313'}`}
                     ><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" /></svg>
                 </button>
             )}
@@ -77,10 +77,10 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
                         initial="initial"
                         animate={isHoverContainer ? "hover" : "initial"}
                     />
-                    <h2 className='mt-4 tablet:mt-2 tablet:text-sm'>{product.name}</h2>
+                    <h2 className='mt-4 tablet:mt-2 xlMobile:mt-6 tablet:text-sm xlMobile:text-4xl font-hind'>{product.name}</h2>
                 </button>
             </Link>
-            <button className='w-5/6 tablet:w-full'
+            <button className='w-5/6 xlMobile:mt-10 xlMobile:ml-[1.7rem] tablet:w-full'
                 onClick={() => {
                     addProductToCart(product.id)
                 }}
@@ -191,30 +191,30 @@ const Products = () => {
 
     return (
         <div className={`${darkMode ? 'bg-[#131313]' : 'bg-white'}`}>
-            <div className={`${showAddProduct ? 'fixed flex justify-center items-center' : 'hidden'} w-full z-[99] top-0 left-0 bg-black/50 h-full`}>
-                <div className={`w-2/3 tablet:w-[90%] lgMobile:w-[90%] mdMobile:w-[90%] h-[43rem] tablet:h-[25rem] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] text-white rounded-3xl flex flex-col items-center p-12 overflow-auto relative scroll-p-5`}>
+            <div className={`${showAddProduct ? '' : 'hidden'} fixed flex justify-center items-center w-full z-[99] top-0 left-0 bg-black/50 h-full`}>
+                <div className={`w-2/3 tablet:w-[90%] xlMobile:w-[90%] lgMobile:w-[90%] mdMobile:w-[90%] h-[43rem] tablet:h-[25rem] xlMobile:h-[80%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] text-white rounded-3xl flex flex-col items-center p-12 overflow-auto relative scroll-p-5`}>
                     <button
                         onClick={() => setShowAddProduct(false)}
                     >
-                        <svg className='absolute top-2 right-2 cursor-pointer' xmlns="https://www.w3.org/2000/svg" height="50px" viewBox="0 -960 960 960" width="50px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg>
+                        <svg className='absolute top-2 right-2 cursor-pointer h-[50px] w-[50px] xlMobile:h-[70px] xlMobile:w-[70px]' xmlns="https://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z" /></svg>
                     </button>
-                    <h2 className={`text-4xl tablet:text-2xl lgMobile:text-2xl mdMobile:text-2xl font-semibold ${darkMode ? 'text-white' : 'text-black'}`}>New Product</h2>
+                    <h2 className={`text-4xl font-ruda tablet:text-2xl xlMobile:text-5xl lgMobile:text-2xl mdMobile:text-2xl font-[800] ${darkMode ? 'text-white' : 'text-black'}`}>New Product</h2>
                     <form className={`w-full flex flex-col items-center ${darkMode ? 'text-white' : 'text-black'}`}
                         onSubmit={(ev) => {
                             ev.preventDefault();
                             addProduct();
                         }}
                     >
-                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-10 text-xl xlMobile:text-3xl font-semibold mb-2 xlMobile:mb-6 font-hind'>
                             <p>Product name:</p>
                         </div>
-                        <input type="text" placeholder='Product name' className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full text-2xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required
+                        <input type="text" placeholder='Product name' className='w-2/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full text-2xl tablet:text-xl xlMobile:text-4xl lgMobile:text-xl mdMobile:text-xl border-b-2 p-2 bg-transparent outline-none font-shanti' required
                             onChange={(ev) => setNewProductName(ev.target.value)}
                         />
-                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-10 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-10 xlMobile:mt-14 text-xl xlMobile:text-3xl font-semibold mb-2 xlMobile:mb-6 font-hind'>
                             <p>Part number:</p>
                         </div>
-                        <input type="text" placeholder='XXX-XXXXX' className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full text-2xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl border-b-2 p-2 bg-transparent outline-none' required maxLength="9"
+                        <input type="text" placeholder='XXX-XXXXX' className='w-2/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full text-2xl tablet:text-xl xlMobile:text-4xl lgMobile:text-xl mdMobile:text-xl border-b-2 p-2 bg-transparent outline-none font-shanti' required maxLength="9"
                             value={newProductPartNumber}
                             onChange={(ev) => {
                                 let value = ev.target.value;
@@ -225,34 +225,34 @@ const Products = () => {
                                 setNewProductPartNumber(value);
                             }}
                         />
-                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-4 xlMobile:mt-14 text-xl xlMobile:text-3xl font-semibold mb-2 xlMobile:mb-6 font-hind'>
                             <p>Product description:</p>
                         </div>
-                        <TextAreaAutosize className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full bg-transparent border-b-2 p-2 text-2xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl resize-none outline-none' autoComplete='off' placeholder='Product description' required
+                        <TextAreaAutosize className='w-2/3 font-shanti tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full bg-transparent border-b-2 p-2 text-2xl xlMobile:text-3xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl resize-none outline-none' autoComplete='off' placeholder='Product description' required
                             onChange={(ev) => setNewProductDescription(ev.target.value)}
                         ></TextAreaAutosize>
-                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-4 xlMobile:mt-14 text-xl xlMobile:text-3xl font-semibold mb-2 xlMobile:mb-6 font-hind'>
                             <p>Variable pricing:</p>
                         </div>
-                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full flex flex-col'>
+                        <div className='w-2/3 font-hind tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full flex flex-col'>
                             {newProductVariablePricing && newProductVariablePricing.length > 0 && newProductVariablePricing.map((price, index) => (
-                                <div key={index} className='flex tablet:w-2/3 relative'>
-                                    <div className={`py-2 px-4 lgMobile:px-1 mdMobile:px-1 lgMobile:py-2 mdMobile:py-2 mr-4 lgMobile:mr-2 mdMobile:mr-2 font-semibold text-xl tablet:text-[1rem] lgMobile:text-sm mdMobile:text-sm lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
+                                <div key={index} className='flex tablet:w-2/3 xlMobile:w-[90%] relative'>
+                                    <div className={`py-2 px-4 xlMobile:px-6 xlMobile:py-2 lgMobile:px-1 mdMobile:px-1 lgMobile:py-2 mdMobile:py-2 mr-4 lgMobile:mr-2 mdMobile:mr-2 font-semibold text-xl tablet:text-[1rem] xlMobile:text-xl lgMobile:text-sm mdMobile:text-sm lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'}  w-1/2 rounded-full `}>
                                         {`${price.max ? (index === newProductVariablePricing.length - 1 ? 'Quantity: ' + price.min + ' - ' + price.max + '+' : 'Quantity: ' + price.min + ' - ' + price.max) : (index === newProductVariablePricing.length - 1 ? 'Quantity: ' + price.min + '+' : 'Quantity: ' + price.min)}`}
                                     </div>
-                                    <div className={`py-2 px-4 lgMobile:px-1 mdMobile:px-1 font-semibold text-xl tablet:text-[1rem] lgMobile:text-sm mdMobile:text-sm lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'} w-1/2 rounded-full`}>{`Price: $${price.price}`}</div>
-                                    <button className='absolute top-0 -right-12 lgMobile:mr-2 mdMobile:mr-2 lgMobile:mt-1 mdMobile:mt-1 bg-[#FF7F11] rounded-full p-1'
+                                    <div className={`py-2 px-4 xlMobile:px-6 xlMobile:py-2 lgMobile:px-1 mdMobile:px-1 font-semibold text-xl tablet:text-[1rem] xlMobile:text-xl lgMobile:text-sm mdMobile:text-sm lgMobile:flex mdMobile:flex lgMobile:justify-center mdMobile:justify-center lgMobile:items-center mdMobile:items-center mb-4 ${darkMode ? 'bg-white text-black' : 'bg-[#131313]/80 text-white'} w-1/2 rounded-full`}>{`Price: $${price.price}`}</div>
+                                    <button className='absolute top-0 -right-14 lgMobile:mr-2 mdMobile:mr-2 lgMobile:mt-1 mdMobile:mt-1 bg-[#FF7F11] rounded-full p-1'
                                         onClick={(ev) => {
                                             ev.preventDefault();
                                             const updatedPricing = newProductVariablePricing.filter((_, i) => i !== index);
                                             setNewProductVariablePricing(updatedPricing);
                                         }}
                                     >
-                                        <svg xmlns="https://www.w3.org/2000/svg" className='w-[36px] h-[36px] lgMobile:w-[24px] mdMobile:w-[24px] lgMobile:h-[24px] mdMobile:h-[24px]' viewBox="0 -960 960 960" fill="#fff"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" /></svg>
+                                        <svg xmlns="https://www.w3.org/2000/svg" className='w-[36px] h-[36px] xlMobile:w-[40px] xlMobile:h-[40px] lgMobile:w-[24px] mdMobile:w-[24px] lgMobile:h-[24px] mdMobile:h-[24px]' viewBox="0 -960 960 960" fill="#fff"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" /></svg>
                                     </button>
                                 </div>
                             ))}
-                            <button className={`${showAddPrice ? 'hidden' : 'flex items-center'}`}
+                            <button className={`font-hind ${showAddPrice ? 'hidden' : 'flex items-center'}`}
                                 onClick={(ev) => {
                                     ev.preventDefault();
                                     setPricingMin('');
@@ -261,10 +261,10 @@ const Products = () => {
                                     setShowAddPrice(true);
                                 }}
                             >
-                                <svg xmlns="https://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FF7F11"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" /></svg>
-                                <p className='text-xl font-semibold ml-4'>Add Price</p>
+                                <svg xmlns="https://www.w3.org/2000/svg" className="h-[48px] w-[48px] xlMobile:h-[60px] xlMobile:w-[60px]" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FF7F11"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" /></svg>
+                                <p className='text-xl xlMobile:text-4xl font-semibold ml-4'>Add Price</p>
                             </button>
-                            <div className={` w-full text-xl lgMobile:text-lg mdMobile:text-lg font-thin ${showAddPrice ? 'flex lgMobile:flex-col mdMobile:flex-col' : 'hidden'}`}>
+                            <div className={`font-shanti w-full text-xl xlMobile:text-xl lgMobile:text-lg mdMobile:text-lg font-thin ${showAddPrice ? 'flex lgMobile:flex-col mdMobile:flex-col' : 'hidden'}`}>
                                 <div className='w-1/2 lgMobile:w-full mdMobile:w-full mr-4 lgMobile:mb-4 mdMobile:mb-4'>
                                     <p className='mb-4'>Quantity & Range</p>
                                     <input type="number" className={`${showAddPrice ? '' : 'hidden'} bg-transparent border-b-2 w-1/2 outline-none`} placeholder='Min'
@@ -287,7 +287,7 @@ const Products = () => {
                                     />
                                 </div>
                             </div>
-                            <button className={`self-start mt-4 p-2 px-10 text-lg font-semibold rounded-full bg-[#FF7F11] text-white ${showAddPrice ? '' : 'hidden'}`}
+                            <button className={`font-hind self-start mt-4 xlMobile:mt-10 p-2 px-10 text-lg xlMobile:text-4xl font-semibold rounded-full bg-[#FF7F11] text-white ${showAddPrice ? '' : 'hidden'}`}
                                 onClick={(ev) => {
                                     ev.preventDefault();
                                     const variablePricingData = {
@@ -300,21 +300,21 @@ const Products = () => {
                                 }}
                             >Save Price</button>
                         </div>
-                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-4 xlMobile:mt-14 text-xl xlMobile:text-3xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2 xlMobile:mb-6 font-hind'>
                             <p>Product thumbnail image:</p>
                         </div>
-                        <input id='fileUploadThumbnail' accept='image/*' type="file" className='hidden' required
+                        <input id='fileUploadThumbnail' accept='image/*' type="file" className='hidden font-shanti' required
                             onChange={(ev) => {
                                 setNewProductThumbnailImage(ev.target.files[0]);
                                 setThumbnailFilePath(ev.target.files[0].name);
                                 setFileInputThumbnailText('Change File');
                             }}
                         />
-                        <div className='flex lgMobile:flex-col mdMobile:flex-col w-full items-center'>
-                            <label htmlFor="fileUploadThumbnail" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 tablet:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer ${darkMode ? 'text-white' : 'text-black'}`}>{fileInputThumbnailText}</label>
-                            <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem] mdMobile:text-[1rem]`}>{thumbnailFilePath}</p>
+                        <div className='flex font-shanti tablet:flex-col xlMobile:flex-col lgMobile:flex-col mdMobile:flex-col w-full items-center'>
+                            <label htmlFor="fileUploadThumbnail" className={`font-hind bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] xlMobile:h-[5rem] font-bold text-2xl xlMobile:text-3xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer ${darkMode ? 'text-white' : 'text-black'}`}>{fileInputThumbnailText}</label>
+                            <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 xlMobile:text-2xl lgMobile:text-[1rem] mdMobile:text-[1rem]`}>{thumbnailFilePath}</p>
                         </div>
-                        <div className='w-2/3 tablet:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2'>
+                        <div className='w-2/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-4 xlMobile:mt-14 text-xl xlMobile:text-3xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2 xlMobile:mb-6'>
                             <p>Product details image (optional):</p>
                         </div>
                         <input id='fileUploadDetails' accept='image/*' type="file" className='hidden'
@@ -324,11 +324,11 @@ const Products = () => {
                                 setFileInputDetailsText('Change File');
                             }}
                         />
-                        <div className='flex lgMobile:flex-col mdMobile:flex-col w-full items-center'>
-                            <label htmlFor="fileUploadDetails" className={`bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 tablet:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
-                            <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 lgMobile:text-[1rem] mdMobile:text-[1rem]`}>{detailsFilePath}</p>
+                        <div className='flex tablet:flex-col xlMobile:flex-col lgMobile:flex-col mdMobile:flex-col w-full items-center font-shanti'>
+                            <label htmlFor="fileUploadDetails" className={`font-hind bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] xlMobile:h-[5rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl xlMobile:text-3xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
+                            <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 xlMobile:text-2xl lgMobile:text-[1rem] mdMobile:text-[1rem]`}>{detailsFilePath}</p>
                         </div>
-                        <button type="submit" className='w-2/3 bg-[#FF7F11] rounded-3xl p-2 text-white font-semibold text-2xl mt-10'>Save product</button>
+                        <button type="submit" className='w-2/3 xlMobile:w-[75%] font-hind bg-[#FF7F11] rounded-3xl p-2 text-white font-semibold text-2xl xlMobile:text-4xl xlMobile:h-[4rem] mt-10'>Save product</button>
                     </form>
                 </div>
             </div>
@@ -338,12 +338,12 @@ const Products = () => {
                 animate="animate"
             >
 
-                <div className='pt-[10rem] tablet:pt-[8rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem] px-[22rem] tablet:px-[5rem] lgMobile:px-6 mdMobile:px-6 flex justify-between items-end'>
-                    <h1 className="font-bold text-6xl tablet:text-4xl lgMobile:text-4xl mdMobile:text-4xl lgMobile:mr-6 mdMobile:mr-6 text-center">Products</h1>
+                <div className='pt-[10rem] tablet:pt-[8rem] xlMobile:pt-[15rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem] px-[22rem] tablet:px-[5rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 flex justify-between items-end'>
+                    <h1 className="font-[900] text-6xl tablet:text-4xl xlMobile:text-5xl lgMobile:text-4xl mdMobile:text-4xl xlMobile:mr-12 lgMobile:mr-6 mdMobile:mr-6 text-center font-ruda">Products</h1>
                     <div className='flex items-center'>
                         <div className='text-2xl mr-2 font-md rounded-full w-[3rem] h-[3rem] bg-gradient-to-br from-[#FF7F11] to-[#facc22] text-white p-[3px] flex justify-center items-center'>
                             <div className='bg-[#131313] w-full h-full rounded-full'>
-                                <p className='w-full mt-[3px] text-center font-bold'>{totalCartCount ? totalCartCount : '0'}</p>
+                                <p className='w-full font-hind mt-[3px] text-center font-bold'>{totalCartCount ? totalCartCount : '0'}</p>
                             </div>
                         </div>
                         <button>
@@ -352,19 +352,19 @@ const Products = () => {
                         </button>
                     </div>
                 </div>
-                <div className="grid grid-cols-3 lgMobile:grid-cols-1 mdMobile:grid-cols-1 gap-y-44 tablet:gap-y-36 px-[20rem] tablet:px-[5rem] tablet:ml-[4rem] lgMobile:px-6 mdMobile:px-6 py-14 mb-44 text-center">
+                <div className="grid grid-cols-3 xlMobile:grid-cols-1 lgMobile:grid-cols-1 mdMobile:grid-cols-1 gap-y-44 tablet:gap-y-36 xlMobile:gap-y-[14rem] px-[20rem] tablet:px-[5rem] tablet:ml-[4rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 py-14 mb-44 text-center">
                     {products.length > 0 && products.map((product, index) => (
                         <Product key={index} product={product} refresh={refresh} setRefresh={setRefresh} adminPrivileges={adminPrivileges} user={user} navigate={navigate} darkMode={darkMode} />
                     ))}
 
                     {adminPrivileges && (
-                        <motion.button className='h-[25rem] tablet:h-[10rem] w-[20rem] tablet:w-[8rem] border-4 rounded-3xl flex flex-col justify-center items-center mt-10'
+                        <motion.button className='h-[25rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] tablet:w-[8rem] xlMobile:w-[27rem] border-4 rounded-3xl flex flex-col justify-center items-center mt-10'
                             onClick={() => setShowAddProduct(true)}
                             initial={{ scale: 1 }}
                             whileHover={{ scale: 0.95 }}
                         >
                             <svg xmlns="https://www.w3.org/2000/svg" className='h-[100px] w-[100px] tablet:h-[50px] tablet:w-[50px]' height="100px" viewBox="0 -960 960 960" width="100px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" /></svg>
-                            <p className='font-semibold text-4xl tablet:text-lg'>Add Product</p>
+                            <p className='font-semibold text-4xl tablet:text-lg font-hind'>Add Product</p>
                         </motion.button>
                     )}
 

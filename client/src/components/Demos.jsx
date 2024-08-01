@@ -3,6 +3,7 @@ import { UserContext } from "../UserContext";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Footer from "../partials/Footer";
 
 const fadeInVariants = {
     initial: {
@@ -650,77 +651,77 @@ const Demos = () => {
                     >Ok</button>
                 </div>
             </div>
-            <motion.div className={`pt-32 lgMobile:pt-[14rem] mdMobile:pt-[14rem] ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'}`}
+            <motion.div className={`pt-32 font-shanti xlMobile:pt-[14rem] lgMobile:pt-[14rem] mdMobile:pt-[14rem] ${darkMode ? 'bg-[#131313] text-white print:bg-white print:text-black' : 'bg-white text-black'}`}
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
             >
                 <div className="w-fit h-[5rem] p-4 px-12 relative">
-                    <p className="text-xl">Boat Length</p>
-                    <label className="absolute right-14 top-[57%] text-xl">ft</label>
-                    <input type="number" placeholder="Boat length (ft.)" className={`outline-none border-2 px-2 py-1 pr-8 text-xl ${darkMode ? 'bg-transparent text-white border-white' : 'border-black'}`}
+                    <p className="text-xl xlMobile:text-2xl">Boat Length</p>
+                    <label className="absolute right-14 top-[57%] xlMobile:top-[67%] lgMobile:top-[62%] mdMobile:top-[62%] text-xl">ft</label>
+                    <input type="number" placeholder="Boat length (ft.)" className={`outline-none border-2 px-2 py-1 xlMobile:py-2 pr-8 text-xl xlMobile:text-2xl ${darkMode ? 'bg-transparent text-white border-white print:border-black print:text-black' : 'border-black'}`}
                         value={boatLength}
                         onChange={(ev) => setBoatLength(Number(ev.target.value))}
                     />
                 </div>
 
-                <div className="w-full h-full mt-8 print:hidden">
+                <div className="w-full h-full mt-8 xlMobile:mt-14 print:hidden">
                     <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2">{`Switch Count: ${switchOnCount} / ${lightTypes && lightTypes.length > 0 ? lightTypes.length + pumpTypes.length + boatControlTypes.length : 0}`}</p>
                 </div>
-                <div className="w-full px-12 lgMobile:px-4 mdMobile:px-4 lgMobile:pl-10 mdMobile:pl-10 py-12 flex items-center flex-wrap print:block">
-                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 lgMobile:mb-6 mdMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
-                        <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Lights</p>
+                <div className="w-full px-12 xlMobile:px-6 lgMobile:px-4 mdMobile:px-4 xlMobile:pl-12 lgMobile:pl-10 mdMobile:pl-10 py-12 flex items-center flex-wrap print:block">
+                    <div className={`print:hidden w-[25rem] tablet:w-full xlMobile:w-full tablet:mb-10 xlMobile:mb-10 h-[30rem] mr-6 lgMobile:mb-6 mdMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>
+                        <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>Lights</p>
                         {lightTypes.map((lightType) => (
-                            <div className="flex mb-4 w-full" key={lightType}>
-                                <p className="mr-auto lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
-                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                            <div className="flex mb-4 xlMobile:my-10 xlMobile:flex xlMobile:items-center w-full" key={lightType}>
+                                <p className="mr-auto xlMobile:text-2xl xlMobile:pr-10 lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
+                                <button className={`font-hind border-2 px-2 xlMobile:p-2 xlMobile:text-3xl rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                                     onClick={() => setLightStates(prev => ({ ...prev, [lightType]: !prev[lightType] }))}
                                 >{lightStates[lightType] ? 'On' : 'Off'}</button>
                             </div>
                         ))}
                     </div>
-                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 lgMobile:mb-6 mdMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
-                        <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Pumps</p>
+                    <div className={`print:hidden w-[25rem] tablet:w-full xlMobile:w-full tablet:mb-10 h-[30rem] mr-6 xlMobile:mb-10 lgMobile:mb-6 mdMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>
+                        <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white print:border-white' : 'border-black'}`}>Pumps</p>
                         {pumpTypes.map((pumpType) => (
-                            <div className="flex mb-4" key={pumpType}>
-                                <p className="mr-auto lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
-                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                            <div className="flex mb-4 xlMobile:my-10 xlMobile:flex xlMobile:items-center w-full" key={pumpType}>
+                                <p className="mr-auto xlMobile:text-2xl xlMobile:pr-10 lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
+                                <button className={`font-hind border-2 px-2 xlMobile:p-2 xlMobile:text-3xl rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                                     onClick={() => setPumpStates(prev => ({ ...prev, [pumpType]: !prev[pumpType] }))}
                                 >{pumpStates[pumpType] ? 'On' : 'Off'}</button>
                             </div>
                         ))}
                     </div>
-                    <div className={`print:hidden w-[25rem] h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white' : 'border-black'}`}>
-                        <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white' : 'border-black'}`}>Boat Controls</p>
+                    <div className={`print:hidden w-[25rem] tablet:w-full xlMobile:w-full h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>
+                        <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>Boat Controls</p>
                         {boatControlTypes.map((controlType) => (
-                            <div className="flex mb-4" key={controlType}>
-                                <p className="mr-auto lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
-                                <button className={`border-2 px-2 rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                            <div className="flex mb-4 xlMobile:my-10 xlMobile:flex xlMobile:items-center w-full" key={controlType}>
+                                <p className="mr-auto xlMobile:text-2xl xlMobile:pr-10 lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
+                                <button className={`font-hind border-2 px-2 xlMobile:p-2 xlMobile:text-3xl rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                                     onClick={() => setBoatControlStates(prev => ({ ...prev, [controlType]: !prev[controlType] }))}
                                 >{boatControlStates[controlType] ? 'On' : 'Off'}</button>
                             </div>
                         ))}
                     </div>
-                    <div className="w-1/4 lgMobile:w-full mdMobile:w-full mt-8 print:w-full">
-                        <ul className="lgMobile:space-y-4 mdMobile:space-y-4">
-                            {boatLength > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 Power Injectors:</span><div>1</div></li>}
-                            {boatLength > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 6.5ft drop cables:</span><div>1</div></li>}
-                            {boatLength > 0 && switchOnCount > 0 && <li className="w-full flex"><span className="mr-auto">Total Length of 16AWG Power Cables:</span><span>{`${(switchOnCount * (boatLength * 0.6)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}ft`}</span></li>}
-                            {num10mBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 32ft backbone cables:</span><span>{num10mBackboneCables}</span></li>}
-                            {num8mBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 25.6ft backbone cables:</span><span>{num8mBackboneCables}</span></li>}
-                            {num5mBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 16ft backbone cables:</span><span>{num5mBackboneCables}</span></li>}
-                            {num2mBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 6.4ft backbone cables:</span><span>{num2mBackboneCables}</span></li>}
-                            {numHalfMeterBackboneCables > 0 && <li className="w-full flex"><span className="mr-auto">Number of NMEA 2000 1.6ft backbone cables:</span><span>{numHalfMeterBackboneCables}</span></li>}
+                    <div className="w-1/4 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-8 print:w-full">
+                        <ul className="xlMobile:space-y-4 lgMobile:space-y-4 mdMobile:space-y-4 tablet:mb-4 xlMobile:text-lg">
+                            {boatLength > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 Power Injectors:</span><div>1</div></li>}
+                            {boatLength > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 6.5ft drop cables:</span><div>1</div></li>}
+                            {boatLength > 0 && switchOnCount > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Total Length of 16AWG Power Cables:</span><span>{`${(switchOnCount * (boatLength * 0.6)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}ft`}</span></li>}
+                            {num10mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 32ft backbone cables:</span><span>{num10mBackboneCables}</span></li>}
+                            {num8mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 25.6ft backbone cables:</span><span>{num8mBackboneCables}</span></li>}
+                            {num5mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 16ft backbone cables:</span><span>{num5mBackboneCables}</span></li>}
+                            {num2mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 6.4ft backbone cables:</span><span>{num2mBackboneCables}</span></li>}
+                            {numHalfMeterBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 1.6ft backbone cables:</span><span>{numHalfMeterBackboneCables}</span></li>}
                         </ul>
-                        <ul className="my-4 lgMobile:space-y-4 mdMobile:space-y-4">
-                            {num6ButtonKeypads > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Way Keypads:</span><span>{num6ButtonKeypads}</span></li>}
-                            {num12ButtonKeypads > 0 && <li className="w-full flex"><span className="mr-auto">Number of 12 Way Keypads:</span><span>{num12ButtonKeypads}</span></li>}
-                            {numsixOutputDigitalSwitchingBox > 0 && <li className="w-full flex"><span className="mr-auto">Number of 6 Output Digital Switching Boxes:</span><span>{numsixOutputDigitalSwitchingBox}</span></li>}
-                            {numDDS > 0 && <li className="w-full flex"><span className="mr-auto">Number of 27 Output Digital Switching Boxes:</span><span>{numDDS}</span></li>}
-                            {num1WayTeeConnectors > 0 && <li className="w-full flex"><span className="mr-auto">Number of 1 Way Tee Connectors:</span><span>{num1WayTeeConnectors}</span></li>}
-                            {num2WayTeeConnectors > 0 && <li className="w-full flex"><span className="mr-auto">Number of 2 Way Tee Connectors:</span><span>{num2WayTeeConnectors}</span></li>}
-                            {num4WayTeeConnectors > 0 && <li className="w-full flex"><span className="mr-auto">Number of 4 Way Tee Connectors:</span><span>{num4WayTeeConnectors}</span></li>}
-                            <li className="w-full flex"><span className="mr-auto">Wireless Interface?:</span><span>{wirelessInterfaceBool ? 'Yes' : 'No'}</span></li>
+                        <ul className="my-4 xlMobile:space-y-4 xlMobile:text-lg lgMobile:space-y-4 mdMobile:space-y-4">
+                            {num6ButtonKeypads > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 6 Way Keypads:</span><span>{num6ButtonKeypads}</span></li>}
+                            {num12ButtonKeypads > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 12 Way Keypads:</span><span>{num12ButtonKeypads}</span></li>}
+                            {numsixOutputDigitalSwitchingBox > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 6 Output Digital Switching Boxes:</span><span>{numsixOutputDigitalSwitchingBox}</span></li>}
+                            {numDDS > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 27 Output Digital Switching Boxes:</span><span>{numDDS}</span></li>}
+                            {num1WayTeeConnectors > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 1 Way Tee Connectors:</span><span>{num1WayTeeConnectors}</span></li>}
+                            {num2WayTeeConnectors > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 2 Way Tee Connectors:</span><span>{num2WayTeeConnectors}</span></li>}
+                            {num4WayTeeConnectors > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 4 Way Tee Connectors:</span><span>{num4WayTeeConnectors}</span></li>}
+                            <li className="w-full flex tablet:mb-2 text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Wireless Interface?:</span><span>{wirelessInterfaceBool ? 'Yes' : 'No'}</span></li>
                         </ul>
                         {cablingCost > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Total Cabling Cost:</span><span>{`$${cablingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
                         {costOfKeypads > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Keypads Cost:</span><span>{`$${costOfKeypads.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
@@ -730,21 +731,21 @@ const Demos = () => {
                         {totalCost > 0 && <p className="text-xl font-bold w-full flex"><span className="mr-auto">Total Cost:</span><span>{`$${manualTotalCost !== 0 ? Number(manualTotalCost).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : totalCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
 
                         {totalWeight > 0 && <p className="text-xl font-bold w-full flex"><span className="mr-auto">Total Weight:</span><span>{` ${(totalWeight / 1000).toFixed(3)} lbs.`}</span></p>}
-                        <button className={`${darkMode ? 'border-white' : 'border-black'} border-2 mt-4 w-full rounded-full py-1 font-semibold text-lg print:hidden ${showEditTotalCost ? 'hidden' : ''}`}
+                        <button className={`font-hind ${darkMode ? 'border-white print:border-black' : 'border-black'} border-2 mt-4 xlMobile:mt-10 xlMobile:text-2xl w-full rounded-full py-1 font-semibold text-lg print:hidden ${showEditTotalCost ? 'hidden' : ''}`}
                             onClick={() => setShowEditTotalCost(true)}
                         >Edit Total Cost</button>
-                        <div className={`print:hidden mt-4 flex flex-col ${showEditTotalCost ? '' : 'hidden'}`}>
+                        <div className={`print:hidden mt-4 xlMobile:mt-10 flex flex-col ${showEditTotalCost ? '' : 'hidden'}`}>
                             <p className="font-semibold text-xl">Amount to add to total</p>
-                            <input type="number" className="border-2 outline-none border-black p-1 mb-2" placeholder="$0.00"
+                            <input type="number" className="border-2 xlMobile:text-2xl outline-none border-black p-1 mb-2" placeholder="$0.00"
                                 value={addToTotalCostAmount}
                                 onChange={(ev) => setAddToTotalCostAmount(Number(ev.target.value))}
                             />
                             <p className="font-semibold text-xl">Amount to subtract from total</p>
-                            <input type="number" className="border-2 outline-none border-black p-1" placeholder="$0.00"
+                            <input type="number" className="border-2 xlMobile:text-2xl outline-none border-black p-1" placeholder="$0.00"
                                 value={subtractToTotalCostAmount}
                                 onChange={(ev) => setSubtractToTotalCostAmount(Number(ev.target.value))}
                             />
-                            <button className="mt-4 border-2 border-black px-4 py-1 rounded-full font-semibold"
+                            <button className="font-hind mt-4 border-2 xlMobile:text-2xl border-black px-4 py-1 rounded-full font-semibold"
                                 onClick={() => {
                                     saveTotalCostChanges();
                                     setShowEditTotalCost(false)
@@ -752,26 +753,26 @@ const Demos = () => {
                             >Save Changes</button>
                         </div>
                     </div>
-                    <div className="w-full flex mt-6 print:hidden">
-                        <p className="text-xl font-semibold mr-2">Wireless Interface?</p>
-                        <button className={`border-2 px-2 rounded-xl mr-4 h-[2rem] ${wirelessInterfaceBool ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white' : 'border-black'}`}
+                    <div className="w-full flex mt-6 xlMobile:mt-10 print:hidden xlMobile:items-center">
+                        <p className="text-xl xlMobile:text-2xl font-semibold mr-2 xlMobile:mr-6">Wireless Interface?</p>
+                        <button className={`font-hind border-2 px-2 rounded-xl xlMobile:text-2xl mr-4 h-[3rem] ${wirelessInterfaceBool ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                             onClick={() => setWirelessInterfaceBool(!wirelessInterfaceBool)}
                         >{wirelessInterfaceBool ? 'On' : 'Off'}</button>
                     </div>
-                    <div>
-                        <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full font-semibold mr-2 print:hidden`}
+                    <div className="xlMobile:flex xlMobile:flex-col xlMobile:items-start">
+                        <button className={`${darkMode ? 'border-white print:border-black' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full xlMobile:text-2xl font-semibold mr-2 print:hidden font-hind`}
                             onClick={() => clearInputs()}
                         >Clear Inputs</button>
-                        <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full font-semibold mr-2 print:hidden`}
+                        <button className={`font-hind ${darkMode ? 'border-white print:border-black' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full xlMobile:text-2xl font-semibold mr-2 print:hidden`}
                             onClick={() => addAllInputs()}
                         >Add All Options</button>
-                        <button className={`${darkMode ? 'border-white' : 'border-black'} mt-6 lgMobile:mb-4 border-2 px-4 py-1 rounded-full font-semibold print:hidden ${showChangeComponentPricing ? 'bg-[#FF7F11] text-white border-0' : ''}`}
+                        <button className={`font-hind ${darkMode ? 'border-white print:border-black' : 'border-black'} mt-6 lgMobile:mb-4 border-2 px-4 py-1 rounded-full xlMobile:text-2xl font-semibold print:hidden ${showChangeComponentPricing ? 'bg-[#FF7F11] text-white border-0' : ''}`}
                             onClick={() => setShowChangeComponentPricing(!showChangeComponentPricing)}
                         >{showChangeComponentPricing ? 'Close Component Pricing' : 'Change Component Pricing'}</button>
-                        <button className={`print:hidden ml-2 font-semibold border-2 px-4 py-1 rounded-full ${darkMode ? 'border-white' : 'border-black'}`}
+                        <button className={`font-hind print:hidden ml-2 xlMobile:ml-0 xlMobile:mt-6 font-semibold border-2 px-4 py-1 rounded-full xlMobile:text-2xl ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                             onClick={() => window.print()}
                         >Print Build</button>
-                        <button className={`print:hidden ml-2 font-semibold border-2 px-4 py-1 rounded-full ${darkMode ? 'border-white' : 'border-black'}`}
+                        <button className={`font-hind print:hidden ml-2 xlMobile:ml-0 xlMobile:mt-6 font-semibold border-2 px-4 py-1 rounded-full xlMobile:text-2xl ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                             onClick={() => saveBuildSetup()}
                         >Save Build</button>
                     </div>
@@ -780,13 +781,13 @@ const Demos = () => {
                         {productKeys && productKeys.length > 0 && productKeys.map((product, index) => {
                             const [newPrice, setNewPrice] = useState(0);
                             return (
-                                <div className="mb-4 w-1/3 lgMobile:w-full mdMobile:w-full lgMobile:mb-6 mdMobile:mb-6">
+                                <div className="mb-4 w-1/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full lgMobile:mb-6 mdMobile:mb-6">
                                     <div className="flex">
                                         <p className={`mr-auto ${changingProductPriceList[index] ? 'hidden' : ''}`}>{`${productData[product].name}: $${productData[product].units !== 'each' ? `${productData[product].cost} / ${productData[product].units.unit}` : (productData[product].cost).toFixed(2)}`}</p>
-                                        <input type="number" placeholder="New price" className={`${changingProductPriceList[index] ? `border-2 lgMobile:w-2/3 mdMobile:w-2/3 p-1 mr-auto ${darkMode ? 'border-white' : 'border-black'}` : 'hidden'}`}
+                                        <input type="number" placeholder="New price" className={`${changingProductPriceList[index] ? `border-2 xlMobile:w-2/3 xlMobile:text-2xl xlMobile:h-[4rem] lgMobile:w-2/3 mdMobile:w-2/3 p-1 mr-auto ${darkMode ? 'border-white print:border-black' : 'border-black'}` : 'hidden'}`}
                                             onChange={(ev) => setNewPrice(Number(ev.target.value))}
                                         />
-                                        <button className={`${darkMode ? 'border-white' : 'border-black'} border-2 ml-4 px-4 lgMobile:text-sm mdMobile:text-sm lgMobile:h-[3rem] mdMobile:h-[3rem] lgMobile:w-[5rem] mdMobile:w-[5rem] rounded-full lgMobile:rounded-lg mdMobile:rounded-lg ${changingProductPriceList[index] ? 'hidden' : ''}`}
+                                        <button className={`font-hind ${darkMode ? 'border-white print:border-black' : 'border-black'} border-2 ml-4 px-4 xlMobile:text-xl lgMobile:text-sm mdMobile:text-sm xlMobile:h-[4rem] lgMobile:h-[3rem] mdMobile:h-[3rem] xlMobile:w-[9rem] lgMobile:w-[5rem] mdMobile:w-[5rem] rounded-full xlMobile:rounded-lg lgMobile:rounded-lg mdMobile:rounded-lg ${changingProductPriceList[index] ? 'hidden' : ''}`}
                                             onClick={() => {
                                                 const anyTrue = changingProductPriceList.some(value => value)
                                                 if (!anyTrue) {
@@ -796,7 +797,7 @@ const Demos = () => {
                                                 }
                                             }}
                                         >Change price</button>
-                                        <button className={`border-2 px-2 lgMobile:text-sm mdMobile:text-sm lgMobile:rounded-lg mdMobile:rounded-lg lgMobile:w-[6rem] mdMobile:w-[6rem] rounded-full py-1 ${changingProductPriceList[index] ? '' : 'hidden'} bg-[#FF7F11] text-white border-transparent`}
+                                        <button className={`font-hind border-2 px-2 lgMobile:text-sm mdMobile:text-sm lgMobile:rounded-lg mdMobile:rounded-lg lgMobile:w-[6rem] mdMobile:w-[6rem] rounded-full py-1 ${changingProductPriceList[index] ? '' : 'hidden'} bg-[#FF7F11] text-white border-transparent`}
                                             onClick={() => {
                                                 saveProductPriceChange(index, newPrice)
                                                 const updatedList = [...changingProductPriceList]
@@ -810,8 +811,10 @@ const Demos = () => {
                         })}
                     </div>
                 </div>
-
             </motion.div>
+            <div className="print:hidden">
+                <Footer />
+            </div>
         </>
     );
 }

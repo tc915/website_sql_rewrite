@@ -49,8 +49,8 @@ const UserInfo = () => {
         <>
             <div className={`absolute top-0 left-0 w-full h-screen bg-black/50 z-[99] ${needNewEmailVerification || changedPassword ? 'flex justify-center items-center' : 'hidden'}`}>
                 <div className="h-[15rem] w-[30rem] bg-[#131313] border-4 rounded-lg border-[#FF7F11] flex flex-col justify-center items-center px-10">
-                    <p className="text-white text-xl font-semibold text-center p-2">{popupText ? popupText : ''}</p>
-                    <button className="bg-white mt-6 px-10 py-2 rounded-xl font-semibold"
+                    <p className="text-white text-xl font-semibold text-center p-2 font-shanti">{popupText ? popupText : ''}</p>
+                    <button className="bg-white font-hind mt-6 px-10 py-2 rounded-xl font-semibold"
                         onClick={(ev) => {
                             ev.preventDefault();
                             setNeedNewEmailVerification(false);
@@ -59,9 +59,9 @@ const UserInfo = () => {
                     >Ok</button>
                 </div>
             </div>
-            <div className={`py-32 lgMobile:py-44 mdMobile:py-44 w-full h-screen ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} flex`}>
-                <div className="h-full w-[20rem] mr-28 lgMobile:-mr-[15rem] mdMobile:-mr-[15rem] flex flex-col py-16">
-                    <button className={`${page === 'accountInfo' ? 'bg-[#FF7F11] text-white' : ''} h-[4rem] rounded-e-full mb-4 flex items-center pl-10 lgMobile:pl-2 mdMobile:pl-2 text-xl lgMobile:text-sm mdMobile:text-sm font-semibold`}
+            <div className={`py-32 tablet:py-12 xlMobile:py-32 lgMobile:py-44 mdMobile:py-44 w-full h-screen ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} flex`}>
+                <div className="h-full w-[20rem] tablet:w-[10rem] xlMobile:w-[20rem] mr-28 tablet:mr-0 xlMobile:-mr-[10rem] lgMobile:-mr-[15rem] mdMobile:-mr-[15rem] flex flex-col py-16">
+                    <button className={`${page === 'accountInfo' ? 'bg-[#FF7F11] text-white' : ''} h-[4rem] xlMobile:mt-10 font-hind rounded-e-full mb-4 flex items-center pl-10 tablet:pl-5 xlMobile:pl-4 lgMobile:pl-2 mdMobile:pl-2 text-xl tablet:text-sm xlMobile:text-lg lgMobile:text-sm mdMobile:text-sm font-semibold`}
                         onClick={() => setPage('accountInfo')}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 -960 960 960" width="36px" fill={darkMode ? '#fff' : (page === 'accountInfo' ? '#fff' : '#131313')}><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z" /></svg>

@@ -60,9 +60,9 @@ const Register = () => {
 
     return (
         <div>
-            <div className="flex flex-col justify-center items-center h-screen pt-32">
-                <div className="flex flex-col justify-center items-center bg-[#131313] px-10 py-6 rounded-xl text-white shadow-md">
-                    <h1 className="font-semibold text-3xl lgMobile:text-xl mdMobile:text-xl mb-8">Register</h1>
+            <div className="flex flex-col justify-center items-center h-screen pt-32 tablet:py-24">
+                <div className="flex flex-col justify-center items-center bg-[#131313] px-10 tablet:px-12 py-6 tablet:mt-24 rounded-xl text-white shadow-md">
+                    <h1 className="font-[800] text-3xl tablet:text-xl lgMobile:text-xl mdMobile:text-xl mb-8 font-ruda">Register</h1>
                     <div className="w-full mb-6 flex justify-center items-center">
                         <GoogleLogin
                             onSuccess={(credentialRsponse) => {
@@ -74,37 +74,39 @@ const Register = () => {
                             }}
                         />
                     </div>
-                    <form className="flex flex-col"
+                    <form className="flex flex-col font-shanti"
                         onSubmit={(ev) => {
                             ev.preventDefault();
                             registerUser();
                         }}
                     >
-                        <input className="bg-transparent text-2xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-4 outline-none" type="text" placeholder="Name" spellCheck="false" required
+                        <input className="bg-transparent text-2xl tablet:text-lg lgMobile:text-lg mdMobile:text-lg font-semibold mb-4 outline-none" type="text" placeholder="Name" spellCheck="false" required
                             value={name}
                             onChange={(ev) => setName(ev.target.value)}
                         />
-                        <input type="email" className="bg-transparent text-2xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-4 outline-none" placeholder="Email" spellCheck="false" required
+                        <input type="email" className="bg-transparent text-2xl tablet:text-lg lgMobile:text-lg mdMobile:text-lg font-semibold mb-4 outline-none" placeholder="Email" spellCheck="false" required
                             value={email}
                             onChange={(ev) => setEmail(ev.target.value)}
                         />
-                        <input className="bg-transparent text-2xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-4 outline-none" type="password" placeholder="Password" spellCheck="false" required
+                        <input className="bg-transparent text-2xl tablet:text-lg lgMobile:text-lg mdMobile:text-lg font-semibold mb-4 outline-none" type="password" placeholder="Password" spellCheck="false" required
                             value={password}
                             onChange={(ev) => setPassword(ev.target.value)}
                         />
-                        <input className={`bg-transparent ${confirmPasswordBool ? 'text-green-400' : 'text-red-400'} text-2xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-10 outline-none`} type="password" placeholder="Confirm password" spellCheck="false" required
+                        <input className={`bg-transparent ${confirmPasswordBool ? 'text-green-400' : 'text-red-400'} text-2xl tablet:text-lg lgMobile:text-lg mdMobile:text-lg font-semibold mb-10 outline-none`} type="password" placeholder="Confirm password" spellCheck="false" required
                             onChange={(ev) => {
                                 if (ev.target.value === password) {
                                     setConfirmPasswordBool(true)
                                 } else setConfirmPasswordBool(false)
                             }}
                         />
-                        <button className="bg-[#FF7F11] py-2 rounded-lg text-lg lgMobile:text-[1rem] mdMobile:text-[1rem] font-semibold" type="submit">Register</button>
-                        <p className="text-center mt-2">Already have an account? <Link to='/login' className="text-[#FF7F11] hover:underline">Login</Link></p>
+                        <button className="bg-[#FF7F11] py-2 rounded-lg text-lg lgMobile:text-[1rem] mdMobile:text-[1rem] font-semibold font-hind" type="submit">Register</button>
+                        <p className="text-center xlMobile:text-xl xlMobile:mt-6 mt-2">Already have an account? <Link to='/login' className="text-[#FF7F11] hover:underline">Login</Link></p>
                     </form>
                 </div>
             </div>
-            <Footer />
+            <div className="tablet:mt-24">
+                <Footer />
+            </div>
         </div>
     );
 }

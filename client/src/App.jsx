@@ -49,9 +49,10 @@ function App() {
     const location = useLocation();
     const [scrollY, setScrollY] = useState(0);
     const [navBackgroundOpaque, setNavBackgroundOpaque] = useState(false);
+    const [prevLoginPath, setPrevLoginPath] = useState('');
 
     useEffect(() => {
-        console.log(window.scrollY)
+        // console.log(window.scrollY)
         const setScrollPosition = () => {
             setScrollY(window.scrollY)
         }
@@ -65,12 +66,12 @@ function App() {
     return (
 
         <UserContextProvider>
-            <Header navBackgroundOpaque={navBackgroundOpaque} />
+            <Header navBackgroundOpaque={navBackgroundOpaque} prevLoginPath={prevLoginPath} setPrevLoginPath={setPrevLoginPath} />
             <AnimatePresence mode='wait' key={location.pathname}>
                 <Routes location={location} key={location.key}>
                     <Route path='/' element={<Home scrollY={scrollY} />} />
                     <Route path='/products' element={<Products />} />
-                    <Route path='/login' element={<Login />} />
+                    <Route path='/login' element={<Login prevLoginPath={prevLoginPath} setPrevLoginPath={setPrevLoginPath} />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/products/:id' element={<ProductDetails />} />
                     <Route path='/contact' element={<Contact />} />

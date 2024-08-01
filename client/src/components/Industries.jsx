@@ -62,12 +62,12 @@ const Industries = () => {
 
 
     return (
-        <motion.div className={`pt-44 lgMobile:pt-56 flex flex-col items-center overflow-x-hidden ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
+        <motion.div className={`pt-44 xlMobile:pt-64 lgMobile:pt-56 flex flex-col items-center overflow-x-hidden ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}
             variants={fadeInVariants}
             initial="initial"
             animate="animate"
         >
-            <div className="w-3/4 h-auto grid grid-cols-1 gap-4 mb-44">
+            <div className="w-3/4 h-auto grid grid-cols-1 gap-4 xlMobile:gap-10 mb-44">
                 <Link to={'/industries/marine'}>
                     <div onMouseMove={handleMouseMove1} className="h-[24rem] flex justify-center items-center cursor-pointer overflow-hidden relative">
                         <motion.img src="marine_service_unsplash.jpg" alt="Boat on lake" className="absolute h-full w-full object-cover min-h-[120%] min-w-[120%]"
@@ -76,7 +76,7 @@ const Industries = () => {
                             initial="hidden"
                             whileHover="hover"
                         />
-                        <p className="z-1 absolute text-5xl font-semibold text-white pointer-events-none">Marine</p>
+                        <p className="z-1 absolute text-5xl xlMobile:font-[700] font-semibold text-white pointer-events-none font-ruda">Marine</p>
                     </div>
                 </Link>
                 <Link to={'/industries/automotive'}>
@@ -87,7 +87,7 @@ const Industries = () => {
                             initial="hidden"
                             whileHover="hover"
                         />
-                        <p className="z-1 absolute text-5xl font-semibold text-white pointer-events-none">Automotive</p>
+                        <p className="z-1 absolute text-5xl xlMobile:font-[700] font-semibold text-white pointer-events-none font-ruda">Automotive</p>
                     </div>
                 </Link>
                 <Link to={'/industries/mobile'}>
@@ -98,7 +98,7 @@ const Industries = () => {
                             initial="hidden"
                             whileHover="hover"
                         />
-                        <p className="z-1 absolute text-4xl font-semibold text-white pointer-events-none">Mobile</p>
+                        <p className="z-1 absolute text-5xl xlMobile:font-[700] font-semibold text-white pointer-events-none font-ruda">Mobile</p>
                     </div>
                 </Link>
 
