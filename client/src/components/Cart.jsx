@@ -100,7 +100,7 @@ const Cart = () => {
     }, []);
 
     const checkoutUser = async (userCart, userDoc) => {
-        const { data } = await axios.post('/checkout-items', { userCart, userDoc })
+        const { data } = await axios.post('/checkout-cart', { userCart, userDoc })
         console.log(data)
     }
 
