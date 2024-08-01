@@ -30,7 +30,7 @@ export const createCheckoutSession = async (req, res) => {
 
         formattedItem.quantity = userCart[i].count
         formattedItem.product_data.name = userCart[i].details.name
-        formattedItem.description = userCart[i].details.description
+        formattedItem.product_data.description = userCart[i].details.description
 
         userCartFinal.push(formattedItem)
     }
