@@ -99,6 +99,11 @@ const Cart = () => {
         getUserCart();
     }, []);
 
+    const checkoutUser = async (userCart, userDoc) => {
+        console.log(`User Cart: ${userCart}`)
+        console.log(`User Info: ${userDoc}`)
+    }
+
     useEffect(() => {
         if (prices.length > 0) {
             getSubtotalCost();
@@ -127,7 +132,9 @@ const Cart = () => {
                             <p className="text-2xl font-semibold font-hind">{`Subtotal (${cart.productCountTotal > 1 ? cart.productCountTotal + ' items' : cart.productCountTotal + ' item'}): $${subtotalCost.toFixed(2)}`}</p>
                         )}
                         <Link to={`${user ? '/cart/checkout' : '/login'}`}>
-                            <button className="text-white bg-[#FF7F11] mt-6 xlMobile:mt-10 px-10 py-2 text-xl xlMobile:text-2xl font-semibold rounded-lg font-hind">Proceed to Checkout</button>
+                            <button className="text-white bg-[#FF7F11] mt-6 xlMobile:mt-10 px-10 py-2 text-xl xlMobile:text-2xl font-semibold rounded-lg font-hind"
+                                onClick={() => { checkoutUser(cart, user) }}
+                            >Proceed to Checkout</button>
                         </Link>
                     </div>
                 )}

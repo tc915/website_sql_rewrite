@@ -22,7 +22,9 @@ app.use(cookieParser());
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = process.env.JWT_SECRET;
 
-app.use(express.json());
+app.use(express.json({
+    verify: (req, res, buffer) => req['rawBody'] = buffer,
+}));
 app.use('/uploads', express.static('uploads'));
 
 app.use(cors({
