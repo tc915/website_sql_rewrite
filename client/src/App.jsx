@@ -32,6 +32,8 @@ import Mobile from './components/industries/Mobile';
 import UserInfo from './components/UserInfo';
 import Demos from './components/Demos';
 import ICandyDemo from './components/demos/ICandyDemo';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 
 let baseURL;
 
@@ -50,6 +52,8 @@ function App() {
     const [scrollY, setScrollY] = useState(0);
     const [navBackgroundOpaque, setNavBackgroundOpaque] = useState(false);
     const [prevLoginPath, setPrevLoginPath] = useState('');
+
+    const stripePromise = loadStripe(import.meta.env.VITE_REACT_APP_PUBLISHABLE_KEY)
 
     useEffect(() => {
         // console.log(window.scrollY)
@@ -76,7 +80,9 @@ function App() {
                     <Route path='/products/:id' element={<ProductDetails />} />
                     <Route path='/contact' element={<Contact />} />
                     <Route path="/services" element={<Services />} />
-                    <Route path='/cart' element={<Cart prevLoginPath={prevLoginPath} setPrevLoginPath={setPrevLoginPath} />} />
+                    <Elements stripe={stripePromise}>
+                        <Route path='/cart' element={<Cart prevLoginPath={prevLoginPath} setPrevLoginPath={setPrevLoginPath} />} />
+                    </Elements>
                     <Route path='/industries' element={<Industries />} />
                     <Route path='/about' element={<About />} />
                     <Route path='/services/research-and-development' element={<ResearchDevelopment />} />

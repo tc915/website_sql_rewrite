@@ -2,7 +2,7 @@ import { findUserById } from './database.js'
 import { stripeAPI } from './stripe.js'
 
 export const createCheckoutSession = async (req, res) => {
-    // const domainUrl = process.env.WEB_APP_URL
+    const domainUrl = process.env.WEB_APP_URL
     const { userCart, userDoc } = req.body
 
     if (!userDoc || !userCart) {
@@ -32,26 +32,25 @@ export const createCheckoutSession = async (req, res) => {
         formattedItem.product_data.name = userCart[i].details.name
         formattedItem.product_data.description = userCart[i].details.description
         formattedItem.product_data.images = [userCart[i].stripeImgThumbnail]
-        formattedItem.price_data.unit_amount = userCart[i].unitPrice
+        formattedItem.price_data.unit_amount = userCart[i].unitPrice * 100
 
         userCartFinal.push(formattedItem)
     }
 
-    // let session
+    let session
 
     try {
-        //     session = await stripeAPI.checkout.sessions.create({
-        //         payment_method_types: ['card'],
-        //         mode: 'payment',
-        //         line_items: userCart,
-        //         customer_email: email,
-        //         success_url: `${domainUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-        //         cancel_url: `${domainUrl}/canceled`,
-        //         shipping_address_collection: { allowed_countries: ['GB', 'US'] },
-        //         automatic_tax: { enanbled: true }
-        //     })
-        // res.status(200).json({ sessionID: session.id })
-        res.status(200).json(userCartFinal)
+        session = await stripeAPI.checkout.sessions.create({
+            payment_method_types: ['card'],
+            mode: 'payment',
+            line_items: userCart,
+            customer_email: email,
+            success_url: `${domainUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${domainUrl}/canceled`,
+            shipping_address_collection: { allowed_countries: ['US'] },
+            automatic_tax: { enanbled: true }
+        })
+        res.status(200).json({ sessionID: session.id })
     } catch (err) {
         console.log(err)
         res.status(400).json({ error: 'An error occured, unable to create session' })

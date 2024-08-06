@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import Footer from "../partials/Footer";
 import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
+import { useStripe } from "@stripe/react-stripe-js";
 
 const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, cartProducts, setCartProducts, navTotalCartCount, setNavTotalCartCount }) => {
 
@@ -74,6 +75,9 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
     const [totalCost, setTotalCost] = useState(0);
     const [prices, setPrices] = useState([]);
     const { user, setUser } = useContext(UserContext);
+    const [sessionId, setSessionId] = useState('');
+
+    const stripe = useStripe()
 
     const getSubtotalCost = () => {
         let subtotal = 0;
@@ -120,7 +124,14 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
             item["unitPrice"] = price
         });
         const { data } = await axios.post('/checkout-cart', { userCart, userDoc })
-        console.log(data)
+        const sessionID = data.sessionID;
+        setSessionId(sessionID)
+        const { error } = await stripe.redirectToCheckout({
+            sessionId: sessionID
+        })
+        if (error) {
+            console.log(error)
+        }
     }
 
     // const getProductPrice = () => {
