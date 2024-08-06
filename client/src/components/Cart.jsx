@@ -134,20 +134,6 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
         }
     }
 
-    // const getProductPrice = () => {
-    //     // Sort the variablePricing array in descending order based on the min value
-    //     const sortedVariablePricing = [...product.pricing].sort((a, b) => b.min - a.min);
-    //     for (let i = 0; i < sortedVariablePricing.length; i++) {
-    //         const { min, max } = sortedVariablePricing[i];
-    //         const productCount = product.count;
-    //         const isWithinRange = (min <= productCount) && ((max >= productCount) || max === null || max === 0);
-
-    //         if (isWithinRange) {
-    //             return (sortedVariablePricing[i].price * productCount);
-    //         }
-    //     }
-    // }
-
     useEffect(() => {
         if (prices.length > 0) {
             getSubtotalCost();

@@ -228,11 +228,13 @@ export const getCartItemWithProductId = async (productId) => {
     return rows[0]
 }
 
-export const deleteCartItems = async (productId) => {
-    const query = `DELETE FROM CartItem WHERE productId = ?`
-    const values = [productId]
+export const deleteCartItems = async (cartId, productId) => {
+    const query = `DELETE FROM CartItem WHERE cartId = ? AND productId = ?`
+    const values = [cartId, productId]
     await pool.query(query, values)
 }
+
+// export const deleteAllCartItems = async ()
 
 export const createCart = async (userId, token) => {
 

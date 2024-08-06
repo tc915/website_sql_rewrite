@@ -24,7 +24,7 @@ const Header = ({ prevLoginPath, setPrevLoginPath }) => {
 
     const location = useLocation();
 
-    const { user, setUser, darkMode, setDarkMode, navTotalCartCount } = useContext(UserContext);
+    const { user, setUser, darkMode, setDarkMode, navTotalCartCount, setNavTotalCartCount } = useContext(UserContext);
 
     const [hamburgerNavOpen, setHamburgerNavOpen] = useState(false)
 
@@ -45,6 +45,14 @@ const Header = ({ prevLoginPath, setPrevLoginPath }) => {
         await axios.post('/logout');
         setHamburgerNavOpen(false)
     }
+
+    useEffect(() => {
+        const getCartTotal = async () => {
+            const { data } = await axios.get('/user-cart')
+            setNavTotalCartCount(data.cartDoc.productCountTotal)
+        }
+        getCartTotal()
+    }, [])
 
 
     return (

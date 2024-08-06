@@ -31,7 +31,7 @@ app.use('/uploads', express.static('uploads'));
 app.use(cors({
     credentials: true,
     origin: (origin, callback) => {
-        let allowedOrigins = ['http://localhost:5173', 'http://10.0.0.180:5173', 'http://10.0.0.180:3000', 'https://test.ideasthatfloat.com', 'https://ideasthatfloat-server-lnr7.onrender.com', 'https://test.ideasthatfloat.com'];
+        let allowedOrigins = ['http://localhost:5173', 'http://10.0.0.180:5173', 'http://10.0.0.180:3000', 'https://test.ideasthatfloat.com', 'https://ideasthatfloat-server-lnr7.onrender.com'];
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
@@ -436,16 +436,21 @@ app.post('/delete-cart-item', async (req, res) => {
     const { cartProducts, productId, count, index } = req.body;
     try {
         const cartDoc = await findCartByToken(cartToken)
+        if (!cartDoc) {
+            return res.status(404).json({ error: 'Cart not found' })
+        }
+
         cartDoc.productCountTotal -= count
         await updateTable('cart', cartDoc)
 
-        await deleteCartItems(productId)
+        await deleteCartItems(cartDoc.id, productId)
 
         let newCartProducts = cartProducts
         newCartProducts.splice(index, 1)
         res.status(200).json({ cartDoc, newCartProducts })
 
     } catch (err) {
+        console.log(err.stack)
         res.status(422).json(err);
     }
 });
