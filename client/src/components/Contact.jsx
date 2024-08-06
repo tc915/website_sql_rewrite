@@ -78,22 +78,22 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
                     >Ok</button>
                 </div>
             </div>
-            <motion.div className="pt-44 font-shanti tablet:pt-20 xlMobile:pt-[17rem] xlMobile:w-[33rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem]"
+            <motion.div className="pt-44 xl:pt-[8rem] lg:pt-[8rem] md:pt-[8rem] sm:pt-[8rem] xsm:pt-[8rem] xxsm:pt-[8rem] laptop:pt-[8rem] smLaptop:pt-[8rem] font-shanti tablet:pt-20 xlMobile:pt-[17rem] xlMobile:w-[33rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem]"
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"
             >
-                <img className="absolute -z-10 -translate-y-[15rem] tablet:-translate-y-[15rem] xlMobile:-translate-y-[5rem] lgMobile:-translate-y-[10rem] mdMobile:-translate-y-[10rem] tablet:h-[50rem] xlMobile:h-[50rem] lgMobile:h-[50rem] mdMobile:h-[50rem] object-cover" src="contact_background_unsplash.jpg" />
-                <div className="h-[48rem] tablet:h-[35rem] flex xlMobile:flex-col lgMobile:flex-col mdMobile:flex-col text-white">
+                <img className="absolute -z-10 -translate-y-[15rem] xl:translate-y-0 lg:translate-y-0 md:translate-y-0 sm:translate-y-0 xsm:translate-y-0 xxsm:translate-y-0 laptop:translate-y-0 smLaptop:translate-y-0 tablet:-translate-y-[15rem] xlMobile:-translate-y-[5rem] lgMobile:-translate-y-[10rem] mdMobile:-translate-y-[10rem] tablet:h-[50rem] xlMobile:h-[50rem] lgMobile:h-[50rem] mdMobile:h-[50rem] object-cover" src="contact_background_unsplash.jpg" />
+                <div className="h-[48rem] md:h-[47.5rem] sm:h-[43.9rem] xsm:h-[41.8rem] xxsm:h-[39rem] laptop:h-[36rem] smLaptop:h-[33rem] tablet:h-[35rem] flex xlMobile:flex-col lgMobile:flex-col mdMobile:flex-col text-white">
                     <h2 className='xlMobile:mb-24 lgMobile:mb-24 mdMobile:mb-24 xlMobile:block lgMobile:block mdMobile:block hidden xlMobile:text-5xl lgMobile:text-4xl mdMobile:text-4xl xlMobile:font-semibold lgMobile:font-semibold mdMobile:font-semibold xlMobile:ml-12 lgMobile:ml-6 mdMobile:ml-6 font-hind'>Contact Us</h2>
-                    <form className="w-1/2 xlMobile:w-full lgMobile:w-full mdMobile:w-full p-44 tablet:p-12 tablet:pt-32 xlMobile:p-12 lgMobile:p-6 mdMobile:p-6 -mt-16"
+                    <form className="w-1/2 xl:-mt-4 lg:-mt-4 xlMobile:w-full lgMobile:w-full mdMobile:w-full p-44 xl:pr-0 lg:pr-0 md:pr-0 sm:pr-0 xsm:p-40 xsm:pr-0 xxsm:p-36 xxsm:pr-0 laptop:p-28 smLaptop:p-32 laptop:pr-0 smLaptop:pr-0 tablet:p-12 tablet:pt-32 xlMobile:p-12 lgMobile:p-6 mdMobile:p-6 -mt-16"
                         onSubmit={(ev) => {
                             ev.preventDefault();
                             sendMessage();
                         }}
                     >
                         <div className="w-full">
-                            <input type="text" required placeholder="Name" className="bg-transparent placeholder:text-white text-xl tablet:text-[1rem] xlMobile:text-2xl lgMobile:text-lg mdMobile:text-lg font-thin border-b-2 pb-2 xlMobile:pb-1 lgMobile:pb-1 mdMobile:pb-1 tablet:mb-6 xlMobile:mb-8 lgMobile:mb-8 mdMobile:mb-8 mr-4 w-1/2 outline-none"
+                            <input type="text" required placeholder="Name" className="bg-transparent placeholder:text-white text-xl tablet:text-[1rem] xlMobile:text-2xl lgMobile:text-lg mdMobile:text-lg font-thin border-b-2 pb-2 xlMobile:pb-1 lgMobile:pb-1 mdMobile:pb-1 md:mb-6 sm:mb-6 xsm:mb-4 xxsm:mb-4 laptop:mb-4 smLaptop:mb-4 tablet:mb-6 xlMobile:mb-8 lgMobile:mb-8 mdMobile:mb-8 mr-4 w-1/2 outline-none"
                                 value={name}
                                 onChange={(ev) => setName(ev.target.value)}
                             />
@@ -108,7 +108,7 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
                                 onChange={(ev) => setEmail(ev.target.value)}
                             />
                         </div>
-                        <div className='h-[10rem] tablet:h-[5rem] mt-6 w-[97%] overflow-y-auto overflow-x-hidden border-b-2'>
+                        <div className='h-[10rem] md:h-[9rem] sm:h-[9rem] xsm:h-[8.5rem] xxsm:h-[8rem] laptop:h-[8rem] smLaptop:h-[7rem] tablet:h-[5rem] mt-6 w-[97%] overflow-y-auto overflow-x-hidden border-b-2'>
                             <TextAreaAutosize required className='bg-transparent resize-none placeholder:text-white font-thin text-xl tablet:text-[1rem] xlMobile:text-2xl outline-none w-full h-full' placeholder='Message'
                                 value={message}
                                 onChange={(ev) => setMessage(ev.target.value)}
@@ -120,11 +120,11 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
                             whileTap="click"
                         >Send</motion.button>
                     </form>
-                    <div className="text-8xl tablet:text-6xl flex justify-center items-center -mt-44 tablet:-mt-[8rem] xlMobile:hidden lgMobile:hidden mdMobile:hidden">
+                    <div className="xl:w-1/2 lg:w-1/2 md:w-1/2 sm:w-1/2 xsm:w-1/2 xxsm:w-1/2 laptop:w-1/2 smLaptop:w-1/2 text-8xl md:text-[5.5rem] sm:text-7xl xsm:text-7xl xxsm:text-7xl laptop:text-6xl smLaptop:text-6xl tablet:text-6xl flex justify-center items-center -mt-44 smLaptop:-mt-32 tablet:-mt-[8rem] xlMobile:hidden lgMobile:hidden mdMobile:hidden">
                         <p className="w-2/3 font-ruda font-[700]">Let's Work Together!</p>
                     </div>
                 </div>
-                <div className='xlMobile:-mt-14 lgMobile:-mt-32 mdMobile:-mt-32'>
+                <div className='xl:mt-[4.25rem] xlMobile:-mt-14 lgMobile:-mt-32 mdMobile:-mt-32'>
                     <Footer />
                 </div>
             </motion.div>

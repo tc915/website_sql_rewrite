@@ -60,7 +60,7 @@ const UserInfo = () => {
                 </div>
             </div>
             <div className={`py-32 tablet:py-12 xlMobile:py-32 lgMobile:py-44 mdMobile:py-44 w-full h-screen ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} flex`}>
-                <div className="h-full w-[20rem] tablet:w-[10rem] xlMobile:w-[20rem] mr-28 tablet:mr-0 xlMobile:-mr-[10rem] lgMobile:-mr-[15rem] mdMobile:-mr-[15rem] flex flex-col py-16">
+                <div className="h-full w-[20rem] smLaptop:w-1/5 tablet:w-[10rem] xlMobile:w-[20rem] mr-28 smLaptop:mr-10 tablet:mr-0 xlMobile:-mr-[10rem] lgMobile:-mr-[15rem] mdMobile:-mr-[15rem] flex flex-col py-16">
                     <button className={`${page === 'accountInfo' ? 'bg-[#FF7F11] text-white' : ''} h-[4rem] xlMobile:mt-10 font-hind rounded-e-full mb-4 flex items-center pl-10 tablet:pl-5 xlMobile:pl-4 lgMobile:pl-2 mdMobile:pl-2 text-xl tablet:text-sm xlMobile:text-lg lgMobile:text-sm mdMobile:text-sm font-semibold`}
                         onClick={() => setPage('accountInfo')}
                     >

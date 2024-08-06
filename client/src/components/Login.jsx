@@ -80,8 +80,8 @@ const Login = ({ prevLoginPath, setPrevLoginPath }) => {
     return (
         <div className="lgMobile:overflow-x-hidden mdMobile:overflow-x-hidden">
             <div className={`flex flex-col justify-center items-center h-screen pt-32 tablet:pt-24 ${darkMode ? 'bg-[#131313]' : 'bg-white'}`}>
-                <div className={`flex flex-col justify-center items-center ${darkMode ? 'bg-white' : 'bg-[#131313] text-white'} px-10 tablet:px-6 py-6 tablet:py-4 rounded-xl shadow-md`}>
-                    <h1 className="font-[800] font-ruda text-3xl tablet:text-xl mb-8">Login</h1>
+                <div className={`flex flex-col justify-center items-center ${darkMode ? 'bg-white' : 'bg-[#131313] text-white'} px-10 tablet:px-6 py-6 smLaptop:py-4 tablet:py-4 rounded-xl shadow-md`}>
+                    <h1 className="font-[800] font-ruda text-3xl smLaptop:text-2xl tablet:text-xl mb-8">Login</h1>
                     <div className="w-full mb-6 flex justify-center items-center">
                         <GoogleLogin
                             onSuccess={(credentialRsponse) => {
@@ -99,11 +99,11 @@ const Login = ({ prevLoginPath, setPrevLoginPath }) => {
                             loginUser();
                         }}
                     >
-                        <input className="bg-transparent text-2xl tablet:text-lg lgMobile:text-[1rem] mdMobile:text-[1rem] font-semibold mb-4 outline-none" type="email" placeholder="Email" spellCheck="false" autoComplete="email" required
+                        <input className="bg-transparent text-2xl smLaptop:text-xl tablet:text-lg lgMobile:text-[1rem] mdMobile:text-[1rem] font-semibold mb-4 outline-none" type="email" placeholder="Email" spellCheck="false" autoComplete="email" required
                             value={email}
                             onChange={(ev) => setEmail(ev.target.value)}
                         />
-                        <input className="bg-transparent text-2xl tablet:text-lg lgMobile:text-[1rem] mdMobile:text-[1rem] font-semibold outline-none" type="password" placeholder="Password" spellCheck="false" autoComplete="current-password" required
+                        <input className="bg-transparent text-2xl smLaptop:text-xl tablet:text-lg lgMobile:text-[1rem] mdMobile:text-[1rem] font-semibold outline-none" type="password" placeholder="Password" spellCheck="false" autoComplete="current-password" required
                             value={password}
                             onChange={(ev) => setPassword(ev.target.value)}
                         />

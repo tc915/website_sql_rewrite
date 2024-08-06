@@ -55,7 +55,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
 
 
     return (
-        <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] xlMobile:w-[27rem] tablet:w-[8rem] rounded-3xl p-4 tablet:p-0`}
+        <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] smLaptop:h-[18rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] smLaptop:w-[13rem] xlMobile:w-[27rem] tablet:w-[8rem] rounded-3xl p-4 tablet:p-0`}
             onMouseEnter={() => setIsHoverContainer(true)}
             onMouseLeave={() => setIsHoverContainer(false)}
         >
@@ -77,7 +77,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
                         initial="initial"
                         animate={isHoverContainer ? "hover" : "initial"}
                     />
-                    <h2 className='mt-4 tablet:mt-2 xlMobile:mt-6 tablet:text-sm xlMobile:text-4xl font-hind'>{product.name}</h2>
+                    <h2 className='mt-4 tablet:mt-2 xlMobile:mt-6 smLaptop:text-[1rem] tablet:text-sm xlMobile:text-4xl font-hind'>{product.name}</h2>
                 </button>
             </Link>
             <button className='w-5/6 xlMobile:mt-10 xlMobile:ml-[1.7rem] tablet:w-full'
@@ -192,7 +192,7 @@ const Products = () => {
     return (
         <div className={`${darkMode ? 'bg-[#131313]' : 'bg-white'}`}>
             <div className={`${showAddProduct ? '' : 'hidden'} fixed flex justify-center items-center w-full z-[99] top-0 left-0 bg-black/50 h-full`}>
-                <div className={`w-2/3 tablet:w-[90%] xlMobile:w-[90%] lgMobile:w-[90%] mdMobile:w-[90%] h-[43rem] tablet:h-[25rem] xlMobile:h-[80%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] text-white rounded-3xl flex flex-col items-center p-12 overflow-auto relative scroll-p-5`}>
+                <div className={`w-2/3 laptop:w-[75%] smLaptop:w-[75%] tablet:w-[90%] xlMobile:w-[90%] lgMobile:w-[90%] mdMobile:w-[90%] h-[43rem] laptop:h-[80%] smLaptop:h-[80%] tablet:h-[25rem] xlMobile:h-[80%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] text-white rounded-3xl flex flex-col items-center p-12 overflow-auto relative scroll-p-5`}>
                     <button
                         onClick={() => setShowAddProduct(false)}
                     >
@@ -311,7 +311,7 @@ const Products = () => {
                             }}
                         />
                         <div className='flex font-shanti tablet:flex-col xlMobile:flex-col lgMobile:flex-col mdMobile:flex-col w-full items-center'>
-                            <label htmlFor="fileUploadThumbnail" className={`font-hind bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] xlMobile:h-[5rem] font-bold text-2xl xlMobile:text-3xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer ${darkMode ? 'text-white' : 'text-black'}`}>{fileInputThumbnailText}</label>
+                            <label htmlFor="fileUploadThumbnail" className={`font-hind bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 md:w-1/3 sm:w-1/3 xsm:w-1/3 xxsm:w-1/3 laptop:w-1/3 smLaptop:w-1/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] md:ml-[9rem] sm:ml-[8rem] xsm:ml-[8rem] xxsm:ml-[7rem] laptop:ml-[7rem] smLaptop:ml-[6rem] tablet:ml-0 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] xlMobile:h-[5rem] font-bold text-2xl xlMobile:text-3xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer ${darkMode ? 'text-white' : 'text-black'}`}>{fileInputThumbnailText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 xlMobile:text-2xl lgMobile:text-[1rem] mdMobile:text-[1rem]`}>{thumbnailFilePath}</p>
                         </div>
                         <div className='w-2/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-4 xlMobile:mt-14 text-xl xlMobile:text-3xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2 xlMobile:mb-6'>
@@ -325,7 +325,7 @@ const Products = () => {
                             }}
                         />
                         <div className='flex tablet:flex-col xlMobile:flex-col lgMobile:flex-col mdMobile:flex-col w-full items-center font-shanti'>
-                            <label htmlFor="fileUploadDetails" className={`font-hind bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] xlMobile:h-[5rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl xlMobile:text-3xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
+                            <label htmlFor="fileUploadDetails" className={`font-hind bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 md:w-1/3 sm:w-1/3 xsm:w-1/3 xxsm:w-1/3 laptop:w-1/3 smLaptop:w-1/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] md:ml-[9rem] sm:ml-[8rem] xsm:ml-[8rem] xxsm:ml-[7rem] laptop:ml-[7rem] smLaptop:ml-[6rem] tablet:ml-0 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] xlMobile:h-[5rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl xlMobile:text-3xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 xlMobile:text-2xl lgMobile:text-[1rem] mdMobile:text-[1rem]`}>{detailsFilePath}</p>
                         </div>
                         <button type="submit" className='w-2/3 xlMobile:w-[75%] font-hind bg-[#FF7F11] rounded-3xl p-2 text-white font-semibold text-2xl xlMobile:text-4xl xlMobile:h-[4rem] mt-10'>Save product</button>
@@ -338,8 +338,8 @@ const Products = () => {
                 animate="animate"
             >
 
-                <div className='pt-[10rem] tablet:pt-[8rem] xlMobile:pt-[15rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem] px-[22rem] tablet:px-[5rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 flex justify-between items-end'>
-                    <h1 className="font-[900] text-6xl tablet:text-4xl xlMobile:text-5xl lgMobile:text-4xl mdMobile:text-4xl xlMobile:mr-12 lgMobile:mr-6 mdMobile:mr-6 text-center font-ruda">Products</h1>
+                <div className='pt-[10rem] lg:pt-[11rem] md:pt-[12rem] sm:pt-[11rem] xsm:pt-[12rem] tablet:pt-[8rem] xlMobile:pt-[15rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem] px-[22rem] lg:px-[14rem] md:px-44 sm:px-44 xsm:px-36 xxsm:px-36 laptop:px-32 smLaptop:px-24 tablet:px-[5rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 flex justify-between items-end mb-[25.3rem]'>
+                    <h1 className="font-[900] text-6xl xxsm:text-5xl laptop:text-5xl smLaptop:text-4xl tablet:text-4xl xlMobile:text-5xl lgMobile:text-4xl mdMobile:text-4xl xlMobile:mr-12 lgMobile:mr-6 mdMobile:mr-6 text-center font-ruda">Products</h1>
                     <div className='flex items-center'>
                         <div className='text-2xl mr-2 font-md rounded-full w-[3rem] h-[3rem] bg-gradient-to-br from-[#FF7F11] to-[#facc22] text-white p-[3px] flex justify-center items-center'>
                             <div className='bg-[#131313] w-full h-full rounded-full'>
@@ -352,19 +352,19 @@ const Products = () => {
                         </button>
                     </div>
                 </div>
-                <div className="grid grid-cols-3 xlMobile:grid-cols-1 lgMobile:grid-cols-1 mdMobile:grid-cols-1 gap-y-44 tablet:gap-y-36 xlMobile:gap-y-[14rem] px-[20rem] tablet:px-[5rem] tablet:ml-[4rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 py-14 mb-44 text-center">
+                <div className="grid grid-cols-3 xlMobile:grid-cols-1 lgMobile:grid-cols-1 mdMobile:grid-cols-1 gap-y-44 tablet:gap-y-36 xlMobile:gap-y-[14rem] px-[20rem] lg:px-[14rem] md:px-44 sm:px-44 xsm:px-36 xxsm:px-36 laptop:px-32 smLaptop:px-24 tablet:px-[5rem] tablet:ml-[4rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 py-14 mb-44 text-center">
                     {products.length > 0 && products.map((product, index) => (
                         <Product key={index} product={product} refresh={refresh} setRefresh={setRefresh} adminPrivileges={adminPrivileges} user={user} navigate={navigate} darkMode={darkMode} />
                     ))}
 
                     {adminPrivileges && (
-                        <motion.button className='h-[25rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] tablet:w-[8rem] xlMobile:w-[27rem] border-4 rounded-3xl flex flex-col justify-center items-center mt-10'
+                        <motion.button className='h-[25rem] xsm:h-[24rem] smLaptop:h-[19rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] xsm:w-[18rem] smLaptop:w-[13rem] tablet:w-[8rem] xlMobile:w-[27rem] border-4 rounded-3xl flex flex-col justify-center items-center mt-10'
                             onClick={() => setShowAddProduct(true)}
                             initial={{ scale: 1 }}
                             whileHover={{ scale: 0.95 }}
                         >
                             <svg xmlns="https://www.w3.org/2000/svg" className='h-[100px] w-[100px] tablet:h-[50px] tablet:w-[50px]' height="100px" viewBox="0 -960 960 960" width="100px" fill={`${darkMode ? '#fff' : '#131313'}`}><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z" /></svg>
-                            <p className='font-semibold text-4xl tablet:text-lg font-hind'>Add Product</p>
+                            <p className='font-semibold text-4xl smLaptop:text-2xl tablet:text-lg font-hind'>Add Product</p>
                         </motion.button>
                     )}
 

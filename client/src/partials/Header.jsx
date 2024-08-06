@@ -30,6 +30,8 @@ const Header = ({ prevLoginPath, setPrevLoginPath }) => {
 
     const [isLogoutPopup, setLogoutPopup] = useState(false);
 
+    const [totalCartCount, setTotalCartCount] = useState(0)
+
 
     useEffect(() => {
         if (isLogoutPopup) {
@@ -38,6 +40,14 @@ const Header = ({ prevLoginPath, setPrevLoginPath }) => {
             document.body.style.overflowY = 'auto';
         }
     }, [isLogoutPopup]);
+
+    useEffect(() => {
+        const getCartCount = async () => {
+            const { data } = await axios.get('/user-cart')
+            setTotalCartCount(data.cartDoc.productCountTotal)
+        }
+        getCartCount()
+    }, [])
 
 
 
@@ -53,7 +63,7 @@ const Header = ({ prevLoginPath, setPrevLoginPath }) => {
         <motion.header
             className={`flex print:hidden w-full justify-between items-center h-[8em] xlMobile:h-[12rem] lgMobile:h-[12rem] mdMobile:h-[12rem] tablet:h-[5rem] p-2 z-[10] fixed bg-black`}>
             <div className={`absolute top-0 left-0 z-[99] bg-black/50 w-full h-screen ${isLogoutPopup ? '' : 'hidden'} flex justify-center items-center`}>
-                <div className="text-white rounded-lg bg-black border-4 border-[#FF7F11] w-1/4 xlMobile:w-2/3 lgMobile:w-2/3 mdMobile:w-2/3 h-1/6 tablet:h-[6rem] xlMobile:h-[15rem] px-24 tablet:px-6 xlMobile:px-14 lgMobile:px-14 mdMobile:px-14 py-4 flex flex-col items-center justify-center relative">
+                <div className="text-white rounded-lg bg-black border-4 border-[#FF7F11] w-1/4 xlMobile:w-2/3 lgMobile:w-2/3 mdMobile:w-2/3 h-1/6 smLaptop:h-1/5 tablet:h-[6rem] xlMobile:h-[15rem] px-24 smLaptop:px-16 tablet:px-6 xlMobile:px-14 lgMobile:px-14 mdMobile:px-14 py-4 flex flex-col items-center justify-center relative">
                     <p className="text-2xl tablet:text-lg xlMobile:text-3xl xlMobile:mb-6 lgMobile:text-lg mdMobile:text-lg font-semibold font-hind">Log out?</p>
                     <button className="bg-white xlMobile:p-2 lgMobile:p-2 mdMobile:p-2 text-lg tablet:text-[1rem] xlMobile:text-2xl w-full tablet:w-[80%] font-hind text-gray-800 font-bold rounded-lg mt-4"
                         onClick={() => {
@@ -78,7 +88,7 @@ const Header = ({ prevLoginPath, setPrevLoginPath }) => {
                 <img className="2xl:w-[28%] xl:w-[32%] lg:w-[35%] md:w-[40%] sm:w-[50%] xsm:w-[50%] xxsm:w-[45%] xxsm:mt-4 laptop:w-[50%] smLaptop:w-[50%] smLaptop:mt-4 laptop:mt-4 tablet:w-[20%] xlMobile:w-[40%] lgMobile:w-[50%] mdMobile:w-[50%]" src="/iTi_logo_color.png" />
             </Link>
             <nav className="mt-10">
-                <ul className={`text-xl font-hind xl:text-lg xsm:text-[1.15rem] xxsm:text-[1.05rem] laptop:text-[1rem] smLaptop:text-[0.95rem] ${user ? 'mr-[14rem]' : '2xl:mr-[15rem] xl:mr-[13rem] lg:mr-[12rem] md:mr-[7rem] sm:mr-[4rem] xsm:mr-[5rem] xxsm:mr-[3rem] laptop:mr-[2.6rem] smLaptop:mr-[3rem]'} rounded-3xl flex tablet:hidden xlMobile:hidden lgMobile:hidden mdMobile:hidden`}>
+                <ul className={`text-xl font-hind xsm:text-[1.15rem] xxsm:text-[1.05rem] laptop:text-[1rem] smLaptop:text-[0.95rem] ${user ? 'mr-[14rem] xl:mr-[15rem] lg:mr-[11rem] md:mr-[8.5rem] sm:mr-[5rem] xsm:mr-[4.8rem] xxsm:mr-[4rem] laptop:mr-[3rem] smLaptop:mr-[3rem]' : '2xl:mr-[15rem] xl:mr-[14rem] lg:mr-[11rem] md:mr-[8.5rem] sm:mr-[5.5rem] xsm:mr-[5rem] xxsm:mr-[4rem] laptop:mr-[2.6rem] smLaptop:mr-[3rem]'} rounded-3xl flex tablet:hidden xlMobile:hidden lgMobile:hidden mdMobile:hidden`}>
                     <Link as={NavLink} to={'/services'}>
                         <motion.li className={`mr-8 xl:mr-10 smLaptop:mr-6`}
                             style={{ color: location.pathname === '/services' ? '#FF7F11' : '#fff' }}
@@ -122,7 +132,7 @@ const Header = ({ prevLoginPath, setPrevLoginPath }) => {
                 </ul>
             </nav>
             <div className="flex items-center mt-10 mr-5 text-white">
-                <div className="font-semibold flex items-center mr-[3rem] laptop:mr-[1.5rem] text-2xl xl:text-xl tablet:mb-6 xlMobile:mb-6 lgMobile:mb-6 text-nowrap relative">
+                <div className="font-semibold flex items-center mr-[3rem] laptop:mr-[1.5rem] smLaptop:mr-[1rem] text-2xl xl:text-xl tablet:mb-6 xlMobile:mb-6 lgMobile:mb-6 text-nowrap relative">
                     {user && (
                         <>
                             <motion.button className="font-hind lg:text-xl md:text-[1.32rem] sm:text-[1.3rem] xsm:text-[1.2rem] xxsm:text-[1.2rem] laptop:text-[1.2rem] smLaptop:text-[1.17rem] tablet:text-[1.15rem] xlMobile:hidden lgMobile:hidden mdMobile:hidden"

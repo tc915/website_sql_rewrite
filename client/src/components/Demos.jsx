@@ -668,72 +668,80 @@ const Demos = () => {
                 <div className="w-full h-full mt-8 xlMobile:mt-14 print:hidden">
                     <p className="text-2xl font-semibold border-2 rounded-xl text-center py-2">{`Switch Count: ${switchOnCount} / ${lightTypes && lightTypes.length > 0 ? lightTypes.length + pumpTypes.length + boatControlTypes.length : 0}`}</p>
                 </div>
-                <div className="w-full px-12 xlMobile:px-6 lgMobile:px-4 mdMobile:px-4 xlMobile:pl-12 lgMobile:pl-10 mdMobile:pl-10 py-12 flex items-center flex-wrap print:block">
-                    <div className={`print:hidden w-[25rem] tablet:w-full xlMobile:w-full tablet:mb-10 xlMobile:mb-10 h-[30rem] mr-6 lgMobile:mb-6 mdMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>
-                        <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>Lights</p>
+                <div className="w-full px-12 xlMobile:px-6 lgMobile:px-4 mdMobile:px-4 xlMobile:pl-12 lgMobile:pl-10 mdMobile:pl-10 py-12 flex items-center md:justify-center sm:justify-center xsm:justify-center xxsm:justify-center laptop:justify-center smLaptop:justify-center flex-wrap print:block">
+                    <div className={`print:hidden w-[25rem] md:w-[24.8rem] sm:w-[21rem] xsm:w-[20rem] xxsm:w-[19rem] laptop:w-[17rem] smLaptop:w-[15rem] tablet:w-full xlMobile:w-full tablet:mb-10 xlMobile:mb-10 h-[30rem] xsm:h-[28rem] laptop:h-[25rem] smLaptop:h-[25rem] mr-6 lgMobile:mb-6 mdMobile:mb-6 border-4 rounded-xl overflow-auto p-10 laptop:p-6 smLaptop:p-6 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>
+                        <p className={`w-full text-2xl smLaptop:text-xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>Lights</p>
                         {lightTypes.map((lightType) => (
                             <div className="flex mb-4 xlMobile:my-10 xlMobile:flex xlMobile:items-center w-full" key={lightType}>
-                                <p className="mr-auto xlMobile:text-2xl xlMobile:pr-10 lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
-                                <button className={`font-hind border-2 px-2 xlMobile:p-2 xlMobile:text-3xl rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
+                                <p className="mr-auto sm:pr-4 xsm:pr-4 xxsm:pr-4 laptop:text-sm smLaptop:text-sm xlMobile:text-2xl xlMobile:pr-10 lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(lightType.charAt(0).toUpperCase() + lightType.slice(1))} Lights</p>
+                                <button className={`font-hind border-2 px-2 xlMobile:p-2 xlMobile:text-3xl rounded-xl sm:h-[2.25rem] xsm:h-[2.25rem] xxsm:h-[2.2rem] laptop:h-[2rem] smLaptop:h-[1.75rem] lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${lightStates[lightType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                                     onClick={() => setLightStates(prev => ({ ...prev, [lightType]: !prev[lightType] }))}
                                 >{lightStates[lightType] ? 'On' : 'Off'}</button>
                             </div>
                         ))}
                     </div>
-                    <div className={`print:hidden w-[25rem] tablet:w-full xlMobile:w-full tablet:mb-10 h-[30rem] mr-6 xlMobile:mb-10 lgMobile:mb-6 mdMobile:mb-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>
-                        <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white print:border-white' : 'border-black'}`}>Pumps</p>
+                    <div className={`print:hidden w-[25rem] md:w-[24.8rem] sm:w-[21rem] xsm:w-[20rem] xxsm:w-[19rem] laptop:w-[17rem] smLaptop:w-[15rem] tablet:w-full xlMobile:w-full tablet:mb-10 h-[30rem] xsm:h-[28rem] laptop:h-[25rem] smLaptop:h-[25rem] mr-6 xlMobile:mb-10 lgMobile:mb-6 mdMobile:mb-6 border-4 rounded-xl overflow-auto p-10 laptop:p-6 smLaptop:p-6 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>
+                        <p className={`w-full text-2xl smLaptop:text-xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white print:border-white' : 'border-black'}`}>Pumps</p>
                         {pumpTypes.map((pumpType) => (
                             <div className="flex mb-4 xlMobile:my-10 xlMobile:flex xlMobile:items-center w-full" key={pumpType}>
-                                <p className="mr-auto xlMobile:text-2xl xlMobile:pr-10 lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
-                                <button className={`font-hind border-2 px-2 xlMobile:p-2 xlMobile:text-3xl rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
+                                <p className="mr-auto sm:pr-4 xsm:pr-4 laptop:text-sm smLaptop:text-sm xlMobile:text-2xl xlMobile:pr-10 lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(pumpType.charAt(0).toUpperCase() + pumpType.slice(1))} Pump</p>
+                                <button className={`font-hind border-2 px-2 xlMobile:p-2 xlMobile:text-3xl rounded-xl sm:h-[2.25rem] xsm:h-[2.25rem] xxsm:h-[2.2rem] laptop:h-[2rem] smLaptop:h-[1.75rem] lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${pumpStates[pumpType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                                     onClick={() => setPumpStates(prev => ({ ...prev, [pumpType]: !prev[pumpType] }))}
                                 >{pumpStates[pumpType] ? 'On' : 'Off'}</button>
                             </div>
                         ))}
                     </div>
-                    <div className={`print:hidden w-[25rem] tablet:w-full xlMobile:w-full h-[30rem] mr-6 border-4 rounded-xl overflow-auto p-10 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>
-                        <p className={`w-full text-2xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>Boat Controls</p>
+                    <div className={`print:hidden w-[25rem] md:w-[24.8rem] sm:w-[21rem] xsm:w-[20rem] xxsm:w-[19rem] laptop:w-[17rem] smLaptop:w-[15rem] tablet:w-full xlMobile:w-full h-[30rem] xsm:h-[28rem] laptop:h-[25rem] smLaptop:h-[25rem] mr-6 border-4 rounded-xl overflow-auto p-10 laptop:p-6 smLaptop:p-6 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>
+                        <p className={`w-full text-2xl smLaptop:text-xl font-semibold mb-4 border-b-2 pb-2 ${darkMode ? 'border-white print:border-black' : 'border-black'}`}>Boat Controls</p>
                         {boatControlTypes.map((controlType) => (
                             <div className="flex mb-4 xlMobile:my-10 xlMobile:flex xlMobile:items-center w-full" key={controlType}>
-                                <p className="mr-auto xlMobile:text-2xl xlMobile:pr-10 lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
-                                <button className={`font-hind border-2 px-2 xlMobile:p-2 xlMobile:text-3xl rounded-xl lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
+                                <p className="mr-auto sm:pr-4 xsm:pr-4 laptop:text-sm smLaptop:text-sm xlMobile:text-2xl xlMobile:pr-10 lgMobile:text-sm mdMobile:text-sm">{splitCamelCase(controlType.charAt(0).toUpperCase() + controlType.slice(1))} Control</p>
+                                <button className={`font-hind border-2 px-2 xlMobile:p-2 xlMobile:text-3xl rounded-xl sm:h-[2.25rem] xsm:h-[2.25rem] xxsm:h-[2.2rem] laptop:h-[2rem] smLaptop:h-[1.75rem] lgMobile:h-[2rem] mdMobile:h-[2rem] mr-4 ${boatControlStates[controlType] ? 'bg-[#FF7F11] text-white border-transparent' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                                     onClick={() => setBoatControlStates(prev => ({ ...prev, [controlType]: !prev[controlType] }))}
                                 >{boatControlStates[controlType] ? 'On' : 'Off'}</button>
                             </div>
                         ))}
                     </div>
-                    <div className="w-1/4 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-8 print:w-full">
-                        <ul className="xlMobile:space-y-4 lgMobile:space-y-4 mdMobile:space-y-4 tablet:mb-4 xlMobile:text-lg">
-                            {boatLength > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 Power Injectors:</span><div>1</div></li>}
-                            {boatLength > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 6.5ft drop cables:</span><div>1</div></li>}
-                            {boatLength > 0 && switchOnCount > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Total Length of 16AWG Power Cables:</span><span>{`${(switchOnCount * (boatLength * 0.6)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}ft`}</span></li>}
-                            {num10mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 32ft backbone cables:</span><span>{num10mBackboneCables}</span></li>}
-                            {num8mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 25.6ft backbone cables:</span><span>{num8mBackboneCables}</span></li>}
-                            {num5mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 16ft backbone cables:</span><span>{num5mBackboneCables}</span></li>}
-                            {num2mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 6.4ft backbone cables:</span><span>{num2mBackboneCables}</span></li>}
-                            {numHalfMeterBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of NMEA 2000 1.6ft backbone cables:</span><span>{numHalfMeterBackboneCables}</span></li>}
+                    <div className="w-full flex mt-6 xlMobile:mt-10 print:hidden items-center xlMobile:items-center md:ml-[8rem] sm:ml-[7.25rem] xsm:ml-[6.5rem] xxsm:ml-32 laptop:ml-16 smLaptop:ml-28">
+                        <p className="text-xl xlMobile:text-2xl font-semibold mr-2 xlMobile:mr-6">Wireless Interface?</p>
+                        <button className={`font-hind border-2 px-2 rounded-xl xlMobile:text-2xl mr-4 h-[3rem] xsm:h-[2.5rem] laptop:h-[2rem] smLaptop:h-[2rem] tablet:h-[2rem] ${wirelessInterfaceBool ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
+                            onClick={() => setWirelessInterfaceBool(!wirelessInterfaceBool)}
+                        >{wirelessInterfaceBool ? 'On' : 'Off'}</button>
+                    </div>
+                    <div className="w-full md:w-[80%] sm:w-[80%] xsm:w-[80%] xxsm:w-3/4 laptop:w-3/4 smLaptop:w-3/4 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-8 print:w-full">
+                        <ul className="xlMobile:space-y-4 lgMobile:space-y-4 mdMobile:space-y-4 text-2xl xxsm:text-xl tablet:mb-4 xlMobile:text-lg lgMobile:text-lg laptop:text-xl">
+                            {boatLength > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2"><span className="mr-auto">Number of NMEA 2000 Power Injectors:</span><div>1</div></li>}
+                            {boatLength > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2"><span className="mr-auto">Number of NMEA 2000 6.5ft drop cables:</span><div>1</div></li>}
+                            {boatLength > 0 && switchOnCount > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2"><span className="mr-auto">Total Length of 16AWG Power Cables:</span><span>{`${(switchOnCount * (boatLength * 0.6)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}ft`}</span></li>}
+                            {num10mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 border-b-2"><span className="mr-auto">Number of NMEA 2000 32ft backbone cables:</span><span>{num10mBackboneCables}</span></li>}
+                            {num8mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2"><span className="mr-auto">Number of NMEA 2000 25.6ft backbone cables:</span><span>{num8mBackboneCables}</span></li>}
+                            {num5mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2"><span className="mr-auto">Number of NMEA 2000 16ft backbone cables:</span><span>{num5mBackboneCables}</span></li>}
+                            {num2mBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2"><span className="mr-auto">Number of NMEA 2000 6.4ft backbone cables:</span><span>{num2mBackboneCables}</span></li>}
+                            {numHalfMeterBackboneCables > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2"><span className="mr-auto">Number of NMEA 2000 1.6ft backbone cables:</span><span>{numHalfMeterBackboneCables}</span></li>}
                         </ul>
-                        <ul className="my-4 xlMobile:space-y-4 xlMobile:text-lg lgMobile:space-y-4 mdMobile:space-y-4">
-                            {num6ButtonKeypads > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 6 Way Keypads:</span><span>{num6ButtonKeypads}</span></li>}
-                            {num12ButtonKeypads > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 12 Way Keypads:</span><span>{num12ButtonKeypads}</span></li>}
-                            {numsixOutputDigitalSwitchingBox > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 6 Output Digital Switching Boxes:</span><span>{numsixOutputDigitalSwitchingBox}</span></li>}
-                            {numDDS > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 27 Output Digital Switching Boxes:</span><span>{numDDS}</span></li>}
-                            {num1WayTeeConnectors > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 1 Way Tee Connectors:</span><span>{num1WayTeeConnectors}</span></li>}
-                            {num2WayTeeConnectors > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 2 Way Tee Connectors:</span><span>{num2WayTeeConnectors}</span></li>}
-                            {num4WayTeeConnectors > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 4 Way Tee Connectors:</span><span>{num4WayTeeConnectors}</span></li>}
-                            <li className="w-full flex tablet:mb-2 text-lg tablet:border-b-2 xlMobile:border-b-2"><span className="mr-auto">Wireless Interface?:</span><span>{wirelessInterfaceBool ? 'Yes' : 'No'}</span></li>
+                        <ul className="my-4 text-2xl xlMobile:space-y-4 xlMobile:text-lg lgMobile:text-lg lgMobile:space-y-4 mdMobile:space-y-4 xxsm:text-xl laptop:text-xl">
+                            {num6ButtonKeypads > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 6 Way Keypads:</span><span>{num6ButtonKeypads}</span></li>}
+                            {num12ButtonKeypads > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 12 Way Keypads:</span><span>{num12ButtonKeypads}</span></li>}
+                            {numsixOutputDigitalSwitchingBox > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 6 Output Digital Switching Boxes:</span><span>{numsixOutputDigitalSwitchingBox}</span></li>}
+                            {numDDS > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2"><span className="mr-auto">Number of 27 Output Digital Switching Boxes:</span><span>{numDDS}</span></li>}
+                            {num1WayTeeConnectors > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 1 Way Tee Connectors:</span><span>{num1WayTeeConnectors}</span></li>}
+                            {num2WayTeeConnectors > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 2 Way Tee Connectors:</span><span>{num2WayTeeConnectors}</span></li>}
+                            {num4WayTeeConnectors > 0 && <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2 xlMobile:border-b-2"><span className="mr-auto">Number of 4 Way Tee Connectors:</span><span>{num4WayTeeConnectors}</span></li>}
+                            <li className="w-full flex tablet:mb-2 tablet:text-lg border-b-2"><span className="mr-auto">Wireless Interface?:</span><span>{wirelessInterfaceBool ? 'Yes' : 'No'}</span></li>
                         </ul>
-                        {cablingCost > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Total Cabling Cost:</span><span>{`$${cablingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
-                        {costOfKeypads > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Keypads Cost:</span><span>{`$${costOfKeypads.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
-                        {costOfOutputBoxes > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Digital Switching Boxes Cost:</span><span>{`$${costOfOutputBoxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
-                        {costOfWirelessInterface > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Wireless Interface Cost:</span><span>{`$${costOfWirelessInterface.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
+                        <div className="text-2xl xlMobile:text-lg lgMobile:text-lg mt-10">
+                            {cablingCost > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Total Cabling Cost:</span><span>{`$${cablingCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
+                            {costOfKeypads > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Keypads Cost:</span><span>{`$${costOfKeypads.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
+                            {costOfOutputBoxes > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Digital Switching Boxes Cost:</span><span>{`$${costOfOutputBoxes.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
+                            {costOfWirelessInterface > 0 && <p className="font-semibold w-full flex"><span className="mr-auto">Wireless Interface Cost:</span><span>{`$${costOfWirelessInterface.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
 
-                        {totalCost > 0 && <p className="text-xl font-bold w-full flex"><span className="mr-auto">Total Cost:</span><span>{`$${manualTotalCost !== 0 ? Number(manualTotalCost).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : totalCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
+                            {totalCost > 0 && <p className="font-bold w-full flex"><span className="mr-auto">Total Cost:</span><span>{`$${manualTotalCost !== 0 ? Number(manualTotalCost).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : totalCost.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}</span></p>}
 
-                        {totalWeight > 0 && <p className="text-xl font-bold w-full flex"><span className="mr-auto">Total Weight:</span><span>{` ${(totalWeight / 1000).toFixed(3)} lbs.`}</span></p>}
-                        <button className={`font-hind ${darkMode ? 'border-white print:border-black' : 'border-black'} border-2 mt-4 xlMobile:mt-10 xlMobile:text-2xl w-full rounded-full py-1 font-semibold text-lg print:hidden ${showEditTotalCost ? 'hidden' : ''}`}
-                            onClick={() => setShowEditTotalCost(true)}
-                        >Edit Total Cost</button>
+                            {totalWeight > 0 && <p className="font-bold w-full flex"><span className="mr-auto">Total Weight:</span><span>{` ${(totalWeight / 1000).toFixed(3)} lbs.`}</span></p>}
+                            <button className={`font-hind ${darkMode ? 'border-white print:border-black' : 'border-black'} border-2 mt-4 xxsm:mt-10 laptop:mt-10 xlMobile:mt-10 xlMobile:text-2xl w-full rounded-full py-4 xxsm:py-2 laptop:py-2 smLaptop:py-1 tablet:py-1 font-semibold text-2xl laptop:text-xl smLaptop:text-lg tablet:text-lg print:hidden ${showEditTotalCost ? 'hidden' : ''}`}
+                                onClick={() => setShowEditTotalCost(true)}
+                            >Edit Total Cost</button>
+                        </div>
                         <div className={`print:hidden mt-4 xlMobile:mt-10 flex flex-col ${showEditTotalCost ? '' : 'hidden'}`}>
                             <p className="font-semibold text-xl">Amount to add to total</p>
                             <input type="number" className="border-2 xlMobile:text-2xl outline-none border-black p-1 mb-2" placeholder="$0.00"
@@ -745,7 +753,7 @@ const Demos = () => {
                                 value={subtractToTotalCostAmount}
                                 onChange={(ev) => setSubtractToTotalCostAmount(Number(ev.target.value))}
                             />
-                            <button className="font-hind mt-4 border-2 xlMobile:text-2xl border-black px-4 py-1 rounded-full font-semibold"
+                            <button className="font-hind mt-4 border-2 xlMobile:text-2xl border-black px-4 py-4 xxsm:py-2 laptop:py-2 smLaptop:py-1 tablet:py-1 text-2xl laptop:text-xl smLaptop:text-lg tablet:text-lg rounded-full font-semibold"
                                 onClick={() => {
                                     saveTotalCostChanges();
                                     setShowEditTotalCost(false)
@@ -753,35 +761,30 @@ const Demos = () => {
                             >Save Changes</button>
                         </div>
                     </div>
-                    <div className="w-full flex mt-6 xlMobile:mt-10 print:hidden xlMobile:items-center">
-                        <p className="text-xl xlMobile:text-2xl font-semibold mr-2 xlMobile:mr-6">Wireless Interface?</p>
-                        <button className={`font-hind border-2 px-2 rounded-xl xlMobile:text-2xl mr-4 h-[3rem] ${wirelessInterfaceBool ? 'bg-[#FF7F11] text-white border-white' : ''} ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
-                            onClick={() => setWirelessInterfaceBool(!wirelessInterfaceBool)}
-                        >{wirelessInterfaceBool ? 'On' : 'Off'}</button>
-                    </div>
+
                     <div className="xlMobile:flex xlMobile:flex-col xlMobile:items-start">
-                        <button className={`${darkMode ? 'border-white print:border-black' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full xlMobile:text-2xl font-semibold mr-2 print:hidden font-hind`}
+                        <button className={`${darkMode ? 'border-white print:border-black' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full tablet:text-sm xlMobile:text-2xl font-semibold mr-2 print:hidden font-hind`}
                             onClick={() => clearInputs()}
                         >Clear Inputs</button>
-                        <button className={`font-hind ${darkMode ? 'border-white print:border-black' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full xlMobile:text-2xl font-semibold mr-2 print:hidden`}
+                        <button className={`font-hind ${darkMode ? 'border-white print:border-black' : 'border-black'} mt-6 border-2 px-4 py-1 rounded-full tablet:text-sm xlMobile:text-2xl font-semibold mr-2 print:hidden`}
                             onClick={() => addAllInputs()}
                         >Add All Options</button>
-                        <button className={`font-hind ${darkMode ? 'border-white print:border-black' : 'border-black'} mt-6 lgMobile:mb-4 border-2 px-4 py-1 rounded-full xlMobile:text-2xl font-semibold print:hidden ${showChangeComponentPricing ? 'bg-[#FF7F11] text-white border-0' : ''}`}
+                        <button className={`font-hind ${darkMode ? 'border-white print:border-black' : 'border-black'} mt-6 lgMobile:mb-4 border-2 px-4 py-1 rounded-full tablet:text-sm xlMobile:text-2xl font-semibold print:hidden ${showChangeComponentPricing ? 'bg-[#FF7F11] text-white border-0' : ''}`}
                             onClick={() => setShowChangeComponentPricing(!showChangeComponentPricing)}
                         >{showChangeComponentPricing ? 'Close Component Pricing' : 'Change Component Pricing'}</button>
-                        <button className={`font-hind print:hidden ml-2 xlMobile:ml-0 xlMobile:mt-6 font-semibold border-2 px-4 py-1 rounded-full xlMobile:text-2xl ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
+                        <button className={`font-hind print:hidden ml-2 xlMobile:ml-0 xlMobile:mt-6 font-semibold border-2 px-4 py-1 rounded-full tablet:text-sm xlMobile:text-2xl ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                             onClick={() => window.print()}
                         >Print Build</button>
-                        <button className={`font-hind print:hidden ml-2 xlMobile:ml-0 xlMobile:mt-6 font-semibold border-2 px-4 py-1 rounded-full xlMobile:text-2xl ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
+                        <button className={`font-hind print:hidden ml-2 xlMobile:ml-0 xlMobile:mt-6 font-semibold border-2 px-4 py-1 rounded-full tablet:text-sm xlMobile:text-2xl ${darkMode ? 'border-white print:border-black' : 'border-black'}`}
                             onClick={() => saveBuildSetup()}
                         >Save Build</button>
                     </div>
-                    <div className={`w-full mt-6 text-lg print:hidden ${showChangeComponentPricing ? '' : 'hidden'}`}>
-                        <p className="font-semibold mb-4">Component Pricing:</p>
+                    <div className={`w-full mt-6 text-2xl laptop:text-xl flex flex-col items-center print:hidden ${showChangeComponentPricing ? '' : 'hidden'}`}>
+                        <p className="font-semibold self-start ml-[10%] mb-4 md:ml-[8rem] sm:ml-[7.5rem] xsm:ml-28 xxsm:ml-36 laptop:ml-32 smLaptop:ml-24">Component Pricing:</p>
                         {productKeys && productKeys.length > 0 && productKeys.map((product, index) => {
                             const [newPrice, setNewPrice] = useState(0);
                             return (
-                                <div className="mb-4 w-1/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full lgMobile:mb-6 mdMobile:mb-6">
+                                <div className="mb-4 w-[80%] xxsm:w-3/4 xxsm:ml-36 laptop:w-3/4 laptop:ml-32 smLaptop:w-3/4 smLaptop:ml-24 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full lgMobile:mb-6 mdMobile:mb-6">
                                     <div className="flex">
                                         <p className={`mr-auto ${changingProductPriceList[index] ? 'hidden' : ''}`}>{`${productData[product].name}: $${productData[product].units !== 'each' ? `${productData[product].cost} / ${productData[product].units.unit}` : (productData[product].cost).toFixed(2)}`}</p>
                                         <input type="number" placeholder="New price" className={`${changingProductPriceList[index] ? `border-2 xlMobile:w-2/3 xlMobile:text-2xl xlMobile:h-[4rem] lgMobile:w-2/3 mdMobile:w-2/3 p-1 mr-auto ${darkMode ? 'border-white print:border-black' : 'border-black'}` : 'hidden'}`}

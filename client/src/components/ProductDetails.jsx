@@ -154,21 +154,21 @@ const ProductDetails = () => {
 
 
     return (
-        <div className={`pt-40 tablet:pt-32 xlMobile:py-56 lgMobile:py-56 mdMobile:py-56 lgMobile:pb-24 mdMobile:pb-24 ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
-            <div className="w-full h-[40rem] p-10 tablet:p-2 flex xlMobile:flex-col lgMobile:flex-col mdMobile:flex-col relative px-[15rem] xlMobile:px-0 lgMobile:px-0 mdMobile:px-0 mb-44">
+        <div className={`pt-40 laptop:pt-36 smLaptop:pt-32 tablet:pt-32 xlMobile:py-56 lgMobile:py-56 mdMobile:py-56 lgMobile:pb-24 mdMobile:pb-24 ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
+            <div className="w-full p-10 tablet:p-2 flex xlMobile:flex-col lgMobile:flex-col mdMobile:flex-col relative px-[15rem] lg:px-44 md:px-36 sm:px-32 xsm:px-28 xxsm:px-24 laptop:px-16 smLaptop:px-24 xlMobile:px-0 lgMobile:px-0 mdMobile:px-0 mb-44">
                 {adminPrivileges && (
-                    <button className="absolute font-hind top-4 tablet:-top-4 xlMobile:-top-4 right-[17rem] tablet:right-4 xlMobile:right-4 px-10 border-[3px] border-gray-300 rounded-xl font-semibold"
+                    <button className="absolute font-hind top-4 xxsm:-top[-4] tablet:-top-4 xlMobile:-top-4 right-[17rem] xxsm:right-[10rem] laptop:right-[5rem] smLaptop:right-[5rem] tablet:right-4 xlMobile:right-4 px-10 border-[3px] border-gray-300 rounded-xl font-semibold"
                         onClick={() => setShowEdit(true)}
                     >Edit</button>
                 )}
-                <div className="h-full tablet:h-[20rem] w-1/2 xlMobile:w-full lgMobile:w-full mdMobile:w-full flex justify-center tablet:mt-10 xlMobile:px-12 lgMobile:mt-10 mdMobile:mt-10">
+                <div className="h-full lg:h-[32rem] md:h-[32rem] sm:h-[27rem] xsm:h-[26rem] xxsm:h-[26rem] laptop:h-[25rem] smLaptop:h-[25rem] tablet:h-[20rem] w-1/2 xlMobile:w-full lgMobile:w-full mdMobile:w-full flex justify-center tablet:mt-10 xlMobile:px-12 lgMobile:mt-10 mdMobile:mt-10">
                     <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${detailsImageId ? detailsImageId : thumbnailImageId}`} className="h-full object-cover" />
                 </div>
-                <div className="h-full w-1/2 xlMobile:w-full lgMobile:w-full mdMobile:w-full ml-10 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 p-10 tablet:p-5 xlMobile:p-12 lgMobile:p-6 mdMobile:p-6">
-                    <h1 className="text-4xl tablet:text-2xl lgMobile:text-2xl mdMobile:text-2xl font-bold pb-4 font-hind">{product.name}</h1>
-                    <p className="text-4xl tablet:text-2xl lgMobile:text-2xl mdMobile:text-2xl mb-6 tablet:mb-4 font-shanti">${displayPrice}</p>
+                <div className="h-full w-1/2 xlMobile:w-full lgMobile:w-full mdMobile:w-full ml-10 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 p-10 laptop:p-6 smLaptop:p-6 tablet:p-5 xlMobile:p-12 lgMobile:p-6 mdMobile:p-6">
+                    <h1 className="text-4xl laptop:text-3xl smLaptop:text-2xl tablet:text-2xl lgMobile:text-2xl mdMobile:text-2xl font-bold pb-4 font-hind">{product.name}</h1>
+                    <p className="text-4xl laptop:text-3xl smLaptop:text-2xl tablet:text-2xl lgMobile:text-2xl mdMobile:text-2xl mb-6 tablet:mb-4 font-shanti">${displayPrice}</p>
                     <p className="text-md font-shanti">Quantity</p>
-                    <div className="w-1/3 font-shanti tablet:w-1/2 xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-2 h-[3rem] rounded-lg bg-gradient-to-l from-[#facc22] to-[#FF7F11] p-[2px]">
+                    <div className="w-1/3 lg:w-1/2 md:w-1/2 sm:w-1/2 xsm:w-1/2 xxsm:w-1/2 laptop:w-1/2 smLaptop:w-1/2 font-shanti tablet:w-1/2 xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-2 h-[3rem] rounded-lg bg-gradient-to-l from-[#facc22] to-[#FF7F11] p-[2px]">
                         <div className="w-full h-full bg-[#131313] rounded-lg flex items-center justify-between px-6 font-semibold text-xl text-white">
                             <button className="p-2"
                                 onClick={() => {
@@ -181,7 +181,7 @@ const ProductDetails = () => {
                             >-</button>
                             <input type="number" className="bg-transparent w-1/3 text-center outline-none"
                                 value={quantity}
-                                onChange={(ev) => setQuantity(ev.target.value)}
+                                onChange={(ev) => setQuantity(Number(ev.target.value))}
                             />
                             <button className="p-2"
                                 onClick={() => {
@@ -191,17 +191,17 @@ const ProductDetails = () => {
                         </div>
                     </div>
 
-                    <button className={`w-full text-center text-xl tablet:text-lg h-[3rem] tablet:h-[2.5rem] border-2 ${darkMode ? 'border-white' : 'border-black'} mt-6 tablet:mt-4 rounded-lg font-hind`}
+                    <button className={`w-full text-center text-xl smLaptop:text-lg tablet:text-lg h-[3rem] smLaptop:h-[2.5rem] tablet:h-[2.5rem] border-2 ${darkMode ? 'border-white' : 'border-black'} mt-6 tablet:mt-4 rounded-lg font-hind`}
                         onClick={() => {
                             addProductToCart();
                         }}
                     >Add to Cart</button>
-                    <button className="w-full font-hind text-center text-xl tablet:text-lg h-[3rem] tablet:h-[2.5rem] bg-[#FF7F11] text-white mt-4 rounded-lg">Buy Now</button>
+                    <button className="w-full font-hind text-center text-xl smLaptop:text-lg tablet:text-lg h-[3rem] smLaptop:h-[2.5rem] tablet:h-[2.5rem] bg-[#FF7F11] text-white mt-4 rounded-lg">Buy Now</button>
                     <div>
                         <p className="mt-8 text-xl font-shanti">Part Number: <span className="font-bold">{product.partNumber}</span></p>
                     </div>
                     <p className="mt-4 text-2xl font-bold font-hind">Product Description:</p>
-                    <div className="w-full h-[15rem] font-shanti mdMobile:h-[20rem] py-6 pr-4 rounded-xl overflow-y-auto overflow-x-hidden whitespace-pre-wrap text-2xl tablet:text-lg">{product.description}</div>
+                    <div className="w-full font-shanti mdMobile:h-[20rem] py-6 pr-4 rounded-xl overflow-y-auto overflow-x-hidden whitespace-pre-wrap text-2xl laptop:text-lg smLaptop:text-lg tablet:text-lg">{product.description}</div>
                 </div>
                 <div className="xlMobile:mt-56 lgMobile:mt-44 mdMobile:mt-[20rem] lgMobile:w-full mdMobile:w-full xlMobile:block lgMobile:block mdMobile:block hidden">
                     <Footer />
@@ -211,7 +211,7 @@ const ProductDetails = () => {
                 <Footer />
             </div>
             <div className={`fixed top-0 left-0 w-full h-full ${darkMode ? 'text-white' : 'text-black'} bg-black/50 z-[99] flex justify-center items-center ${showEdit ? '' : 'hidden'}`}>
-                <div className={`w-2/3 tablet:w-[90%] xlMobile:w-[90%] lgMobile:w-[90%] mdMobile:w-[90%] mdMobile:-translate-x-2 h-[85%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] rounded-3xl flex flex-col items-center p-12 overflow-y-auto scroll-p-5 relative`}>
+                <div className={`w-2/3 xxsm:w-[85%] laptop:w-[80%] smLaptop:w-[80%] tablet:w-[90%] xlMobile:w-[90%] lgMobile:w-[90%] mdMobile:w-[90%] mdMobile:-translate-x-2 h-[85%] ${darkMode ? 'bg-[#131313]' : 'bg-white'} border-4 border-[#FF7F11] rounded-3xl flex flex-col items-center p-12 overflow-y-auto scroll-p-5 relative`}>
                     <div className="absolute top-2 right-2 cursor-pointer"
                         onClick={() => setShowEdit(false)}
                     >
@@ -332,7 +332,7 @@ const ProductDetails = () => {
                             }}
                         />
                         <div className="w-full flex tablet:flex-col xlMobile:flex-col lgMobile:flex-col mdMobile:flex-col items-center">
-                            <label htmlFor="fileUploadThumbnail" className={`font-hind bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputThumbnailText}</label>
+                            <label htmlFor="fileUploadThumbnail" className={`font-hind bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 laptop:w-1/3 smLaptop:w-1/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] laptop:ml-[8rem] smLaptop:ml-[7rem] tablet:ml-0 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputThumbnailText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 xlMobile:text-xl lgMobile:text-[1rem]`}>{thumbnailFilePath}</p>
                         </div>
                         <div className='w-2/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full mt-4 text-xl xlMobile:text-2xl lgMobile:text-lg mdMobile:text-lg font-semibold mb-2 xlMobile:mb-6'>
@@ -346,7 +346,7 @@ const ProductDetails = () => {
                             }}
                         />
                         <div className="w-full flex tablet:flex-col xlMobile:flex-col lgMobile:flex-col mdMobile:flex-col items-center">
-                            <label htmlFor="fileUploadDetails" className={`font-hind bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] tablet:ml-0 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
+                            <label htmlFor="fileUploadDetails" className={`font-hind bg-transparent border-4 border-[#FF7F11] p-4 w-1/4 laptop:w-1/3 smLaptop:w-1/3 tablet:w-full xlMobile:w-full lgMobile:w-full mdMobile:w-full rounded-xl self-start ml-[11rem] laptop:ml-[8rem] smLaptop:ml-[7rem] tablet:ml-0 xlMobile:ml-0 lgMobile:ml-0 mdMobile:ml-0 mt-2 h-[4rem] ${darkMode ? 'text-white' : 'text-black'} font-bold text-2xl lgMobile:text-xl mdMobile:text-xl flex justify-center items-center cursor-pointer`}>{fileInputDetailsText}</label>
                             <p className={`${darkMode ? 'text-white' : 'text-black'} ml-4 xlMobile:text-xl lgMobile:text-[1rem] mdMobile:text-[1rem]`}>{detailsFilePath}</p>
                         </div>
                         <button type="submit" className='font-hind w-2/3 bg-[#FF7F11] rounded-3xl p-2 text-white font-semibold text-2xl mt-10'>Save product</button>
