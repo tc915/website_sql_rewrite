@@ -28,12 +28,24 @@ export const createCheckoutSession = async (req, res) => {
             },
         }
 
+        const getUnitPrice = (cartItem) => {
+            const sortedPricing = [...cartItem.pricing].sort((a, b) => b.min - a.min)
+            for (let i = 0; i < sortedPricing.length; i++) {
+                const { min, max } = sortedPricing[i];
+                const productCount = cartItem.count;
+                const isWithinRange = (min <= productCount) && ((max >= productCount) || max === null || max === 0);
+                if (isWithinRange) {
+                    return sortedPricing[i].price
+                }
+            }
+        }
+
         formattedItem.quantity = userCart[i].count
         formattedItem.price_data.product_data.name = userCart[i].details.name
         formattedItem.price_data.product_data.description = userCart[i].details.description
         formattedItem.price_data.product_data.images = [userCart[i].stripeImgThumbnail]
-        formattedItem.price_data.unit_amount = userCart[i].unitPrice * 100
-
+        formattedItem.price_data.unit_amount = getUnitPrice(userCart[i].pricing) * 100
+        console.log('userCartFinal', userCartFinal)
         userCartFinal.push(formattedItem)
     }
 

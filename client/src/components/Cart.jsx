@@ -105,23 +105,9 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
         getUserCart();
     }, []);
 
-    const getCheckedOutProductPrice = (cartItem) => {
-        const sortedPricing = [...cartItem.pricing].sort((a, b) => b.min - a.min)
-        for (let i = 0; i < sortedPricing.length; i++) {
-            const { min, max } = sortedPricing[i];
-            const productCount = cartItem.count;
-            const isWithinRange = (min <= productCount) && ((max >= productCount) || max === null || max === 0);
-            if (isWithinRange) {
-                return sortedPricing[i].price
-            }
-        }
-    }
-
     const checkoutUser = async (userCart, userDoc) => {
         userCart.forEach(item => {
-            const price = getCheckedOutProductPrice(item)
             item["stripeImgThumbnail"] = `https://ideasthatfloat-server-lnr7.onrender.com/uploads/${item.details.thumbnailImageId}`
-            item["unitPrice"] = price
         });
         const { data } = await axios.post('/checkout-cart', { userCart, userDoc })
         const sessionID = data.sessionID;
