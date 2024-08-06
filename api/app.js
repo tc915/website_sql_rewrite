@@ -215,7 +215,6 @@ app.delete('/delete-product/:id', async (req, res) => {
 
         // Check if the product is in any user's cart. If it is, throw a reference error
         const isProductInCart = await getCartItemWithProductId(id)
-        console.log(isProductInCart)
         if (isProductInCart) {
             const err = new Error('Product is referenced in cart');
             err.code = 'ER_ROW_IS_REFERENCED_2';

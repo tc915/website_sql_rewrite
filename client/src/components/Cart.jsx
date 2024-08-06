@@ -87,7 +87,6 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
         const getUserCart = async () => {
             const { data } = await axios.get('/user-cart');
             setCart(data.cartDoc);
-            console.log(data)
             const products = []
             for (let i = 0; i < data.products.length; i++) {
                 const productDetails = {
@@ -121,10 +120,6 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    useEffect(() => {
-        console.log(cartProducts)
-    }, [cartProducts])
 
 
     return (
