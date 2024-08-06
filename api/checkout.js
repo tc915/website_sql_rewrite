@@ -45,7 +45,7 @@ export const createCheckoutSession = async (req, res) => {
             mode: 'payment',
             line_items: userCartFinal,
             customer_email: email,
-            success_url: `${domainUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+            success_url: `${domainUrl}/cart/checkout/success/{CHECKOUT_SESSION_ID}`,
             cancel_url: `${domainUrl}/canceled`,
             shipping_address_collection: { allowed_countries: ['US'] },
             automatic_tax: { enabled: true }

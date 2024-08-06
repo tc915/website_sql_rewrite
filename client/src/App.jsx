@@ -34,6 +34,7 @@ import Demos from './components/Demos';
 import ICandyDemo from './components/demos/ICandyDemo';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import CheckoutComplete from './components/CheckoutComplete';
 
 let baseURL;
 
@@ -100,6 +101,7 @@ function App() {
                         <Route path='/:username/info' element={<UserInfo />} />
                         <Route path='/demos' element={<Demos />} />
                         <Route path='/demos/iCandy' element={<ICandyDemo />} />
+                        <Route path='/cart/checkout/success/:sessionId' element={<CheckoutComplete />} />
                     </Routes>
                 </AnimatePresence>
             </UserContextProvider>
