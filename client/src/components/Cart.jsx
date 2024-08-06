@@ -49,7 +49,7 @@ const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, c
                 <p className="text-lg smLaptop:text-[1rem] xlMobile:text-xl xlMobile:mb-6 lgMobile:mb-2 mdMobile:mb-2">{`Quantity: ${product.count}`}</p>
             </div>
             <div className="flex flex-col justify-center ml-auto lgMobile:ml-2 mdMobile:ml-2">
-                <p className="text-3xl smLaptop:text-2xl tablet:text-2xl font-bold text-center mb-6 font-hind">Price: ${getProductPrice().toFixed(2)}</p>
+                <p className="text-3xl smLaptop:text-2xl tablet:text-2xl font-bold text-center mb-6 font-hind">Price: ${Number(getProductPrice()).toFixed(2)}</p>
                 <button className="bg-transparent border-2 border-[#FF7F11] font-semibold text-lg xlMobile:text-2xl tablet:text-sm px-4 font-hind tablet:px-2 py-1 rounded-full whitespace-nowrap"
                     onClick={() => {
                         const productId = product.details.id
@@ -87,6 +87,7 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
         const getUserCart = async () => {
             const { data } = await axios.get('/user-cart');
             setCart(data.cartDoc);
+            console.log(data)
             const products = []
             for (let i = 0; i < data.products.length; i++) {
                 const productDetails = {
@@ -121,6 +122,10 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
         window.scrollTo(0, 0);
     }, []);
 
+    useEffect(() => {
+        console.log(cartProducts)
+    }, [cartProducts])
+
 
     return (
         <div className={`pt-44 laptop:pt-[9.45rem] smLaptop:pt-32 tablet:pt-24 w-full ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
@@ -135,7 +140,7 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
                 {cart.productCountTotal > 0 && (
                     <div className="w-full h-[15rem] mt-10 flex flex-col items-end">
                         {prices && prices.length > 0 && (
-                            <p className="text-2xl smLaptop:text-xl font-semibold font-hind">{`Subtotal (${cart.productCountTotal > 1 ? cart.productCountTotal + ' items' : cart.productCountTotal + ' item'}): $${subtotalCost.toFixed(2)}`}</p>
+                            <p className="text-2xl smLaptop:text-xl font-semibold font-hind">{`Subtotal (${cart.productCountTotal > 1 ? cart.productCountTotal + ' items' : cart.productCountTotal + ' item'}): $${Number(subtotalCost).toFixed(2)}`}</p>
                         )}
                         <button className="text-white bg-[#FF7F11] mt-6 xlMobile:mt-10 px-10 py-2 smLaptop:py-1 text-xl smLaptop:text-lg xlMobile:text-2xl font-semibold rounded-lg font-hind"
                             onClick={() => {
