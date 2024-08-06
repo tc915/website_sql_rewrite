@@ -19,13 +19,13 @@ export const createCheckoutSession = async (req, res) => {
             quantity: 0,
             price_data: {
                 currency: 'usd',
-                unit_amount: 0 // in cents
+                unit_amount: 0, // in cents
+                product_data: {
+                    name: '',
+                    description: '',
+                    images: []
+                }
             },
-            product_data: {
-                name: '',
-                description: '',
-                images: []
-            }
         }
 
         formattedItem.quantity = userCart[i].count
