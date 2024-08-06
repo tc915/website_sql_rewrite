@@ -215,6 +215,7 @@ app.delete('/delete-product/:id', async (req, res) => {
 
         // Delete the pricings and product from the database
         const isProductInCart = await getCartItem(id)
+        console.log(isProductInCart)
         if (isProductInCart) {
             const err = new Error('Product is referenced in cart');
             err.code = 'ER_ROW_IS_REFERENCED_2';
