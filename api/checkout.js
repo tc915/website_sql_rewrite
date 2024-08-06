@@ -24,13 +24,14 @@ export const createCheckoutSession = async (req, res) => {
             product_data: {
                 name: '',
                 description: '',
-                iamges: []
+                images: []
             }
         }
 
         formattedItem.quantity = userCart[i].count
         formattedItem.product_data.name = userCart[i].details.name
         formattedItem.product_data.description = userCart[i].details.description
+        formattedItem.product_data.images = [userCart[i].stripeImgThumbnail]
 
         userCartFinal.push(formattedItem)
     }

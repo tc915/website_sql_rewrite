@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Footer from "../partials/Footer";
 import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
@@ -63,10 +63,10 @@ const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, c
 }
 
 
-const Cart = () => {
+const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
 
     const { darkMode, navTotalCartCount, setNavTotalCartCount } = useContext(UserContext);
-
+    const navigate = useNavigate();
     const [cart, setCart] = useState({});
     const [cartProducts, setCartProducts] = useState([]);
     const [productDetails, setProductDetails] = useState([]);
@@ -102,6 +102,10 @@ const Cart = () => {
     }, []);
 
     const checkoutUser = async (userCart, userDoc) => {
+        userCart.forEach(item => {
+            item["stripeImgThumbnail"] = `https://ideasthatfloat-server-lnr7.onrender.com/uploads/${item.details.thumbnailImageId}`
+        });
+        console.log(userCart)
         const { data } = await axios.post('/checkout-cart', { userCart, userDoc })
         console.log(data)
     }
@@ -134,7 +138,14 @@ const Cart = () => {
                             <p className="text-2xl smLaptop:text-xl font-semibold font-hind">{`Subtotal (${cart.productCountTotal > 1 ? cart.productCountTotal + ' items' : cart.productCountTotal + ' item'}): $${subtotalCost.toFixed(2)}`}</p>
                         )}
                         <button className="text-white bg-[#FF7F11] mt-6 xlMobile:mt-10 px-10 py-2 smLaptop:py-1 text-xl smLaptop:text-lg xlMobile:text-2xl font-semibold rounded-lg font-hind"
-                            onClick={() => { checkoutUser(cartProducts, user) }}
+                            onClick={() => {
+                                if (!user) {
+                                    setPrevLoginPath('/cart')
+                                    navigate('/login')
+                                } else {
+                                    checkoutUser(cartProducts, user)
+                                }
+                            }}
                         >Proceed to Checkout</button>
                     </div>
                 )}

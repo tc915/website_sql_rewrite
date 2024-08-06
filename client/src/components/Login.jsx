@@ -70,12 +70,6 @@ const Login = ({ prevLoginPath, setPrevLoginPath }) => {
         }
     }, [googleUser])
 
-    useEffect(() => {
-        if (prevLoginPath) {
-            console.log(prevLoginPath)
-        }
-    }, [])
-
 
     return (
         <div className="lgMobile:overflow-x-hidden mdMobile:overflow-x-hidden">

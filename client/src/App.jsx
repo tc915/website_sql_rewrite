@@ -76,7 +76,7 @@ function App() {
                     <Route path='/products/:id' element={<ProductDetails />} />
                     <Route path='/contact' element={<Contact />} />
                     <Route path="/services" element={<Services />} />
-                    <Route path='/cart' element={<Cart />} />
+                    <Route path='/cart' element={<Cart prevLoginPath={prevLoginPath} setPrevLoginPath={setPrevLoginPath} />} />
                     <Route path='/industries' element={<Industries />} />
                     <Route path='/about' element={<About />} />
                     <Route path='/services/research-and-development' element={<ResearchDevelopment />} />
