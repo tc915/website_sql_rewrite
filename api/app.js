@@ -10,7 +10,7 @@ import fs from 'fs'
 import dotenv from 'dotenv'
 import url from 'url'
 import crypto from 'crypto'
-import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, createUserWithGoogle, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getPricingsForProduct, getProduct, getProducts, getProdutsInCart, getThinkTankContent, updateTable } from './database.js';
+import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, createUserWithGoogle, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getCartItem, getPricingsForProduct, getProduct, getProducts, getProdutsInCart, getThinkTankContent, updateTable } from './database.js';
 import { createCheckoutSession } from './checkout.js'
 dotenv.config();
 
@@ -214,6 +214,12 @@ app.delete('/delete-product/:id', async (req, res) => {
         }
 
         // Delete the pricings and product from the database
+        const isProductInCart = await getCartItem(id)
+        if (isProductInCart) {
+            const err = new Error('Product is referenced in cart');
+            err.code = 'ER_ROW_IS_REFERENCED_2';
+            throw err;
+        }
         await deletePricings(id);
         await deleteProduct(id);
 
