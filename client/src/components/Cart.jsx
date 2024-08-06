@@ -5,7 +5,7 @@ import Footer from "../partials/Footer";
 import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
 
-const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, cartProducts, setCartProducts }) => {
+const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, cartProducts, setCartProducts, navTotalCartCount, setNavTotalCartCount }) => {
 
 
     const removeItemFromCart = async (productId, count, priceIndex) => {
@@ -13,6 +13,8 @@ const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, c
         const { data } = await axios.post('/delete-cart-item', reqData);
         setCartProducts(data.newCartProducts);
         setCart(data.cartDoc)
+
+        setNavTotalCartCount(navTotalCartCount - count)
 
         setPrices(prevPrices => prevPrices.filter((_, i) => i !== priceIndex))
     }
@@ -63,7 +65,7 @@ const Product = ({ product, index, cart, setCart, prices, setPrices, darkMode, c
 
 const Cart = () => {
 
-    const { darkMode } = useContext(UserContext);
+    const { darkMode, navTotalCartCount, setNavTotalCartCount } = useContext(UserContext);
 
     const [cart, setCart] = useState({});
     const [cartProducts, setCartProducts] = useState([]);
@@ -124,7 +126,7 @@ const Cart = () => {
                     <p className="text-4xl smLaptop:text-3xl font-hind tablet:text-2xl xlMobile:text-2xl lgMobile:text-2xl mdMobile:text-2xl font-semibold">{`Total items: ${cart.productCountTotal ? cart.productCountTotal : '0'}`}</p>
                 </div>
                 {cartProducts && cartProducts.length > 0 && cartProducts.map((product, index) => (
-                    <Product key={index} product={product} index={index} cart={cart} setCart={setCart} prices={prices} setPrices={setPrices} darkMode={darkMode} cartProducts={cartProducts} setCartProducts={setCartProducts} />
+                    <Product key={index} product={product} index={index} cart={cart} setCart={setCart} prices={prices} setPrices={setPrices} darkMode={darkMode} cartProducts={cartProducts} setCartProducts={setCartProducts} navTotalCartCount={navTotalCartCount} setNavTotalCartCount={setNavTotalCartCount} />
                 ))}
                 {cart.productCountTotal > 0 && (
                     <div className="w-full h-[15rem] mt-10 flex flex-col items-end">

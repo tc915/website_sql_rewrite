@@ -35,9 +35,9 @@ const Services = () => {
 
     const { darkMode, setDarkMode } = useContext(UserContext);
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <>
@@ -52,7 +52,7 @@ const Services = () => {
                         <p className={`mt-6 font-shanti px-20 xsm:pl-20 xxsm:pr-6 laptop:px-0 smLaptop:px-0 smLaptop:pr-10 tablet:px-12 xlMobile:px-6 lgMobile:px-6 mdMobile:px-6 text-2xl xxsm:text-xl laptop:text-lg smLaptop:text-lg tablet:text-[1rem] tablet:leading-[1.5rem] xlMobile:text-2xl lgMobile:text-xl mdMobile:text-xl ${darkMode ? 'text-white' : 'text-black'}`}>
                             Interactive Technologies, Inc. is a  hub for production and development services, offering a wide array of solutions from initial concept to final product delivery. We excel in transforming ideas into reality with our state-of-the-art design, engineering, and manufacturing capabilities. With a commitment to innovation and quality, we empower our clients to achieve excellence in their respective markets.</p>
                     </div>
-                    <div className="w-full h-[45rem] md:h-[47rem] laptop:h-[52rem] smLaptop:h-[50rem] tablet:h-[30rem] xlMobile:h-[54rem] p-24 sm:p-20 xsm:p-16 xxsm:p-16 laptop:p-14 smLaptop:p-10 tablet:p-6 xlMobile:p-6 xlMobile:px-10 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative xl:mt-[4rem] lg:mt-[8rem] md:mt-[10rem] sm:mt-[12rem] xsm:mt-[14rem] xxsm:mt-24 smLaptop:mt-14 xlMobile:mt-32 lgMobile:mt-10 mdMobile:mt-10">
+                    <div className="w-full h-[45rem] md:h-[47rem] laptop:h-[52rem] smLaptop:h-[50rem] tablet:h-[30rem] xlMobile:h-[54rem] p-24 sm:p-20 xsm:p-16 xxsm:p-16 laptop:p-14 smLaptop:p-10 tablet:p-6 xlMobile:p-6 xlMobile:px-10 lgMobile:p-6 mdMobile:p-6 text-white bg-[#1e1e1e] flex flex-col justify-center relative xl:mt-[4rem] lg:mt-[8rem] md:mt-[10rem] sm:mt-[12rem] xsm:mt-[14rem] xxsm:mt-24 smLaptop:mt-14 xlMobile:mt-32 lgMobile:mt-10 mdMobile:mt-24">
                         <h2 className="text-7xl sm:text-6xl xsm:text-6xl xxsm:text-6xl laptop:text-5xl smLaptop:text-4xl tablet:text-2xl xlMobile:text-5xl lgMobile:text-2xl mdMobile:text-2xl font-md tracking-widest font-hind">Enclosure Design</h2>
                         <p className="text-white mt-14 text-xl smLaptop:text-xl tablet:text-sm xlMobile:text-2xl lgMobile:text-lg mdMobile:text-lg font-shanti">
                             Mechanical enclosure design specializes in creating robust and aesthetically pleasing housings for our diverse range of products. We prioritize functionality and durability, ensuring each design meets the specific needs of our clients while adhering to the highest standards of safety and quality. Our enclosures are engineered to protect and enhance the performance of the components they house, reflecting our commitment to excellence and innovation in every product we deliver.</p>

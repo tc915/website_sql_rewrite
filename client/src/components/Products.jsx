@@ -93,7 +93,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
 
 const Products = () => {
 
-    const { darkMode, setDarkMode } = useContext(UserContext);
+    const { darkMode, setDarkMode, setNavTotalCartCount } = useContext(UserContext);
 
     const { user, setUser, guestCookie, setGuestCookie } = useContext(UserContext);
     const [adminPrivileges, setAdminPrivilegs] = useState(false);
@@ -159,6 +159,7 @@ const Products = () => {
         const getCart = async () => {
             const { data } = await axios.get('/user-cart');
             setTotalCartCount(data.cartDoc.productCountTotal);
+            setNavTotalCartCount(data.cartDoc.productCountTotal);
         }
         getCart();
         if (user) {
@@ -338,7 +339,7 @@ const Products = () => {
                 animate="animate"
             >
 
-                <div className='pt-[10rem] lg:pt-[11rem] md:pt-[12rem] sm:pt-[11rem] xsm:pt-[12rem] tablet:pt-[8rem] xlMobile:pt-[15rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem] px-[22rem] lg:px-[14rem] md:px-44 sm:px-44 xsm:px-36 xxsm:px-36 laptop:px-32 smLaptop:px-24 tablet:px-[5rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 flex justify-between items-end mb-[25.3rem]'>
+                <div className='pt-[10rem] lg:pt-[11rem] md:pt-[12rem] sm:pt-[11rem] xsm:pt-[12rem] tablet:pt-[8rem] xlMobile:pt-[15rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem] px-[22rem] lg:px-[14rem] md:px-44 sm:px-44 xsm:px-36 xxsm:px-36 laptop:px-32 smLaptop:px-24 tablet:px-[5rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 flex justify-between items-end'>
                     <h1 className="font-[900] text-6xl xxsm:text-5xl laptop:text-5xl smLaptop:text-4xl tablet:text-4xl xlMobile:text-5xl lgMobile:text-4xl mdMobile:text-4xl xlMobile:mr-12 lgMobile:mr-6 mdMobile:mr-6 text-center font-ruda">Products</h1>
                     <div className='flex items-center'>
                         <div className='text-2xl mr-2 font-md rounded-full w-[3rem] h-[3rem] bg-gradient-to-br from-[#FF7F11] to-[#facc22] text-white p-[3px] flex justify-center items-center'>
@@ -352,7 +353,7 @@ const Products = () => {
                         </button>
                     </div>
                 </div>
-                <div className="grid grid-cols-3 xlMobile:grid-cols-1 lgMobile:grid-cols-1 mdMobile:grid-cols-1 gap-y-44 tablet:gap-y-36 xlMobile:gap-y-[14rem] px-[20rem] lg:px-[14rem] md:px-44 sm:px-44 xsm:px-36 xxsm:px-36 laptop:px-32 smLaptop:px-24 tablet:px-[5rem] tablet:ml-[4rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 py-14 mb-44 text-center">
+                <div className="grid grid-cols-3 xlMobile:grid-cols-1 lgMobile:grid-cols-1 mdMobile:grid-cols-1 gap-y-44 tablet:gap-y-36 xlMobile:gap-y-[14rem] px-[20rem] lg:px-[14rem] md:px-44 sm:px-44 xsm:px-36 xxsm:px-36 laptop:px-32 smLaptop:px-24 tablet:px-[5rem] tablet:ml-[4rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 py-14 mb-[36.3rem] text-center">
                     {products.length > 0 && products.map((product, index) => (
                         <Product key={index} product={product} refresh={refresh} setRefresh={setRefresh} adminPrivileges={adminPrivileges} user={user} navigate={navigate} darkMode={darkMode} />
                     ))}

@@ -20,9 +20,9 @@ const EnclosureDesign = () => {
     const { darkMode, setDarkMode } = useContext(UserContext);
     const location = useLocation();
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className={`pt-44 md:pt-36 sm:pt-36 xsm:pt-36 xxsm:pt-36 laptop:pt-36 smLaptop:pt-36 tablet:pt-24 ${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'}`}>

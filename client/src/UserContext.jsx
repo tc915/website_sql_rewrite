@@ -8,6 +8,7 @@ export const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [guestCookie, setGuestCookie] = useState(null);
     const [darkMode, setDarkMode] = useState(false);
+    const [navTotalCartCount, setNavTotalCartCount] = useState(0);
 
     useEffect(() => {
         const signGuestToken = async () => {
@@ -54,7 +55,7 @@ export const UserContextProvider = ({ children }) => {
     }, [darkMode])
 
     return (
-        <UserContext.Provider value={{ user, setUser, guestCookie, setGuestCookie, darkMode, setDarkMode }}>
+        <UserContext.Provider value={{ user, setUser, guestCookie, setGuestCookie, darkMode, setDarkMode, navTotalCartCount, setNavTotalCartCount }}>
             {children}
         </UserContext.Provider>
     );

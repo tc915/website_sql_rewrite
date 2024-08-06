@@ -49,7 +49,7 @@ export const createCheckoutSession = async (req, res) => {
         //         automatic_tax: { enanbled: true }
         //     })
         // res.status(200).json({ sessionID: session.id })
-        res.status(200).json({ email, userCartFinal })
+        res.status(200).json(userCartFinal)
     } catch (err) {
         console.log(err)
         res.status(400).json({ error: 'An error occured, unable to create session' })
