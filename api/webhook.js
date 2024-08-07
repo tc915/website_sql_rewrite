@@ -40,7 +40,7 @@ export const webhook = async (req, res) => {
             res.status(500).send(`Failed to retrieve line items: ${err.message}`)
         }
     } else if (event.type === 'payment_intent.succeeded') {
-        console.log(sessionsStore.latestSessionId)
+        console.log(sessionsStore)
     } else {
         res.status(200).send('Webhook received')
     }
