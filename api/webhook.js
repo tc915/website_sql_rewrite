@@ -17,7 +17,6 @@ export const webhook = async (req, res) => {
     }
 
     if (event.type === 'checkout.session.completed') {
-        console.log('checkout succeeded')
         const session = event.data.object
 
         try {
@@ -41,7 +40,7 @@ export const webhook = async (req, res) => {
             res.status(500).send(`Failed to retrieve line items: ${err.message}`)
         }
     } else if (event.type === 'payment_intent.succeeded') {
-        console.log('Payment succeeded')
+        console.log(sessionsStore.latestSessionId)
     } else {
         res.status(200).send('Webhook received')
     }
