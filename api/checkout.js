@@ -49,7 +49,7 @@ export const createCheckoutSession = async (req, res) => {
         formattedItem.price_data.product_data.name = productInfo.name
         formattedItem.price_data.product_data.description = productInfo.description
         formattedItem.price_data.product_data.images = [checkoutCart[i].stripeImgThumbnail]
-        formattedItem.price_data.unit_amount = getUnitPrice(checkoutCart[i]) * 100
+        formattedItem.price_data.unit_amount = await getUnitPrice(checkoutCart[i]) * 100
         console.log('userCartFinal', userCartFinal)
         userCartFinal.push(formattedItem)
     }
