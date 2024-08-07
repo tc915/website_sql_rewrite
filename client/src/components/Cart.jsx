@@ -106,6 +106,7 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
     }, []);
 
     const checkoutUser = async (userCart, userDoc) => {
+        console.log(userCart)
         userCart.forEach(item => {
             item["stripeImgThumbnail"] = `https://ideasthatfloat-server-lnr7.onrender.com/uploads/${item.details.thumbnailImageId}`
         });

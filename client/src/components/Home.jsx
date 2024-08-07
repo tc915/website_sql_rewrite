@@ -447,13 +447,13 @@ const Home = ({ scrollY }) => {
                 </div>
             </div>
             <div className={`fixed top-0 left-0 z-[99] bg-black/50 w-full h-screen flex justify-center items-center ${chooseProductPopup ? '' : 'hidden'}`}>
-                <div ref={chooseProductPopupRef} className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[70rem] tablet:w-[90%] h-[30rem] tablet:h-[80%] overflow-x-auto overflow-y-hidden flex p-6 py-14 relative`}>
-                    <button className="fixed top-[17rem] tablet:top-12 right-[26rem] tablet:right-10 z-[99]"
+                <div ref={chooseProductPopupRef} className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} w-[70rem] smLaptop:w-[90%] tablet:w-[90%] h-[30rem] tablet:h-[80%] overflow-x-auto overflow-y-hidden flex p-6 py-14 relative`}>
+                    <button className="fixed top-[17rem] smLaptop:top-[6.2rem] tablet:top-12 right-[26rem] smLaptop:right-14 tablet:right-10 z-[99]"
                         onClick={() => setChooseProductPopup(false)}
                     >
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-[45px] w-[45px] tablet:h-[32px] tablet:w-[32px]" viewBox="0 -960 960 960" fill={darkMode ? '#fff' : '#131313'}><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" /></svg>
                     </button>
-                    <h2 className="fixed top-[17rem] tablet:top-14 left-[56rem] tablet:left-[42%] font-semibold text-xl tablet:text-lg font-hind">Choose a Product</h2>
+                    <h2 className="fixed top-[17rem] smLaptop:top-[6.4rem] tablet:top-14 left-[56rem] smLaptop:left-[44%] tablet:left-[42%] font-semibold text-xl tablet:text-lg font-hind">Choose a Product</h2>
                     {products && products.length > 0 && products.map((product, index) => (
                         <div key={index}>
 
@@ -836,9 +836,9 @@ const Home = ({ scrollY }) => {
                         <button className={`absolute top-[13rem] laptop:top-[10rem] smLaptop:top-[8rem] xlMobile:-top-10 left-[5rem] tablet:left-6 xlMobile:left-[20rem] xlMobile:text-2xl tablet:top-[6rem] xlMobile:w-[10rem] lgMobile:w-[7rem] mdMobile:w-[7rem] lgMobile:-top-10 mdMobile:-top-10 smLaptop:left-[4rem] lgMobile:left-[15rem] mdMobile:left-[15rem] ${adminPrivileges ? '' : 'hidden'} ${darkMode ? 'text-white' : 'text-black'} border-2 px-8 rounded-full font-hind`}
                             onClick={() => setEditThinkTank(true)}
                         >Edit</button>
-                        <div className={`w-1/2 xlMobile:w-full lgMobile:w-full mdMobile:w-full flex flex-col justify-center pl-32 xlMobile:pl-12 ${darkMode ? 'text-white' : 'text-black'}`}>
+                        <div className={`w-1/2 xlMobile:w-full lgMobile:w-full mdMobile:w-full flex flex-col justify-center pl-32 smLaptop:pl-24 xlMobile:pl-12 ${darkMode ? 'text-white' : 'text-black'}`}>
                             <h2 className="text-5xl smLaptop:text-4xl tablet:text-3xl tablet:-ml-12 lgMobile:-ml-10 mdMobile:-ml-10 font-thin font-hind">Think Tank</h2>
-                            <p className="pr-[6em] font-shanti tablet:pr-[3em] xlMobile:pr-6 lgMobile:pr-0 mdMobile:pr-0 tablet:-ml-12 lgMobile:-ml-28 mdMobile:-ml-28 lgMobile:w-full mdMobile:w-full mt-6 text-lg smLaptop:text-[1rem] tablet:text-[1rem] xlMobile:text-2xl whitespace-pre-wrap">{thinkTankText}</p>
+                            <p className="pr-[6em] smLaptop:pr-[5.5rem] font-shanti tablet:pr-[3em] xlMobile:pr-6 lgMobile:pr-0 mdMobile:pr-0 tablet:-ml-12 lgMobile:-ml-28 mdMobile:-ml-28 lgMobile:w-full mdMobile:w-full mt-6 text-lg smLaptop:text-[1rem] tablet:text-[1rem] xlMobile:text-2xl whitespace-pre-wrap">{thinkTankText}</p>
                         </div>
                         <div className="w-1/2 xlMobile:w-full lgMobile:w-full mdMobile:w-full xlMobile:px-4 lgMobile:px-4 mdMobile:px-4 xlMobile:h-[35rem] lgMobile:h-[35rem] mdMobile:h-[35rem] xlMobile:-mt-14 lgMobile:-mt-14 mdMobile:-mt-14 flex justify-center items-center">
                             <div className="w-full h-[45%] bg-black mr-24 xlMobile:mr-0 tablet:mr-10">
