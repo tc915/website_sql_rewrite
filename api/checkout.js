@@ -1,4 +1,4 @@
-import { findUserById, getPricingsForProduct } from './database.js'
+import { findUserById, getPricingsForProduct, getProduct } from './database.js'
 import { stripeAPI } from './stripe.js'
 
 export const createCheckoutSession = async (req, res) => {
@@ -28,8 +28,12 @@ export const createCheckoutSession = async (req, res) => {
             },
         }
 
+        const productInfo = getProduct(checkoutCart[i].productId)
+        console.log(productInfo)
+
         const getUnitPrice = (cartItem) => {
             const productPricing = getPricingsForProduct(cartItem.produtId)
+            console.log(productPricing)
             const sortedPricing = [...productPricing].sort((a, b) => b.min - a.min)
             for (let i = 0; i < sortedPricing.length; i++) {
                 const { min, max } = sortedPricing[i];
@@ -42,8 +46,8 @@ export const createCheckoutSession = async (req, res) => {
         }
 
         formattedItem.quantity = checkoutCart[i].count
-        formattedItem.price_data.product_data.name = checkoutCart[i].details.name
-        formattedItem.price_data.product_data.description = checkoutCart[i].details.description
+        formattedItem.price_data.product_data.name = productInfo.name
+        formattedItem.price_data.product_data.description = productInfo.description
         formattedItem.price_data.product_data.images = [checkoutCart[i].stripeImgThumbnail]
         formattedItem.price_data.unit_amount = getUnitPrice(checkoutCart[i]) * 100
         console.log('userCartFinal', userCartFinal)
