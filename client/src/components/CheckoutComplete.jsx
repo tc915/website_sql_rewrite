@@ -23,7 +23,7 @@ const CheckoutComplete = () => {
     }, [sessionId])
 
     useEffect(() => {
-        if (window.location.pathname.includes('success')) {
+        if (sessionId) {
             const getCheckoutSession = async () => {
                 try {
                     const { data } = await axios.get(`/${sessionId}`)
@@ -34,7 +34,7 @@ const CheckoutComplete = () => {
             }
             getCheckoutSession()
         }
-    }, [])
+    }, [sessionId])
 
     return (
         <>
