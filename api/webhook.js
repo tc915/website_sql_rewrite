@@ -24,7 +24,11 @@ export const webhook = async (req, res) => {
                 limit: 100
             })
 
-            sessionsStore[session.id] = { session, lineItems }
+            sessionsStore[session.id] = {
+                session,
+                lineItems,
+                paymentIntentId: session.payment_intent // Store the payment intent ID
+            }
 
             latestSessionId = session.id
 
@@ -40,7 +44,16 @@ export const webhook = async (req, res) => {
             res.status(500).send(`Failed to retrieve line items: ${err.message}`)
         }
     } else if (event.type === 'payment_intent.succeeded') {
-        console.log(sessionsStore)
+        const paymentIntent = event.data.object
+        const sessionId = paymentIntent.metadata.session_id // Retrieve the session ID if stored in metadata
+
+        if (sessionsStore[sessionId]) {
+            console.log('Session Store Entry for Payment Intent:', sessionsStore[sessionId])
+        } else {
+            console.log('No session store entry found for this payment intent.')
+        }
+
+        res.status(200).send('Webhook received')
     } else {
         res.status(200).send('Webhook received')
     }
