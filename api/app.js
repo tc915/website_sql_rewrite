@@ -762,7 +762,7 @@ app.get('/:sessionId', (req, res) => {
         console.log(sessionsStore)
         const session = sessionsStore
         if (session) {
-            res.status(200).json(session)
+            res.status(200).json(session[sessionId])
         } else {
             res.status(404).send('Session not found')
         }
