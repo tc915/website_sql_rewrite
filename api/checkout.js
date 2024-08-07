@@ -29,11 +29,10 @@ export const createCheckoutSession = async (req, res) => {
         }
 
         const productInfo = await getProduct(checkoutCart[i].productId)
-        console.log(productInfo)
+        const productPricing = await getPricingsForProduct(checkoutCart[i].produtId)
+        console.log('productPricing:', productPricing)
 
-        const getUnitPrice = async (cartItem) => {
-            const productPricing = await getPricingsForProduct(cartItem.produtId)
-            console.log(productPricing)
+        const getUnitPrice = (cartItem) => {
             const sortedPricing = [...productPricing].sort((a, b) => b.min - a.min)
             for (let i = 0; i < sortedPricing.length; i++) {
                 const { min, max } = sortedPricing[i];
@@ -50,7 +49,6 @@ export const createCheckoutSession = async (req, res) => {
         formattedItem.price_data.product_data.description = productInfo.description
         formattedItem.price_data.product_data.images = [checkoutCart[i].stripeImgThumbnail]
         formattedItem.price_data.unit_amount = await getUnitPrice(checkoutCart[i]) * 100
-        console.log('userCartFinal', userCartFinal)
         userCartFinal.push(formattedItem)
     }
 
