@@ -12,6 +12,7 @@ import url from 'url'
 import crypto from 'crypto'
 import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, createUserWithGoogle, deleteAllCartItems, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getCartItem, getCartItemWithProductId, getPricingsForProduct, getProduct, getProducts, getProdutsInCart, getThinkTankContent, updateTable } from './database.js';
 import { createCheckoutSession } from './checkout.js'
+import { webhook, sessionsStore } from './webhook.js'
 dotenv.config();
 
 const admins = JSON.parse(fs.readFileSync(new URL('./permission-list.json', import.meta.url), 'utf8'));
@@ -750,6 +751,23 @@ app.post('/delete-cart-items', async (req, res) => {
     } catch (err) {
         console.log(err.stack)
         res.status(500).json('Error occured when trying to delete cart items')
+    }
+})
+
+app.post('/webhook', webhook)
+
+app.get('/:sessionId', (req, res) => {
+    try {
+        const { sessionId } = req.params
+        const session = sessionsStore
+        if (session) {
+            res.status(200).json(session)
+        } else {
+            res.status(404).send('Session not found')
+        }
+    } catch (err) {
+        console.log(err.stack)
+        res.status(500).json({ error: err.message })
     }
 })
 

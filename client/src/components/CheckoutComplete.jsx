@@ -22,6 +22,20 @@ const CheckoutComplete = () => {
         }
     }, [sessionId])
 
+    useEffect(() => {
+        if ('success' in window.location.pathname.split('/')) {
+            const getCheckoutSession = async () => {
+                try {
+                    const { data } = await axios.get(`/${sessionId}`)
+                    console.log(data)
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+            getCheckoutSession()
+        }
+    }, [])
+
     return (
         <>
             <div className="w-full h-screen pt-44">
