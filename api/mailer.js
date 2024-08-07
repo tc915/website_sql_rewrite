@@ -26,7 +26,7 @@ export const sendEmail = async (to, subject, text) => {
     }
 
     try {
-        await transporter.sendEmail(mailOptions)
+        await transporter.sendMail(mailOptions)
     } catch (err) {
         console.error(`Failed to send email to ${to}: ${err.message}`)
         throw new Error('Error occurred while sending email')
