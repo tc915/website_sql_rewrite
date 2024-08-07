@@ -41,7 +41,7 @@ export const webhook = async (req, res) => {
             console.error(`Failed to retrieve line items: ${err.message}`)
             res.status(500).send(`Failed to retrieve line items: ${err.message}`)
         }
-    } else if (event.type === 'checkout.session.async_payment_succeeded') {
+    } else if (event.type === 'payment_intent.succeeded') {
         console.log('Payment succeeded')
     } else {
         res.status(200).send('Webhook received')
