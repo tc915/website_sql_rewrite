@@ -17,6 +17,7 @@ export const webhook = async (req, res) => {
     }
 
     if (event.type === 'checkout.session.completed') {
+        console.log('checkout succeeded')
         const session = event.data.object
 
         try {
