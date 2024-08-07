@@ -1,4 +1,4 @@
-import { stripeAPI } from './stripe'
+import { stripeAPI } from './stripe.js'
 export const sessionsStore = {}
 
 let latestSessionId = null
