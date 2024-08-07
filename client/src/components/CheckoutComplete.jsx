@@ -23,7 +23,7 @@ const CheckoutComplete = () => {
     }, [sessionId])
 
     useEffect(() => {
-        if ('success' in window.location.pathname.split('/')) {
+        if (window.location.pathname.includes('success')) {
             const getCheckoutSession = async () => {
                 try {
                     const { data } = await axios.get(`/${sessionId}`)

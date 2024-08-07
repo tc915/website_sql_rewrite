@@ -34,6 +34,8 @@ export const webhook = async (req, res) => {
                 }
             })
 
+            console.log('Updated sessionsStore:', sessionsStore)
+
             res.status(200).send('Webhook received')
         } catch (err) {
             console.error(`Failed to retrieve line items: ${err.message}`)
