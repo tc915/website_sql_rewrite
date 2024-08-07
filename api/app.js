@@ -10,7 +10,7 @@ import fs from 'fs'
 import dotenv from 'dotenv'
 import url from 'url'
 import crypto from 'crypto'
-import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, createUserWithGoogle, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getCartItem, getCartItemWithProductId, getPricingsForProduct, getProduct, getProducts, getProdutsInCart, getThinkTankContent, updateTable } from './database.js';
+import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, createUserWithGoogle, deleteAllCartItems, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getCartItem, getCartItemWithProductId, getPricingsForProduct, getProduct, getProducts, getProdutsInCart, getThinkTankContent, updateTable } from './database.js';
 import { createCheckoutSession } from './checkout.js'
 dotenv.config();
 
@@ -738,6 +738,18 @@ app.get('/boat-setup/:userId', async (req, res) => {
 });
 
 app.post('/checkout-cart', createCheckoutSession)
+
+app.post('/delete-cart-items', async (req, res) => {
+    try {
+        const cartToken = req.cookies.cartToken
+        const cartDoc = await findCartByToken(cartToken)
+        await deleteAllCartItems(cartDoc.id)
+        res.status(200).json('Cart items deleted')
+    } catch (err) {
+        console.log(err.stack)
+        res.status(500).json('Error occured when trying to delete cart items')
+    }
+})
 
 const port = process.env.PORT || 4000;
 

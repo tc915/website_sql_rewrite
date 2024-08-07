@@ -11,6 +11,7 @@ export const UserContextProvider = ({ children }) => {
     const [navTotalCartCount, setNavTotalCartCount] = useState(0);
 
     useEffect(() => {
+
         const signGuestToken = async () => {
             let token = Cookies.get('cartToken');
             if (!token) {
@@ -20,6 +21,8 @@ export const UserContextProvider = ({ children }) => {
             setGuestCookie(token);
         }
         signGuestToken();
+
+
         const verifyUserToken = async () => {
             try {
                 const res = await axios.get('/verify-token');
@@ -29,6 +32,8 @@ export const UserContextProvider = ({ children }) => {
             }
         }
         verifyUserToken();
+
+
         const signThemeToken = async () => {
             let token = Cookies.get('themeToken');
             if (!token) {
@@ -36,6 +41,8 @@ export const UserContextProvider = ({ children }) => {
             }
         }
         signThemeToken();
+
+
         const verifyThemeToken = async () => {
             try {
                 const { data } = await axios.get('/verify-theme-token');
@@ -45,6 +52,8 @@ export const UserContextProvider = ({ children }) => {
             }
         }
         verifyThemeToken();
+
+
     }, []);
 
     useEffect(() => {
