@@ -1,9 +1,9 @@
-import { findUserById } from './database.js'
+import { findUserById, getPricingsForProduct } from './database.js'
 import { stripeAPI } from './stripe.js'
 
 export const createCheckoutSession = async (req, res) => {
     const domainUrl = process.env.WEB_APP_URL
-    const { userCart, userDoc } = req.body
+    const { checkoutCart, userDoc } = req.body
 
     if (!userDoc || !userCart) {
         return res.status(200).json({ error: 'Missing required session parameters' })
@@ -14,7 +14,7 @@ export const createCheckoutSession = async (req, res) => {
 
     let userCartFinal = []
 
-    for (let i = 0; i < userCart.length; i++) {
+    for (let i = 0; i < checkoutCart.length; i++) {
         const formattedItem = {
             quantity: 0,
             price_data: {
@@ -29,7 +29,8 @@ export const createCheckoutSession = async (req, res) => {
         }
 
         const getUnitPrice = (cartItem) => {
-            const sortedPricing = [...cartItem.pricing].sort((a, b) => b.min - a.min)
+            const productPricing = getPricingsForProduct(cartItem.produtId)
+            const sortedPricing = [...productPricing].sort((a, b) => b.min - a.min)
             for (let i = 0; i < sortedPricing.length; i++) {
                 const { min, max } = sortedPricing[i];
                 const productCount = cartItem.count;
@@ -40,11 +41,11 @@ export const createCheckoutSession = async (req, res) => {
             }
         }
 
-        formattedItem.quantity = userCart[i].count
-        formattedItem.price_data.product_data.name = userCart[i].details.name
-        formattedItem.price_data.product_data.description = userCart[i].details.description
-        formattedItem.price_data.product_data.images = [userCart[i].stripeImgThumbnail]
-        formattedItem.price_data.unit_amount = getUnitPrice(userCart[i]) * 100
+        formattedItem.quantity = checkoutCart[i].count
+        formattedItem.price_data.product_data.name = checkoutCart[i].details.name
+        formattedItem.price_data.product_data.description = checkoutCart[i].details.description
+        formattedItem.price_data.product_data.images = [checkoutCart[i].stripeImgThumbnail]
+        formattedItem.price_data.unit_amount = getUnitPrice(checkoutCart[i]) * 100
         console.log('userCartFinal', userCartFinal)
         userCartFinal.push(formattedItem)
     }

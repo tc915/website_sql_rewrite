@@ -106,11 +106,20 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
     }, []);
 
     const checkoutUser = async (userCart, userDoc) => {
-        console.log(userCart)
         userCart.forEach(item => {
             item["stripeImgThumbnail"] = `https://ideasthatfloat-server-lnr7.onrender.com/uploads/${item.details.thumbnailImageId}`
         });
-        const { data } = await axios.post('/checkout-cart', { userCart, userDoc })
+        const checkoutCart = []
+        for (let i = 0; i < userCart.length; i++) {
+            const checkoutItem = {
+                productId: userCart[i].details.id,
+                count: userCart[i].count,
+                stripeImgThumbnail: userCart[i].stripeImgThumbnail
+            }
+            checkoutCart.push(checkoutItem)
+        }
+        console.log(checkoutCart)
+        const { data } = await axios.post('/checkout-cart', { checkoutCart, userDoc })
         const sessionID = data.sessionID;
         setSessionId(sessionID)
         const { error } = await stripe.redirectToCheckout({
