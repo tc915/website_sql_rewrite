@@ -28,11 +28,11 @@ export const createCheckoutSession = async (req, res) => {
             },
         }
 
-        const productInfo = getProduct(checkoutCart[i].productId)
+        const productInfo = await getProduct(checkoutCart[i].productId)
         console.log('productInfo:', productInfo)
 
-        const getUnitPrice = (cartItem) => {
-            const productPricing = getPricingsForProduct(cartItem.produtId)
+        const getUnitPrice = async (cartItem) => {
+            const productPricing = await getPricingsForProduct(cartItem.produtId)
             console.log('productPricing:', productPricing)
             const sortedPricing = [...productPricing].sort((a, b) => b.min - a.min)
             for (let i = 0; i < sortedPricing.length; i++) {
