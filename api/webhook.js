@@ -1,3 +1,4 @@
+import { sendEmail } from './mailer.js'
 import { stripeAPI } from './stripe.js'
 export const sessionsStore = {}
 
@@ -26,8 +27,7 @@ export const webhook = async (req, res) => {
 
             sessionsStore[session.id] = {
                 session,
-                lineItems,
-                paymentIntentId: session.payment_intent // Store the payment intent ID
+                lineItems
             }
 
             latestSessionId = session.id
@@ -38,22 +38,17 @@ export const webhook = async (req, res) => {
                 }
             })
 
+            const email = session.customer_details.email
+            const subject = 'Purchase Confirmation'
+            const text = `Thank you for your purchase! Your session ID is ${session.id}`
+
+            sendEmail(email, subject, text)
+
             res.status(200).send('Webhook received')
         } catch (err) {
             console.error(`Failed to retrieve line items: ${err.message}`)
             res.status(500).send(`Failed to retrieve line items: ${err.message}`)
         }
-    } else if (event.type === 'payment_intent.succeeded') {
-        const paymentIntent = event.data.object
-        const sessionId = paymentIntent.metadata.session_id // Retrieve the session ID if stored in metadata
-
-        if (sessionsStore[sessionId]) {
-            console.log('Session Store Entry for Payment Intent:', sessionsStore[sessionId])
-        } else {
-            console.log('No session store entry found for this payment intent.')
-        }
-
-        res.status(200).send('Webhook received')
     } else {
         res.status(200).send('Webhook received')
     }
