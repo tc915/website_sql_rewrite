@@ -759,6 +759,7 @@ app.post('/webhook', webhook)
 app.get('/:sessionId', (req, res) => {
     try {
         const { sessionId } = req.params
+        console.log(sessionsStore)
         const session = sessionsStore
         if (session) {
             res.status(200).json(session)
