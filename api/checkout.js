@@ -5,7 +5,7 @@ export const createCheckoutSession = async (req, res) => {
     const domainUrl = process.env.WEB_APP_URL
     const { checkoutCart, userDoc } = req.body
 
-    if (!userDoc || !userCart) {
+    if (!userDoc || !checkoutCart) {
         return res.status(200).json({ error: 'Missing required session parameters' })
     }
 
@@ -29,11 +29,11 @@ export const createCheckoutSession = async (req, res) => {
         }
 
         const productInfo = getProduct(checkoutCart[i].productId)
-        console.log(productInfo)
+        console.log('productInfo:', productInfo)
 
         const getUnitPrice = (cartItem) => {
             const productPricing = getPricingsForProduct(cartItem.produtId)
-            console.log(productPricing)
+            console.log('productPricing:', productPricing)
             const sortedPricing = [...productPricing].sort((a, b) => b.min - a.min)
             for (let i = 0; i < sortedPricing.length; i++) {
                 const { min, max } = sortedPricing[i];
