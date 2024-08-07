@@ -744,6 +744,8 @@ app.post('/delete-cart-items', async (req, res) => {
         const cartToken = req.cookies.cartToken
         const cartDoc = await findCartByToken(cartToken)
         await deleteAllCartItems(cartDoc.id)
+        cartDoc.productCountTotal = 0
+        await updateTable('cart', cartDoc)
         res.status(200).json('Cart items deleted')
     } catch (err) {
         console.log(err.stack)
