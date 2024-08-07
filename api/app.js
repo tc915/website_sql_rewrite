@@ -13,6 +13,7 @@ import crypto from 'crypto'
 import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, createUserWithGoogle, deleteAllCartItems, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getCartItem, getCartItemWithProductId, getPricingsForProduct, getProduct, getProducts, getProdutsInCart, getThinkTankContent, updateTable } from './database.js';
 import { createCheckoutSession } from './checkout.js'
 import { webhook, sessionsStore } from './webhook.js'
+import { sendEmail, sendResetPasswordEmail, sendVerificationEmail } from './mailer.js'
 dotenv.config();
 
 const admins = JSON.parse(fs.readFileSync(new URL('./permission-list.json', import.meta.url), 'utf8'));
@@ -52,29 +53,8 @@ app.post('/register', async (req, res) => {
 
             await createUser(name, email, bcrypt.hashSync(password, bcryptSalt), verificationToken)
 
-            let mailOptions = {
-                from: 'tc915004@outlook.com',
-                to: email,
-                subject: 'Email Verification',
-                text: `Hello ${name}, \n\nPlease verify your account by clicking this link:\nhttps://test.ideasthatfloat.com/register/verify-email/${verificationToken}\n\nThank You!`
-            }
+            await sendVerificationEmail(email, verificationToken)
 
-            let transporter = nodemailer.createTransport({
-                service: 'Outlook365',
-                auth: {
-                    user: 'tc915004@outlook.com',
-                    pass: 'Tc1038668!278'
-                }
-            });
-
-            transporter.sendMail(mailOptions, (err, data) => {
-                if (err) {
-                    console.log(err);
-                    res.status(500).json({ message: 'Error occurred' })
-                } else {
-                    res.status(200).json({ message: 'Verification email sent' })
-                }
-            });
             res.status(201).json('User Registered')
         }
     } catch (err) {
@@ -457,51 +437,30 @@ app.post('/delete-cart-item', async (req, res) => {
 });
 
 app.post('/send-email', async (req, res) => {
-    const { name, phoneNum, email, message } = req.body;
+    try {
+        const { name, phoneNum, email, message } = req.body;
 
-    let transporter = nodemailer.createTransport({
-        service: 'Outlook365',
-        auth: {
-            user: 'tc915004@outlook.com',
-            pass: 'Tc1038668!278'
-        }
-    });
+        let body
 
-    let mailOptions;
-
-    if (phoneNum === '') {
-        mailOptions = {
-            from: 'tc915004@outlook.com',
-            to: "tc915004@outlook.com",
-            subject: `New Message from ${name}`,
-            text: `
-                    Name: ${name}
-                    Email: ${email}
-                    Message: ${message}
-                `
-        };
-    } else {
-        mailOptions = {
-            from: 'tc915004@outlook.com',
-            to: "tc915004@outlook.com",
-            subject: `New Message from ${name}`,
-            text: `
-                    Name: ${name}
-                    Phone: ${phoneNum}
-                    Email: ${email}
-                    Message: ${message}
-                `
-        };
-    }
-
-    transporter.sendMail(mailOptions, (err, data) => {
-        if (err) {
-            console.error(err);
-            res.status(500).json({ message: 'Error occured' })
+        if (phoneNum) {
+            body = `
+            Name: ${name}
+            Email: ${email}
+            Phone Number: ${phoneNum}
+            Message: ${message}`
         } else {
-            res.status(200).json({ message: 'Email send' })
+            body = `
+            Name: ${name}
+            Email: ${email}
+            Message: ${message}`
         }
-    });
+
+        await sendEmail('tc915004@gmail.com', `New message from ${name}`, body)
+
+        res.status(200).json({ message: 'Email sent' })
+    } catch (err) {
+        res.status(500).json({ message: 'Email failed to send' })
+    }
 });
 
 app.post('/check-admin', (req, res) => {
@@ -526,29 +485,7 @@ app.post('/reset-password-email', async (req, res) => {
         } else {
             const resetPasswordToken = crypto.randomBytes(20).toString('hex');
 
-            let mailOptions = {
-                from: 'tc915004@outlook.com',
-                to: email,
-                subject: 'Password Reset',
-                text: `You can reset your password by clicking this link:\nhttps://test.ideasthatfloat.com/login/reset-password/${email.split('@')[0]}/${resetPasswordToken}\n\nThank You!`
-            }
-
-            let transporter = nodemailer.createTransport({
-                service: 'Outlook365',
-                auth: {
-                    user: 'tc915004@outlook.com',
-                    pass: 'Tc1038668!278'
-                }
-            });
-
-            transporter.sendMail(mailOptions, (err, data) => {
-                if (err) {
-                    console.log(err);
-                    res.status(500).json({ message: 'Error occurred' })
-                } else {
-                    res.status(200).json({ message: 'Verification email sent' })
-                }
-            });
+            await sendResetPasswordEmail(email, resetPasswordToken)
         }
     } catch (err) {
         res.status(500).json({ message: err.message })
@@ -619,60 +556,42 @@ app.get('/user-info/:username', async (req, res) => {
 app.post('/save-user-changes/:username', async (req, res) => {
     const { email, password } = req.body;
     const { username } = req.params;
+
     try {
         const userDoc = await findUserByUsername(username);
         let usernameChange = false;
         let passwordChange = false;
+
         if (!userDoc) {
             res.status(422).json('User not found');
-        } else {
-            if (userDoc.email !== email) {
-
-                const duplicateUser = await findUserByEmail(email);
-                if (duplicateUser) {
-                    res.status(420).json('Duplicate email');
-                } else {
-                    usernameChange = true;
-
-                    const verificationToken = crypto.randomBytes(20).toString('hex');
-
-                    userDoc.email = email;
-                    userDoc.username = email.split('@')[0];
-                    userDoc.confirmed = false;
-                    userDoc.verificationToken = verificationToken;
-
-                    let mailOptions = {
-                        from: 'tc915004@outlook.com',
-                        to: email,
-                        subject: 'Email Verification',
-                        text: `Please verify your account by clicking this link:\nhttps://test.ideasthatfloat.com/register/verify-email/${verificationToken}\n\nThank You!`
-                    }
-
-                    let transporter = nodemailer.createTransport({
-                        service: 'Outlook365',
-                        auth: {
-                            user: 'tc915004@outlook.com',
-                            pass: 'Tc1038668!278'
-                        }
-                    });
-
-                    transporter.sendMail(mailOptions, (err, data) => {
-                        if (err) {
-                            console.log(err);
-                            res.status(500).json({ message: 'Error occurred' })
-                        } else {
-                            res.status(200).json({ message: 'Verification email sent' })
-                        }
-                    });
-                }
-            }
-            if (password && password !== '') {
-                userDoc.password = bcrypt.hashSync(password, bcryptSalt);
-                passwordChange = true;
-            }
-            await updateTable('users', userDoc)
-            res.status(200).json({ usernameChange, passwordChange });
         }
+
+        if (userDoc.email !== email) {
+            const duplicateUser = await findUserByEmail(email);
+            if (duplicateUser) {
+                res.status(420).json('Duplicate email');
+            }
+
+            usernameChange = true;
+
+            const verificationToken = crypto.randomBytes(20).toString('hex');
+
+            userDoc.email = email;
+            userDoc.username = email.split('@')[0];
+            userDoc.confirmed = false;
+            userDoc.verificationToken = verificationToken;
+
+            await sendVerificationEmail(email, verificationToken)
+        }
+
+        if (password && password !== '') {
+            userDoc.password = bcrypt.hashSync(password, bcryptSalt);
+            passwordChange = true;
+        }
+
+        await updateTable('users', userDoc)
+        res.status(200).json({ usernameChange, passwordChange });
+
     } catch (err) {
         res.status(500).json(err);
     }
