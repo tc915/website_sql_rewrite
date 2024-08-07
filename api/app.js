@@ -455,7 +455,7 @@ app.post('/send-email', async (req, res) => {
             Message: ${message}`
         }
 
-        await sendEmail('tc915004@gmail.com', `New message from ${name}`, body)
+        await sendEmail('tc915004@outlook.com', `New message from ${name}`, body)
 
         res.status(200).json({ message: 'Email sent' })
     } catch (err) {
