@@ -18,6 +18,10 @@ HIGHEST PRIORITY (Must do before launch):
 
     9. Add an 'Accept all cookies' button. Some browsers will block cookies without the user allowing them first. Cookies are essential to saving user info and the product cart.
 
+    10. Go through and change how emails are sent and received because it is using my personal credentials
+
+    11. Send emails to sales@ideasthatfloat.com when orders are made through stripe
+
 
 LOW PRIORITY:
 
