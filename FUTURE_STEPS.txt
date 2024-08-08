@@ -19,3 +19,6 @@ HIGHEST PRIORITY (Must do before launch):
     9. Add an 'Accept all cookies' button. Some browsers will block cookies without the user allowing them first. Cookies are essential to saving user info and the product cart.
 
 
+LOW PRIORITY:
+
+    1. The responsive design still needs some tweaking here and there.
