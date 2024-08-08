@@ -571,13 +571,15 @@ app.post('/add-product-to-cart/:id', async (req, res) => {
 app.get('/user-cart', async (req, res) => {
     // Extract the cart token from cookies
     const cartToken = req.cookies.cartToken;
+    console.log(cartToken)
 
     try {
         // Find the cart document using the cart token
         const cartDoc = await findCartByToken(cartToken);
+        console.log(cartDoc)
         // Retrieve all products in the cart based on the cart document's ID
         const cartProducts = await getProductsInCart(cartDoc.id);
-
+        console.log(cartProducts)
         // Check if the cart products were found
         if (!cartProducts) {
             // Respond with a 422 status code if the cart was not found
@@ -597,6 +599,8 @@ app.get('/user-cart', async (req, res) => {
                 products.push(product);
                 pricings.push(pricing);
             }
+            console.log(products)
+            console.log(pricings)
 
             // Respond with the cart document, cart products, products, and pricing information
             res.json({ cartDoc, cartProducts, products, pricings });

@@ -7,7 +7,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google"; // Import the GoogleO
 
 // Render the React application to the DOM.
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode> // Enable StrictMode to help find potential problems in the application.
+  <React.StrictMode>
     <GoogleOAuthProvider clientId={import.meta.env.VITE_APP_CLIENT_ID}> {/* Provide the Google OAuth client ID from environment variables to the provider for Google authentication. */}
       <Router> {/* Wrap the application in Router to enable routing functionality. */}
         <App /> {/* Render the main App component of the application. */}

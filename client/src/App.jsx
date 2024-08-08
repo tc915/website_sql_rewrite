@@ -34,6 +34,7 @@ import Demos from './components/Demos'; // Import the Demos component.
 import ICandyDemo from './components/demos/ICandyDemo'; // Import the ICandyDemo component.
 import { loadStripe } from '@stripe/stripe-js'; // Import loadStripe from @stripe/stripe-js for Stripe integration.
 import { Elements } from '@stripe/react-stripe-js'; // Import Elements from @stripe/react-stripe-js to wrap components that use Stripe.
+import CheckoutComplete from './components/CheckoutComplete';
 
 let baseURL; // Variable to hold the base URL for API requests.
 
