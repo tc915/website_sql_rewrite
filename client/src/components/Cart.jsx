@@ -133,7 +133,6 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
             }
             checkoutCart.push(checkoutItem);
         }
-        console.log(checkoutCart);
 
         // Send the checkout data to the server to create a Stripe session
         const { data } = await axios.post('/checkout-cart', { checkoutCart, userDoc });

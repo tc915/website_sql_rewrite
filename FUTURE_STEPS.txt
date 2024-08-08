@@ -16,6 +16,6 @@ HIGHEST PRIORITY (Must do before launch):
 
     8. Check compatability with other browsers.
 
-    9. Add an 'Accept all cookies' button. Anyone using an adblocker won't be able to add anything to their cart or checkout because they require cookies to work and adblockers block those. Stripe also doesn't work with an adblocker. This might not solve the issue though as I don't know about how adblockers work and how a website can allow cookies once the user agrees.
+    9. Add an 'Accept all cookies' button. Some browsers will block cookies without the user allowing them first. Cookies are essential to saving user info and the product cart.
 
 
