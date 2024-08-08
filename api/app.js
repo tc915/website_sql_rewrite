@@ -580,11 +580,9 @@ app.get('/user-cart', async (req, res) => {
         console.log(cartProducts)
         // Check if the cart products were found
         if (!cartProducts) {
-            console.log('No cart products')
             // Respond with a 422 status code if the cart was not found
             res.status(422).json('cart not found');
         } else {
-            console.log('There are cart products')
             // Initialize arrays to store product and pricing information
             let products = [];
             let pricings = [];
@@ -599,8 +597,6 @@ app.get('/user-cart', async (req, res) => {
                 products.push(product);
                 pricings.push(pricing);
             }
-            console.log(products)
-            console.log(pricings)
 
             // Respond with the cart document, cart products, products, and pricing information
             res.json({ cartDoc, cartProducts, products, pricings });
