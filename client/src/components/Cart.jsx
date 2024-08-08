@@ -79,7 +79,7 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
 
     const stripe = useStripe()
 
-    c// Function to calculate the subtotal cost of all items in the cart
+    // Function to calculate the subtotal cost of all items in the cart
     const getSubtotalCost = () => {
         let subtotal = 0;
         // Loop through cartProducts array to sum up the prices

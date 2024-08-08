@@ -577,7 +577,6 @@ app.get('/user-cart', async (req, res) => {
         const cartDoc = await findCartByToken(cartToken);
         // Retrieve all products in the cart based on the cart document's ID
         const cartProducts = await getProductsInCart(cartDoc.id);
-        console.log(cartProducts)
         // Check if the cart products were found
         if (!cartProducts) {
             // Respond with a 422 status code if the cart was not found

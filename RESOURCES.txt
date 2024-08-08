@@ -1,0 +1,8 @@
+Front-end --> cPanel: https://crossblade.websitewelcome.com:2083/cpsess8799222996/frontend/jupiter/filemanager/index.html (ideasthatfloat.test directory)
+
+Database --> cPanel SQL database: https://crossblade.websitewelcome.com:2083/cpsess8799222996/3rdparty/phpMyAdmin/index.php?route=/database/structure&db=floatid_test_database
+
+Backend --> Render.com: https://dashboard.render.com/web/srv-cq2od3tds78s73ejbvq0
+
+
+For the front-end on cPanel, use the Git Version Control for uploading/changing files. cPanel will crash if you delete the old files and upload the new ones over and over.

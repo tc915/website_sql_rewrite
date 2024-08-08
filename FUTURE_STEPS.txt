@@ -1,0 +1,21 @@
+HIGHEST PRIORITY (Must do before launch):
+
+    1: Add Checkout complete screen after being redirected to the main site when finished with the Stripe checkout. I have it to where the session info is being sent from the server to the font-end. You can use that to display the items successfully bought, amount paid, etc.
+
+    2: Add Industries subpages. I have the main industries page but when you click on the links to go to a specific industry, it is empty.
+
+    3. Setup business details on Stripe to allow for Live mode, where people can spend money. Right now it is only in test mode, so no payments will go through.
+
+    4. Add in image assets for the blank containers. The think tank section on the home page is a dynamic image that can be changed on the site, so don't hard code an image for it.
+
+    5. Add products to the site.
+
+    6. Add wording. Most of the website's wording was made with AI with a lot just being placeholder text.
+
+    7. Change the email account used for sending and receiving emails on the backend. Right now, it is a throwaway account that I used for testing. Change the email credentials in the mailer.js file in the api directory. For what service to use, I tried GMail but I was being blocked, so I used outlook.
+
+    8. Check compatability with other browsers.
+
+    9. Add an 'Accept all cookies' button. Anyone using an adblocker won't be able to add anything to their cart or checkout because they require cookies to work and adblockers block those. Stripe also doesn't work with an adblocker. This might not solve the issue though as I don't know about how adblockers work and how a website can allow cookies once the user agrees.
+
+
