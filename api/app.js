@@ -740,6 +740,7 @@ app.post('/reset-password-email', async (req, res) => {
 
             // Send a password reset email with the generated token
             await sendResetPasswordEmail(email, resetPasswordToken);
+            res.status(200).json('Reset password email sent')
         }
     } catch (err) {
         // Respond with a 500 status code and an error message if an exception occurs

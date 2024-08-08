@@ -26,12 +26,7 @@ const Login = ({ prevLoginPath, setPrevLoginPath }) => {
                 setUser(res.data);
                 navigate(prevLoginPath)
             } catch (e) {
-                console.log(e);
-                if (e.message === 'Request failed with status code 420') {
-                    setIncorrectPopUpText('Email not verified')
-                } else if (e.message === 'Request failed with status code 422') {
-                    setIncorrectPopUpText('User not found');
-                }
+                setIncorrectPopUpText(e.response.data)
             }
         } else {
             let username = email.split('@');
@@ -41,13 +36,10 @@ const Login = ({ prevLoginPath, setPrevLoginPath }) => {
                 setUser(res.data);
                 navigate(prevLoginPath);
             } catch (e) {
-                console.log(e);
-                if (e.message === 'Request failed with status code 420') {
-                    setIncorrectPopUpText('Email not verified')
-                } else if (e.message === 'Request failed with status code 422') {
-                    setIncorrectPopUpText('User not found');
-                } else if (e.message === 'Request failed with status code 401') {
+                if (e.message === 'Request failed with status code 401') {
                     setIncorrectPopUpText('Please log in with google')
+                } else {
+                    setIncorrectPopUpText(e.response.data)
                 }
             }
         }
