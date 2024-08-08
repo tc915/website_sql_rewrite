@@ -4,6 +4,8 @@ Type "module" is being used so import statments must be in a 'import ??? from ??
 
 ****NEED TO CHANGE EMAIL PARAMETERS TO THE COMPANY EMAIL. CURRENTLY USING PERSONAL EMAILS AS PLACEHOLDER FOR TESTING****
 
+Not all environment variables are in the files. All environment variables are on Render.com where the backend is hosted
+
 Dependencies:
 
     bcryptjs: This is used to hash passwords and decrypt hashed passwords

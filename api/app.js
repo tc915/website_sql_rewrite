@@ -11,7 +11,7 @@ import dotenv from 'dotenv'
 import url from 'url'
 import crypto from 'crypto'
 // imported functions from external scripts for database queries
-import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, createUserWithGoogle, deleteAllCartItems, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getCartItem, getCartItemWithProductId, getPricingsForProduct, getProduct, getProducts, getProdutsInCart, getThinkTankContent, updateTable } from './database.js';
+import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, createUserWithGoogle, deleteAllCartItems, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getCartItem, getCartItemWithProductId, getPricingsForProduct, getProduct, getProducts, getThinkTankContent, updateTable } from './database.js';
 // imported function for checking out with Stripe
 import { createCheckoutSession } from './checkout.js'
 // imported function for using webhooks with Stripe as well as getting the sessions storage
