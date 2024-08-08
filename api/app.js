@@ -578,10 +578,8 @@ app.get('/user-cart', async (req, res) => {
         console.log(cartDoc)
         // Retrieve all products in the cart based on the cart document's ID
         const cartProducts = await getProductsInCart(cartDoc.id);
-        console.log(cartProducts)
         // Check if the cart products were found
         if (!cartProducts) {
-            console.log('no cart products')
             // Respond with a 422 status code if the cart was not found
             res.status(422).json('cart not found');
         } else {
@@ -599,8 +597,6 @@ app.get('/user-cart', async (req, res) => {
                 products.push(product);
                 pricings.push(pricing);
             }
-            console.log(products)
-            console.log(pricings)
             // Respond with the cart document, cart products, products, and pricing information
             res.json({ cartDoc, cartProducts, products, pricings });
         }
