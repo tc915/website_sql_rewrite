@@ -11,7 +11,7 @@ import dotenv from 'dotenv'
 import url from 'url'
 import crypto from 'crypto'
 // imported functions from external scripts for database queries
-import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, createUserWithGoogle, deleteAllCartItems, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getCartItem, getCartItemWithProductId, getPricingsForProduct, getProduct, getProducts, getThinkTankContent, updateTable } from './database.js';
+import { addProductPricing, addProductToCart, createBoatSetupTable, createCart, createHomePageProduct, createProduct, createThinkTank, createUser, createUserWithGoogle, deleteAllCartItems, deleteAllThinkTankDocs, deleteCartItems, deleteHomePageProductDocs, deletePricings, deleteProduct, findCartByToken, findProductByImageFileName, findUserByEmail, findUserByUsername, findUserByVerificationToken, getAllHomePageProducts, getBoatSetupWithUserId, getCartItem, getCartItemWithProductId, getPricingsForProduct, getProduct, getProducts, getProductsInCart, getThinkTankContent, updateTable } from './database.js';
 // imported function for checking out with Stripe
 import { createCheckoutSession } from './checkout.js'
 // imported function for using webhooks with Stripe as well as getting the sessions storage
@@ -571,20 +571,20 @@ app.post('/add-product-to-cart/:id', async (req, res) => {
 app.get('/user-cart', async (req, res) => {
     // Extract the cart token from cookies
     const cartToken = req.cookies.cartToken;
-    console.log(cartToken)
 
     try {
         // Find the cart document using the cart token
         const cartDoc = await findCartByToken(cartToken);
-        console.log(cartDoc)
         // Retrieve all products in the cart based on the cart document's ID
         const cartProducts = await getProductsInCart(cartDoc.id);
         console.log(cartProducts)
         // Check if the cart products were found
         if (!cartProducts) {
+            console.log('No cart products')
             // Respond with a 422 status code if the cart was not found
             res.status(422).json('cart not found');
         } else {
+            console.log('There are cart products')
             // Initialize arrays to store product and pricing information
             let products = [];
             let pricings = [];
@@ -606,6 +606,7 @@ app.get('/user-cart', async (req, res) => {
             res.json({ cartDoc, cartProducts, products, pricings });
         }
     } catch (err) {
+        console.log(err)
         // Catch any errors and respond with a 422 status code and error details
         res.status(422).json(err);
     }
