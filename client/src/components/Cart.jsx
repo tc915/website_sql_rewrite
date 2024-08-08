@@ -144,7 +144,7 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
 
     return (
         <div className={`pt-44 laptop:pt-[9.45rem] smLaptop:pt-32 tablet:pt-24 w-full ${darkMode ? 'text-white bg-[#131313]' : 'text-black bg-white'}`}>
-            <div className="mx-[22rem] lg:mx-[14rem] md:mx-44 sm:mx-44 xsm:mx-36 xxsm:mx-32 laptop:mx-28 smLaptop:mx-24 tablet:mx-12 xlMobile:mx-12 lgMobile:mx-6 mdMobile:mx-6 mb-[21.05rem] xlMobile:mb-32">
+            <div className="mx-[22rem] xl:mx-[10rem] lg:mx-[14rem] md:mx-44 sm:mx-28 xsm:mx-24 xxsm:mx-24 laptop:mx-28 smLaptop:mx-24 tablet:mx-12 xlMobile:mx-12 lgMobile:mx-6 mdMobile:mx-6 mb-[21.05rem] xlMobile:mb-32">
                 <div className="flex justify-between items-end h-[6rem] mb-16">
                     <h1 className="text-6xl smLaptop:text-5xl tablet:text-5xl xlMobile:text-4xl lgMobile:text-4xl mdMobile:text-4xl font-[900] font-ruda">Your Cart</h1>
                     <p className="text-4xl smLaptop:text-3xl font-hind tablet:text-2xl xlMobile:text-2xl lgMobile:text-2xl mdMobile:text-2xl font-semibold">{`Total items: ${cart.productCountTotal ? cart.productCountTotal : '0'}`}</p>

@@ -78,7 +78,7 @@ const Contact = ({ inAboutPage, setAboutPageEmailSentPopup }) => {
                     >Ok</button>
                 </div>
             </div>
-            <motion.div className="pt-44 xl:pt-[8rem] lg:pt-[8rem] md:pt-[8rem] sm:pt-[8rem] xsm:pt-[8rem] xxsm:pt-[8rem] laptop:pt-[8rem] smLaptop:pt-[8rem] font-shanti tablet:pt-20 xlMobile:pt-[17rem] xlMobile:w-[33rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem]"
+            <motion.div className="pt-44 w-full xl:pt-[8rem] lg:pt-[8rem] md:pt-[8rem] sm:pt-[8rem] xsm:pt-[8rem] xxsm:pt-[8rem] laptop:pt-[8rem] smLaptop:pt-[8rem] font-shanti tablet:pt-20 xlMobile:pt-[17rem] xlMobile:w-[33rem] lgMobile:pt-[15rem] mdMobile:pt-[15rem]"
                 variants={fadeInVariants}
                 initial="initial"
                 animate="animate"

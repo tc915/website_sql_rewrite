@@ -55,7 +55,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
 
 
     return (
-        <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] smLaptop:h-[18rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] smLaptop:w-[16rem] xlMobile:w-[27rem] tablet:w-[8rem] rounded-3xl p-4 tablet:p-0`}
+        <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] xxsm:h-[20rem] laptop:h-[20rem] smLaptop:h-[18rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] xxsm:w-[18rem] laptop:w-[18rem] smLaptop:w-[16rem] xlMobile:w-[27rem] tablet:w-[8rem] rounded-3xl p-4 tablet:p-0`}
             onMouseEnter={() => setIsHoverContainer(true)}
             onMouseLeave={() => setIsHoverContainer(false)}
         >
@@ -359,7 +359,7 @@ const Products = () => {
                     ))}
 
                     {adminPrivileges && (
-                        <motion.button className='h-[25rem] xsm:h-[24rem] smLaptop:h-[19rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] xsm:w-[18rem] smLaptop:w-[16rem] tablet:w-[8rem] xlMobile:w-[27rem] border-4 rounded-3xl flex flex-col justify-center items-center mt-10'
+                        <motion.button className='h-[25rem] xsm:h-[24rem] xxsm:h-[20rem] laptop:h-[20rem] smLaptop:h-[19rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] xxsm:w-[18rem] xsm:w-[18rem] laptop:w-[18rem] smLaptop:w-[16rem] tablet:w-[8rem] xlMobile:w-[27rem] border-4 rounded-3xl flex flex-col justify-center items-center mt-10'
                             onClick={() => setShowAddProduct(true)}
                             initial={{ scale: 1 }}
                             whileHover={{ scale: 0.95 }}

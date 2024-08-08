@@ -690,6 +690,16 @@ app.get('/:sessionId', (req, res) => {
     }
 })
 
+app.get('/delete-all-showcase-products', async (req, res) => {
+    try {
+        await deleteHomePageProductDocs()
+        res.status(200).json('Deleted showcase products')
+    } catch (err) {
+        console.log(err.stack)
+        res.status(500).json({ error: err })
+    }
+})
+
 const port = process.env.PORT || 4000;
 
 
