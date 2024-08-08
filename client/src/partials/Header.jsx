@@ -22,37 +22,36 @@ const navVariants = {
 
 const Header = ({ prevLoginPath, setPrevLoginPath }) => {
 
-    const location = useLocation();
+    const location = useLocation(); // Hook from react-router-dom to get the current location (URL) object.
 
-    const { user, setUser, darkMode, setDarkMode, navTotalCartCount, setNavTotalCartCount } = useContext(UserContext);
+    const { user, setUser, darkMode, setDarkMode, navTotalCartCount, setNavTotalCartCount } = useContext(UserContext); // Use the UserContext to get and set user data, theme state, and cart count.
 
-    const [hamburgerNavOpen, setHamburgerNavOpen] = useState(false)
+    const [hamburgerNavOpen, setHamburgerNavOpen] = useState(false); // State to manage the open/closed state of the hamburger navigation menu.
 
-    const [isLogoutPopup, setLogoutPopup] = useState(false);
+    const [isLogoutPopup, setLogoutPopup] = useState(false); // State to manage the visibility of the logout confirmation popup.
 
-
-    useEffect(() => {
+    useEffect(() => { // manage the body's overflow style based on the logout popup visibility.
         if (isLogoutPopup) {
-            document.body.style.overflowY = 'hidden';
+            document.body.style.overflowY = 'hidden'; // Hide vertical scroll if the logout popup is open.
         } else {
-            document.body.style.overflowY = 'auto';
+            document.body.style.overflowY = 'auto'; // Show vertical scroll if the logout popup is closed.
         }
-    }, [isLogoutPopup]);
+    }, [isLogoutPopup]); // Dependency array: run this effect when the isLogoutPopup state changes.
 
-
-    const logout = async () => {
-        setUser(null);
-        await axios.post('/logout');
-        setHamburgerNavOpen(false)
+    const logout = async () => { // Function to handle user logout.
+        setUser(null); // Clear user data from context.
+        await axios.post('/logout'); // Send a POST request to the server to log out the user.
+        setHamburgerNavOpen(false); // Close the hamburger navigation menu.
     }
 
-    useEffect(() => {
+    useEffect(() => { // fetch and set the cart's total product count on component mount.
         const getCartTotal = async () => {
-            const { data } = await axios.get('/user-cart')
-            setNavTotalCartCount(data.cartDoc.productCountTotal)
+            const { data } = await axios.get('/user-cart'); // Send a GET request to fetch user cart data.
+            setNavTotalCartCount(data.cartDoc.productCountTotal); // Update the cart count in the context state with the total product count.
         }
-        getCartTotal()
-    }, [])
+        getCartTotal(); // Call the function to fetch cart total.
+    }, []); // Empty dependency array: this effect runs only once, when the component mounts.
+
 
 
     return (

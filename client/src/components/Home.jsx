@@ -108,16 +108,19 @@ const Home = ({ scrollY }) => {
     const [widths, setWidths] = useState(["2em", "2em", "2em", "2em", "2em"]);
     const [colors, setColors] = useState(["#404040", "#404040", "#404040", "#404040", "#404040"]);
 
+    // effect for changing the styling of the bars under the products in the showcase products section
     useEffect(() => {
         setWidths(widths.map((width, index) => (productNum === index + 1 ? "6em" : "2em")));
         setColors(colors.map((color, index) => (productNum === index + 1 ? "#FF7F11" : "#404040")));
     }, [productNum]);
 
+    // effect for choosing a random quote on the landing page
     useEffect(() => {
         const randomNum = Math.floor(Math.random() * landingPageQuotes.length)
         setLandingPageQuote(landingPageQuotes[randomNum])
     }, [])
 
+    // effect for changing the product being shown every five seconds in the showcase products section
     useEffect(() => {
         if (!userChangeProductNum && inProducts) {
             const timer = setTimeout(() => {
@@ -133,6 +136,7 @@ const Home = ({ scrollY }) => {
         }
     }, [productNum, inProducts])
 
+    // defining the points of the scroll where the user is in the different sections of the 'What We Do' section based on the screen size
     const scrollPoints = {
         'tablet': [{ start: 0, end: 999 }, { start: 1000, end: 1499 }, { start: 1500, end: 1999 }, { start: 2000, end: 2499 }, { start: 2500, end: 4306 }],
         'smLaptop': [{ start: 0, end: 1199 }, { start: 1200, end: 1799 }, { start: 1800, end: 2499 }, { start: 2500, end: 3099 }, { start: 3100, end: 5503 }],
@@ -149,6 +153,7 @@ const Home = ({ scrollY }) => {
 
     let screenTypeName;
 
+    // defining screen type name based on the width of the window
     if (window.innerWidth <= 768 && window.innerWidth > 425) {
         screenTypeName = 'tablet'
     } else if (window.innerWidth <= 950 && window.innerWidth > 768) {
@@ -173,6 +178,8 @@ const Home = ({ scrollY }) => {
         screenTypeName = 'xxl'
     }
 
+
+    // Effect for knowing when the user is scrolling over the showcase products section depending on the screen size
     useEffect(() => {
         if (screenTypeName === 'tablet') {
             if (scrollY >= 3100 && scrollY <= 3400) {
@@ -254,9 +261,9 @@ const Home = ({ scrollY }) => {
         }
     }, [scrollY]);
 
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, []);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     useEffect(() => {
         if (user) {
@@ -372,39 +379,55 @@ const Home = ({ scrollY }) => {
         }
     }, []);
 
-    useEffect(() => {
-        if (showcaseProducts && showcaseProducts.length > 0) {
-            const updateProducts = async () => {
+    useEffect(() => { // Effect hook that runs when `showcaseProducts` changes.
+        if (showcaseProducts && showcaseProducts.length > 0) { // Check if `showcaseProducts` is defined and not empty.
+            const updateProducts = async () => { // Define an asynchronous function to update products.
+
+                // Iterate over each product in the `showcaseProducts` array.
                 for (let i = 0; i < showcaseProducts.length; i++) {
+
+                    // Update the `productsPageNames` state by replacing the name of the i-th product.
                     setProductsPageNames(prevNames => {
-                        const newNames = [...prevNames];
-                        newNames[i] = showcaseProducts[i].name;
-                        return newNames;
+                        const newNames = [...prevNames]; // Copy previous names.
+                        newNames[i] = showcaseProducts[i].name; // Update name at index i.
+                        return newNames; // Return updated names array.
                     });
+
+                    // Update the `productsPageDescriptions` state by replacing the description of the i-th product.
                     setProductsPageDescriptions(prevDescriptions => {
-                        const newDescriptions = [...prevDescriptions];
-                        newDescriptions[i] = showcaseProducts[i].description;
-                        return newDescriptions;
+                        const newDescriptions = [...prevDescriptions]; // Copy previous descriptions.
+                        newDescriptions[i] = showcaseProducts[i].description; // Update description at index i.
+                        return newDescriptions; // Return updated descriptions array.
                     });
+
+                    // Define an asynchronous function to get a product's details.
                     const getProduct = async () => {
                         try {
+                            // Fetch product details from the server using the product ID.
                             const { data } = await axios.get(`/product/${showcaseProducts[i].productId}`);
-                            return data.productDoc;
+                            return data.productDoc; // Return product details.
                         } catch (err) {
-                            console.log(err)
+                            console.log(err); // Log any errors that occur during the request.
                         }
                     }
+
+                    // Fetch the product details for the i-th product.
                     const product = await getProduct(i);
+
+                    // Update the `productsSectionProducts` state by adding the fetched product.
                     setProductsSectionProducts(prevProducts => {
-                        const newProducts = [...prevProducts];
-                        newProducts[i] = product;
-                        return newProducts;
+                        const newProducts = [...prevProducts]; // Copy previous products.
+                        newProducts[i] = product; // Update product at index i.
+                        return newProducts; // Return updated products array.
                     })
                 }
             };
+
+            // Call the asynchronous `updateProducts` function to update the state.
             updateProducts();
         }
-    }, [showcaseProducts]);
+    }, [showcaseProducts]); // Effect runs when `showcaseProducts` changes.
+
 
     const deleteAllShowcaseProducts = async () => {
         try {

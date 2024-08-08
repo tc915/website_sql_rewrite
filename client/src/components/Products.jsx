@@ -53,7 +53,7 @@ const Product = ({ product, refresh, setRefresh, adminPrivileges, user, navigate
         }
     }
 
-
+    // This is a smaller component used in a larger one. This is normally used for individual elements that you want to map out multiple times
     return (
         <motion.div className={`relative ${darkMode ? 'text-white' : 'text-black'} font-semibold text-2xl h-[25rem] xxsm:h-[20rem] laptop:h-[20rem] smLaptop:h-[18rem] tablet:h-[10rem] xlMobile:h-[33rem] w-[20rem] xxsm:w-[18rem] laptop:w-[18rem] smLaptop:w-[16rem] xlMobile:w-[27rem] tablet:w-[8rem] rounded-3xl p-4 tablet:p-0`}
             onMouseEnter={() => setIsHoverContainer(true)}
@@ -354,6 +354,8 @@ const Products = () => {
                     </div>
                 </div>
                 <div className="grid grid-cols-3 xlMobile:grid-cols-1 lgMobile:grid-cols-1 mdMobile:grid-cols-1 gap-y-44 tablet:gap-y-36 xlMobile:gap-y-[14rem] px-[20rem] lg:px-[14rem] md:px-44 sm:px-44 xsm:px-36 xxsm:px-36 laptop:px-32 smLaptop:px-24 tablet:px-[5rem] tablet:ml-[4rem] xlMobile:px-12 lgMobile:px-6 mdMobile:px-6 py-14 mb-[36.3rem] text-center">
+                    {/* The map method maps out an array of objects with a callback function */}
+                    {/* Always check if the length of the array being mapped out is larger than zero before mapping. If you don't check it before mapping, the app will crash */}
                     {products.length > 0 && products.map((product, index) => (
                         <Product key={index} product={product} refresh={refresh} setRefresh={setRefresh} adminPrivileges={adminPrivileges} user={user} navigate={navigate} darkMode={darkMode} />
                     ))}

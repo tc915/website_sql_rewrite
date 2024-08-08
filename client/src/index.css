@@ -1,5 +1,8 @@
+/* Font-family imports form google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@300;400;500;600;700&family=Ruda:wght@400..900&family=Shanti&display=swap');
 
+
+/* Required rules for Tailwindcss use */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

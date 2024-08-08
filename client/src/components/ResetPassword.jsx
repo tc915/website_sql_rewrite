@@ -12,6 +12,7 @@ const ResetPassword = () => {
     const [confirmPasswordBool, setConfirmPasswordBool] = useState(false);
     const [resetPasswordPopup, setResetPasswordPopup] = useState(false);
 
+    // request to reset the user's password
     const resetPassword = async () => {
         if (confirmPasswordBool) {
             const { data } = await axios.post(`/reset-password/${username}`, { password });

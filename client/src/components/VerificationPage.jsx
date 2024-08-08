@@ -8,6 +8,7 @@ const VerificationPage = () => {
     const { token } = useParams();
     const { darkMode } = useContext(UserContext);
 
+    // when the url contains /verify-email/:tokenString, a request is made to verify the email
     useEffect(() => {
         const verifyEmail = async () => {
             await axios.get(`/verify-email/${token}`)

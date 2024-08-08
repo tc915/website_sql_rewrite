@@ -6,37 +6,38 @@ const AccountInfo = ({ name, setName, email, setEmail, password, setPassword, da
     const [isChangePassword, setIsChangePassword] = useState(false);
     const [confirmPasswordBool, setConfirmPasswordBool] = useState(false);
 
-    const saveAccountChanges = async () => {
+    const saveAccountChanges = async () => { // Define an asynchronous function to save account changes.
         try {
-            const updateData = {};
+            const updateData = {}; // Initialize an empty object to store the data to be updated.
 
-            if (isChangeEmail) {
-                updateData.email = email;
+            if (isChangeEmail) { // Check if the email change flag is true.
+                updateData.email = email; // Add the new email to the updateData object.
             }
 
-            if (isChangePassword && password) {
-                if (confirmPasswordBool) {
-                    updateData.password = password;
-                } else {
-                    alert('Passwords do not match');
-                    return;
+            if (isChangePassword && password) { // Check if the password change flag is true and if a password is provided.
+                if (confirmPasswordBool) { // Check if the new password and confirmation password match.
+                    updateData.password = password; // Add the new password to the updateData object.
+                } else { // If passwords do not match.
+                    alert('Passwords do not match'); // Show an alert to the user.
+                    return; // Exit the function to prevent making an update request.
                 }
             }
 
-            if (Object.keys(updateData).length > 0) {
-                const { data } = await axios.post(`/save-user-changes/${username}`, updateData);
-                setNeedNewEmailVerification(data.usernameChange || needNewEmailVerification);
-                setChangedPassword(data.passwordChange || changedPassword);
+            if (Object.keys(updateData).length > 0) { // Check if there are any changes to be saved.
+                const { data } = await axios.post(`/save-user-changes/${username}`, updateData); // Send a POST request to save changes.
+                setNeedNewEmailVerification(data.usernameChange || needNewEmailVerification); // Update the needNewEmailVerification state based on the response.
+                setChangedPassword(data.passwordChange || changedPassword); // Update the changedPassword state based on the response.
             }
 
-        } catch (err) {
-            if (err.response && err.response.status === 420) {
-                alert('The email provided is already associated with an account');
-            } else {
-                console.log(err);
+        } catch (err) { // Catch any errors that occur during the request.
+            if (err.response && err.response.status === 420) { // Check if the error response status is 420 (email already associated).
+                alert('The email provided is already associated with an account'); // Show an alert to the user.
+            } else { // For any other errors.
+                console.log(err); // Log the error to the console.
             }
         }
     };
+
 
     return (
         <form className="w-[65rem] smLaptop:w-[35rem] smLaptop:-ml-6 smLaptop:-mt-14 tablet:w-[30rem] xlMobile:px-0 lgMobile:px-0 mdMobile:px-0 xlMobile:mt-24 lgMobile:mt-16 mdMobile:mt-16 flex flex-col font-shanti items-center px-24 smLaptop:px-0 tablet:px-0 lgMobile:ml-28 mdMobile:ml-28"

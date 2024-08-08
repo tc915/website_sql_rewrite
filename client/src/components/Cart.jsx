@@ -79,56 +79,78 @@ const Cart = ({ prevLoginPath, setPrevLoginPath }) => {
 
     const stripe = useStripe()
 
+    c// Function to calculate the subtotal cost of all items in the cart
     const getSubtotalCost = () => {
         let subtotal = 0;
+        // Loop through cartProducts array to sum up the prices
         for (let i = 0; i < cartProducts.length; i++) {
-            subtotal += prices[i]
+            subtotal += prices[i];
         }
+        // Update the subtotal cost state
         setSubtotalCost(subtotal);
     }
 
+    // Effect to fetch the user's cart and product details on component mount
     useEffect(() => {
+        // Async function to get the user's cart from the server
         const getUserCart = async () => {
+            // Fetch the cart data from the server
             const { data } = await axios.get('/user-cart');
+            // Set the cart data to state
             setCart(data.cartDoc);
-            const products = []
+
+            // Prepare an array to hold product details, pricing, and count
+            const products = [];
             for (let i = 0; i < data.products.length; i++) {
                 const productDetails = {
                     details: data.products[i],
                     pricing: data.pricings[i],
                     count: data.cartProducts[i].count
                 }
-                products.push(productDetails)
+                products.push(productDetails);
             }
-            setCartProducts(products)
+            // Update the cartProducts state with the prepared array
+            setCartProducts(products);
         }
+        // Call the function to get user cart data
         getUserCart();
-    }, []);
+    }, []); // Empty dependency array ensures this runs only on component mount
 
+    // Function to handle user checkout process
     const checkoutUser = async (userCart, userDoc) => {
+        // Add Stripe image thumbnails to each cart item
         userCart.forEach(item => {
-            item["stripeImgThumbnail"] = `https://ideasthatfloat-server-lnr7.onrender.com/uploads/${item.details.thumbnailImageId}`
+            item["stripeImgThumbnail"] = `https://ideasthatfloat-server-lnr7.onrender.com/uploads/${item.details.thumbnailImageId}`;
         });
-        const checkoutCart = []
+
+        // Prepare the checkout cart data
+        const checkoutCart = [];
         for (let i = 0; i < userCart.length; i++) {
             const checkoutItem = {
                 productId: userCart[i].details.id,
                 count: userCart[i].count,
                 stripeImgThumbnail: userCart[i].stripeImgThumbnail
             }
-            checkoutCart.push(checkoutItem)
+            checkoutCart.push(checkoutItem);
         }
-        console.log(checkoutCart)
-        const { data } = await axios.post('/checkout-cart', { checkoutCart, userDoc })
+        console.log(checkoutCart);
+
+        // Send the checkout data to the server to create a Stripe session
+        const { data } = await axios.post('/checkout-cart', { checkoutCart, userDoc });
         const sessionID = data.sessionID;
-        setSessionId(sessionID)
+        setSessionId(sessionID);
+
+        // Redirect the user to the Stripe checkout page
         const { error } = await stripe.redirectToCheckout({
             sessionId: sessionID
-        })
+        });
+
+        // Log any errors that occur during the redirect
         if (error) {
-            console.log(error)
+            console.log(error);
         }
     }
+
 
     useEffect(() => {
         if (prices.length > 0) {

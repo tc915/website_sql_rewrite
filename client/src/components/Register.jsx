@@ -18,28 +18,46 @@ const Register = () => {
     const [errorCode, setErrorCode] = useState();
     const [googleUser, setGoogleUser] = useState(null);
 
-    const registerUser = () => {
-        if (googleUser) {
-            let username = googleUser.email.split('@');
-            username = username[0];
-            axios.post('/register', { name: googleUser.name, username, email: googleUser.email, password: null, googleUser: true })
-                .then((res) => {
-                    setUser(res.data);
-                    navigate('/');
+    const registerUser = () => { // Function to handle user registration.
+
+        if (googleUser) { // Check if `googleUser` is available (indicating a Google login).
+            let username = googleUser.email.split('@'); // Extract the username part from the Google email.
+            username = username[0]; // Use the part before '@' as the username.
+
+            // Make a POST request to the server to register the user with Google credentials.
+            axios.post('/register', {
+                name: googleUser.name, // Send the user's name from Google.
+                username, // Send the generated username.
+                email: googleUser.email, // Send the user's email from Google.
+                password: null, // No password needed for Google users.
+                googleUser: true // Flag to indicate this is a Google user.
+            })
+                .then((res) => { // On successful registration.
+                    setUser(res.data); // Update the user context with the registered user data.
+                    navigate('/'); // Redirect to the home page.
                 })
-                .catch((err) => console.log(err))
-        } else {
-            let username = email.split('@');
-            username = username[0];
-            axios.post('/register', { name, username, email, password, googleUser: false })
-                .then((res) => {
-                    navigate('/register/verify-email')
+                .catch((err) => console.log(err)); // Handle any errors during registration and log them.
+        } else { // If `googleUser` is not available (indicating a regular registration).
+            let username = email.split('@'); // Extract the username part from the email input.
+            username = username[0]; // Use the part before '@' as the username.
+
+            // Make a POST request to the server to register the user with regular credentials.
+            axios.post('/register', {
+                name, // Send the user's name from input.
+                username, // Send the generated username.
+                email, // Send the user's email from input.
+                password, // Send the password from input.
+                googleUser: false // Flag to indicate this is a regular user.
+            })
+                .then((res) => { // On successful registration.
+                    navigate('/register/verify-email'); // Redirect to the email verification page.
                 })
-                .catch((err) => {
-                    setErrorCode(err.response.data.code);
-                })
+                .catch((err) => { // Handle any errors during registration.
+                    setErrorCode(err.response.data.code); // Update the error code state with the error code from the server response.
+                });
         }
     }
+
 
     useEffect(() => {
         if (errorCode === 11000) {

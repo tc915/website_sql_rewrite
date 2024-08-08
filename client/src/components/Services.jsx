@@ -35,6 +35,7 @@ const Services = () => {
 
     const { darkMode, setDarkMode } = useContext(UserContext);
 
+    // Scrolls to the top of the page on every render. This prevents where if you are scrolled halfway on one page and click the nav to go to another, it dones't open the new page already scrolled halfway and resets the user's scroll to the top.
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);

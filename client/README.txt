@@ -36,7 +36,32 @@ important scripts to run in powershell (MUST BE RAN WHEN IN THE CLIENT DIRECTORY
     'npm install ???': Used to install dependencies found on https://npmjs.com
 
 
-important notes: 
+important notes:
+
+
+    ----------- Import things to know about React ----------------
+
+        useEffect(() => {                   Used for running code whenever a variable is changed
+            -code-                ---->     Put variables in the dependencies list. If dependencies
+        }, [dependencies])                  list is empty, it will run on every render or re-render
+
+
+
+        const [variable, setVariable] = useState('')    
+        
+        \--->   Used for declaring variables that you know are going to change, ex: email, username, editable text, etc. The 'variable' is the value itself and 'setVariable' is a function where you pass in a new value to assign to that variable (ex: setUsername('bobiscool552')). The 'setVariable' is ASYNCHRONOUS, so DO NOT try to access the variable after the 'set' function has been called. Use 'useEffect' hooks to track when the variable has been updated and run code there instead.
+
+
+        EXAMPLE USE OF useEffect and useState together:
+
+        const [username, setUsername] = useState('')
+
+        useEffect(() => {
+            console.log(username) -------> runs when username is changed and when is first declared
+        }, [username])
+
+
+
 
    ------------ tailwind.config.js --------------
         Tailwindcss is used to make CSS styling inline with HTML elements. Visit https://tailwindcss.com/docs/installation to see different styling rules. Tailwind is used by adding the prop ' className="???" ' to any element. It works by having premade styling classes that you attach to HTML elements. To have custom parameters instead of the pre-made classes, use brackets [], ex: className="text-[#FF7F11]" for custom text color or className="w-[15.25rem]" for custom width.

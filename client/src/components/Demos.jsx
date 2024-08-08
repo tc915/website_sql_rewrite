@@ -239,56 +239,68 @@ const Demos = () => {
         return count;
     }
 
+    // Function to reset all input states and related fields to their initial values
     const clearInputs = () => {
+        // Set all light states to false
         for (let i = 0; i < lightTypes.length; i++) {
             lightStates[lightTypes[i]] = false
         }
+        // Set all pump states to false
         for (let i = 0; i < pumpTypes.length; i++) {
             pumpStates[pumpTypes[i]] = false
         }
+        // Set all boat control states to false
         for (let i = 0; i < boatControlTypes.length; i++) {
             boatControlStates[boatControlTypes[i]] = false
         }
+        // Reset other fields
         setSwitchOnCount(0);
         setWirelessInterfaceBool(false)
         setBoatLength('')
         setNumDevices(0);
     }
 
+    // Function to set all light, pump, and boat control states to true
     const addAllInputs = () => {
         const newLightStates = { ...lightStates };
         const newPumpStates = { ...pumpStates };
         const newBoatControlStates = { ...boatControlStates };
 
+        // Set all lights to true
         lightTypes.forEach(light => {
             newLightStates[light] = true;
         });
 
+        // Set all pumps to true
         pumpTypes.forEach(pump => {
             newPumpStates[pump] = true;
         });
 
+        // Set all boat controls to true
         boatControlTypes.forEach(control => {
             newBoatControlStates[control] = true;
         });
 
+        // Update state with new values
         setLightStates(newLightStates);
         setPumpStates(newPumpStates);
         setBoatControlStates(newBoatControlStates);
     };
 
-
+    // Effect to update the count of switches that are turned on
     useEffect(() => {
         const newSwitchOnCount = countSwitchesOn(lightStates) + countSwitchesOn(pumpStates) + countSwitchesOn(boatControlStates);
         setSwitchOnCount(newSwitchOnCount);
     }, [lightStates, pumpStates, boatControlStates]);
 
+    // Effect to calculate the number of keypads, output boxes, and digital switching boxes based on switch count and boat length
     useEffect(() => {
         let newNum6ButtonKeypads = 0
         let newNum12ButtonKeypads = 0
         let newNumsixOutputDigitalSwitchingBox = 0
         let newNumDDS = 0
         if (switchOnCount > 0 || boatLength > 0) {
+            // Determine the number of 6-button and 12-button keypads needed
             let keypadRemainder = switchOnCount % 12;
             if (keypadRemainder <= 6 && keypadRemainder > 0) {
                 newNum6ButtonKeypads = 1
@@ -297,6 +309,7 @@ const Demos = () => {
                 newNum12ButtonKeypads = Math.round(switchOnCount / 12)
                 newNum6ButtonKeypads = 0
             }
+            // Determine the number of digital switching boxes needed
             let outputBoxRemainder = switchOnCount % 27;
             if (outputBoxRemainder <= 6 && outputBoxRemainder !== 0) {
                 newNumsixOutputDigitalSwitchingBox = 1
@@ -308,11 +321,13 @@ const Demos = () => {
                 newNumsixOutputDigitalSwitchingBox = 0
                 newNumDDS = Math.floor(switchOnCount / 27)
             }
+            // Update state with new values
             setNum12ButtonKeypads(newNum12ButtonKeypads)
             setNum6ButtonKeypads(newNum6ButtonKeypads)
             setNumsixOutputDigitalSwitchingBox(newNumsixOutputDigitalSwitchingBox)
             setNumDDS(newNumDDS)
         } else if (switchOnCount === 0) {
+            // Reset to 0 if no switches are on
             setNum6ButtonKeypads(0);
             setNum12ButtonKeypads(0);
             setNumsixOutputDigitalSwitchingBox(0);
@@ -320,6 +335,7 @@ const Demos = () => {
         }
     }, [switchOnCount, boatLength])
 
+    // Effect to calculate the number and type of backbone cables required based on boat length
     useEffect(() => {
         if (boatLength > 0) {
             let boatLengthRemainder = (boatLength - 10) % 32;
@@ -328,6 +344,7 @@ const Demos = () => {
             let fiveMeterCables = 0;
             let twoMeterCables = 0;
             let halfMeterCables = 0;
+            // Determine the number of each type of backbone cable required
             if (Math.floor((boatLength - 10) / 32) >= 1) {
                 tenMeterCables = Math.floor((boatLength - 10) / 32);
             }
@@ -344,12 +361,14 @@ const Demos = () => {
                     tenMeterCables += 1;
                 }
             }
+            // Update state with new values
             setNum10mBackboneCables(tenMeterCables);
             setNum8mBackboneCables(eightMeterCables);
             setNum5mBackboneCables(fiveMeterCables);
             setNum2mBackboneCables(twoMeterCables);
             setNumHalfMeterBackboneCables(halfMeterCables);
         } else {
+            // Reset to 0 if no boat length is provided
             setNum10mBackboneCables(0);
             setNum8mBackboneCables(0);
             setNum5mBackboneCables(0);
@@ -358,6 +377,7 @@ const Demos = () => {
         }
     }, [boatLength])
 
+    // Effect to calculate the number of tee connectors needed based on the number of devices
     useEffect(() => {
         let numWirelessInterface;
         if (wirelessInterfaceBool) {
@@ -368,15 +388,18 @@ const Demos = () => {
         setNumDevices(numsixOutputDigitalSwitchingBox + numDDS + num12ButtonKeypads + num6ButtonKeypads + numWirelessInterface)
     }, [numsixOutputDigitalSwitchingBox, num6ButtonKeypads, wirelessInterfaceBool])
 
+    // Effect to calculate the number of 1-way, 2-way, and 4-way tee connectors needed based on the number of devices
     useEffect(() => {
         if (numDevices > 0) {
             let numDevicesRemainder = numDevices % 4;
             let oneWayTeeConnectors = 0;
             let twoWayTeeConnectors = 0;
             let fourWayTeeConnectors = 0;
+            // Determine the number of 4-way tee connectors needed
             if (Math.floor(numDevices / 4) >= 1) {
                 fourWayTeeConnectors = Math.floor(numDevices / 4);
             }
+            // Determine the number of 1-way and 2-way tee connectors needed
             if (numDevicesRemainder > 0) {
                 if (numDevicesRemainder <= 1) {
                     oneWayTeeConnectors = 1;
@@ -386,19 +409,24 @@ const Demos = () => {
                     fourWayTeeConnectors += 1;
                 }
             }
+            // Update state with new values
             setNum4WayTeeConnectors(fourWayTeeConnectors);
             setNum2WayTeeConnectors(twoWayTeeConnectors);
             setNum1WayTeeConnectors(oneWayTeeConnectors);
         } else {
+            // Reset to 0 if no devices are present
             setNum4WayTeeConnectors(0);
             setNum2WayTeeConnectors(0);
             setNum1WayTeeConnectors(0);
         }
     }, [numDevices])
 
+    // Effect to calculate the costs associated with cables, connectors, and other components
     useEffect(() => {
         if (switchOnCount > 0 && boatLength > 0) {
+            // Calculate the cost of power cables
             let newPowerCablesCost = (productData.awgPowerCable.cost * (0.6 * boatLength) * switchOnCount);
+            // Calculate the cost of backbone cables
             let newBackboneCablesCost = (
                 (num10mBackboneCables * productData.backboneCable10m.cost) +
                 (num8mBackboneCables * productData.backboneCable8m.cost) +
@@ -406,27 +434,31 @@ const Demos = () => {
                 (num2mBackboneCables * productData.backboneCable2m.cost) +
                 (numHalfMeterBackboneCables * productData.backboneCableHalfMeter.cost)
             );
+            // Calculate the cost of tee connectors
             let newTeeConnectorsCost = (
                 (num1WayTeeConnectors * productData.oneWayTeeConnector.cost) +
                 (num2WayTeeConnectors * productData.twoWayTeeConnector.cost) +
                 (num4WayTeeConnectors * productData.fourWayTeeConnector.cost)
             )
+            // Calculate the cost of NMEA components
             let newNmeaCablesCost = (productData.powerInjector.cost + (newTeeConnectorsCost + (numDevices * productData.dropCable.cost)) + newBackboneCablesCost)
+            // Update state with new costs
             setCablingCost(newPowerCablesCost + newNmeaCablesCost)
             setPowerCablesCost(newPowerCablesCost);
             setBackBoneCablesCost(newBackboneCablesCost);
             setTeeConnectorsCost(newTeeConnectorsCost);
             setNmeaCablesCost(newNmeaCablesCost);
         } else {
+            // Reset costs to 0 if no switches or boat length is provided
             setCablingCost(0);
             setPowerCablesCost(0);
             setBackBoneCablesCost(0);
             setTeeConnectorsCost(0);
             setNmeaCablesCost(0);
         }
-
     }, [wirelessInterfaceBool, num4WayTeeConnectors, num2WayTeeConnectors, num1WayTeeConnectors, num10mBackboneCables, switchOnCount, productData])
 
+    // Effect to calculate the total cost including keypads, output boxes, and wireless interfaces
     useEffect(() => {
         let newCostOfOutputBoxes = (
             (numsixOutputDigitalSwitchingBox * productData.sixOutputDigitalSwitchingBox.cost) +
@@ -442,15 +474,18 @@ const Demos = () => {
         } else {
             newCostOfWirelessInterface = 0;
         }
+        // Update state with new total cost and individual costs
         setTotalCost(newCostOfKeypads + newCostOfOutputBoxes + newCostOfWirelessInterface + cablingCost);
         setCostOfKeypads(newCostOfKeypads);
         setCostOfOutputBoxes(newCostOfOutputBoxes);
         setCostOfWirelessInterface(newCostOfWirelessInterface);
     }, [cablingCost, numsixOutputDigitalSwitchingBox, num6ButtonKeypads, wirelessInterfaceBool])
 
+    // Effect to calculate the total weight of components and convert it to pounds
     useEffect(() => {
         setManualTotalCost(0)
         if (totalCost > 0) {
+            // Calculate the weight of backbone cables
             let backboneCablesWeight = (
                 (num10mBackboneCables * productData.backboneCable10m.weight) +
                 (num8mBackboneCables * productData.backboneCable8m.weight) +
@@ -458,14 +493,19 @@ const Demos = () => {
                 (num2mBackboneCables * productData.backboneCable2m.weight) +
                 (numHalfMeterBackboneCables * productData.backboneCableHalfMeter.weight)
             )
+            // Calculate the weight of tee connectors
             let teeConnectorsWeight = (
                 (num1WayTeeConnectors * productData.oneWayTeeConnector.weight) +
                 (num2WayTeeConnectors * productData.twoWayTeeConnector.weight) +
                 (num4WayTeeConnectors * productData.fourWayTeeConnector.weight)
             )
+            // Calculate the weight of power cables
             let powerCablesWeight = (productData.awgPowerCable.weight * (0.6 * boatLength) * switchOnCount)
+            // Calculate the weight of NMEA components
             let nmeaComponentsWeight = (productData.powerInjector.weight + (teeConnectorsWeight + (numDevices * productData.dropCable.weight)) + backboneCablesWeight)
+            // Calculate the total weight of cables
             let totalCablesWeight = powerCablesWeight + nmeaComponentsWeight;
+            // Calculate the weight of keypads, output boxes, and wireless interface
             let weightOfKeypads = (
                 (num6ButtonKeypads * productData.sixWayKeypad.weight) +
                 (num12ButtonKeypads * productData.twelveWayKeypad.weight)
@@ -478,11 +518,14 @@ const Demos = () => {
             if (wirelessInterfaceBool) {
                 weightOfWirelessInterface = true;
             }
+            // Update state with total weight in pounds
             setTotalWeight((totalCablesWeight + weightOfKeypads + weightOfOutputBoxes + weightOfWirelessInterface) * 2.205)
         } else {
+            // Reset total weight to 0 if no total cost
             setTotalWeight(0)
         }
     }, [totalCost])
+
 
 
     const splitCamelCase = (str) => {

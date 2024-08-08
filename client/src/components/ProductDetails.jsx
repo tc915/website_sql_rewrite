@@ -7,6 +7,8 @@ import Footer from "../partials/Footer";
 
 const ProductDetails = () => {
 
+    // Whenever 'const { variable } = object' is used, this is destructuring the object to save a specific parameter from that object instead of the entire thing
+
     const { user, darkMode } = useContext(UserContext);
 
     const { id } = useParams();
@@ -38,34 +40,43 @@ const ProductDetails = () => {
     const [variablePricing, setVariablePricing] = useState([]);
 
 
-    const saveProductEdits = async () => {
-        const formData = new FormData();
-        formData.append('productName', productName);
-        formData.append('productPartNumber', productPartNumber);
-        formData.append('productDescription', productDescription);
-        formData.append('variablePricing', JSON.stringify(variablePricing));
-        formData.append('imageThumbnail', productThumbnailImg);
+    const saveProductEdits = async () => { // Function to save edited product details.
+
+        const formData = new FormData(); // Create a new FormData object to handle file uploads and form data.
+
+        // Append various product details to the FormData object.
+        formData.append('productName', productName); // Add product name.
+        formData.append('productPartNumber', productPartNumber); // Add product part number.
+        formData.append('productDescription', productDescription); // Add product description.
+        formData.append('variablePricing', JSON.stringify(variablePricing)); // Add variable pricing as a JSON string.
+        formData.append('imageThumbnail', productThumbnailImg); // Add product thumbnail image.
+
+        // Conditionally add product details image if it exists.
         if (productDetailsImg) {
-            formData.append('imageDetails', productDetailsImg);
+            formData.append('imageDetails', productDetailsImg); // Add product details image.
         }
 
         try {
+            // Send a PATCH request to update the product with the form data.
             const { data } = await axios.patch(`/product/${id}`, formData);
 
-            setProduct(data.productDoc);
-            setVariablePricing(data.variablePricing);
-            console.log(data)
-            setRefresh(!refresh);
-            setShowEdit(false);
+            // Update state with the response data.
+            setProduct(data.productDoc); // Update the product information.
+            setVariablePricing(data.variablePricing); // Update variable pricing information.
+            console.log(data); // Log the response data for debugging.
+            setRefresh(!refresh); // Toggle refresh state to trigger any necessary updates.
+            setShowEdit(false); // Hide the edit form or view.
 
         } catch (err) {
+            // Handle errors based on status code.
             if (err.response.status === 422) {
-                alert('Another product is already using that image, please find another image')
+                alert('Another product is already using that image, please find another image'); // Alert if the image is already in use.
             } else {
-                console.log(err.response);
+                console.log(err.response); // Log other errors for debugging.
             }
         }
     }
+
 
     const addProductToCart = async () => {
         const reqData = { quantity }
@@ -73,28 +84,39 @@ const ProductDetails = () => {
         navigate('/products');
     }
 
-    const changeDisplayPrice = () => {
-        if (variablePricing) {
+    const changeDisplayPrice = () => { // Function to update the displayed price based on quantity and variable pricing.
+
+        if (variablePricing) { // Check if `variablePricing` is defined and not null.
+
+            // Loop through each pricing option in `variablePricing`.
             for (let i = 0; i < variablePricing.length; i++) {
+
+                // Check if the maximum quantity for this pricing tier is not set (null) or is 0.
                 if (variablePricing[i].max === null || variablePricing[i].max === 0) {
+
+                    // If the quantity is greater than or equal to the minimum quantity for this tier, update the displayed price.
                     if (quantity >= variablePricing[i].min) {
-                        setDisplayPrice(variablePricing[i].price)
+                        setDisplayPrice(variablePricing[i].price); // Set the display price to the current tier's price.
                     }
-                } else {
+                } else { // If the maximum quantity for this tier is set.
+
+                    // Check if the quantity falls within the range defined by `min` and `max` for this pricing tier.
                     if (quantity >= variablePricing[i].min && quantity <= variablePricing[i].max) {
-                        setDisplayPrice(variablePricing[i].price)
+                        setDisplayPrice(variablePricing[i].price); // Set the display price to the current tier's price.
                     }
                 }
             }
         }
     }
 
+    // If the product is changed, change the display price as well
     useEffect(() => {
         if (product) {
             changeDisplayPrice();
         }
     }, [product]);
 
+    // If the quantity is changed, change the display price
     useEffect(() => {
         changeDisplayPrice();
     }, [quantity])

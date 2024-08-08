@@ -18,6 +18,7 @@ const UserInfo = () => {
     const [changedPassword, setChangedPassword] = useState(false);
     const [popupText, setPopupText] = useState('');
 
+    // request to get the user's info to display
     useEffect(() => {
         if (user) {
             const getUserInfo = async () => {
