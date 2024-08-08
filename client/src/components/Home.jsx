@@ -104,6 +104,7 @@ const Home = ({ scrollY }) => {
     const [landingPageQuote, setLandingPageQuote] = useState("");
 
     const [savedProductPopup, setSavedProductPopup] = useState(false);
+    const [deletedShowcaseProductsPopup, setDeletedShowcaseProductsPopup] = useState(false)
 
     const [widths, setWidths] = useState(["2em", "2em", "2em", "2em", "2em"]);
     const [colors, setColors] = useState(["#404040", "#404040", "#404040", "#404040", "#404040"]);
@@ -432,7 +433,7 @@ const Home = ({ scrollY }) => {
     const deleteAllShowcaseProducts = async () => {
         try {
             await axios.delete('/delete-all-showcase-products')
-            console.log('Successfully deleted all showcase products')
+            setDeletedShowcaseProductsPopup(true)
         } catch (err) {
             console.log(err)
         }
@@ -446,6 +447,14 @@ const Home = ({ scrollY }) => {
                     <p className="text-white font-semibold text-2xl font-hind">Saved Products</p>
                     <button className="text-black font-semibold px-6 text-xl mt-6 py-1 rounded-xl bg-white font-hind"
                         onClick={() => setSavedProductPopup(false)}
+                    >Ok</button>
+                </div>
+            </div>
+            <div className={`fixed top-0 left-0 w-full h-screen z-[99] bg-black/50 flex justify-center items-center ${deletedShowcaseProductsPopup ? '' : 'hidden'}`}>
+                <div className="bg-[#131313] flex flex-col items-center justify-center w-[20rem] h-[10rem] rounded-xl border-4 border-[#FF7F11]">
+                    <p className="text-white font-semibold text-2xl font-hind">Deleted Products</p>
+                    <button className="text-black font-semibold px-6 text-xl mt-6 py-1 rounded-xl bg-white font-hind"
+                        onClick={() => setDeletedShowcaseProductsPopup(false)}
                     >Ok</button>
                 </div>
             </div>
@@ -809,10 +818,10 @@ const Home = ({ scrollY }) => {
                             >Edit Products</button>
                         )}
                         <div className="w-1/2 flex items-center justify-center">
-                            {productsSectionProducts.every(product => product !== null) && productsSectionProducts.map((product, index) => {
+                            {productsSectionProducts.length > 0 && productsSectionProducts.every(product => product !== null) && productsSectionProducts.map((product, index) => {
                                 const matchingImage = productsPageImages.find(image => image && image.imgId === product.thumbnailImageId);
                                 return (
-                                    <div key={index} className={`h-2/3 w-2/3 flex justify-center items-center ${productNum === index + 1 ? '' : 'hidden'}`}>
+                                    <div key={index} className={`-mt-28 h-2/3 w-2/3 flex justify-center items-center ${productNum === index + 1 ? '' : 'hidden'}`}>
                                         {matchingImage && <img src={`https://ideasthatfloat-server-lnr7.onrender.com/uploads/${matchingImage.imgSrc}`} className="h-[75%] object-cover"></img>}
                                     </div>
                                 );

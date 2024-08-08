@@ -6,3 +6,5 @@ Backend --> Render.com: https://dashboard.render.com/web/srv-cq2od3tds78s73ejbvq
 
 
 For the front-end on cPanel, use the Git Version Control for uploading/changing files. cPanel will crash if you delete the old files and upload the new ones over and over.
+
+For Render.com, it is currently connected to my personal github for what files to use for the backend. Connect it to another github when adding more changes
