@@ -16,7 +16,7 @@ Dependencies:
 
     crypto: Used to generate token strings to be used for cookie tokens or url parameters
 
-    dotenv: Used to allow use of a .env file for environment variabels
+    dotenv: Used to allow use of a .env file for environment variables
 
     express: Framework for building an API and handling requests from the front-end
 
