@@ -22,3 +22,5 @@ HIGHEST PRIORITY (Must do before launch):
 LOW PRIORITY:
 
     1. The responsive design still needs some tweaking here and there.
+
+    2. Any images added to the website when choosing a file for products or the think tank are saved to the backend server on Render.com, where we only have a small amount of storage. There is also a problem where whenver the backend is updated, the images added to the front-end on the website are erased and overridden. A possible solution may be in changing how the images are saved, like saving them to the database on cPanel instead of to the backend.
