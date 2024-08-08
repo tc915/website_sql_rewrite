@@ -1,0 +1,33 @@
+Make sure to read the README.txt files in both the 'client' folder and 'api' folder
+
+FRONT END (cPanel):
+
+    Prerequisites:
+        1. Make sure to have npm downloaded globally to be able to use with powershell/cmd
+
+    Steps:
+        1. Once changes have been made and saved and you want to upload to the production build, run 'npm run build' in the 'client' directory to compile the code with powershell/cmd.
+
+        2. After the compiling is finished, there should be a 'dist' folder in the client directory that contains all the compiled code. This is all the code that needs to be uploaded to cPanel for the front-end. Use Git Version Control on cPanel and connect a github repo to the folder in the File Manager (ideasthatfloat.test directory currently) where the files for the front end are stored. (There is an .htaccess file in the ideasthatfloat.test directory. Make sure to not edit or delete this file because it is important for redirects and if the directory for the site files is changed, make sure to copy that file over as well.)
+
+        3. After the Git Version Control is connected to your github repo and the directory on cPanel, there should be a 'Pull or Deploy' option in the 'Manage Depository' settings where you can choose 'Update from Remote' to update the cPanel files from your connected github repo.
+
+
+BACK END (Render.com):
+
+    Like with cPanel, Render.com needs to be connected to a GitHub repo with all the files. Right now, I have it set up to where the GitHub repo has all the files for both the front-end and backend. This is important because the settings for the Web App on Render have certain paths that are needed to install dependencies, know where the main javascript file is, etc. 
+
+    So, if you connect the Web App on Render to a different GitHub account and you only have the backend files, make sure to change the settings to match with that.
+
+        Settings that might need changing depending on how github repo is setup:
+
+            'Root Directory' ---> curently set to the 'api' directory
+
+            'Build Command' ---> currently set to 'api/ $ npm install' ---> This means that you run the code 'npm install' to install dependencies in the 'api' folder
+
+            'Start Command' ---> currently set to 'api/ $ node app.js' ---> This is to start the node.js app in the 'api' folder
+
+
+    STEPS TO START BACKEND:
+
+        1. Once the GitHub you want to use is connected to the web app and the files that have been changed and pushed, all you have to do is click on 'Manual Deploy' (black button in the upper right) and choose 'Deploy latest commit'. It will open up a logs menu where is will log the process of building the web app. The web app is live when you see the words 'Service is live' in the logs
