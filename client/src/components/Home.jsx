@@ -408,7 +408,7 @@ const Home = ({ scrollY }) => {
 
     const deleteAllShowcaseProducts = async () => {
         try {
-            await axios.get('/delete-all-showcase-products')
+            await axios.delete('/delete-all-showcase-products')
             console.log('Successfully deleted all showcase products')
         } catch (err) {
             console.log(err)
@@ -471,9 +471,9 @@ const Home = ({ scrollY }) => {
                     ))}
                 </div>
             </div>
-            <div className={`${editProducts ? '' : 'block'} flex justify-center items-center fixed top-0 left-0 w-full h-screen bg-black/50 z-[98]`}>
+            <div className={`${editProducts ? '' : 'hidden'} flex justify-center items-center fixed top-0 left-0 w-full h-screen bg-black/50 z-[98]`}>
                 <div className={`${darkMode ? 'bg-[#131313] text-white' : 'bg-white text-black'} h-[35rem] tablet:h-[90%] w-[50rem] tablet:w-[70%] rounded-2xl flex flex-col items-center relative overflow-auto`}>
-                    <button className="absolute bottom-2 right-2 bg-[#FF7F11] text-white font-hind px-4 py-1 rounded-full font-semibold"
+                    <button className="absolute top-2 left-2 bg-[#FF7F11] text-white font-hind px-4 py-1 rounded-full font-semibold"
                         onClick={() => deleteAllShowcaseProducts()}
                     >Delete Showcase Products</button>
                     <button className="absolute top-4 right-4"

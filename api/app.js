@@ -690,7 +690,7 @@ app.get('/:sessionId', (req, res) => {
     }
 })
 
-app.get('/delete-all-showcase-products', async (req, res) => {
+app.delete('/delete-all-showcase-products', async (req, res) => {
     try {
         await deleteHomePageProductDocs()
         res.status(200).json('Deleted showcase products')
